@@ -1091,3 +1091,6 @@ a.back-to-top {
 .my-float{
 	margin-top:22px;
 }
+.icoright{
+    float:right;
+}
