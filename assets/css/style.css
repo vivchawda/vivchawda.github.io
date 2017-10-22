@@ -732,7 +732,7 @@ textarea::-ms-input-placeholder
     border-right:1px solid #c3bec2;
     padding:0 10px 0 10px;
 }
-.main-footer .social a i.dribbble{
+.main-footer .social a i.github{
     border-right:0;
 }
 .main-footer p{
@@ -1086,4 +1086,10 @@ a.back-to-top {
 }
 .icoright{
     float:right;
+}
+.icoright a:link{
+    color:#ffffff;
+}
+.icoright a:hover{
+    color:#ff2b4a;
 }
