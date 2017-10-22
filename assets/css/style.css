@@ -590,9 +590,9 @@ textarea::-ms-input-placeholder
     margin-top:30px;
 }
 .experience-content{
-    background: rgba(79, 50, 68, .7);
-    padding:60px 40px;
-    color:#fff;
+	background: rgba(50,52,79,0.70);
+	padding: 60px 40px;
+	color: #fff;
 }
 .experience-content h4{
 	color: #fff;
@@ -675,7 +675,7 @@ textarea::-ms-input-placeholder
 }
 
 .contact-area{
-    background: rgba(79, 50, 68, .7);
+    background: rgba(50,52,79,0.70);
     padding:60px 40px 147px 40px;
     color:#fff;
 }
@@ -700,7 +700,7 @@ textarea::-ms-input-placeholder
     margin-top:20px;
 }
 .contact-details{
-    background: rgba(55, 38, 57, 0.64);
+    background: rgba(50,52,79,0.70);
     padding:60px 40px;
     color:#fff;
     margin-bottom:20px;
@@ -1072,7 +1072,7 @@ a.back-to-top {
 	background-repeat: no-repeat;
 	background-position: center 43%;
 	background-image: url("../images/up-arrow.png");
-	background-color: rgba(79, 50, 68, .7);
+	background-color: rgba(50,52,79,0.70);
 	-webkit-border-radius: 30px;
 	-moz-border-radius: 30px;
 	border-radius: 30px;
