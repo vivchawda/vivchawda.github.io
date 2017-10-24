@@ -407,6 +407,13 @@
                 </div>
             </div>
 
+            <a href="#test-popup" class="open-popup-link">Show inline popup</a>
+
+
+<a class="simple-ajax-popup-align-top" href="http://dimsemenov.com/plugins/magnific-popup/site-assets/ajax/test-ajax-2.html">Load content via ajax</a><br>
+
+          
+
         </footer>
 
 
@@ -419,6 +426,12 @@
 
         <script src="assets/js/main.js"></script>
         <script type="text/javascript">
+
+        $('.open-popup-link').magnificPopup({
+          type:'inline',
+          midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+        });
+
 // create the back to top button
 $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
 
