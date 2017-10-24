@@ -255,7 +255,7 @@
 
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="portfolio-item">
-                                <a href="assets/images/portfolio/pf2.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf2.jpg" alt="" /></a>
+                                <a class="simple-ajax-popup-align-top" href="https://vivchawda.github.io/work/mitr.html"><img src="assets/images/portfolio/pf2.jpg" alt="" /></a>
                             </div>
                         </div>
 
@@ -412,7 +412,7 @@
 
 <a class="simple-ajax-popup-align-top" href="http://dimsemenov.com/plugins/magnific-popup/site-assets/ajax/test-ajax-2.html">Load content via ajax</a><br>
 
-          
+
 
         </footer>
 
@@ -427,10 +427,19 @@
         <script src="assets/js/main.js"></script>
         <script type="text/javascript">
 
-        $('.open-popup-link').magnificPopup({
-          type:'inline',
-          midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
-        });
+        $(document).ready(function() {
+
+  	$('.simple-ajax-popup-align-top').magnificPopup({
+  		type: 'ajax',
+  		alignTop: true,
+  		overflowY: 'scroll' // as we know that popup content is tall we set scroll overflow by default to avoid jump
+  	});
+
+  	$('.simple-ajax-popup').magnificPopup({
+  		type: 'ajax'
+  	});
+
+  });
 
 // create the back to top button
 $('body').prepend('<a href="#" class="back-to-top">Back to Top</a>');
