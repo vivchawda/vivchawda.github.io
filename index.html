@@ -180,14 +180,14 @@
 
                                     <h4>
                                     	Work Experience
-                                    	
+
 										<span class="icoright">
-                                    		<a href="https://github.com/vivchawda/vivchawda.github.io/raw/master/assets/files/Vivek%20Chawda%20-%20UX%20Designer.pdf">
+                                    		<a href="https://github.com/vivchawda/vivchawda.github.io/raw/master/assets/files/Vivek%20Chawda%20-%20UX%20Designer.pdf" target="_blank">
                                     		<i class="fa fa-download"></i>
 											</a>
-                                    	</span>                                    	
+                                    	</span>
                                     </h4>
-                                    
+
                                     <div class="content-details content-border">
                                       <h5>Philips Design</h5>
                                       <h6>Since January 2015</h6>
@@ -234,7 +234,7 @@
         </section>
 
         <!-- Sections -->
-    	  <section id="portfolio" class="sections">
+    	      	  <section id="portfolio" class="sections">
             <div class="container">
 
                 <div class="heading-content text-center">
@@ -242,7 +242,75 @@
                 </div>
 
                 <!-- Example row of columns -->
-                
+                <div class="row">
+                    <div class="portfolio-wrapper">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                              <a class="image-popup-vertical-fit" href="assets/images/portfolio/pf1.jpg" title="Title">
+                                  <img src="assets/images/portfolio/pf1.jpg">
+                              </a>
+                                <!-- <a href="assets/images/portfolio/pf1.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf1.jpg" alt="" /></a> -->
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf2.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf2.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf3.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf3.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf4.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf4.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="portfolio-wrapper2">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="portfolio-item width-img">
+                                <a href="assets/images/portfolio/pf5.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf5.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="portfolio-item width-img">
+                                <a href="assets/images/portfolio/pf6.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf7.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf7.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf8.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf8.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div> <!-- /container -->
+        </section>
+
+
+                <!-- Example row of columns -->
+
 
 
             </div> <!-- /container -->
@@ -328,7 +396,7 @@
                             <div class="social">
                                 <a href="https://twitter.com/vivchawda" target="_blank"><i class="fa fa-twitter"></i></a>
                                 <a href="https://www.linkedin.com/in/vivekchawda/" target="_blank"><i class="fa fa-linkedin"></i></a>
-                              
+
                                 <a href="https://github.com/vivchawda" target="_blank"><i class="fa github fa-github"></i></a>
                             </div>
 
@@ -371,6 +439,20 @@ $('a.back-to-top, a.simple-back-to-top').click(function() {
 	return false;
 });
 </script>
+<script>
+$(document).ready(function() {
 
+    $('.image-popup-vertical-fit').magnificPopup({
+        type: 'image',
+        closeOnContentClick: true,
+        mainClass: 'mfp-img-mobile',
+        image: {
+            verticalFit: true
+        }
+
+    });
+
+});
+</script>
     </body>
 </html>
