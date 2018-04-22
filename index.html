@@ -29,10 +29,14 @@
         <link rel="stylesheet" href="assets/css/responsive.css" />
 
         <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/raleway:n1:default.js" type="text/javascript"></script>
-	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-  	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+    <script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/raleway:n1:default.js" type="text/javascript"></script>
 
+<!--	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+  	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+-->
+    <script type="text/javascript" src="html5lightbox/jquery.js"></script>
+    <script type="text/javascript" src="html5lightbox/html5lightbox.js"></script>
 
    </head>
     <body>
@@ -96,8 +100,8 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="about-content text-left">
                                 <h4>This is me.</h4>
-                                <p>Hi, i'm Vivek Chawda, refining User Experience for different design companies in Bangalore, India. I graduated with bachelors in Computer Science and Masters in User Interface Design and have been working since the last eight years.</p>
-                                <p>I enjoy DIY and electronics. Whenever I find any free time, I am off cycling.</p>
+                                <p>Hi, I'm Vivek Chawda, refining User Experience for different design companies in Bangalore, India. I graduated with bachelors in Computer Science and Masters in User Interface Design and have been working since the last eight years.</p>
+                                <p>I enjoy DIY and electronics. When I am not designing, I am off cycling or hiking in the mountains.</p>
                             </div>
                         </div>
 
@@ -124,8 +128,8 @@
 
                                 <div class="features-item">
                                     <i class="lnr lnr-screen"></i>
-                                    <h6><a href="#">Research</a></h6>
-                                </div>
+                                    <h6><a href="#mydiv" class="html5lightbox" data-width="800" data-height="100">Research</a></h6>
+                                  </div>
 
                             </div>
                         </div>
@@ -166,7 +170,95 @@
                     </div>
                 </div>
             </div> <!-- /container -->
+
+            <div id="mydiv" style="display:none;">
+            <div class="lightboxcontainer">
+            <div class="lightboxleft">
+              <div class="divtext">
+              <p class="divtitle" style="font-size:16px;font-weight:bold;margin:12px 0px;">WonderPlugin Gallery</p>
+              <p class="divdescription" style="font-size:14px;line-height:20px;">WonderPlugin Gallery is a WordPress photo and video gallery plugin, and a great way to showcase your images and videos online. The plugin supports images, YouTube, Vimeo, Dailymotion, mp4 and webm videos. It's fully responsive, works on iPhone, iPad, Android, Firefox, Chrome, Safari, Opera and Internet Explorer 7/8/9/10/11.</p>
+              </div>
+            </div>
+            <div class="lightboxright">
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/wswxQ3mhwqQ" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div style="clear:both;"></div>
+            </div></div>
+
         </section>
+
+        <!-- Sections -->
+                <section id="portfolio" class="sections">
+            <div class="container">
+
+                <div class="heading-content text-center">
+                  <h3>Work</h3>
+                </div>
+
+                <!-- Example row of columns -->
+                <div class="row">
+                    <div class="portfolio-wrapper">
+
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf2_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf2.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf3_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf3.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf4_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf4.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="portfolio-wrapper2">
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf6_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf7.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf7_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf7.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="portfolio-item">
+                                <a href="assets/images/portfolio/pf8_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf8.jpg" alt="" /></a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div> <!-- /container -->
+        </section>
+
+
+                <!-- Example row of columns -->
+
+
+
+            </div> <!-- /container -->
+        </section>
+
 
         <!-- Sections -->
         <section id="experience" class="experience">
@@ -234,88 +326,6 @@
               </div>
         </section>
 
-        <!-- Sections -->
-    	      	  <section id="portfolio" class="sections">
-            <div class="container">
-
-                <div class="heading-content text-center">
-                  <h3>Work</h3>
-                </div>
-
-                <!-- Example row of columns -->
-                <div class="row">
-                    <div class="portfolio-wrapper">
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="portfolio-item">
-                              <a href="assets/images/portfolio/pf1_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf1.jpg" alt="" /></a>
-                              </a>
-                                <!-- <a href="assets/images/portfolio/pf1.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf1.jpg" alt="" /></a> -->
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="portfolio-item">
-                                <a href="assets/images/portfolio/pf2_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf2.jpg" alt="" /></a>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="portfolio-item">
-                                <a href="assets/images/portfolio/pf3_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf3.jpg" alt="" /></a>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="portfolio-item">
-                                <a href="assets/images/portfolio/pf4_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf4.jpg" alt="" /></a>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="portfolio-wrapper2">
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="portfolio-item width-img">
-                                <a href="assets/images/portfolio/pf5_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf5.jpg" alt="" /></a>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="portfolio-item width-img">
-                                <a href="assets/images/portfolio/pf6_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf6.jpg" alt="" /></a>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="portfolio-item">
-                                <a href="assets/images/portfolio/pf7_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf7.jpg" alt="" /></a>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="portfolio-item">
-                                <a href="assets/images/portfolio/pf8_big.jpg" class="portfolio-img"><img src="assets/images/portfolio/pf8.jpg" alt="" /></a>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-
-            </div> <!-- /container -->
-        </section>
-
-
-                <!-- Example row of columns -->
-
-
-
-            </div> <!-- /container -->
-        </section>
 
 
         <!-- Sections -->
@@ -366,8 +376,8 @@
                                     </div>
 
                                     <div class="contact-details">
-                                        <h4>Phone</h4>
-                                      <p>+91 966 378 1502</p>
+                                        <h4>Social</h4>
+                                      <p>Instagram - GitHub</p>
                                         <p>&nbsp;</p>
                                     </div>
 
@@ -411,7 +421,7 @@
           </footer>
 
 
-        <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+
         <script src="assets/js/vendor/bootstrap.min.js"></script>
 
         <script src="assets/js/plugins.js"></script>
