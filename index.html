@@ -1,1295 +1,1302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vivek Chawda | UX Designer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #2d2d2d;
-            --secondary: #6b7280;
-            --accent: #d4a574;
-            --light-bg: #fafafa;
-            --white: #ffffff;
-            --soft-blue: #e8f4f8;
-            --soft-peach: #f5e6d3;
-            --soft-sage: #e8ede8;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            color: var(--primary);
-            background-color: var(--white);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .logo {
-            font-weight: 600;
-            font-size: 1.2rem;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--primary);
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        nav a:after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover:after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: var(--primary);
-            color: var(--white);
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            padding: 80px 2rem;
-            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
-            text-align: center;
-            min-height: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        .hero .role {
-            font-size: 1.25rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 2rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--secondary);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            line-height: 1.8;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .stat {
-            padding: 1.5rem;
-            background: var(--white);
-            border-radius: 16px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--secondary);
-            margin-top: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .about-text p {
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-            text-align: center;
-        }
-
-        .about-highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .highlight {
-            padding: 1.5rem;
-            background: var(--soft-sage);
-            border-radius: 12px;
-            border-left: 4px solid var(--accent);
-        }
-
-        .highlight-title {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-text {
-            font-size: 0.95rem;
-            color: var(--secondary);
-        }
-
-        /* Skills Section */
-        .skills {
-            padding: 80px 2rem;
-            background: var(--light-bg);
-        }
-
-        .skills-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .skill-category {
-            color: var(--accent);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .skill-card h4 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 0.5rem 0;
-            color: var(--secondary);
-            font-size: 0.95rem;
-        }
-
-        .skill-list li:before {
-            content: "→ ";
-            color: var(--accent);
-            margin-right: 0.5rem;
-            font-weight: 600;
-        }
-
-        /* Case Studies Section */
-        .case-studies {
-            padding: 80px 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .case-card {
-            background: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .case-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-            border-color: var(--accent);
-        }
-
-        .case-header {
-            padding: 2rem;
-            height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .case-header.bg-1 { background: linear-gradient(135deg, #e8f4f8 0%, #d4e8f0 100%); }
-        .case-header.bg-2 { background: linear-gradient(135deg, #f5e6d3 0%, #f0dcc4 100%); }
-        .case-header.bg-3 { background: linear-gradient(135deg, #e8ede8 0%, #dce5dc 100%); }
-        .case-header.bg-4 { background: linear-gradient(135deg, #f0e8d8 0%, #e8dcc8 100%); }
-        .case-header.bg-5 { background: linear-gradient(135deg, #e8e8f5 0%, #dcdcf0 100%); }
-        .case-header.bg-6 { background: linear-gradient(135deg, #f5e8e8 0%, #f0d4d4 100%); }
-
-        .case-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .case-type {
-            font-size: 0.85rem;
-            color: var(--secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .case-body {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .case-description {
-            color: var(--secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .case-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .case-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            background: var(--light-bg);
-            color: var(--secondary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-        }
-
-        .read-more {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: gap 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .read-more:hover {
-            gap: 0.6rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 80px 2rem;
-            background: linear-gradient(135deg, var(--primary) 0%, #414141 100%);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .cta-section p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button-white {
-            background: var(--white);
-            color: var(--primary);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid var(--white);
-        }
-
-        .cta-button-white:hover {
-            background: transparent;
-            color: var(--white);
-        }
-
-        /* Timeline Section */
-        .timeline {
-            padding: 80px 2rem;
-            background: var(--white);
-        }
-
-        .timeline-container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .timeline-container:before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent), transparent);
-        }
-
-        .timeline-item {
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            padding-right: 52%;
-        }
-
-        .timeline-item:nth-child(even) {
-            padding-left: 52%;
-        }
-
-        .timeline-marker {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
-            background: var(--accent);
-            border: 3px solid var(--white);
-            border-radius: 50%;
-            top: 5px;
-            z-index: 10;
-            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
-        }
-
-        .timeline-content {
-            background: var(--light-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border-left: 3px solid var(--accent);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .timeline-date {
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.3rem;
-        }
-
-        .timeline-company {
-            font-size: 0.95rem;
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .timeline-description {
-            color: var(--secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 2rem;
-            background: var(--light-bg);
-            text-align: center;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: var(--secondary);
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        .footer-credit {
-            font-size: 0.85rem;
-            color: var(--secondary);
-        }
-
-        /* Link styling in highlights */
-        .highlight a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .highlight a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-            }
-
-            .hero {
-                padding: 60px 1.5rem;
-                margin-top: 70px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .cases-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .about, .skills, .case-studies, .timeline {
-                padding: 60px 1.5rem;
-            }
-
-            .cta-section h2 {
-                font-size: 1.8rem;
-            }
-
-            .timeline-container:before {
-                left: 0;
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                padding-left: 30px;
-                padding-right: 0;
-            }
-
-            .timeline-marker {
-                left: 0;
-            }
-
-            .timeline-content {
-                border-left: 3px solid var(--accent);
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 1rem;
-            }
-
-            nav ul {
-                gap: 0.5rem;
-                font-size: 0.85rem;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .about-highlights {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Modal for case study details */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .modal-content {
-            background-color: var(--white);
-            margin: 50px auto;
-            padding: 2rem;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .close {
-            color: var(--secondary);
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close:hover {
-            color: var(--primary);
-        }
-
-        .modal h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .modal h3 {
-            font-size: 1.3rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .modal p {
-            color: var(--secondary);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .modal ul {
-            margin-left: 2rem;
-            color: var(--secondary);
-        }
-
-        .modal ul li {
-            margin-bottom: 0.5rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Principal UX Designer – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: #05060a;
+      color: #f5f5f7;
+      padding-top: 90px;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    a {
+      color: #8ab4ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Fixed Header */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(5, 6, 10, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(138, 180, 255, 0.1);
+      padding: 16px 0;
+    }
+
+    .site-header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .site-header__name {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7ff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      line-height: 1.2;
+    }
+
+    .site-header__name:hover {
+      color: #8ab4ff;
+      text-decoration: none;
+    }
+
+    .site-header__tagline {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: #8e95b8;
+      text-transform: uppercase;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 32px;
+      align-items: flex-start;
+      margin-bottom: 48px;
+    }
+
+    .hero-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: #c0c3d7;
+      margin-bottom: 16px;
+    }
+
+    .hero-text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #d5d7e5;
+      margin-bottom: 16px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #2a3144;
+      background: linear-gradient(135deg, rgba(110, 196, 255, 0.12), rgba(126, 124, 255, 0.12));
+      font-size: 12px;
+      color: #d7e3ff;
+      margin-bottom: 12px;
+    }
+
+    .hero-availability {
+      font-size: 13px;
+      color: #ced4f1;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .hero-pill span {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #272b3a;
+      font-size: 12px;
+      color: #b4b9d7;
+    }
+
+    /* Section Separator */
+    .section-separator {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(138, 180, 255, 0.15) 20%, rgba(138, 180, 255, 0.15) 80%, transparent);
+      margin: 64px 0;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #9ca3c7;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: #878fb5;
+    }
+
+    .section-description {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #b8bdd9;
+      margin-bottom: 24px;
+    }
+
+    /* Download CV Button */
+    .download-cv-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid #3b82f6;
+      background: rgba(37, 99, 235, 0.15);
+      color: #dbeafe;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .download-cv-btn:hover {
+      background: rgba(37, 99, 235, 0.25);
+      border-color: #60a5fa;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .download-cv-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* CV Download Modal */
+    .cv-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(1, 3, 17, 0.86);
+      backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding: 24px;
+    }
+
+    .cv-modal-backdrop.is-visible {
+      display: flex;
+    }
+
+    .cv-modal {
+      background: #050713;
+      border-radius: 18px;
+      border: 1px solid #303a5f;
+      width: 100%;
+      max-width: 480px;
+      padding: 32px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+      position: relative;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cv-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: #9ca3c7;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease;
+    }
+
+    .cv-modal-close:hover {
+      color: #dbeafe;
+    }
+
+    .cv-modal-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 24px;
+    }
+
+    .cv-download-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cv-download-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid #23273a;
+      background: #050814;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cv-download-option:hover {
+      background: #0a0e1f;
+      border-color: #3b82f6;
+      transform: translateX(4px);
+    }
+
+    .cv-download-option-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #60a5fa;
+    }
+
+    .cv-download-option-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .cv-download-option-content {
+      flex: 1;
+    }
+
+    .cv-download-option-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f8fafc;
+    }
+
+    /* Work cards - 4 column grid */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .work-card {
+      position: relative;
+      padding: 16px 16px 18px;
+      border-radius: 16px;
+      border: 1px solid #23273a;
+      background: radial-gradient(circle at top left, rgba(113, 197, 255, 0.14), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(174, 130, 255, 0.2), transparent 55%),
+                  #05060a;
+      box-shadow: 0 16px 40px rgba(3, 5, 20, 0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .work-tagline {
+      font-size: 11px;
+      color: #8e95b8;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .work-role {
+      font-size: 13px;
+      color: #cfd4ff;
+    }
+
+    .work-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #f8fafc;
+    }
+
+    .work-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      color: #a7b0d8;
+    }
+
+    .work-meta span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(10, 14, 40, 0.9);
+      border: 1px solid #282f4a;
+    }
+
+    .work-description {
+      font-size: 13px;
+      color: #ccd2f5;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .work-actions {
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      color: #9ea7d9;
+    }
+
+    .work-tags span {
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid #262d45;
+    }
+
+    .work-read-more {
+      align-self: flex-end;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #3b82f6;
+      background: rgba(37, 99, 235, 0.15);
+      color: #dbeafe;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .work-read-more:hover {
+      background: rgba(37, 99, 235, 0.25);
+      border-color: #60a5fa;
+      transform: translateY(-1px);
+    }
+
+    .work-read-more span.icon {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    /* Timeline Experience */
+    .timeline-container {
+      position: relative;
+      max-width: 900px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+    }
+
+    /* Central vertical line */
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(138, 180, 255, 0.3), rgba(138, 180, 255, 0.1));
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Alternating layout */
+    .timeline-item:nth-child(odd) {
+      justify-content: flex-start;
+    }
+
+    .timeline-item:nth-child(even) {
+      justify-content: flex-end;
+    }
+
+    /* Timeline dot */
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      background: #8ab4ff;
+      border: 3px solid #05060a;
+      border-radius: 50%;
+      z-index: 2;
+      box-shadow: 0 0 0 3px rgba(138, 180, 255, 0.2);
+    }
+
+    /* Timeline card */
+    .timeline-card {
+      width: 45%;
+      padding: 16px 18px;
+      border-radius: 12px;
+      border: 1px solid #23273a;
+      background: #050814;
+      position: relative;
+    }
+
+    .timeline-date {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #d4945f;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .timeline-role {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .timeline-company {
+      font-size: 13px;
+      color: #b4b9e9;
+      margin-bottom: 10px;
+    }
+
+    .timeline-description {
+      font-size: 13px;
+      color: #ced3f4;
+      line-height: 1.6;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px 20px;
+      margin-top: 8px;
+    }
+
+    .contact-item {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #1f2436;
+      background: #050814;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8e95b8;
+      margin-bottom: 4px;
+    }
+
+    .contact-link {
+      font-size: 13px;
+      color: #dbeafe;
+      word-break: break-all;
+    }
+
+    /* Popup overlay */
+    .work-popup-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(1, 3, 17, 0.86);
+      backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 40;
+      padding: 24px;
+    }
+
+    .work-popup-backdrop.is-visible {
+      display: flex;
+    }
+
+    .work-popup {
+      background: #050713;
+      border-radius: 18px;
+      border: 1px solid #303a5f;
+      width: 100%;
+      max-width: 980px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+      position: relative;
+    }
+
+    /* Two-column popup for all projects */
+    .work-popup--twocol {
+      padding: 16px 16px 18px;
+    }
+
+    .work-popup--twocol .work-popup-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      z-index: 2;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 255, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7ff;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .work-popup--twocol .work-popup-inner {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+      height: 100%;
+    }
+
+    /* Left column: image */
+    .work-popup-col--image {
+      flex: 0 0 45%;
+      min-width: 0;
+    }
+
+    .work-popup-image {
+      width: 100%;
+      height: 100%;
+      background: #080a16;
+      border-radius: 14px;
+      border: 1px solid #222741;
+      overflow: hidden;
+    }
+
+    .work-popup-image a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      text-decoration: none;
+    }
+
+    .work-popup-image a::after {
+      content: '↗';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(59, 130, 246, 0.9);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .work-popup-image a:hover::after {
+      opacity: 1;
+    }
+
+    .work-popup-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.2s ease;
+    }
+
+    .work-popup-image a:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Right column: text */
+    .work-popup-col--text {
+      flex: 1 1 55%;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .work-popup--twocol .work-popup-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .work-popup--twocol .work-popup-subtitle {
+      font-size: 13px;
+      color: #9ca3d9;
+      margin-bottom: 10px;
+    }
+
+    .work-popup--twocol .work-popup-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+      font-size: 11px;
+      color: #a9b3ea;
+    }
+
+    .work-popup--twocol .work-popup-meta span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #050814;
+      border: 1px solid #272f52;
+    }
+
+    .work-popup--twocol .work-popup-description {
+      font-size: 13px;
+      color: #d1d5f4;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .work-popup--twocol .work-popup-highlights {
+      font-size: 13px;
+      color: #cdd3ff;
+      overflow-y: auto;
+    }
+
+    /* Mobile */
+    @media (max-width: 1024px) {
+      .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-top: 74px;
+      }
+
+      .site-header__name {
+        font-size: 24px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .page {
+        padding-inline: 16px;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-popup-backdrop {
+        padding: 0;
+      }
+
+      .work-popup--twocol .work-popup-inner {
+        flex-direction: column;
+      }
+
+      .work-popup-col--image {
+        flex: 0 0 auto;
+        max-height: 220px;
+      }
+
+      /* Timeline mobile adjustments */
+      .timeline-container::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        justify-content: flex-end !important;
+        padding-left: 50px;
+      }
+
+      .timeline-dot {
+        left: 20px;
+      }
+
+      .timeline-card {
+        width: 100%;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .cv-modal {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">vivchawda.com</div>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#timeline">Timeline</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#contact" class="cta-button">Get in Touch</a></li>
-        </ul>
-    </nav>
+  <!-- Fixed Header -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="https://www.vivchawda.com" class="site-header__name" target="_blank" rel="noopener">
+        Vivek Chawda
+      </a>
+      <div class="site-header__tagline">User Experience Designer</div>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
+  <main class="page">
+    <!-- Hero -->
     <section class="hero">
-        <h1>Vivek Chawda</h1>
-        <p class="role">Principle UX Designer</p>
-        <p>I design inclusive, research-driven solutions for global audiences.<br>14+ years building products that matter.</p>
-        <div class="hero-stats">
-            <div class="stat">
-                <div class="stat-number">15+</div>
-                <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">20+</div>
-                <div class="stat-label">Products Designed</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">6</div>
-                <div class="stat-label">Fortune 500s</div>
-            </div>
+      <div>
+        <div class="hero-tag">
+          <span>Principal / Lead UX Designer</span>
         </div>
+        <h1 class="hero-title">I design inclusive, research‑driven solutions for global audiences.</h1>
+        <p class="hero-subtitle">16 years designing products that matter.</p>
+        <p class="hero-text">
+          User Experience Designer with a background across healthcare, fintech, environmental analytics, and enterprise SaaS, always with a focus on accessibility and usability.   
+        </p>
+        <p class="hero-text">
+          Comfortable bridging strategy, research, and design execution across complex ecosystems, and mentoring teams to deliver consistently high‑quality work.   
+        </p>
+      </div>
+      <div>
+        <p class="hero-availability"><strong>Currently available</strong> for Design Leadership, Consulting, and strategic UX roles.   </p>
+        <div class="hero-pill">
+          <span>Design Leadership</span>
+          <span>Design Systems</span>
+          <span>Complex Workflows</span>
+          <span>Enterprise SaaS</span>
+        </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-grid">
-            <div class="about-text" style="text-align: center;">
-                <h3>Designer, Maker, and Problem Solver</h3>
-                <p>I&rsquo;m a User Experience Designer with a passion for understanding human behavior and solving complex design problems. My background spans software design, healthcare technology, and fintech—always with a focus on accessibility and usability.</p>
-                <p>Beyond digital, I&rsquo;m fascinated by physical design and electronics (Arduino, Processing). I believe great design connects the physical and digital worlds seamlessly.</p>
-                <div class="about-highlights" style="justify-content: center; margin-left: auto; margin-right: auto;">
-                    <div class="highlight">
-                        <div class="highlight-title">Education</div>
-                        <div class="highlight-text">Masters in Software & UI Design from National Institute of Design, India</div>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight-title">Contact</div>
-                        <div class="highlight-text">+91 966-378-1502 | vivchawda@gmail.com</div>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight-title">Expertise</div>
-                        <div class="highlight-text">DesignOps, Design Systems, FinTech, HealthTech, AgriTech</div>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight-title">LinkedIn</div>
-                        <div class="highlight-text"><a href="https://www.linkedin.com/in/vivekchawda/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600;">linkedin.com/in/vivekchawda</a></div>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight-title">Hobbies</div>
-                        <div class="highlight-text">DIY Electronics, Music Production (Bassist)</div>
-                    </div>
-                </div>
+    <div class="section-separator"></div>
+
+    <!-- Work -->
+    <section class="section" id="work">
+      <div class="section-header">
+        <h2 class="section-title">Selected work</h2>
+      </div>
+      <p class="section-description">
+        These are just a few selected designs. Get in touch with me to see my designs for a particular domain or platform relevant to your requirement.
+      </p>
+
+      <div class="work-grid">
+        <!-- Ecolab -->
+        <article class="work-card">
+          <div class="work-tagline">Ecolab · Environmental SaaS</div>
+          <div class="work-role">Principal UX Designer · Design Systems Lead</div>
+          <h3 class="work-title">Global platform for environmental facility monitoring</h3>
+          <div class="work-meta">
+            <span>7 products</span>
+            <span>Design System</span>
+            <span>Satellite + IoT</span>
+          </div>
+          <p class="work-description">
+            Led UX for a cross‑platform suite combining satellite imagery, drone data, and on‑ground sensors to help global industrial clients monitor emissions and compliance.   
+          </p>
+          <div class="work-actions">
+            <div class="work-tags">
+              <span>Data‑dense dashboards</span>
+              <span>DesignOps</span>
+              <span>Cross‑functional alignment</span>
             </div>
-            <div>
-                <div style="background: linear-gradient(135deg, #e8f4f8 0%, #d4e8f0 100%); padding: 3rem; border-radius: 16px; text-align: center; color: #6b7280;">
-                    <p style="font-size: 3rem; margin-bottom: 1rem;">👋</p>
-                    <p style="font-size: 1.1rem; color: #2d2d2d; margin-bottom: 0.5rem;"><strong>Currently Available</strong></p>
-                    <p>Open to Design Leadership, Consulting, and strategic UX roles. Let's discuss your design challenges.</p>
-                </div>
+            <button
+              class="work-read-more"
+              data-project-title="Ecolab – Environmental Monitoring Suite"
+              data-project-subtitle="Designing a cross‑platform SaaS suite for global environmental monitoring."
+              data-project-description="Led UX for a cross‑platform suite combining satellite imagery, drone data, and on‑ground sensors to help global industrial clients monitor emissions and compliance."
+              data-project-highlights='["Co‑created a design system used by 7 products.","Reduced design duplication and improved release consistency across teams.","Validated complex environmental metrics with domain experts through iterative prototypes."]'
+              data-meta='["7 products","Satellite & drone data","Design System"]'
+              data-image="images/work-ecolab-screen.png"
+              data-link="https://www.ecolab.com/offerings/water-quality-powered-by-ecolab3d"
+            >
+              <span>Read more</span>
+              <span class="icon">↗</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Kayrros -->
+        <article class="work-card">
+          <div class="work-tagline">Kayrros · Climate Intelligence</div>
+          <div class="work-role">Lead Product Designer</div>
+          <h3 class="work-title">Satellite imaging platform for energy majors</h3>
+          <div class="work-meta">
+            <span>Shell</span>
+            <span>Exxon</span>
+            <span>Analytics</span>
+          </div>
+          <p class="work-description">
+            Designed a dual solution – expert analytics platform and stakeholder portal – enabling energy and finance partners to track flaring, emissions, and activity at scale.   
+          </p>
+          <div class="work-actions">
+            <div class="work-tags">
+              <span>Geospatial UX</span>
+              <span>Analytics workflows</span>
             </div>
-        </div>
+            <button
+              class="work-read-more"
+              data-project-title="Kayrros – Satellite Imaging Platform"
+              data-project-subtitle="Turning complex satellite data into actionable climate intelligence."
+              data-project-description="Designed a configurable analytics environment for climate scientists and analysts, while keeping executive‑level reporting simple and trustworthy for non‑experts."
+              data-project-highlights='["Balanced expert and executive needs with a dual interface strategy.","Simplified complex geospatial overlays for faster interpretation.","Aligned product, science, and engineering teams around shared UX patterns."]'
+              data-meta='["Satellite data","Energy & finance","Dual interfaces"]'
+              data-image="images/work-kayrros-screen.png"
+              data-link="https://www.kayrros.com/taking-climate-action-now-how-satellite-data-can-help/"
+            >
+              <span>Read more</span>
+              <span class="icon">↗</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- McKinsey -->
+        <article class="work-card">
+          <div class="work-tagline">McKinsey & Company</div>
+          <div class="work-role">Experience Designer</div>
+          <h3 class="work-title">Secure mobile commerce for smallholder farmers</h3>
+          <div class="work-meta">
+            <span>MAARS</span>
+            <span>10,000+ farmers</span>
+            <span>Fintech</span>
+          </div>
+          <p class="work-description">
+            Helped design a mobile platform that made it safe and intuitive for farmers to transact with buyers, banks, and input suppliers using low‑end Android devices.   
+          </p>
+          <div class="work-actions">
+            <div class="work-tags">
+              <span>Field research</span>
+              <span>Low‑literacy UX</span>
+            </div>
+            <button
+              class="work-read-more"
+              data-project-title="McKinsey – MAARS Mobile Commerce"
+              data-project-subtitle="Building trust and security into rural digital payments."
+              data-project-description="Worked with a cross‑functional team to design flows for onboarding, authentication, and payments that respected users' mental models and device constraints."
+              data-project-highlights='["Accounted for low connectivity and shared‑device usage patterns.","Used iconography, voice, and simple language to support low‑literacy users.","Supported a pilot that scaled to 10,000+ farmers."]'
+              data-meta='["Secure payments","10,000+ farmers","Field research"]'
+              data-image="images/work-maars-screen.png"
+              data-link="https://itcportal.com/itc-businesses/agri-business/itc-maars.html"
+            >
+              <span>Read more</span>
+              <span class="icon">↗</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- Healthcare -->
+        <article class="work-card">
+          <div class="work-tagline">Philips · GE Healthcare</div>
+          <div class="work-role">UX Designer · Imaging & High Acuity</div>
+          <h3 class="work-title">Medical imaging and critical care tools</h3>
+          <div class="work-meta">
+            <span>FDA‑regulated</span>
+            <span>Radiology</span>
+            <span>TeleICU</span>
+          </div>
+          <p class="work-description">
+            Designed service dashboards, imaging workflows, and TeleICU tools, balancing regulatory constraints with the realities of high‑pressure clinical environments.   
+          </p>
+          <div class="work-actions">
+            <div class="work-tags">
+              <span>Complex workflows</span>
+              <span>Dark & light modes</span>
+            </div>
+            <button
+              class="work-read-more"
+              data-project-title="Healthcare – Imaging & TeleICU"
+              data-project-subtitle="Supporting radiologists and clinicians in high‑stakes environments."
+              data-project-description="Worked with clinical teams to refine reporting flows, visual prioritization, and multi‑screen layouts while ensuring consistency across legacy and new products."
+              data-project-highlights='["Designed for both dark and light reading environments.","Negotiated design decisions within regulatory and legacy constraints.","Helped reduce post‑launch issues through high‑fidelity interaction prototypes."]'
+              data-meta='["Radiology","TeleICU","High‑acuity care"]'
+              data-image="images/work-healthcare-screen.png"
+              data-link="https://www.philips.co.in/healthcare/product/HC728143/incisive-ct-ct-scanner"
+            >
+              <span>Read more</span>
+              <span class="icon">↗</span>
+            </button>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- Timeline Section -->
-    <section class="timeline" id="timeline">
-        <div class="skills-container">
-            <h2 class="section-title">Experience Timeline</h2>
-            <div class="timeline-container">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Nov 2024 - May 2025</div>
-                        <h3 class="timeline-title">Design Manager</h3>
-                        <p class="timeline-company">Ecolab</p>
-                        <p class="timeline-description">Leading a global team of 7 designers across 4 product verticals. Scaled design system company-wide, improving consistency by 20% and reducing design redundancy. Built DesignOps framework for improved design-engineering collaboration.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Aug 2023 - Nov 2024</div>
-                        <h3 class="timeline-title">Experience Design Consultant</h3>
-                        <p class="timeline-company">Independent Designer</p>
-                        <p class="timeline-description">Conducted design reviews and designed user flows, wireframes, and prototypes for healthcare, insurance, and consumer tech clients. Facilitated co-creation workshops and guided scalable design system development.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Feb 2022 - Aug 2023</div>
-                        <h3 class="timeline-title">Associate Design Director</h3>
-                        <p class="timeline-company">McKinsey & Company</p>
-                        <p class="timeline-description">Designed secure mobile commerce platform for agricultural transactions (MAARS) serving 10,000+ farmers. Conducted research for investment product securing $2M funding. Part of UN global Design for Good team.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Nov 2020 - Jan 2022</div>
-                        <h3 class="timeline-title">Principal UX Designer</h3>
-                        <p class="timeline-company">Kayrros</p>
-                        <p class="timeline-description">Designed environmental monitoring suite using satellite and drone data. Built cross-platform Design System for 7 products ensuring consistency across web, mobile, and desktop.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jul 2018 - Nov 2020</div>
-                        <h3 class="timeline-title">Senior UX Designer - Technical Expert</h3>
-                        <p class="timeline-company">Siemens Technology India</p>
-                        <p class="timeline-description">Won Dubai Expo 2020 Control Center contract by designing secure multi-platform monitoring system. SPOC for Siemens Energy digital products. Reduced post-launch tickets by 25% with high-fidelity prototypes.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">Jan 2015 - Apr 2018</div>
-                        <h3 class="timeline-title">Senior Interaction Designer</h3>
-                        <p class="timeline-company">Philips Design</p>
-                        <p class="timeline-description">Led service dashboard design for monitoring global medical equipment. Improved Image Guided Therapy tools in collaboration with engineering teams. Mentored junior designers.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2009 - 2014</div>
-                        <h3 class="timeline-title">Earlier Roles</h3>
-                        <p class="timeline-company">GE Healthcare, Jaguar Land Rover, Tata Elxsi, K3/TAT</p>
-                        <p class="timeline-description">Designed tools for High Acuity areas and TeleICU system. In-car HMI for concept vehicles. Thesis project on gestural interaction concepts for Motorola.</p>
-                    </div>
-                </div>
-            </div>
+    <div class="section-separator"></div>
+
+    <!-- Experience Timeline -->
+    <section class="section" id="experience">
+      <div class="section-header">
+        <h2 class="section-title">Experience Timeline</h2>
+        <button class="download-cv-btn" id="downloadCvBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+          </svg>
+          Download CV
+        </button>
+      </div>
+      <p class="section-subtitle" style="margin-bottom: 20px;">Design leadership and hands‑on product delivery.   </p>
+
+      <div class="timeline-container">
+        <!-- Item 1 - Left -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">NOV 2024 - MAY 2025</div>
+            <div class="timeline-role">Design Manager</div>
+            <div class="timeline-company">Ecolab</div>
+            <p class="timeline-description">
+              Leading a global team of 7 designers across 4 product verticals. Scaled design system company-wide, improving consistency by 20% and reducing design redundancy. Built DesignOps framework for improved design-engineering collaboration.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
         </div>
+
+        <!-- Item 2 - Right -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">AUG 2023 - NOV 2024</div>
+            <div class="timeline-role">Experience Design Consultant</div>
+            <div class="timeline-company">Independent Designer</div>
+            <p class="timeline-description">
+              Conducted design reviews and designed user flows, wireframes, and prototypes for healthcare, insurance, and consumer tech clients. Facilitated co-creation workshops and guided scalable design system development.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 3 - Left -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">FEB 2022 - AUG 2023</div>
+            <div class="timeline-role">Associate Design Director</div>
+            <div class="timeline-company">McKinsey & Company</div>
+            <p class="timeline-description">
+              Designed secure mobile commerce platform for agricultural transactions (MAARS) serving 10,000+ farmers. Conducted research for investment product securing $2M funding. Part of UX global Design for Good team.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 4 - Right -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">NOV 2020 - JAN 2022</div>
+            <div class="timeline-role">Principal UX Designer</div>
+            <div class="timeline-company">Kayrros</div>
+            <p class="timeline-description">
+              Designed environmental monitoring suite using satellite and drone data. Built cross-platform Design System for 7 products ensuring consistency across web, mobile, and desktop.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 5 - Left -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">JUL 2018 - NOV 2020</div>
+            <div class="timeline-role">Senior UX Designer – Technical Expert</div>
+            <div class="timeline-company">Siemens Technology India</div>
+            <p class="timeline-description">
+              Won Dubai Expo 2020 Control Center contract by designing secure multi-platform monitoring system. SPOC for Siemens Energy digital products. Reduced post-launch tickets by 25% with high-fidelity prototypes.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 6 - Right -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">JAN 2015 - APR 2018</div>
+            <div class="timeline-role">Senior Interaction Designer</div>
+            <div class="timeline-company">Philips Design</div>
+            <p class="timeline-description">
+              Led service dashboard design for monitoring global medical equipment. Improved Image Guided Therapy tools in collaboration with engineering teams. Mentored junior designers.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 7 - Left -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">2009 - 2014</div>
+            <div class="timeline-role">Earlier Roles</div>
+            <div class="timeline-company">GE Healthcare, Jaguar Land Rover, Tata Elxsi, ICJTAT</div>
+            <p class="timeline-description">
+              Designed tools for High Acuity areas and TeleICU system. In-car HMI for concept vehicles. Thesis project on gestural interaction concepts for Motorola.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="skills-container">
-            <h2 class="section-title">Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-category">Design Tools</div>
-                    <h4>Interaction Design</h4>
-                    <ul class="skill-list">
-                        <li>Sketch, Adobe XD, Figma</li>
-                        <li>Prototyping &amp; Wireframing</li>
-                        <li>Design Systems</li>
-                        <li>Information Architecture</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-category">Creative Suite</div>
-                    <h4>Visual Design</h4>
-                    <ul class="skill-list">
-                        <li>Photoshop, Illustrator</li>
-                        <li>Cinema4D, After Effects</li>
-                        <li>SolidWorks, Keyshot</li>
-                        <li>Motion Graphics</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-category">Core Competencies</div>
-                    <h4>UX Strategy</h4>
-                    <ul class="skill-list">
-                        <li>User Research &amp; Personas</li>
-                        <li>Mental Modelling</li>
-                        <li>Usability Testing</li>
-                        <li>Design Thinking Workshops</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-category">Making &amp; Prototyping</div>
-                    <h4>Physical Design</h4>
-                    <ul class="skill-list">
-                        <li>Arduino Development</li>
-                        <li>Processing, VVVV</li>
-                        <li>Hand Modelling</li>
-                        <li>Workshop Skills</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-category">Leadership</div>
-                    <h4>Team Management</h4>
-                    <ul class="skill-list">
-                        <li>Design Team Leadership</li>
-                        <li>Cross-Functional Collaboration</li>
-                        <li>Stakeholder Communication</li>
-                        <li>Design Process Optimization</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-category">Approach</div>
-                    <h4>Design Thinking</h4>
-                    <ul class="skill-list">
-                        <li>Problem Analysis</li>
-                        <li>Storyboarding &amp; Scenarios</li>
-                        <li>Design Iterations</li>
-                        <li>User-Centric Solutions</li>
-                    </ul>
-                </div>
-            </div>
+    <div class="section-separator"></div>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Get in touch</h2>
+        <p class="section-subtitle">Open to design leadership, consulting, and UX collaborations.   </p>
+      </div>
+
+      <p class="hero-text">
+        Happy to discuss product strategy, design systems, or specific UX challenges in healthcare, fintech, and complex SaaS platforms.   
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-label">Email</div>
+          <a href="mailto:vivchawda@gmail.com" class="contact-link">
+            vivchawda@gmail.com
+          </a>
         </div>
+
+        <div class="contact-item">
+          <div class="contact-label">Phone</div>
+          <a href="tel:+919663781502" class="contact-link">
+            +91 96637 81502
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-label">LinkedIn</div>
+          <a href="https://linkedin.com/in/vivekchawda/" class="contact-link" target="_blank" rel="noopener">
+            linkedin.com/in/vivekchawda/
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-label">GitHub</div>
+          <a href="https://github.com/vivchawda" class="contact-link" target="_blank" rel="noopener">
+            github.com/vivchawda
+          </a>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Case Studies Section -->
-    <section class="case-studies" id="work">
-        <h2 class="section-title">Featured Work</h2>
-        <div class="cases-grid">
-            <!-- Case 1 -->
-            <div class="case-card" onclick="openModal('case1')">
-                <div class="case-header bg-1">
-                    <div class="case-title">Investment Platform</div>
-                    <div class="case-type">FinTech | Web & Mobile</div>
-                </div>
-                <div class="case-body">
-                    <p class="case-description">Investment product concept design for global bank entering India. Presented strategy to Partners & C-suite, securing initial $2M funding round.</p>
-                    <div class="case-meta">
-                        <div class="case-tags">
-                            <span class="tag">Research</span>
-                            <span class="tag">Strategy</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
-            </div>
+  <!-- CV Download Modal -->
+  <div class="cv-modal-backdrop" id="cvModalBackdrop">
+    <div class="cv-modal">
+      <button class="cv-modal-close" id="cvModalClose">×</button>
+      
+      <h2 class="cv-modal-title">Download My CV</h2>
 
-            <!-- Case 2 -->
-            <div class="case-card" onclick="openModal('case2')">
-                <div class="case-header bg-2">
-                    <div class="case-title">MAARS - Agricultural Commerce</div>
-                    <div class="case-type">AgriTech | Mobile App</div>
-                </div>
-                <div class="case-body">
-                    <p class="case-description">Secure mobile commerce platform for agricultural transactions. Enabled access for 10,000+ farmers with two-factor authentication and secure payment flows.</p>
-                    <div class="case-meta">
-                        <div class="case-tags">
-                            <span class="tag">FinTech</span>
-                            <span class="tag">Security</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
-            </div>
+      <div class="cv-download-options">
+        <!-- PDF Option -->
+        <a href="cv/Vivek-Chawda-CV.pdf" download class="cv-download-option">
+          <div class="cv-download-option-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="cv-download-option-content">
+            <div class="cv-download-option-title">PDF Version</div>
+          </div>
+        </a>
 
-            <!-- Case 3 -->
-            <div class="case-card" onclick="openModal('case3')">
-                <div class="case-header bg-3">
-                    <div class="case-title">Drone Mapping Platform</div>
-                    <div class="case-type">Environmental Tech | Web</div>
-                </div>
-                <div class="case-body">
-                    <p class="case-description">Satellite imaging platform for monitoring environmental facilities used by Shell, Exxon. Designed dual solution (platform + portal) with design system implementation.</p>
-                    <div class="case-meta">
-                        <div class="case-tags">
-                            <span class="tag">Startup</span>
-                            <span class="tag">Strategy</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Case 4 -->
-            <div class="case-card" onclick="openModal('case4')">
-                <div class="case-header bg-4">
-                    <div class="case-title">Dubai Expo 2020 Control Center</div>
-                    <div class="case-type">Enterprise | Tablet & Aeroscreen</div>
-                </div>
-                <div class="case-body">
-                    <p class="case-description">Secure multi-platform monitoring system for Dubai Expo infrastructure. Won major Siemens contract. Led team for detailed design, reducing post-launch tickets by 25%.</p>
-                    <div class="case-meta">
-                        <div class="case-tags">
-                            <span class="tag">Contract Win</span>
-                            <span class="tag">Leadership</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Case 5 -->
-            <div class="case-card" onclick="openModal('case5')">
-                <div class="case-header bg-5">
-                    <div class="case-title">Service Dashboards</div>
-                    <div class="case-type">Medical Tech | Web & Desktop</div>
-                </div>
-                <div class="case-body">
-                    <p class="case-description">Software solutions for global medical system maintenance. Redesigned legacy products for modern features while maintaining usability for legacy users across 4+ medical modalities.</p>
-                    <div class="case-meta">
-                        <div class="case-tags">
-                            <span class="tag">Legacy Migration</span>
-                            <span class="tag">Usability</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Case 6 -->
-            <div class="case-card" onclick="openModal('case6')">
-                <div class="case-header bg-6">
-                    <div class="case-title">Clinical Imaging Platform</div>
-                    <div class="case-type">Healthcare | Web & Desktop</div>
-                </div>
-                <div class="case-body">
-                    <p class="case-description">Comprehensive medical imaging solutions for radiologists. Designed with dark &amp; light themes, tested with medical professionals for optimized viewing and reporting workflows.</p>
-                    <div class="case-meta">
-                        <div class="case-tags">
-                            <span class="tag">Healthcare</span>
-                            <span class="tag">Research</span>
-                        </div>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-        <h2>Contact Me</h2>
-        <p>I&rsquo;m open to discussing design challenges, mentoring, and collaborative projects.</p>
-        <a href="mailto:vivchawda@gmail.com" class="cta-button-white">Get in Touch</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-links">
-            <a href="https://www.linkedin.com/in/vivekchawda/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/vivchawda" target="_blank">GitHub</a>
-            <a href="mailto:vivchawda@gmail.com">Email</a>
-            <a href="tel:+919663781502">Call</a>
-        </div>
-        <p class="footer-credit">&copy; 2025 Vivek Chawda. All rights reserved. | Designed &amp; Built with care.</p>
-    </footer>
-
-    <!-- Modals -->
-    <div id="case1Modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('case1')">&times;</span>
-            <h2>Investment Platform for Global Bank</h2>
-            <p><strong>Project Type:</strong> FinTech | Web & Mobile | <strong>Company:</strong> McKinsey & Company</p>
-            
-            <h3>The Challenge</h3>
-            <p>A global bank wanted to venture into the Indian investment product market. I was tasked with conducting research and designing the MVP concept for an investment platform targeting both retail and institutional investors.</p>
-            
-            <h3>My Role</h3>
-            <p>Associate Design Director — Led concept design and presented investment platform strategy to Partners & C-suite executives.</p>
-            
-            <h3>Approach</h3>
-            <ul>
-                <li>Conducted market research and competitive analysis for Indian market</li>
-                <li>Designed user flows and high-fidelity prototypes for key user journeys</li>
-                <li>Presented findings and design concepts to senior leadership</li>
-                <li>Refined designs based on executive feedback and business constraints</li>
-            </ul>
-            
-            <h3>Outcome</h3>
-            <ul>
-                <li><strong>$2M funding secured</strong> for initial product development</li>
-                <li>Investment platform roadmap approved for development</li>
-                <li>Design validated market opportunity and informed go-to-market strategy</li>
-            </ul>
-            
-            <p style="margin-top: 2rem; font-size: 0.9rem; color: #999;">This case demonstrates the impact of strategic design thinking on business outcomes and fundraising success.</p>
-        </div>
+        <!-- ATS Optimized DOCX Option -->
+        <a href="cv/Vivek-Chawda-CV-ATS.docx" download class="cv-download-option">
+          <div class="cv-download-option-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div class="cv-download-option-content">
+            <div class="cv-download-option-title">ATS-Optimized DOCX</div>
+          </div>
+        </a>
+      </div>
     </div>
+  </div>
 
-    <div id="case2Modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('case2')">&times;</span>
-            <h2>MAARS - Secure Agricultural Commerce</h2>
-            <p><strong>Project Type:</strong> AgriTech | Mobile App | <strong>Company:</strong> McKinsey & Company</p>
-            
-            <h3>The Challenge</h3>
-            <p>Design a secure mobile commerce platform enabling 10,000+ farmers to conduct agricultural transactions safely with payment security and fraud prevention at scale.</p>
-            
-            <h3>My Role</h3>
-            <p>Associate Design Director — Designed secure payment flows and user experience for both farmer and buyer sides of the platform.</p>
-            
-            <h3>Key Design Decisions</h3>
-            <ul>
-                <li>Implemented two-factor authentication for secure transactions</li>
-                <li>Designed intuitive payment flows for farmers with varying tech literacy</li>
-                <li>Created audit trails and transaction history for transparency</li>
-                <li>Ensured compliance with RBI payment security guidelines</li>
-            </ul>
-            
-            <h3>Outcome</h3>
-            <ul>
-                <li><strong>10,000+ farmers</strong> enabled on the platform</li>
-                <li>Secure transaction processing with zero fraud incidents</li>
-                <li>MVP released in 3 months via co-creation workshops</li>
-                <li>Platform now handling agricultural commerce at scale</li>
-            </ul>
-            
-            <p style="margin-top: 2rem; font-size: 0.9rem; color: #999;">This case demonstrates secure, accessible design for underserved communities at significant scale.</p>
+  <!-- Reusable two-column popup for all projects -->
+  <div class="work-popup-backdrop" id="workPopup">
+    <div class="work-popup work-popup--twocol">
+      <button class="work-popup-close" type="button" aria-label="Close">×</button>
+
+      <div class="work-popup-inner">
+        <!-- LEFT: image -->
+        <div class="work-popup-col--image">
+          <div class="work-popup-image">
+            <a href="#" target="_blank" rel="noopener" id="workPopupImageLink">
+              <img src="images/work-default-screen.png" alt="Project screen" id="workPopupImage" />
+            </a>
+          </div>
         </div>
-    </div>
 
-    <div id="case3Modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('case3')">&times;</span>
-            <h2>Drone Mapping Platform</h2>
-            <p><strong>Project Type:</strong> Environmental Tech | Web Application</p>
-            
-            <h3>The Challenge</h3>
-            <p>Kayrros used satellite imaging and drone fleets to monitor environmental conditions and facility operations. We needed to design a dual solution (platform + portal) that provided unprecedented data access to companies like Shell, Exxon, and environmental monitoring organizations.</p>
-            
-            <h3>My Role</h3>
-            <p>Managed a team of designers while bridging design and development. Responsible for designing both products and architecting the design system from scratch.</p>
-            
-            <h3>Design Contributions</h3>
-            <ul>
-                <li>Completely designed both platform and portal interfaces</li>
-                <li>Framed the first draft of the company-wide design system</li>
-                <li>Collaborated with branding and PR to align offerings with brand</li>
-                <li>Created tailored publicity materials showcasing design and capabilities</li>
-            </ul>
-            
-            <h3>Impact</h3>
-            <p>Helped establish Kayrros as a market leader, enabling clients to access data that was previously unavailable and make data-driven environmental and operational decisions.</p>
+        <!-- RIGHT: text -->
+        <div class="work-popup-col--text">
+          <h3 class="work-popup-title" id="workPopupTitle"></h3>
+          <p class="work-popup-subtitle" id="workPopupSubtitle"></p>
+
+          <div class="work-popup-meta" id="workPopupMeta"></div>
+
+          <p class="work-popup-description" id="workPopupDescription"></p>
+
+          <div class="work-popup-highlights" id="workPopupHighlights"></div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div id="case4Modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('case4')">&times;</span>
-            <h2>Dubai Expo Control Center</h2>
-            <p><strong>Project Type:</strong> Event Tech | Tablet &amp; Aero-Screen Interface</p>
-            
-            <h3>The Challenge</h3>
-            <p>Design a control interface for Dubai Expo running on tablets and aeroscreens for managing essential functions. With minimal information and just a weekend to prepare, I needed to deliver a compelling design pitch to the Expo organizing committee.</p>
-            
-            <h3>My Role</h3>
-            <p>Individual contributor who won the design contract for Siemens. Subsequently led a team of designers and developers to deliver detailed design and prototype.</p>
-            
-            <h3>The Pitch</h3>
-            <ul>
-                <li>Built key screens demonstrating design intent</li>
-                <li>Created motion graphics showreel for compelling presentation</li>
-                <li>Visualized the complete user experience end-to-end</li>
-            </ul>
-            
-            <h3>Project Outcome</h3>
-            <ul>
-                <li>Won one of Siemens' biggest contracts</li>
-                <li>Led team through detailed design and prototyping phases</li>
-                <li>Contract has been extended twice with new initiatives in progress</li>
-            </ul>
-            
-            <p style="margin-top: 2rem; font-size: 0.9rem; color: #999;">This project showcased the power of visionary design thinking and storytelling in winning major contracts.</p>
-        </div>
-    </div>
+  <script>
+    // CV Modal functionality
+    const downloadCvBtn = document.getElementById('downloadCvBtn');
+    const cvModalBackdrop = document.getElementById('cvModalBackdrop');
+    const cvModalClose = document.getElementById('cvModalClose');
 
-    <div id="case5Modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('case5')">&times;</span>
-            <h2>Service Dashboards for Medical Systems</h2>
-            <p><strong>Project Type:</strong> Medical Tech | Web &amp; Desktop Application</p>
-            
-            <h3>The Challenge</h3>
-            <p>GE Healthcare required redesigned software solutions for maintaining medical systems globally with minimal downtimes. The portfolio included products for Remote Service Engineers and Field Service Engineers to diagnose and troubleshoot issues.</p>
-            
-            <h3>Key Constraints</h3>
-            <ul>
-                <li>Legacy users skeptical of redesign benefits</li>
-                <li>4+ medical modalities with unique feature sets</li>
-                <li>Global user base with varying needs and contexts</li>
-                <li>Requirement for backwards compatibility where possible</li>
-            </ul>
-            
-            <h3>My Approach</h3>
-            <ul>
-                <li>Modernized interface while maintaining familiar workflows</li>
-                <li>Conducted extensive usability testing with engineers</li>
-                <li>Navigated stakeholder concerns through data-driven design decisions</li>
-                <li>Implemented phased rollout strategy for smooth adoption</li>
-            </ul>
-            
-            <h3>Outcome</h3>
-            <p>Successfully updated products to modern standards while improving user experience and troubleshooting efficiency, resulting in reduced system downtime globally.</p>
-        </div>
-    </div>
+    downloadCvBtn.addEventListener('click', () => {
+      cvModalBackdrop.classList.add('is-visible');
+    });
 
-    <div id="case6Modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('case6')">&times;</span>
-            <h2>Clinical Imaging Platform</h2>
-            <p><strong>Project Type:</strong> Healthcare | Web &amp; Desktop Application</p>
-            
-            <h3>The Challenge</h3>
-            <p>Design a comprehensive suite of medical imaging solutions for radiologists and medical professionals. The platform needed to serve both in-hospital clinical environments and remote analysis scenarios.</p>
-            
-            <h3>Design Considerations</h3>
-            <ul>
-                <li>Designed with both dark and light themes for different environments</li>
-                <li>Optimized for viewing, analyzing, and reporting medical scans</li>
-                <li>Extensive usability testing with radiologists and medical professionals</li>
-                <li>Support for console and off-console usage patterns</li>
-            </ul>
-            
-            <h3>Approach</h3>
-            <ul>
-                <li>Conducted user research with medical professionals</li>
-                <li>Tested prototypes in real clinical environments</li>
-                <li>Iterated based on stakeholder feedback</li>
-                <li>Ensured compliance with medical standards and accessibility requirements</li>
-            </ul>
-            
-            <h3>Deliverables</h3>
-            <ul>
-                <li>Complete interface design for medical imaging workflows</li>
-                <li>Dual theme system (clinical and ambient)</li>
-                <li>Print and export functionality for reporting</li>
-            </ul>
-            
-            <p style="margin-top: 2rem; font-size: 0.9rem; color: #999;">This project demonstrates the importance of domain expertise and user research in designing for specialized professional audiences.</p>
-        </div>
-    </div>
+    cvModalClose.addEventListener('click', () => {
+      cvModalBackdrop.classList.remove('is-visible');
+    });
 
-    <script>
-        function openModal(caseId) {
-            document.getElementById(caseId + 'Modal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
+    cvModalBackdrop.addEventListener('click', (e) => {
+      if (e.target === cvModalBackdrop) {
+        cvModalBackdrop.classList.remove('is-visible');
+      }
+    });
 
-        function closeModal(caseId) {
-            document.getElementById(caseId + 'Modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+    // Work Popup functionality
+    const popupBackdrop = document.getElementById('workPopup');
+    const popupImage = document.getElementById('workPopupImage');
+    const popupImageLink = document.getElementById('workPopupImageLink');
+    const popupTitle = document.getElementById('workPopupTitle');
+    const popupSubtitle = document.getElementById('workPopupSubtitle');
+    const popupMeta = document.getElementById('workPopupMeta');
+    const popupDescription = document.getElementById('workPopupDescription');
+    const popupHighlights = document.getElementById('workPopupHighlights');
+    const popupClose = document.querySelector('.work-popup-close');
 
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
+    function openPopupFromButton(btn) {
+      const title = btn.getAttribute('data-project-title') || '';
+      const subtitle = btn.getAttribute('data-project-subtitle') || '';
+      const description = btn.getAttribute('data-project-description') || '';
+      const metaRaw = btn.getAttribute('data-meta') || '[]';
+      const highlightsRaw = btn.getAttribute('data-project-highlights') || '[]';
+      const imageSrc = btn.getAttribute('data-image') || 'images/work-default-screen.png';
+      const link = btn.getAttribute('data-link') || '#';
 
-        // Smooth scroll for nav links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && !this.classList.contains('cta-button')) {
-                    e.preventDefault();
-                    const element = document.querySelector(href);
-                    if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
+      popupTitle.textContent = title;
+      popupSubtitle.textContent = subtitle;
+      popupDescription.textContent = description;
+
+      popupMeta.innerHTML = '';
+      try {
+        const metaItems = JSON.parse(metaRaw);
+        metaItems.forEach(m => {
+          const span = document.createElement('span');
+          span.textContent = m;
+          popupMeta.appendChild(span);
         });
-    </script>
+      } catch (e) {}
+
+      popupHighlights.innerHTML = '';
+      try {
+        const highlights = JSON.parse(highlightsRaw);
+        if (highlights.length) {
+          const label = document.createElement('div');
+          label.textContent = 'What this work focused on';
+          popupHighlights.appendChild(label);
+          const ul = document.createElement('ul');
+          highlights.forEach(h => {
+            const li = document.createElement('li');
+            li.textContent = h;
+            ul.appendChild(li);
+          });
+          popupHighlights.appendChild(ul);
+        }
+      } catch (e) {}
+
+      popupImage.src = imageSrc;
+      popupImage.alt = title ? title + ' screen' : 'Project screen';
+      popupImageLink.href = link;
+
+      popupBackdrop.classList.add('is-visible');
+    }
+
+    document.querySelectorAll('.work-read-more').forEach(btn => {
+      btn.addEventListener('click', () => openPopupFromButton(btn));
+    });
+
+    popupClose.addEventListener('click', () => {
+      popupBackdrop.classList.remove('is-visible');
+    });
+
+    popupBackdrop.addEventListener('click', (e) => {
+      if (e.target === popupBackdrop) {
+        popupBackdrop.classList.remove('is-visible');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popupBackdrop.classList.contains('is-visible')) {
+        popupBackdrop.classList.remove('is-visible');
+      }
+      if (e.key === 'Escape' && cvModalBackdrop.classList.contains('is-visible')) {
+        cvModalBackdrop.classList.remove('is-visible');
+      }
+    });
+  </script>
 </body>
 </html>
