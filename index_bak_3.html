@@ -5,16 +5,6 @@
   <title>Vivek Chawda - Experience Designer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
-  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C04MG51NWX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-C04MG51NWX');
-  </script>
 
   <style>
     * {
@@ -85,28 +75,6 @@
       50% {
         box-shadow: 0 0 25px rgba(249, 115, 22, 0.5),
                     0 0 50px rgba(234, 88, 12, 0.3);
-      }
-    }
-
-    @keyframes pulseGlowPink {
-      0%, 100% {
-        box-shadow: 0 0 15px rgba(236, 72, 153, 0.3),
-                    0 0 30px rgba(219, 39, 119, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(236, 72, 153, 0.5),
-                    0 0 50px rgba(219, 39, 119, 0.3);
-      }
-    }
-
-    @keyframes pulseGlowYellow {
-      0%, 100% {
-        box-shadow: 0 0 15px rgba(234, 179, 8, 0.3),
-                    0 0 30px rgba(202, 138, 4, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(234, 179, 8, 0.5),
-                    0 0 50px rgba(202, 138, 4, 0.3);
       }
     }
 
@@ -407,14 +375,6 @@
       animation-delay: 0.4s;
       border: 1px solid rgba(249, 115, 22, 0.3);
     }
-    .work-card:nth-child(5) { 
-      animation-delay: 0.5s;
-      border: 1px solid rgba(236, 72, 153, 0.3);
-    }
-    .work-card:nth-child(6) { 
-      animation-delay: 0.6s;
-      border: 1px solid rgba(234, 179, 8, 0.3);
-    }
 
     .work-card::before {
       content: '';
@@ -436,12 +396,6 @@
     }
     .work-card:nth-child(4)::before {
       background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.15), transparent 60%);
-    }
-    .work-card:nth-child(5)::before {
-      background: radial-gradient(circle at top right, rgba(236, 72, 153, 0.15), transparent 60%);
-    }
-    .work-card:nth-child(6)::before {
-      background: radial-gradient(circle at top right, rgba(234, 179, 8, 0.15), transparent 60%);
     }
 
     .work-card:nth-child(1):hover {
@@ -472,46 +426,8 @@
                   0 0 40px rgba(249, 115, 22, 0.3);
     }
 
-    .work-card:nth-child(5):hover {
-      transform: translateY(-8px);
-      border-color: rgba(236, 72, 153, 0.6);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
-                  0 0 40px rgba(236, 72, 153, 0.3);
-    }
-
-    .work-card:nth-child(6):hover {
-      transform: translateY(-8px);
-      border-color: rgba(234, 179, 8, 0.6);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
-                  0 0 40px rgba(234, 179, 8, 0.3);
-    }
-
     .work-card:hover::before {
       opacity: 1;
-    }
-
-    /* Case Study Badge */
-    .case-study-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.9), rgba(219, 39, 119, 0.9));
-      border: 1px solid rgba(236, 72, 153, 0.5);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      z-index: 10;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
-    }
-
-    .work-card:hover .case-study-badge {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
     }
 
     .work-image {
@@ -555,8 +471,6 @@
     .work-card:nth-child(2) .work-number { color: #a855f7; }
     .work-card:nth-child(3) .work-number { color: #10b981; }
     .work-card:nth-child(4) .work-number { color: #f97316; }
-    .work-card:nth-child(5) .work-number { color: #ec4899; }
-    .work-card:nth-child(6) .work-number { color: #eab308; }
 
     .work-tagline {
       font-size: 12px;
@@ -570,8 +484,6 @@
     .work-card:nth-child(2) .work-tagline { color: #c084fc; }
     .work-card:nth-child(3) .work-tagline { color: #34d399; }
     .work-card:nth-child(4) .work-tagline { color: #fb923c; }
-    .work-card:nth-child(5) .work-tagline { color: #f472b6; }
-    .work-card:nth-child(6) .work-tagline { color: #fbbf24; }
 
     .work-title {
       font-size: 22px;
@@ -625,66 +537,8 @@
       color: #fb923c;
     }
 
-    .work-card:nth-child(5) .work-meta span {
-      background: rgba(236, 72, 153, 0.1);
-      border: 1px solid rgba(236, 72, 153, 0.2);
-      color: #f472b6;
-    }
-
-    .work-card:nth-child(6) .work-meta span {
-      background: rgba(234, 179, 8, 0.1);
-      border: 1px solid rgba(234, 179, 8, 0.2);
-      color: #fbbf24;
-    }
-
     .work-card:hover .work-meta span {
       transform: translateY(-2px);
-    }
-
-    /* Work Note - NEW */
-    .work-note {
-      margin-top: 48px;
-      text-align: center;
-      padding: 20px 32px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(168, 85, 247, 0.05));
-      border: 1px solid rgba(6, 182, 212, 0.15);
-      animation: fadeInUp 0.6s ease-out 0.7s backwards;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .work-note::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(6, 182, 212, 0.5) 30%, 
-        rgba(168, 85, 247, 0.5) 70%, 
-        transparent 100%);
-    }
-
-    .work-note-icon {
-      display: inline-block;
-      font-size: 20px;
-      margin-bottom: 8px;
-      animation: pulse 3s ease-in-out infinite;
-    }
-
-    .work-note-text {
-      font-size: 14px;
-      color: #94a3b8;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .work-note-text strong {
-      color: #cbd5e1;
-      font-weight: 600;
     }
 
     /* Timeline */
@@ -791,12 +645,6 @@
     }
     .timeline-item:nth-child(4):hover .timeline-dot {
       animation: pulseGlowOrange 2s ease-in-out infinite;
-    }
-    .timeline-item:nth-child(5):hover .timeline-dot {
-      animation: pulseGlowPink 2s ease-in-out infinite;
-    }
-    .timeline-item:nth-child(6):hover .timeline-dot {
-      animation: pulseGlowYellow 2s ease-in-out infinite;
     }
 
     .timeline-card {
@@ -939,27 +787,20 @@
     /* Contact */
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 24px;
-      max-width: 1000px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
     .contact-card {
-      padding: 32px 20px;
+      padding: 24px;
       border-radius: 12px;
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
       text-align: center;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
       animation: fadeInUp 0.5s ease-out backwards;
       border: 1px solid rgba(168, 85, 247, 0.2);
-      position: relative;
-      overflow: hidden;
-      height: 140px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
     }
 
     .contact-card:nth-child(1) { animation-delay: 0.1s; }
@@ -969,77 +810,22 @@
 
     .contact-card:hover {
       border-color: rgba(168, 85, 247, 0.5);
-      box-shadow: 0 12px 32px rgba(168, 85, 247, 0.3);
-      transform: translateY(-8px);
-    }
-
-    /* Icon + Label (Default State) */
-    .contact-icon-label {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      opacity: 1;
-    }
-
-    .contact-card:hover .contact-icon-label {
-      opacity: 0;
-      transform: translateY(-10px);
-      pointer-events: none;
-    }
-
-    .contact-icon {
-      width: 32px;
-      height: 32px;
-    }
-
-    .contact-icon svg {
-      width: 100%;
-      height: 100%;
-      stroke: #c084fc;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.2);
+      transform: translateY(-4px);
     }
 
     .contact-label {
-      font-size: 14px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #c084fc;
-      font-weight: 600;
-    }
-
-    /* Contact Details (Hover State) */
-    .contact-details {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -40%);
-      opacity: 0;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      width: 90%;
-      text-align: center;
-    }
-
-    .contact-card:hover .contact-details {
-      opacity: 1;
-      transform: translate(-50%, -50%);
+      color: #94a3b8;
+      margin-bottom: 12px;
     }
 
     .contact-link {
-      font-size: 14px;
+      font-size: 15px;
       word-break: break-word;
-      color: #e9d5ff;
-      line-height: 1.5;
-      display: block;
-    }
-
-    .contact-link:hover {
-      color: #fff;
-      text-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+      color: #c084fc;
     }
 
     /* Modal */
@@ -1128,27 +914,25 @@
       background: #1e293b;
       position: relative;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
     }
 
     .modal-image-wrapper {
-      flex: 1;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-image-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       width: 100%;
       height: 100%;
       position: relative;
-      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-image-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .modal-image-link::after {
@@ -1168,16 +952,11 @@
       opacity: 0;
       transition: all 0.3s ease;
       box-shadow: 0 4px 12px rgba(6, 182, 212, 0.5);
-      pointer-events: none;
     }
 
     .modal-image-link:hover::after {
       opacity: 1;
       transform: translate(2px, -2px);
-    }
-
-    .modal-image-link.no-arrow::after {
-      display: none;
     }
 
     .modal-image {
@@ -1186,39 +965,10 @@
       object-fit: contain;
       object-position: center;
       transition: transform 0.3s ease;
-      display: block;
     }
 
     .modal-image-link:hover .modal-image {
       transform: scale(1.05);
-    }
-
-    .case-study-btn {
-      padding: 16px 24px;
-      margin: 0 20px 20px;
-      background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
-      color: #fff !important;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 600;
-      border: 1px solid rgba(34, 211, 238, 0.5);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      display: none;
-    }
-
-    .case-study-btn.visible {
-      display: block;
-    }
-
-    .case-study-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4),
-                  0 0 40px rgba(168, 85, 247, 0.3);
-      color: #fff !important;
-      text-shadow: none;
     }
 
     .modal-content-col {
@@ -1365,15 +1115,6 @@
         grid-template-columns: 1fr;
       }
 
-      .work-note {
-        padding: 16px 24px;
-        margin-top: 32px;
-      }
-
-      .work-note-text {
-        font-size: 13px;
-      }
-
       .timeline-container::before {
         left: 20px;
       }
@@ -1397,7 +1138,7 @@
 
       .modal-image-col {
         flex: 0 0 auto;
-        height: auto;
+        height: 250px;
       }
 
       .modal-content-col {
@@ -1406,25 +1147,6 @@
 
       .modal-title {
         font-size: 24px;
-      }
-
-      /* Mobile contact cards stack */
-      .contact-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-
-      .contact-card {
-        height: 120px;
-      }
-
-      .contact-icon {
-        width: 28px;
-        height: 28px;
-      }
-
-      .contact-label {
-        font-size: 12px;
       }
     }
 
@@ -1573,7 +1295,7 @@
           </div>
         </article>
 
-        <!-- Healthcare (GE/Philips) -->
+        <!-- Healthcare -->
         <article class="work-card"
           data-project-title="Healthcare – Imaging & TeleICU"
           data-project-subtitle="Supporting radiologists and clinicians in high-stakes environments."
@@ -1600,76 +1322,7 @@
             </div>
           </div>
         </article>
-
-        <!-- Philips RADAR - WITH CASE STUDY BADGE -->
-        <article class="work-card"
-          data-project-title="Philips – Maintenance Dashboard"
-          data-project-subtitle="Radiology SaaS Dashboard"
-          data-project-description="Designed service dashboard for Remote Analysis and Diagnosis tool for service technicians and engineers helping them find and resolve issues with radiology systems installed globally."
-          data-project-highlights='["Built comprehensive monitoring system for 1600+ radiology devices worldwide.","Designed multi-level filtering and prioritization for critical alert management.","Created data-dense dashboard balancing overview statistics with actionable detail views."]'
-          data-meta='["Healthcare","SaaS","Dashboard"]'
-          data-image="images/work-radar-screen.jpg"
-          data-link="cs/RADAR.html"
-          data-has-case-study="true"
-        >
-          <!-- CASE STUDY BADGE -->
-          <div class="case-study-badge">Case Study</div>
-          
-          <div class="work-image">
-            <img src="images/work-radar-screen.jpg" alt="Philips RADAR Maintenance Dashboard" />
-          </div>
-          <div class="work-content">
-            <div class="work-number">05</div>
-            <div class="work-tagline">Philips · Healthcare SaaS</div>
-            <h3 class="work-title">Maintenance Dashboard</h3>
-            <p class="work-description">
-              Designed service dashboard for Remote Analysis and Diagnosis tool for service technicians and engineers helping them find and resolve issues with radiology systems installed globally.
-            </p>
-            <div class="work-meta">
-              <span>Healthcare</span>
-              <span>SaaS</span>
-              <span>Dashboard</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Dubai Expo -->
-        <article class="work-card"
-          data-project-title="Siemens – Dubai Expo Control Dashboard"
-          data-project-subtitle="Tablet-based control system for World Expo 2020."
-          data-project-description="Dubai Expo 2020 required a unified tablet-based dashboard to control critical exposition parameters including climate, lighting, and irrigation systems. I led the design pitch that secured this landmark project for Siemens—the largest contract won by Siemens Design at the time."
-          data-project-highlights='["Created the winning pitch presentation and UX strategy.","Designed unified control interface for climate, lighting, and irrigation.","Delivered largest contract secured by Siemens Design division to date."]'
-          data-meta='["Dashboard","Tablet","Global Collaboration"]'
-          data-image="images/work-dubai-screen.png"
-          data-link="https://xcelerator.siemens.com/global/en/industries/urban-communities/expo-2020-dubai/press/images-infographics.html"
-        >
-          <div class="work-image">
-            <img src="images/work-dubai-screen.png" alt="Dubai Expo Control Dashboard" />
-          </div>
-          <div class="work-content">
-            <div class="work-number">06</div>
-            <div class="work-tagline">Siemens · Dubai Expo 2020</div>
-            <h3 class="work-title">Dubai Expo Control Dashboard</h3>
-            <p class="work-description">
-              Led the design pitch that secured Siemens' largest contract—a unified tablet dashboard controlling climate, lighting, and irrigation systems for World Expo 2020.
-            </p>
-            <div class="work-meta">
-              <span>Dashboard</span>
-              <span>Tablet</span>
-              <span>Global Collaboration</span>
-            </div>
-          </div>
-        </article>
       </div>
-
-      <!-- Work Note - NEW -->
-      <div class="work-note">
-        <div class="work-note-icon">⏳</div>
-        <p class="work-note-text">
-          <strong>More projects and detailed case studies are on the way.</strong> I'm currently working with previous clients and companies to obtain clearance for additional work samples. Check back soon for updates!
-        </p>
-      </div>
-
     </section>
 
     <!-- Experience Timeline -->
@@ -1783,72 +1436,24 @@
       </div>
 
       <div class="contact-grid">
-        <!-- Email -->
         <div class="contact-card">
-          <div class="contact-icon-label">
-            <div class="contact-icon">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="7" width="26" height="18" rx="2" />
-                <path d="M3 10 L16 18 L29 10" />
-              </svg>
-            </div>
-            <div class="contact-label">Email</div>
-          </div>
-          <div class="contact-details">
-            <a href="mailto:vivchawda@gmail.com" class="contact-link">vivchawda@gmail.com</a>
-          </div>
+          <div class="contact-label">Email</div>
+          <a href="mailto:vivchawda@gmail.com" class="contact-link">vivchawda@gmail.com</a>
         </div>
 
-        <!-- Phone -->
         <div class="contact-card">
-          <div class="contact-icon-label">
-            <div class="contact-icon">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <rect x="9" y="4" width="14" height="24" rx="2" />
-                <line x1="12" y1="7" x2="20" y2="7" />
-                <circle cx="16" cy="24" r="1" fill="#c084fc" />
-              </svg>
-            </div>
-            <div class="contact-label">Phone</div>
-          </div>
-          <div class="contact-details">
-            <a href="tel:+919663781502" class="contact-link">+91 96637 81502</a>
-          </div>
+          <div class="contact-label">Phone</div>
+          <a href="tel:+919663781502" class="contact-link">+91 96637 81502</a>
         </div>
 
-        <!-- LinkedIn -->
         <div class="contact-card">
-          <div class="contact-icon-label">
-            <div class="contact-icon">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <rect x="5" y="5" width="22" height="22" rx="2" />
-                <line x1="11" y1="14" x2="11" y2="22" />
-                <circle cx="11" cy="10" r="1.5" fill="#c084fc" />
-                <path d="M16 14 C16 14, 16 12, 19 12 C22 12, 22 14, 22 16 L22 22" />
-                <line x1="16" y1="17" x2="16" y2="22" />
-              </svg>
-            </div>
-            <div class="contact-label">LinkedIn</div>
-          </div>
-          <div class="contact-details">
-            <a href="https://linkedin.com/in/vivekchawda/" class="contact-link" target="_blank" rel="noopener">linkedin.com/in/vivekchawda/</a>
-          </div>
+          <div class="contact-label">LinkedIn</div>
+          <a href="https://linkedin.com/in/vivekchawda/" class="contact-link" target="_blank" rel="noopener">linkedin.com/in/vivekchawda/</a>
         </div>
 
-        <!-- GitHub -->
         <div class="contact-card">
-          <div class="contact-icon-label">
-            <div class="contact-icon">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="16" cy="16" r="10" />
-                <path d="M16 8 C12 8, 9 11, 9 14 C9 16, 10 18, 12 19 L12 22 C12 23, 13 24, 14 24 L18 24 C19 24, 20 23, 20 22 L20 19 C22 18, 23 16, 23 14 C23 11, 20 8, 16 8" />
-              </svg>
-            </div>
-            <div class="contact-label">GitHub</div>
-          </div>
-          <div class="contact-details">
-            <a href="https://github.com/vivchawda" class="contact-link" target="_blank" rel="noopener">github.com/vivchawda</a>
-          </div>
+          <div class="contact-label">GitHub</div>
+          <a href="https://github.com/vivchawda" class="contact-link" target="_blank" rel="noopener">github.com/vivchawda</a>
         </div>
       </div>
     </section>
@@ -1859,13 +1464,12 @@
     <div class="modal">
       <button class="modal-close" id="workModalClose">×</button>
       <div class="modal-inner">
-        <div class="modal-image-col" id="modalImageCol">
+        <div class="modal-image-col">
           <div class="modal-image-wrapper">
-            <a href="#" class="modal-image-link" id="modalImageLink">
+            <a href="#" target="_blank" rel="noopener" class="modal-image-link" id="modalImageLink">
               <img src="" alt="Project screenshot" class="modal-image" id="modalImage" />
             </a>
           </div>
-          <a href="#" class="case-study-btn" id="caseStudyBtn">View case study</a>
         </div>
         <div class="modal-content-col">
           <h2 class="modal-title" id="modalTitle"></h2>
@@ -1901,7 +1505,6 @@
     const modalHighlights = document.getElementById('modalHighlights');
     const modalImage = document.getElementById('modalImage');
     const modalImageLink = document.getElementById('modalImageLink');
-    const caseStudyBtn = document.getElementById('caseStudyBtn');
 
     document.querySelectorAll('.work-card').forEach(card => {
       card.addEventListener('click', () => {
@@ -1912,34 +1515,13 @@
         const highlightsRaw = card.getAttribute('data-project-highlights');
         const imageSrc = card.getAttribute('data-image') || 'images/work-default-screen.png';
         const link = card.getAttribute('data-link');
-        const hasCaseStudy = card.getAttribute('data-has-case-study') === 'true';
 
         modalTitle.textContent = title;
         modalSubtitle.textContent = subtitle;
         modalDescription.textContent = description;
         modalImage.src = imageSrc;
         modalImage.alt = title;
-        
-        // Handle case study button vs external link
-        if (hasCaseStudy) {
-          // RADAR modal: show case study button, hide arrow
-          modalImageLink.classList.add('no-arrow');
-          modalImageLink.style.cursor = 'default';
-          modalImageLink.onclick = (e) => e.preventDefault();
-          caseStudyBtn.classList.add('visible');
-          caseStudyBtn.href = link;
-        } else {
-          // Other modals: show arrow, hide case study button, use JavaScript navigation
-          modalImageLink.classList.remove('no-arrow');
-          modalImageLink.style.cursor = 'pointer';
-          // Use JavaScript to open link in new tab
-          modalImageLink.onclick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.open(link, '_blank', 'noopener,noreferrer');
-          };
-          caseStudyBtn.classList.remove('visible');
-        }
+        modalImageLink.href = link;
 
         modalMeta.innerHTML = '';
         try {
@@ -1970,13 +1552,6 @@
 
         workModalBackdrop.classList.add('is-visible');
       });
-    });
-
-    // RADAR button click handler
-    caseStudyBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location.href = caseStudyBtn.href;
     });
 
     workModalClose.addEventListener('click', () => {
@@ -2019,13 +1594,10 @@
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
