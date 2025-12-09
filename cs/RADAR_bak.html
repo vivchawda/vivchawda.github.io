@@ -6,16 +6,6 @@
   <meta name="description" content="RADAR Case Study - Remote Analysis and Diagnosis tool redesign for medical system service technicians. A UX design project by Vivek Chawda.">
   <title>RADAR Case Study - Remote Analysis & Diagnosis Tool | Vivek Chawda</title>
   
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C04MG51NWX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-C04MG51NWX');
-  </script>
-  
   <style>
     /* ==================== RESET & BASE ==================== */
     *,
@@ -35,39 +25,46 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
       line-height: 1.7;
       color: #e0e0e0;
-      background-color: #0a0e17;
+      background-color: #0a0a0a;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
     }
 
-    /* ==================== CSS VARIABLES ==================== */
+    /* ==================== CSS VARIABLES (Matching vivchawda.github.io) ==================== */
     :root {
-      /* Dark theme colors - exact match to main portfolio */
-      --bg-primary: #0a0e17;
-      --bg-secondary: #0f1319;
-      --bg-card: #151a23;
+      /* Dark theme colors */
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #121212;
+      --bg-tertiary: #1a1a1a;
       --text-primary: #ffffff;
-      --text-secondary: #a0a0a0;
-      --text-tertiary: #707070;
+      --text-secondary: #b0b0b0;
+      --text-tertiary: #808080;
       
       /* Accent colors */
-      --accent-cyan: #00d9ff;
-      --accent-purple: #7c3aed;
-      --accent-orange: #f59e0b;
+      --accent-primary: #00d9ff;
+      --accent-secondary: #7c3aed;
+      --accent-tertiary: #f59e0b;
       --accent-green: #10b981;
       --accent-pink: #ec4899;
       
-      /* Spacing system */
-      --space-xs: 4px;
-      --space-sm: 8px;
-      --space-md: 16px;
-      --space-lg: 24px;
-      --space-xl: 32px;
-      --space-2xl: 48px;
-      --space-3xl: 64px;
-      --space-4xl: 96px;
-      --space-5xl: 128px;
+      /* Shadows and effects */
+      --shadow-sm: 0 2px 8px rgba(0, 217, 255, 0.1);
+      --shadow-md: 0 4px 16px rgba(0, 217, 255, 0.15);
+      --shadow-lg: 0 8px 32px rgba(0, 217, 255, 0.2);
+      --glow: 0 0 20px rgba(0, 217, 255, 0.3);
+      
+      /* Spacing system (8px base) */
+      --space-1: 8px;
+      --space-2: 16px;
+      --space-3: 24px;
+      --space-4: 32px;
+      --space-5: 40px;
+      --space-6: 48px;
+      --space-8: 64px;
+      --space-10: 80px;
+      --space-12: 96px;
+      --space-16: 128px;
       
       /* Typography */
       --font-size-sm: 0.875rem;
@@ -75,164 +72,163 @@
       --font-size-lg: 1.125rem;
       --font-size-xl: 1.25rem;
       --font-size-2xl: 1.5rem;
-      --font-size-3xl: 2rem;
-      --font-size-4xl: 2.5rem;
+      --font-size-3xl: 1.875rem;
+      --font-size-4xl: 2.25rem;
       --font-size-5xl: 3rem;
-      --font-size-6xl: 4rem;
+      --font-size-6xl: 3.75rem;
       
       /* Layout */
       --max-width: 1200px;
+      --max-width-narrow: 800px;
       --border-radius: 12px;
-      --transition: all 0.3s ease;
+      --border-radius-sm: 8px;
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: all 0.2s ease;
     }
 
     /* ==================== TYPOGRAPHY ==================== */
     h1, h2, h3, h4, h5, h6 {
       font-weight: 600;
-      line-height: 1.3;
+      line-height: 1.2;
       color: var(--text-primary);
-      margin-bottom: var(--space-lg);
+      margin-bottom: var(--space-3);
       letter-spacing: -0.02em;
     }
 
-    h1 { font-size: var(--font-size-6xl); }
-    h2 { font-size: var(--font-size-4xl); }
+    h1 { font-size: var(--font-size-6xl); font-weight: 700; }
+    h2 { font-size: var(--font-size-5xl); font-weight: 700; }
     h3 { font-size: var(--font-size-3xl); }
     h4 { font-size: var(--font-size-2xl); }
     h5 { font-size: var(--font-size-xl); }
+    h6 { font-size: var(--font-size-lg); }
 
     p {
-      margin-bottom: var(--space-lg);
+      margin-bottom: var(--space-3);
       color: var(--text-secondary);
       font-size: var(--font-size-base);
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     a {
-      color: var(--text-primary);
+      color: var(--accent-primary);
       text-decoration: none;
-      transition: var(--transition);
+      transition: var(--transition-fast);
+      position: relative;
     }
 
-    /* ==================== SKIP LINK ==================== */
+    a:hover {
+      color: var(--text-primary);
+    }
+
+    a:focus {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 4px;
+    }
+
+    /* ==================== SKIP LINK (Accessibility) ==================== */
     .skip-link {
       position: absolute;
       top: -100px;
-      left: var(--space-md);
-      background: var(--accent-cyan);
+      left: var(--space-2);
+      background: var(--accent-primary);
       color: var(--bg-primary);
-      padding: var(--space-md);
-      border-radius: var(--border-radius);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--border-radius-sm);
       z-index: 9999;
       font-weight: 600;
     }
 
     .skip-link:focus {
-      top: var(--space-md);
+      top: var(--space-2);
     }
 
-    /* ==================== NAVIGATION (Matching portfolio exactly) ==================== */
+    /* ==================== NAVIGATION ==================== */
     .nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(10, 14, 23, 0.9);
-      backdrop-filter: blur(10px);
-      z-index: 10000;
-      padding: var(--space-lg) 0;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 1000;
+      padding: var(--space-3) 0;
+      transition: var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      box-shadow: var(--shadow-md);
     }
 
     .nav__container {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 var(--space-xl);
+      padding: 0 var(--space-4);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    /* Logo with gradient and subtitle */
-    .nav__logo-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
     .nav__logo {
       font-size: var(--font-size-xl);
       font-weight: 700;
-      background: linear-gradient(135deg, #00d9ff 0%, #00a8cc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: 0;
-    }
-
-    .nav__subtitle {
-      font-size: 0.65rem;
-      font-weight: 400;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
     }
 
     .nav__menu {
       display: flex;
       list-style: none;
-      gap: var(--space-xl);
+      gap: var(--space-5);
       align-items: center;
     }
 
-    /* Navigation links */
     .nav__link {
       color: var(--text-secondary);
+      font-weight: 500;
       font-size: var(--font-size-sm);
-      font-weight: 400;
-      padding: var(--space-sm) 0;
+      padding: var(--space-2);
+      border-radius: var(--border-radius-sm);
+      transition: var(--transition-fast);
       position: relative;
-      transition: color 0.2s ease;
     }
 
     .nav__link::after {
       content: '';
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: 50%;
       width: 0;
-      height: 1px;
-      background: var(--accent-cyan);
-      transition: width 0.3s ease;
+      height: 2px;
+      background: var(--accent-primary);
+      transition: var(--transition-fast);
+      transform: translateX(-50%);
     }
 
-    .nav__link:hover,
+    .nav__link:hover {
+      color: var(--accent-primary);
+    }
+
+    .nav__link:hover::after {
+      width: 80%;
+    }
+
     .nav__link.active {
-      color: var(--text-primary);
+      color: var(--accent-primary);
     }
 
-    .nav__link:hover::after,
-    .nav__link.active::after {
-      width: 100%;
-    }
-
-    /* Download CV Button - Gradient style matching portfolio */
     .nav__cta {
-      background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       color: var(--bg-primary);
-      font-size: var(--font-size-sm);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--border-radius-sm);
       font-weight: 600;
-      padding: var(--space-md) var(--space-lg);
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 217, 255, 0.2);
+      transition: var(--transition-fast);
     }
 
     .nav__cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 217, 255, 0.3);
-      background: linear-gradient(135deg, #00e5ff 0%, #00b8e6 100%);
+      box-shadow: var(--glow);
     }
 
     .nav__toggle {
@@ -240,51 +236,78 @@
       background: none;
       border: none;
       cursor: pointer;
-      padding: var(--space-sm);
+      padding: var(--space-1);
       flex-direction: column;
       gap: 4px;
     }
 
     .nav__toggle span {
       display: block;
-      width: 24px;
+      width: 25px;
       height: 2px;
       background: var(--text-primary);
-      transition: var(--transition);
+      transition: var(--transition-fast);
       border-radius: 2px;
     }
 
     /* ==================== HERO SECTION ==================== */
     .hero {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      padding: calc(var(--space-5xl) + 60px) var(--space-xl) var(--space-4xl);
-      background: var(--bg-primary);
+      padding: calc(var(--space-16) + 56px) var(--space-4) var(--space-12);
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
       position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+      animation: float 15s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, -30px) rotate(5deg); }
+      66% { transform: translate(-20px, 20px) rotate(-5deg); }
     }
 
     .hero__container {
       max-width: var(--max-width);
       margin: 0 auto;
-      width: 100%;
+      position: relative;
+      z-index: 1;
     }
 
     .hero__eyebrow {
       font-size: var(--font-size-sm);
-      font-weight: 400;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-md);
-      color: var(--text-tertiary);
-      opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-3);
+      color: var(--accent-primary);
+      display: inline-block;
+      animation: slideInDown 0.8s ease;
     }
 
-    @keyframes fadeInUp {
+    @keyframes slideInDown {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(-30px);
       }
       to {
         opacity: 1;
@@ -293,74 +316,91 @@
     }
 
     .hero__title {
-      font-size: clamp(3rem, 10vw, 6rem);
-      font-weight: 600;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: var(--space-xl);
-      line-height: 1.1;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease 0.1s forwards;
+      margin-bottom: var(--space-4);
+      line-height: 1;
+      background: linear-gradient(135deg, #ffffff 0%, #00d9ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: slideInUp 0.8s ease 0.2s both;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero__subtitle {
       font-size: var(--font-size-xl);
       color: var(--text-secondary);
-      margin-bottom: var(--space-3xl);
-      max-width: 800px;
+      margin-bottom: var(--space-6);
+      max-width: 700px;
       line-height: 1.6;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease 0.2s forwards;
+      animation: slideInUp 0.8s ease 0.4s both;
     }
 
     .hero__meta {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: var(--space-lg);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-3);
       max-width: 900px;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease 0.3s forwards;
+      animation: slideInUp 0.8s ease 0.6s both;
     }
 
     .hero__meta-item {
-      padding: var(--space-lg);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      padding: var(--space-4);
       border-radius: var(--border-radius);
-      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       transition: var(--transition);
     }
 
     .hero__meta-item:hover {
-      border-color: rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
     }
 
     .hero__meta-label {
       font-size: var(--font-size-sm);
-      font-weight: 400;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: var(--space-sm);
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-2);
       color: var(--text-tertiary);
     }
 
     .hero__meta-value {
       font-size: var(--font-size-base);
-      font-weight: 400;
+      font-weight: 500;
       color: var(--text-primary);
     }
 
-    /* ==================== SECTIONS ==================== */
+    /* ==================== CONTAINER & SECTION ==================== */
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 var(--space-xl);
+      padding: 0 var(--space-4);
+    }
+
+    .container--narrow {
+      max-width: var(--max-width-narrow);
     }
 
     .section {
-      padding: var(--space-4xl) 0;
-      background: var(--bg-primary);
+      padding: var(--space-12) 0;
       position: relative;
-      z-index: 1;
     }
 
     .section--alt {
@@ -368,36 +408,37 @@
     }
 
     .section__header {
-      margin-bottom: var(--space-3xl);
+      margin-bottom: var(--space-8);
+      max-width: 800px;
     }
 
     .section__eyebrow {
       font-size: var(--font-size-sm);
-      font-weight: 400;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-tertiary);
-      margin-bottom: var(--space-md);
+      letter-spacing: 0.15em;
+      color: var(--accent-primary);
+      margin-bottom: var(--space-2);
+      display: inline-block;
     }
 
     .section__title {
-      font-size: var(--font-size-4xl);
+      font-size: clamp(2rem, 5vw, 3.5rem);
       color: var(--text-primary);
-      margin-bottom: var(--space-lg);
-      line-height: 1.2;
+      margin-bottom: var(--space-3);
+      line-height: 1.1;
     }
 
     .section__description {
       font-size: var(--font-size-lg);
       color: var(--text-secondary);
       line-height: 1.7;
-      max-width: 800px;
     }
 
-    /* ==================== GRID ==================== */
+    /* ==================== GRID SYSTEM ==================== */
     .grid {
       display: grid;
-      gap: var(--space-xl);
+      gap: var(--space-4);
     }
 
     .grid--2 {
@@ -410,56 +451,44 @@
 
     /* ==================== CARDS ==================== */
     .card {
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: var(--border-radius);
-      padding: var(--space-2xl);
+      padding: var(--space-5);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.4s ease;
+      transition: var(--transition);
       position: relative;
       overflow: hidden;
     }
 
-    .card:nth-child(6n+1):hover {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2);
-      transform: translateY(-4px);
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
     }
 
-    .card:nth-child(6n+2):hover {
-      border-color: var(--accent-purple);
-      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
+    .card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-primary);
       transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
     }
 
-    .card:nth-child(6n+3):hover {
-      border-color: var(--accent-orange);
-      box-shadow: 0 8px 32px rgba(245, 158, 11, 0.2);
-      transform: translateY(-4px);
-    }
-
-    .card:nth-child(6n+4):hover {
-      border-color: var(--accent-green);
-      box-shadow: 0 8px 32px rgba(16, 185, 129, 0.2);
-      transform: translateY(-4px);
-    }
-
-    .card:nth-child(6n+5):hover {
-      border-color: var(--accent-pink);
-      box-shadow: 0 8px 32px rgba(236, 72, 153, 0.2);
-      transform: translateY(-4px);
-    }
-
-    .card:nth-child(6n):hover {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2);
-      transform: translateY(-4px);
+    .card:hover::before {
+      transform: scaleX(1);
     }
 
     .card__title {
       font-size: var(--font-size-xl);
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: var(--space-md);
+      margin-bottom: var(--space-3);
     }
 
     .card__content {
@@ -468,37 +497,39 @@
       line-height: 1.7;
     }
 
-    /* ==================== INFO BOXES ==================== */
+    /* ==================== OBJECTIVES & CHALLENGES ==================== */
     .objectives-challenges {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-xl);
+      gap: var(--space-4);
     }
 
     .info-box {
-      padding: var(--space-2xl);
+      padding: var(--space-5);
       border-radius: var(--border-radius);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      background: var(--bg-card);
+      border-left: 4px solid var(--accent-primary);
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
       transition: var(--transition);
     }
 
     .info-box:hover {
-      border-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateX(4px);
     }
 
     .info-box--objectives {
-      border-left: 3px solid var(--accent-cyan);
+      border-left-color: var(--accent-primary);
     }
 
     .info-box--challenges {
-      border-left: 3px solid var(--accent-orange);
+      border-left-color: var(--accent-tertiary);
     }
 
     .info-box__title {
       font-size: var(--font-size-2xl);
       font-weight: 600;
-      margin-bottom: var(--space-lg);
+      margin-bottom: var(--space-3);
       color: var(--text-primary);
     }
 
@@ -508,8 +539,8 @@
     }
 
     .info-box li {
-      padding-left: var(--space-lg);
-      margin-bottom: var(--space-md);
+      padding-left: var(--space-4);
+      margin-bottom: var(--space-3);
       position: relative;
       color: var(--text-secondary);
       line-height: 1.7;
@@ -519,42 +550,43 @@
       content: "→";
       position: absolute;
       left: 0;
-      color: var(--accent-cyan);
-      font-weight: normal;
+      color: var(--accent-primary);
+      font-weight: bold;
+      font-size: 1.2em;
     }
 
     .info-box--challenges li:before {
-      color: var(--accent-orange);
+      color: var(--accent-tertiary);
     }
 
     /* ==================== PERSONA CARD ==================== */
     .persona {
-      background: var(--bg-card);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: var(--border-radius);
-      padding: var(--space-2xl);
+      padding: var(--space-6);
       border: 1px solid rgba(255, 255, 255, 0.05);
       transition: var(--transition);
     }
 
     .persona:hover {
-      border-color: var(--accent-purple);
-      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
+      border-color: var(--accent-primary);
+      box-shadow: var(--shadow-lg);
     }
 
     .persona__header {
       display: flex;
       align-items: center;
-      gap: var(--space-xl);
-      margin-bottom: var(--space-2xl);
-      padding-bottom: var(--space-xl);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .persona__avatar {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -562,13 +594,14 @@
       font-weight: 700;
       color: var(--bg-primary);
       flex-shrink: 0;
+      box-shadow: var(--glow);
     }
 
     .persona__name {
-      font-size: var(--font-size-2xl);
-      font-weight: 600;
+      font-size: var(--font-size-3xl);
+      font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: var(--space-sm);
+      margin-bottom: var(--space-1);
     }
 
     .persona__role {
@@ -578,25 +611,31 @@
 
     .persona__stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: var(--space-md);
-      margin-bottom: var(--space-xl);
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--space-3);
+      margin-bottom: var(--space-5);
     }
 
     .persona__stat {
       text-align: center;
-      padding: var(--space-md);
+      padding: var(--space-3);
       background: rgba(255, 255, 255, 0.02);
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: var(--border-radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--transition-fast);
+    }
+
+    .persona__stat:hover {
+      background: rgba(0, 217, 255, 0.05);
+      border-color: var(--accent-primary);
     }
 
     .persona__stat-value {
       display: block;
-      font-size: var(--font-size-xl);
-      font-weight: 600;
-      color: var(--accent-cyan);
-      margin-bottom: var(--space-xs);
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
+      color: var(--accent-primary);
+      margin-bottom: var(--space-1);
     }
 
     .persona__stat-label {
@@ -606,150 +645,145 @@
       letter-spacing: 0.05em;
     }
 
-    .persona__quote {
-      background: rgba(0, 217, 255, 0.05);
-      padding: var(--space-lg);
-      border-radius: 8px;
-      border-left: 3px solid var(--accent-cyan);
-      font-style: italic;
-      color: var(--text-secondary);
-      margin: var(--space-xl) 0;
-      line-height: 1.7;
-    }
-
     .persona__section {
-      margin-bottom: var(--space-lg);
+      margin-bottom: var(--space-4);
     }
 
     .persona__section-title {
-      font-size: var(--font-size-sm);
+      font-size: var(--font-size-base);
       font-weight: 600;
-      color: var(--text-tertiary);
-      margin-bottom: var(--space-md);
+      color: var(--accent-primary);
+      margin-bottom: var(--space-2);
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
 
-    /* ==================== TIMELINE ==================== */
-    .timeline {
-      position: relative;
+    .persona__quote {
+      background: rgba(0, 217, 255, 0.05);
+      padding: var(--space-4);
+      border-radius: var(--border-radius-sm);
+      border-left: 4px solid var(--accent-primary);
+      font-style: italic;
+      color: var(--text-secondary);
+      margin: var(--space-4) 0;
+      font-size: var(--font-size-lg);
+      line-height: 1.7;
     }
 
-    .timeline__item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: var(--space-2xl);
-      margin-bottom: var(--space-3xl);
+    /* ==================== PROCESS TIMELINE ==================== */
+    .process-timeline {
       position: relative;
+      padding-left: var(--space-6);
     }
 
-    .timeline__item::before {
+    .process-timeline::before {
       content: '';
       position: absolute;
-      left: 200px;
-      top: 8px;
-      bottom: -48px;
-      width: 1px;
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateX(calc(var(--space-2xl) / 2));
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
     }
 
-    .timeline__item:last-child::before {
-      display: none;
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--space-6);
+      padding-left: var(--space-4);
     }
 
-    .timeline__item::after {
+    .timeline-item::before {
       content: '';
       position: absolute;
-      left: 200px;
+      left: -38px;
       top: 8px;
-      width: 8px;
-      height: 8px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: var(--accent-cyan);
-      transform: translateX(calc(var(--space-2xl) / 2 - 4px));
+      background: var(--accent-primary);
+      border: 3px solid var(--bg-primary);
+      box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.2);
+      transition: var(--transition-fast);
     }
 
-    .timeline__date {
-      font-size: var(--font-size-sm);
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 400;
+    .timeline-item:hover::before {
+      transform: scale(1.2);
+      box-shadow: 0 0 0 6px rgba(0, 217, 255, 0.3);
     }
 
-    .timeline__content h3 {
-      font-size: var(--font-size-xl);
+    .timeline-item__title {
+      font-size: var(--font-size-2xl);
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: var(--space-md);
+      margin-bottom: var(--space-2);
     }
 
-    .timeline__content p {
+    .timeline-item__content {
       color: var(--text-secondary);
       line-height: 1.7;
-      margin-bottom: 0;
     }
 
     /* ==================== FEATURES ==================== */
     .features {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-xl);
+      gap: var(--space-4);
     }
 
     .feature {
       display: flex;
-      gap: var(--space-lg);
-      padding: var(--space-2xl);
-      background: var(--bg-card);
+      gap: var(--space-4);
+      padding: var(--space-5);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: var(--border-radius);
       border: 1px solid rgba(255, 255, 255, 0.05);
       transition: var(--transition);
     }
 
     .feature:hover {
-      border-color: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-primary);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
     }
 
     .feature__icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      width: 60px;
+      height: 60px;
+      border-radius: var(--border-radius-sm);
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--bg-primary);
-      font-size: var(--font-size-xl);
+      font-size: var(--font-size-2xl);
       font-weight: 700;
       flex-shrink: 0;
+      box-shadow: var(--glow);
     }
 
     .feature__content h3 {
-      font-size: var(--font-size-lg);
-      margin-bottom: var(--space-md);
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--space-2);
       color: var(--text-primary);
     }
 
     .feature__content p {
       color: var(--text-secondary);
       line-height: 1.7;
-      margin-bottom: var(--space-md);
     }
 
     .feature__content ul {
+      margin-top: var(--space-2);
       list-style: none;
       padding: 0;
-      margin: 0;
     }
 
     .feature__content ul li {
       color: var(--text-tertiary);
       font-size: var(--font-size-sm);
-      margin-bottom: var(--space-sm);
-      padding-left: var(--space-md);
+      margin-bottom: var(--space-1);
+      padding-left: var(--space-3);
       position: relative;
     }
 
@@ -757,93 +791,134 @@
       content: "•";
       position: absolute;
       left: 0;
-      color: var(--accent-cyan);
+      color: var(--accent-primary);
     }
 
-    /* ==================== METRICS ==================== */
+    /* ==================== RESULTS & IMPACT ==================== */
     .impact-metrics {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-xl);
-      margin: var(--space-3xl) 0;
+      gap: var(--space-4);
+      margin: var(--space-6) 0;
     }
 
     .metric {
       text-align: center;
-      padding: var(--space-2xl);
-      background: var(--bg-card);
+      padding: var(--space-6);
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(124, 58, 237, 0.1));
       border-radius: var(--border-radius);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 217, 255, 0.2);
       transition: var(--transition);
+      position: relative;
+      overflow: hidden;
     }
 
-    .metric:nth-child(1):hover {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2);
+    .metric::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+      animation: rotate 10s linear infinite;
     }
 
-    .metric:nth-child(2):hover {
-      border-color: var(--accent-purple);
-      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
-    .metric:nth-child(3):hover {
-      border-color: var(--accent-green);
-      box-shadow: 0 8px 32px rgba(16, 185, 129, 0.2);
+    .metric:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--glow);
+      border-color: var(--accent-primary);
     }
 
     .metric__value {
-      font-size: var(--font-size-4xl);
-      font-weight: 600;
-      margin-bottom: var(--space-md);
+      font-size: var(--font-size-5xl);
+      font-weight: 700;
+      margin-bottom: var(--space-2);
       display: block;
-      color: var(--text-primary);
+      background: linear-gradient(135deg, var(--accent-primary), var(--text-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      z-index: 1;
     }
 
     .metric__label {
       font-size: var(--font-size-base);
       color: var(--text-secondary);
+      position: relative;
+      z-index: 1;
     }
 
     /* ==================== TESTIMONIALS ==================== */
     .testimonials {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-xl);
+      gap: var(--space-4);
     }
 
     .testimonial {
-      background: var(--bg-card);
-      padding: var(--space-2xl);
+      background: rgba(255, 255, 255, 0.03);
+      padding: var(--space-5);
       border-radius: var(--border-radius);
+      border-left: 4px solid var(--accent-primary);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      border-left: 3px solid var(--accent-cyan);
+      border-left: 4px solid var(--accent-primary);
       transition: var(--transition);
     }
 
     .testimonial:hover {
-      border-color: var(--accent-cyan);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
     }
 
     .testimonial__quote {
-      font-size: var(--font-size-base);
+      font-size: var(--font-size-lg);
       color: var(--text-secondary);
       font-style: italic;
-      margin-bottom: var(--space-lg);
+      margin-bottom: var(--space-3);
       line-height: 1.7;
     }
 
     .testimonial__author {
       font-size: var(--font-size-sm);
       color: var(--text-tertiary);
-      font-weight: 400;
+      font-weight: 600;
+    }
+
+    /* ==================== NUMBERED SECTIONS ==================== */
+    .numbered-section {
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+      margin-bottom: var(--space-6);
+    }
+
+    .numbered-section__number {
+      font-size: var(--font-size-4xl);
+      font-weight: 700;
+      color: var(--accent-primary);
+      opacity: 0.3;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .numbered-section__content h3 {
+      margin-bottom: var(--space-2);
     }
 
     /* ==================== FADE-IN ANIMATION ==================== */
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .fade-in.visible {
@@ -851,8 +926,14 @@
       transform: translateY(0);
     }
 
-    /* ==================== RESPONSIVE ==================== */
+    /* ==================== RESPONSIVE DESIGN ==================== */
+    
+    /* Tablet (768px+) */
     @media (min-width: 768px) {
+      .nav__toggle {
+        display: none;
+      }
+
       .grid--2 {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -868,8 +949,13 @@
       .testimonials {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
+    /* Desktop (1024px+) */
     @media (min-width: 1024px) {
       .grid--3 {
         grid-template-columns: repeat(3, 1fr);
@@ -878,12 +964,9 @@
       .testimonials {
         grid-template-columns: repeat(3, 1fr);
       }
-
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
+    /* Mobile Menu Styles */
     @media (max-width: 767px) {
       .nav__toggle {
         display: flex;
@@ -891,19 +974,19 @@
 
       .nav__menu {
         position: fixed;
-        top: 70px;
+        top: 80px;
         left: 0;
         right: 0;
-        background: rgba(10, 14, 23, 0.98);
-        backdrop-filter: blur(10px);
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(20px);
         flex-direction: column;
-        padding: var(--space-xl);
+        padding: var(--space-4);
+        box-shadow: var(--shadow-lg);
         border-top: 1px solid rgba(255, 255, 255, 0.05);
         transform: translateY(-100%);
         opacity: 0;
         pointer-events: none;
         transition: var(--transition);
-        gap: var(--space-lg);
       }
 
       .nav__menu.active {
@@ -912,30 +995,28 @@
         pointer-events: all;
       }
 
-      .hero__title {
+      .nav__link {
+        padding: var(--space-3);
+      }
+
+      h1 {
         font-size: var(--font-size-4xl);
       }
 
-      .section__title {
+      h2 {
         font-size: var(--font-size-3xl);
-      }
-
-      .timeline__item {
-        grid-template-columns: 1fr;
-        gap: var(--space-md);
-      }
-
-      .timeline__item::before,
-      .timeline__item::after {
-        display: none;
       }
     }
 
-    /* ==================== PRINT STYLES ==================== */
+    /* Print Styles */
     @media print {
       .nav,
       .skip-link {
         display: none;
+      }
+
+      .hero {
+        padding-top: var(--space-8);
       }
 
       body {
@@ -943,20 +1024,32 @@
         color: black;
       }
     }
+
+    /* ==================== SCROLL PROGRESS BAR ==================== */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      z-index: 9999;
+      transition: width 0.1s ease;
+    }
   </style>
 </head>
 
 <body>
-  <!-- Skip Link -->
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Skip Link for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Navigation - Exact match to portfolio header -->
+  <!-- Navigation -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__container">
-      <a href="https://vivchawda.github.io" class="nav__logo-wrapper">
-        <div class="nav__logo">Vivek Chawda</div>
-        <div class="nav__subtitle">User Experience Designer</div>
-      </a>
+      <a href="https://vivchawda.github.io" class="nav__logo">Vivek Chawda</a>
       <button class="nav__toggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span>
         <span></span>
@@ -968,7 +1061,7 @@
         <li><a href="#process" class="nav__link">Process</a></li>
         <li><a href="#solution" class="nav__link">Solution</a></li>
         <li><a href="#results" class="nav__link">Results</a></li>
-        <li><a href="#" class="nav__cta" id="backButton">← Back to Portfolio</a></li>
+        <li><a href="https://vivchawda.github.io" class="nav__cta">← Back to Portfolio</a></li>
       </ul>
     </div>
   </nav>
@@ -1035,8 +1128,8 @@
           </div>
         </div>
 
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">My Role & Responsibilities</h3>
+        <div style="margin-top: var(--space-10);" class="fade-in">
+          <h3 style="margin-bottom: var(--space-4); color: var(--text-primary);">My Role & Responsibilities</h3>
           <div class="grid grid--2">
             <div class="card">
               <h4 class="card__title">Design Leadership</h4>
@@ -1055,6 +1148,11 @@
               <p class="card__content">Provided detailed specifications and worked closely with development team for implementation</p>
             </div>
           </div>
+        </div>
+
+        <div style="margin-top: var(--space-8);" class="fade-in">
+          <h3 style="color: var(--text-primary); margin-bottom: var(--space-3);">Team & Methodology</h3>
+          <p>Cross-functional team including UX Designer (me), Portfolio Manager, Product Manager, Front End Developers, and Back End Developers working in an <strong style="color: var(--accent-primary);">Agile methodology</strong> with iterative design cycles.</p>
         </div>
       </div>
     </section>
@@ -1084,8 +1182,8 @@
         </div>
 
         <!-- User Persona -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">Primary User Persona</h3>
+        <div style="margin-top: var(--space-10);" class="fade-in">
+          <h3 style="margin-bottom: var(--space-5); color: var(--text-primary);">Primary User Persona</h3>
           <div class="persona">
             <div class="persona__header">
               <div class="persona__avatar">SJ</div>
@@ -1120,14 +1218,14 @@
 
             <div class="persona__section">
               <h5 class="persona__section-title">Goals</h5>
-              <p style="color: var(--text-secondary); margin: 0;">Resolving issues that prevent normal functioning of the system by: (1) Resolving the primary issue, (2) Resolving issues related to the primary issue, (3) Resolving all other issues.</p>
+              <p style="color: var(--text-secondary);">Resolving issues that prevent normal functioning of the system by: (1) Resolving the primary issue, (2) Resolving issues related to the primary issue, (3) Resolving all other issues.</p>
             </div>
 
-            <div class="grid grid--2" style="gap: var(--space-lg); margin-top: var(--space-xl);">
+            <div class="grid grid--2" style="gap: var(--space-4); margin-top: var(--space-4);">
               <div class="persona__section">
                 <h5 class="persona__section-title">Likes</h5>
                 <ul style="list-style: none; padding: 0;">
-                  <li style="margin-bottom: var(--space-md); color: var(--text-secondary);">✓ LOG viewer is very helpful</li>
+                  <li style="margin-bottom: var(--space-2); color: var(--text-secondary);">✓ LOG viewer is very helpful</li>
                   <li style="color: var(--text-secondary);">✓ System overview summarizes status effectively</li>
                 </ul>
               </div>
@@ -1135,8 +1233,8 @@
               <div class="persona__section">
                 <h5 class="persona__section-title">Dislikes</h5>
                 <ul style="list-style: none; padding: 0;">
-                  <li style="margin-bottom: var(--space-md); color: var(--text-secondary);">✗ No integration with other products like CAT</li>
-                  <li style="margin-bottom: var(--space-md); color: var(--text-secondary);">✗ Error messages are non-intuitive</li>
+                  <li style="margin-bottom: var(--space-2); color: var(--text-secondary);">✗ No integration with other products like CAT</li>
+                  <li style="margin-bottom: var(--space-2); color: var(--text-secondary);">✗ Error messages are non-intuitive</li>
                   <li style="color: var(--text-secondary);">✗ Too much navigation across pages and tabs</li>
                 </ul>
               </div>
@@ -1145,9 +1243,9 @@
         </div>
 
         <!-- Research Findings -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">Key Research Findings</h3>
-          <p style="margin-bottom: var(--space-xl);">After extensive interviews across three modalities and global regions, findings were classified into three design principle categories:</p>
+        <div style="margin-top: var(--space-10);" class="fade-in">
+          <h3 style="margin-bottom: var(--space-5); color: var(--text-primary);">Key Research Findings</h3>
+          <p style="margin-bottom: var(--space-5); color: var(--text-secondary);">After extensive interviews across three modalities and global regions, findings were classified into three design principle categories:</p>
           
           <div class="features">
             <div class="feature">
@@ -1199,63 +1297,48 @@
           <p class="section__description">Followed an Agile methodology with iterative design cycles, moving from research insights through to tested and validated solutions.</p>
         </div>
 
-        <div class="timeline fade-in">
-          <div class="timeline__item">
-            <div class="timeline__date">Phase 1</div>
-            <div class="timeline__content">
-              <h3>Background & Research</h3>
-              <p>Conducted stakeholder interviews, comprehensive user research across global regions, legacy tool audit, and defined scope & objectives based on business and user needs.</p>
-            </div>
+        <div class="process-timeline fade-in">
+          <div class="timeline-item">
+            <h3 class="timeline-item__title">Background & Research</h3>
+            <p class="timeline-item__content">Conducted stakeholder interviews, comprehensive user research across global regions, legacy tool audit, and defined scope & objectives based on business and user needs.</p>
           </div>
 
-          <div class="timeline__item">
-            <div class="timeline__date">Phase 2</div>
-            <div class="timeline__content">
-              <h3>Definition</h3>
-              <p>Established design principles (Structured Information, Adaptable Interface, Optimized Navigation), created information architecture for different modalities (CV, MR, CT), and mapped interaction flows.</p>
-            </div>
+          <div class="timeline-item">
+            <h3 class="timeline-item__title">Definition</h3>
+            <p class="timeline-item__content">Established design principles (Structured Information, Adaptable Interface, Optimized Navigation), created information architecture for different modalities (CV, MR, CT), and mapped interaction flows.</p>
           </div>
 
-          <div class="timeline__item">
-            <div class="timeline__date">Phase 3</div>
-            <div class="timeline__content">
-              <h3>Design Exploration</h3>
-              <p>Created wireframe sketches exploring different layout approaches, developed visual design system with consistent patterns, and built interactive prototypes for user validation.</p>
-            </div>
+          <div class="timeline-item">
+            <h3 class="timeline-item__title">Design Exploration</h3>
+            <p class="timeline-item__content">Created wireframe sketches exploring different layout approaches, developed visual design system with consistent patterns, and built interactive prototypes for user validation.</p>
           </div>
 
-          <div class="timeline__item">
-            <div class="timeline__date">Phase 4</div>
-            <div class="timeline__content">
-              <h3>Test & Iterations</h3>
-              <p>Conducted user testing sessions with remote service engineers and modality managers, iterated designs based on feedback, and created detailed design specifications for development.</p>
-            </div>
+          <div class="timeline-item">
+            <h3 class="timeline-item__title">Test & Iterations</h3>
+            <p class="timeline-item__content">Conducted user testing sessions with remote service engineers and modality managers, iterated designs based on feedback, and created detailed design specifications for development.</p>
           </div>
 
-          <div class="timeline__item">
-            <div class="timeline__date">Phase 5</div>
-            <div class="timeline__content">
-              <h3>Launch & Next Steps</h3>
-              <p>Developed incremental rollout plan starting with single user MVP, provided ongoing development support, and planned feature additions across modalities with predictive engine integration.</p>
-            </div>
+          <div class="timeline-item">
+            <h3 class="timeline-item__title">Launch & Next Steps</h3>
+            <p class="timeline-item__content">Developed incremental rollout plan starting with single user MVP, provided ongoing development support, and planned feature additions across modalities with predictive engine integration.</p>
           </div>
         </div>
 
         <!-- Navigation Models -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">Optimized Navigation Models</h3>
-          <p style="margin-bottom: var(--space-xl);">Designed two primary navigation workflows based on user research:</p>
+        <div style="margin-top: var(--space-10);" class="fade-in">
+          <h3 style="margin-bottom: var(--space-5); color: var(--text-primary);">Optimized Navigation Models</h3>
+          <p style="margin-bottom: var(--space-5); color: var(--text-secondary);">Designed two primary navigation workflows based on user research:</p>
           
           <div class="grid grid--2">
             <div class="card">
               <h4 class="card__title">Workflow 1: Region-Based Search</h4>
-              <p class="card__content" style="font-weight: 600; color: var(--accent-cyan); margin-bottom: var(--space-lg);">Login → Dashboard → Details → Analyse LOG → Create Case → Close → Next</p>
+              <p class="card__content" style="font-weight: 600; color: var(--accent-primary); margin-bottom: var(--space-3);">Login → Dashboard → Details → Analyse LOG → Create Case → Close → Next</p>
               <p class="card__content">User searches their allocated region for systems with issues, views system health and reachability, downloads LOG files, creates cases with pre-filled data, and moves to next system with removed dealt systems from list.</p>
             </div>
 
             <div class="card">
               <h4 class="card__title">Workflow 2: Direct SRN Search</h4>
-              <p class="card__content" style="font-weight: 600; color: var(--accent-purple); margin-bottom: var(--space-lg);">Login → Dashboard → SEARCH → Details → Analyse LOG → Create Case → Close → Next</p>
+              <p class="card__content" style="font-weight: 600; color: var(--accent-secondary); margin-bottom: var(--space-3);">Login → Dashboard → SEARCH → Details → Analyse LOG → Create Case → Close → Next</p>
               <p class="card__content">User directly searches by System Reference Number (SRN), views system status and error details, analyses LOG file with visual timeline, creates/opens cases using templates, and efficiently moves through systems.</p>
             </div>
           </div>
@@ -1276,12 +1359,12 @@
         <div class="grid grid--2 fade-in">
           <div class="card">
             <h3 class="card__title">🎯 Dashboard Overview</h3>
-            <p class="card__content">Location-based system navigation with global statistics showing systems processed, critical systems, and resolution metrics. Monitoring dashboard displays prioritized alerts with aggregate titles, severity indicators, and last alert dates.</p>
+            <p class="card__content">Location-based system navigation with global statistics showing systems processed, critical systems, and resolution metrics. Monitoring dashboard displays prioritized alerts with aggregate titles, severity indicators, and last alert dates. Customizable views for different user roles.</p>
           </div>
 
           <div class="card">
             <h3 class="card__title">📊 Visual LOG Timeline</h3>
-            <p class="card__content">Revolutionary visual timeline representation of LOG files that charts activities and alerts chronologically. Interactive cursor allows users to jump directly to error lines, drastically reducing analysis time.</p>
+            <p class="card__content">Revolutionary visual timeline representation of LOG files that charts activities and alerts chronologically. Interactive cursor allows users to jump directly to error lines, drastically reducing analysis time. Visual metaphor of tying related activities together borrowed from familiar debugging tools.</p>
           </div>
 
           <div class="card">
@@ -1296,7 +1379,7 @@
 
           <div class="card">
             <h3 class="card__title">📈 Global Statistics Panel</h3>
-            <p class="card__content">Side panel targeted at Modality Managers showing overall modality performance metrics including total systems processed, number of critical systems, and successfully analyzed systems.</p>
+            <p class="card__content">Side panel targeted at Modality Managers showing overall modality performance metrics including total systems processed, number of critical systems, and successfully analyzed systems. Customizable metrics based on business requirements.</p>
           </div>
 
           <div class="card">
@@ -1306,32 +1389,32 @@
         </div>
 
         <!-- Rollout Strategy -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">Incremental Rollout (2015-2018)</h3>
+        <div style="margin-top: var(--space-10);" class="fade-in">
+          <h3 style="margin-bottom: var(--space-5); color: var(--text-primary);">Incremental Rollout (2015-2018)</h3>
           <div class="grid grid--3">
             <div class="card">
               <h4 class="card__title">Phase 1 (Dec 2015)</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">Single User MVP</strong><br>Proposed RADAR launched in phases with legacy tool still in use and supported.</p>
+              <p class="card__content"><strong style="color: var(--accent-primary);">Single User MVP</strong><br>Proposed RADAR launched in phases with legacy tool still in use and supported.</p>
             </div>
             <div class="card">
               <h4 class="card__title">Phase 2 (Apr 2016)</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">LOG Viewer - MR</strong><br>LOG viewer module added to enable users to analyze LOG files, replacing limited CAT tool support.</p>
+              <p class="card__content"><strong style="color: var(--accent-primary);">LOG Viewer - MR</strong><br>LOG viewer module added to enable users to analyze LOG files, replacing limited CAT tool support.</p>
             </div>
             <div class="card">
               <h4 class="card__title">Phase 3 (Dec 2017)</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">MR + CV Modules</strong><br>Specific modules for MR & CV added. Create case functionality integrated. Legacy tool deprecated.</p>
+              <p class="card__content"><strong style="color: var(--accent-primary);">MR + CV Modules</strong><br>Specific modules for MR & CV added. Create case functionality integrated. Legacy tool deprecated.</p>
             </div>
             <div class="card">
               <h4 class="card__title">Phase 4</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">Modality Features</strong><br>User login-based functionality with CSIP level features. MR modules like magnet monitoring ported.</p>
+              <p class="card__content"><strong style="color: var(--accent-primary);">Modality Features</strong><br>User login-based functionality with CSIP level features. MR modules like magnet monitoring ported.</p>
             </div>
             <div class="card">
               <h4 class="card__title">Phase 5</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">Predictive Engine</strong><br>ISDA predictive engine integrated for better predictive capabilities with user-generated models.</p>
+              <p class="card__content"><strong style="color: var(--accent-primary);">Predictive Engine</strong><br>ISDA predictive engine integrated for better predictive capabilities with user-generated models.</p>
             </div>
             <div class="card">
               <h4 class="card__title">Phase 6 (Dec 2018)</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">Integration</strong><br>RADAR bridged with ClickSchedular to check FSE schedules and reduce onsite repair frequency.</p>
+              <p class="card__content"><strong style="color: var(--accent-primary);">Integration</strong><br>RADAR bridged with ClickSchedular to check FSE schedules and reduce onsite repair frequency.</p>
             </div>
           </div>
         </div>
@@ -1363,8 +1446,8 @@
         </div>
 
         <!-- User Feedback -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">User Testimonials</h3>
+        <div style="margin-top: var(--space-10);" class="fade-in">
+          <h3 style="margin-bottom: var(--space-5); color: var(--text-primary);">User Testimonials</h3>
           <div class="testimonials">
             <div class="testimonial">
               <p class="testimonial__quote">"The location browser in side pane makes my work simpler now. I can collapse it once I select my region as this is one time activity for me."</p>
@@ -1399,33 +1482,33 @@
         </div>
 
         <!-- Key Learnings -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">Key Learnings & Takeaways</h3>
+        <div style="margin-top: var(--space-10);" class="fade-in">
+          <h3 style="margin-bottom: var(--space-5); color: var(--text-primary);">Key Learnings & Takeaways</h3>
           <div class="grid grid--2">
             <div class="card">
               <h4 class="card__title">🎓 Change Management</h4>
-              <p class="card__content">Successfully transitioning users from a 10+ year legacy tool requires incremental rollout, extensive user involvement, and maintaining familiarity while introducing improvements.</p>
+              <p class="card__content">Successfully transitioning users from a 10+ year legacy tool requires incremental rollout, extensive user involvement, and maintaining familiarity while introducing improvements. Observational research revealed actual usage patterns vs. reported behaviors.</p>
             </div>
 
             <div class="card">
               <h4 class="card__title">🌍 Global User Research</h4>
-              <p class="card__content">Conducting research across multiple regions (Americas, Europe, APAC) and modalities (IxR, MR, CT) revealed both universal pain points and regional variations in workflows.</p>
+              <p class="card__content">Conducting research across multiple regions (Americas, Europe, APAC) and modalities (IxR, MR, CT) revealed both universal pain points and regional variations in workflows that informed a flexible, adaptable design system.</p>
             </div>
 
             <div class="card">
               <h4 class="card__title">📊 Visual Information Design</h4>
-              <p class="card__content">The visual LOG timeline and system health calendar proved that thoughtful data visualization can dramatically reduce analysis time and cognitive load.</p>
+              <p class="card__content">The visual LOG timeline and system health calendar proved that thoughtful data visualization can dramatically reduce analysis time and cognitive load, especially when borrowing familiar metaphors from adjacent tools.</p>
             </div>
 
             <div class="card">
               <h4 class="card__title">🔄 Iterative Validation</h4>
-              <p class="card__content">Having in-house users allowed for rapid iteration and validation. Minimal intervention observation confirmed users could successfully navigate new paradigms.</p>
+              <p class="card__content">Having in-house users allowed for rapid iteration and validation. Minimal intervention observation confirmed users could successfully navigate new paradigms, while periodic feedback ensured continuous improvement.</p>
             </div>
           </div>
         </div>
 
         <!-- Business Impact -->
-        <div style="margin-top: var(--space-3xl);" class="fade-in">
+        <div style="margin-top: var(--space-8);" class="fade-in">
           <div class="info-box" style="border-left-color: var(--accent-green);">
             <h3 class="info-box__title">Business Impact</h3>
             <p style="color: var(--text-secondary); margin: 0;">The redesigned RADAR tool successfully met business objectives by lowering resolution time per issue, reducing overhead costs through decreased field visit frequency, and gaining user confidence to adopt the new optimized workflows. The phased rollout approach minimized disruption while the legacy tool was gradually deprecated, ensuring business continuity throughout the transition.</p>
@@ -1449,25 +1532,13 @@
         navMenu.classList.toggle('active');
       });
 
+      // Close menu when clicking on a link
       const navLinks = document.querySelectorAll('.nav__link');
       navLinks.forEach(link => {
         link.addEventListener('click', () => {
           navMenu.classList.remove('active');
           menuToggle.setAttribute('aria-expanded', 'false');
         });
-      });
-    }
-
-    // ==================== BACK BUTTON FUNCTIONALITY ====================
-    const backButton = document.getElementById('backButton');
-    if (backButton) {
-      backButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (document.referrer && document.referrer !== '') {
-          window.history.back();
-        } else {
-          window.location.href = 'https://vivchawda.github.io';
-        }
       });
     }
 
@@ -1480,7 +1551,7 @@
           const target = document.querySelector(href);
           if (target) {
             const navHeight = document.querySelector('.nav').offsetHeight;
-            const targetPosition = target.offsetTop - navHeight - 32;
+            const targetPosition = target.offsetTop - navHeight - 20;
             window.scrollTo({
               top: targetPosition,
               behavior: 'smooth'
@@ -1490,10 +1561,10 @@
       });
     });
 
-    // ==================== INTERSECTION OBSERVER ====================
+    // ==================== INTERSECTION OBSERVER (Fade-in Animation) ====================
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -80px 0px'
+      rootMargin: '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -1504,6 +1575,7 @@
       });
     }, observerOptions);
 
+    // Observe all elements with fade-in class
     document.querySelectorAll('.fade-in').forEach(el => {
       observer.observe(el);
     });
@@ -1517,7 +1589,7 @@
       
       sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 120;
+        const sectionTop = section.offsetTop - 150;
         const sectionId = section.getAttribute('id');
         
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -1531,10 +1603,36 @@
       });
     }
 
-    window.addEventListener('scroll', setActiveNavLink);
+    // ==================== NAV SCROLL EFFECT ====================
+    const nav = document.querySelector('.nav');
+    
+    function updateNavOnScroll() {
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+
+    // ==================== SCROLL PROGRESS BAR ====================
+    const scrollProgress = document.querySelector('.scroll-progress');
+
+    function updateScrollProgress() {
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (window.pageYOffset / windowHeight) * 100;
+      scrollProgress.style.width = scrolled + '%';
+    }
+
+    // ==================== EVENT LISTENERS ====================
+    window.addEventListener('scroll', () => {
+      updateNavOnScroll();
+      setActiveNavLink();
+      updateScrollProgress();
+    });
 
     // ==================== KEYBOARD NAVIGATION ====================
     document.addEventListener('keydown', (e) => {
+      // ESC to close mobile menu
       if (e.key === 'Escape' && navMenu.classList.contains('active')) {
         navMenu.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
@@ -1542,7 +1640,18 @@
     });
 
     // ==================== INITIALIZE ====================
+    updateNavOnScroll();
     setActiveNavLink();
+    updateScrollProgress();
+
+    // ==================== PARALLAX EFFECT FOR HERO ====================
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const hero = document.querySelector('.hero');
+      if (hero && scrolled < window.innerHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+      }
+    });
   </script>
 </body>
 </html>
