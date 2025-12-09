@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vivek Chawda - Experience Designer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C04MG51NWX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-C04MG51NWX');
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background: #0a0e17;
+      color: #e2e8f0;
+      padding-top: 80px;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulseGlowPurple {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(168, 85, 247, 0.3),
+                    0 0 30px rgba(147, 51, 234, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(168, 85, 247, 0.5),
+                    0 0 50px rgba(147, 51, 234, 0.3);
+      }
+    }
+
+    @keyframes pulseGlowGreen {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.3),
+                    0 0 30px rgba(5, 150, 105, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(16, 185, 129, 0.5),
+                    0 0 50px rgba(5, 150, 105, 0.3);
+      }
+    }
+
+    @keyframes pulseGlowOrange {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(249, 115, 22, 0.3),
+                    0 0 30px rgba(234, 88, 12, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(249, 115, 22, 0.5),
+                    0 0 50px rgba(234, 88, 12, 0.3);
+      }
+    }
+
+    @keyframes pulseGlowPink {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(236, 72, 153, 0.3),
+                    0 0 30px rgba(219, 39, 119, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(236, 72, 153, 0.5),
+                    0 0 50px rgba(219, 39, 119, 0.3);
+      }
+    }
+
+    @keyframes pulseGlowYellow {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(234, 179, 8, 0.3),
+                    0 0 30px rgba(202, 138, 4, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(234, 179, 8, 0.5),
+                    0 0 50px rgba(202, 138, 4, 0.3);
+      }
+    }
+
+    a {
+      color: #22d3ee;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: #67e8f9;
+      text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+      text-decoration: none;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 14, 23, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+      z-index: 100;
+      animation: slideDown 0.5s ease-out;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #22d3ee;
+    }
+
+    .logo-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: #cbd5e1;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #22d3ee, #a855f7);
+      transition: width 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: #22d3ee;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .cta-btn {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(34, 211, 238, 0.5);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4),
+                  0 0 40px rgba(168, 85, 247, 0.3);
+      color: #fff;
+      text-shadow: none;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 120px;
+      text-align: center;
+      animation: fadeInUp 0.6s ease-out 0.2s backwards;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(168, 85, 247, 0.15));
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: #22d3ee;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(135deg, #22d3ee, #10b981);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
+    }
+
+    .hero-title {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #f1f5f9 0%, #22d3ee 50%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: #cbd5e1;
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .pill {
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      color: #c084fc;
+    }
+
+    .pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+      background: rgba(168, 85, 247, 0.15);
+      border-color: rgba(168, 85, 247, 0.5);
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 120px;
+      position: relative;
+    }
+
+    .section::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 600px;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(6, 182, 212, 0.2) 20%, 
+        rgba(168, 85, 247, 0.3) 50%, 
+        rgba(6, 182, 212, 0.2) 80%, 
+        transparent 100%);
+    }
+
+    .section:last-of-type::after {
+      display: none;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-title {
+      font-size: 40px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #22d3ee 0%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #22d3ee, #a855f7, #f97316);
+      border-radius: 2px;
+    }
+
+    .section-description {
+      font-size: 16px;
+      color: #94a3b8;
+      margin-top: 24px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Work Grid */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .work-card {
+      position: relative;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      overflow: hidden;
+      animation: fadeInUp 0.5s ease-out backwards;
+    }
+
+    .work-card:nth-child(1) { 
+      animation-delay: 0.1s;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+    .work-card:nth-child(2) { 
+      animation-delay: 0.2s;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+    .work-card:nth-child(3) { 
+      animation-delay: 0.3s;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .work-card:nth-child(4) { 
+      animation-delay: 0.4s;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+    .work-card:nth-child(5) { 
+      animation-delay: 0.5s;
+      border: 1px solid rgba(236, 72, 153, 0.3);
+    }
+    .work-card:nth-child(6) { 
+      animation-delay: 0.6s;
+      border: 1px solid rgba(234, 179, 8, 0.3);
+    }
+
+    .work-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .work-card:nth-child(1)::before {
+      background: radial-gradient(circle at top right, rgba(6, 182, 212, 0.15), transparent 60%);
+    }
+    .work-card:nth-child(2)::before {
+      background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.15), transparent 60%);
+    }
+    .work-card:nth-child(3)::before {
+      background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.15), transparent 60%);
+    }
+    .work-card:nth-child(4)::before {
+      background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.15), transparent 60%);
+    }
+    .work-card:nth-child(5)::before {
+      background: radial-gradient(circle at top right, rgba(236, 72, 153, 0.15), transparent 60%);
+    }
+    .work-card:nth-child(6)::before {
+      background: radial-gradient(circle at top right, rgba(234, 179, 8, 0.15), transparent 60%);
+    }
+
+    .work-card:nth-child(1):hover {
+      transform: translateY(-8px);
+      border-color: rgba(34, 211, 238, 0.6);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
+                  0 0 40px rgba(6, 182, 212, 0.3);
+    }
+
+    .work-card:nth-child(2):hover {
+      transform: translateY(-8px);
+      border-color: rgba(168, 85, 247, 0.6);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
+                  0 0 40px rgba(168, 85, 247, 0.3);
+    }
+
+    .work-card:nth-child(3):hover {
+      transform: translateY(-8px);
+      border-color: rgba(16, 185, 129, 0.6);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
+                  0 0 40px rgba(16, 185, 129, 0.3);
+    }
+
+    .work-card:nth-child(4):hover {
+      transform: translateY(-8px);
+      border-color: rgba(249, 115, 22, 0.6);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
+                  0 0 40px rgba(249, 115, 22, 0.3);
+    }
+
+    .work-card:nth-child(5):hover {
+      transform: translateY(-8px);
+      border-color: rgba(236, 72, 153, 0.6);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
+                  0 0 40px rgba(236, 72, 153, 0.3);
+    }
+
+    .work-card:nth-child(6):hover {
+      transform: translateY(-8px);
+      border-color: rgba(234, 179, 8, 0.6);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
+                  0 0 40px rgba(234, 179, 8, 0.3);
+    }
+
+    .work-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Case Study Badge */
+    .case-study-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.9), rgba(219, 39, 119, 0.9));
+      border: 1px solid rgba(236, 72, 153, 0.5);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 10;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    }
+
+    .work-card:hover .case-study-badge {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
+    }
+
+    .work-image {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .work-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: #1e293b;
+      transition: transform 0.3s ease;
+    }
+
+    .work-card:hover .work-image img {
+      transform: scale(1.05);
+    }
+
+    .work-content {
+      padding: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .work-number {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1;
+      z-index: 3;
+      opacity: 0.1;
+    }
+
+    .work-card:nth-child(1) .work-number { color: #22d3ee; }
+    .work-card:nth-child(2) .work-number { color: #a855f7; }
+    .work-card:nth-child(3) .work-number { color: #10b981; }
+    .work-card:nth-child(4) .work-number { color: #f97316; }
+    .work-card:nth-child(5) .work-number { color: #ec4899; }
+    .work-card:nth-child(6) .work-number { color: #eab308; }
+
+    .work-tagline {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .work-card:nth-child(1) .work-tagline { color: #22d3ee; }
+    .work-card:nth-child(2) .work-tagline { color: #c084fc; }
+    .work-card:nth-child(3) .work-tagline { color: #34d399; }
+    .work-card:nth-child(4) .work-tagline { color: #fb923c; }
+    .work-card:nth-child(5) .work-tagline { color: #f472b6; }
+    .work-card:nth-child(6) .work-tagline { color: #fbbf24; }
+
+    .work-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .work-description {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .work-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .work-meta span {
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .work-card:nth-child(1) .work-meta span {
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      color: #67e8f9;
+    }
+
+    .work-card:nth-child(2) .work-meta span {
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+    }
+
+    .work-card:nth-child(3) .work-meta span {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      color: #34d399;
+    }
+
+    .work-card:nth-child(4) .work-meta span {
+      background: rgba(249, 115, 22, 0.1);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      color: #fb923c;
+    }
+
+    .work-card:nth-child(5) .work-meta span {
+      background: rgba(236, 72, 153, 0.1);
+      border: 1px solid rgba(236, 72, 153, 0.2);
+      color: #f472b6;
+    }
+
+    .work-card:nth-child(6) .work-meta span {
+      background: rgba(234, 179, 8, 0.1);
+      border: 1px solid rgba(234, 179, 8, 0.2);
+      color: #fbbf24;
+    }
+
+    .work-card:hover .work-meta span {
+      transform: translateY(-2px);
+    }
+
+    /* Work Note - NEW */
+    .work-note {
+      margin-top: 48px;
+      text-align: center;
+      padding: 20px 32px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(168, 85, 247, 0.05));
+      border: 1px solid rgba(6, 182, 212, 0.15);
+      animation: fadeInUp 0.6s ease-out 0.7s backwards;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-note::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(6, 182, 212, 0.5) 30%, 
+        rgba(168, 85, 247, 0.5) 70%, 
+        transparent 100%);
+    }
+
+    .work-note-icon {
+      display: inline-block;
+      font-size: 20px;
+      margin-bottom: 8px;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .work-note-text {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .work-note-text strong {
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+
+    /* Timeline */
+    .timeline-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, 
+        transparent 0%,
+        rgba(6, 182, 212, 0.4) 10%, 
+        rgba(168, 85, 247, 0.4) 30%, 
+        rgba(16, 185, 129, 0.4) 50%, 
+        rgba(249, 115, 22, 0.4) 70%, 
+        rgba(6, 182, 212, 0.2) 90%,
+        transparent 100%);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 60px;
+      display: flex;
+      align-items: center;
+      animation: fadeInUp 0.6s ease-out backwards;
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+    .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+    .timeline-item:nth-child(7) { animation-delay: 0.7s; }
+
+    .timeline-item:nth-child(odd) {
+      justify-content: flex-start;
+    }
+
+    .timeline-item:nth-child(even) {
+      justify-content: flex-end;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      border: 4px solid #0a0e17;
+      border-radius: 50%;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:nth-child(1) .timeline-dot {
+      background: #22d3ee;
+      box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.3);
+    }
+    .timeline-item:nth-child(2) .timeline-dot {
+      background: #a855f7;
+      box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.3);
+    }
+    .timeline-item:nth-child(3) .timeline-dot {
+      background: #10b981;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
+    }
+    .timeline-item:nth-child(4) .timeline-dot {
+      background: #f97316;
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.3);
+    }
+    .timeline-item:nth-child(5) .timeline-dot {
+      background: #ec4899;
+      box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.3);
+    }
+    .timeline-item:nth-child(6) .timeline-dot {
+      background: #eab308;
+      box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.3);
+    }
+    .timeline-item:nth-child(7) .timeline-dot {
+      background: #22d3ee;
+      box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.3);
+    }
+
+    .timeline-item:hover .timeline-dot {
+      width: 20px;
+      height: 20px;
+    }
+
+    .timeline-item:nth-child(2):hover .timeline-dot {
+      animation: pulseGlowPurple 2s ease-in-out infinite;
+    }
+    .timeline-item:nth-child(3):hover .timeline-dot {
+      animation: pulseGlowGreen 2s ease-in-out infinite;
+    }
+    .timeline-item:nth-child(4):hover .timeline-dot {
+      animation: pulseGlowOrange 2s ease-in-out infinite;
+    }
+    .timeline-item:nth-child(5):hover .timeline-dot {
+      animation: pulseGlowPink 2s ease-in-out infinite;
+    }
+    .timeline-item:nth-child(6):hover .timeline-dot {
+      animation: pulseGlowYellow 2s ease-in-out infinite;
+    }
+
+    .timeline-card {
+      width: 45%;
+      padding: 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .timeline-item:nth-child(1) .timeline-card {
+      border: 1px solid rgba(6, 182, 212, 0.2);
+    }
+    .timeline-item:nth-child(2) .timeline-card {
+      border: 1px solid rgba(168, 85, 247, 0.2);
+    }
+    .timeline-item:nth-child(3) .timeline-card {
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    .timeline-item:nth-child(4) .timeline-card {
+      border: 1px solid rgba(249, 115, 22, 0.2);
+    }
+    .timeline-item:nth-child(5) .timeline-card {
+      border: 1px solid rgba(236, 72, 153, 0.2);
+    }
+    .timeline-item:nth-child(6) .timeline-card {
+      border: 1px solid rgba(234, 179, 8, 0.2);
+    }
+    .timeline-item:nth-child(7) .timeline-card {
+      border: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 3px;
+      border-radius: 12px 0 0 12px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .timeline-item:nth-child(1) .timeline-card::before {
+      background: linear-gradient(180deg, #22d3ee, #06b6d4);
+    }
+    .timeline-item:nth-child(2) .timeline-card::before {
+      background: linear-gradient(180deg, #a855f7, #7c3aed);
+    }
+    .timeline-item:nth-child(3) .timeline-card::before {
+      background: linear-gradient(180deg, #10b981, #059669);
+    }
+    .timeline-item:nth-child(4) .timeline-card::before {
+      background: linear-gradient(180deg, #f97316, #ea580c);
+    }
+    .timeline-item:nth-child(5) .timeline-card::before {
+      background: linear-gradient(180deg, #ec4899, #db2777);
+    }
+    .timeline-item:nth-child(6) .timeline-card::before {
+      background: linear-gradient(180deg, #eab308, #ca8a04);
+    }
+    .timeline-item:nth-child(7) .timeline-card::before {
+      background: linear-gradient(180deg, #22d3ee, #06b6d4);
+    }
+
+    .timeline-item:hover .timeline-card {
+      background: rgba(15, 23, 42, 0.9);
+      transform: translateX(12px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .timeline-item:nth-child(1):hover .timeline-card {
+      border-color: rgba(34, 211, 238, 0.5);
+    }
+    .timeline-item:nth-child(2):hover .timeline-card {
+      border-color: rgba(168, 85, 247, 0.5);
+    }
+    .timeline-item:nth-child(3):hover .timeline-card {
+      border-color: rgba(16, 185, 129, 0.5);
+    }
+    .timeline-item:nth-child(4):hover .timeline-card {
+      border-color: rgba(249, 115, 22, 0.5);
+    }
+    .timeline-item:nth-child(5):hover .timeline-card {
+      border-color: rgba(236, 72, 153, 0.5);
+    }
+    .timeline-item:nth-child(6):hover .timeline-card {
+      border-color: rgba(234, 179, 8, 0.5);
+    }
+    .timeline-item:nth-child(7):hover .timeline-card {
+      border-color: rgba(34, 211, 238, 0.5);
+    }
+
+    .timeline-item:nth-child(even):hover .timeline-card {
+      transform: translateX(-12px);
+    }
+
+    .timeline-item:hover .timeline-card::before {
+      opacity: 1;
+    }
+
+    .timeline-date {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .timeline-item:nth-child(1) .timeline-date { color: #22d3ee; }
+    .timeline-item:nth-child(2) .timeline-date { color: #c084fc; }
+    .timeline-item:nth-child(3) .timeline-date { color: #34d399; }
+    .timeline-item:nth-child(4) .timeline-date { color: #fb923c; }
+    .timeline-item:nth-child(5) .timeline-date { color: #f472b6; }
+    .timeline-item:nth-child(6) .timeline-date { color: #fbbf24; }
+    .timeline-item:nth-child(7) .timeline-date { color: #22d3ee; }
+
+    .timeline-role {
+      font-size: 18px;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .timeline-company {
+      font-size: 15px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+
+    .timeline-description {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      padding: 32px 20px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.6) 100%);
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInUp 0.5s ease-out backwards;
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      position: relative;
+      overflow: hidden;
+      height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-card:nth-child(1) { animation-delay: 0.1s; }
+    .contact-card:nth-child(2) { animation-delay: 0.2s; }
+    .contact-card:nth-child(3) { animation-delay: 0.3s; }
+    .contact-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .contact-card:hover {
+      border-color: rgba(168, 85, 247, 0.5);
+      box-shadow: 0 12px 32px rgba(168, 85, 247, 0.3);
+      transform: translateY(-8px);
+    }
+
+    /* Icon + Label (Default State) */
+    .contact-icon-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 1;
+    }
+
+    .contact-card:hover .contact-icon-label {
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+    }
+
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .contact-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: #c084fc;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #c084fc;
+      font-weight: 600;
+    }
+
+    /* Contact Details (Hover State) */
+    .contact-details {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -40%);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 90%;
+      text-align: center;
+    }
+
+    .contact-card:hover .contact-details {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+
+    .contact-link {
+      font-size: 14px;
+      word-break: break-word;
+      color: #e9d5ff;
+      line-height: 1.5;
+      display: block;
+    }
+
+    .contact-link:hover {
+      color: #fff;
+      text-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 14, 23, 0.92);
+      backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 24px;
+    }
+
+    .modal-backdrop.is-visible {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 1000px;
+      max-height: 90vh;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8),
+                  0 0 60px rgba(6, 182, 212, 0.2);
+      animation: slideUp 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      color: #22d3ee;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .modal-close:hover {
+      background: rgba(6, 182, 212, 0.2);
+      transform: rotate(90deg);
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+    }
+
+    .modal-inner {
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .modal-image-col {
+      flex: 0 0 45%;
+      background: #1e293b;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-image-wrapper {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-image-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .modal-image-link::after {
+      content: '↗';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #06b6d4, #a855f7);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.5);
+      pointer-events: none;
+    }
+
+    .modal-image-link:hover::after {
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+
+    .modal-image-link.no-arrow::after {
+      display: none;
+    }
+
+    .modal-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      object-position: center;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+
+    .modal-image-link:hover .modal-image {
+      transform: scale(1.05);
+    }
+
+    .case-study-btn {
+      padding: 16px 24px;
+      margin: 0 20px 20px;
+      background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
+      color: #fff !important;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid rgba(34, 211, 238, 0.5);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: none;
+    }
+
+    .case-study-btn.visible {
+      display: block;
+    }
+
+    .case-study-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4),
+                  0 0 40px rgba(168, 85, 247, 0.3);
+      color: #fff !important;
+      text-shadow: none;
+    }
+
+    .modal-content-col {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    .modal-title {
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #22d3ee 0%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .modal-subtitle {
+      font-size: 16px;
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    .modal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .modal-meta span {
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      font-size: 12px;
+      color: #67e8f9;
+    }
+
+    .modal-description {
+      font-size: 16px;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .modal-highlights {
+      font-size: 15px;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    .modal-highlights h4 {
+      font-size: 18px;
+      color: #22d3ee;
+      margin-bottom: 12px;
+    }
+
+    .modal-highlights ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .modal-highlights li {
+      padding-left: 24px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .modal-highlights li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #22d3ee;
+    }
+
+    /* CV Modal Specific */
+    .cv-modal {
+      max-width: 500px;
+      padding: 40px;
+    }
+
+    .cv-options {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .cv-option {
+      padding: 20px 24px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(168, 85, 247, 0.1));
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-radius: 12px;
+      color: #22d3ee;
+      font-weight: 600;
+      font-size: 15px;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    .cv-option:hover {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(168, 85, 247, 0.2));
+      border-color: rgba(34, 211, 238, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.3);
+      color: #67e8f9;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 70px;
+      }
+
+      .header-inner {
+        height: 70px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .nav {
+        gap: 16px;
+      }
+
+      .nav a {
+        font-size: 13px;
+      }
+
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-note {
+        padding: 16px 24px;
+        margin-top: 32px;
+      }
+
+      .work-note-text {
+        font-size: 13px;
+      }
+
+      .timeline-container::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        justify-content: flex-end !important;
+        padding-left: 50px;
+      }
+
+      .timeline-dot {
+        left: 20px;
+      }
+
+      .timeline-card {
+        width: 100%;
+      }
+
+      .modal-inner {
+        flex-direction: column;
+      }
+
+      .modal-image-col {
+        flex: 0 0 auto;
+        height: auto;
+      }
+
+      .modal-content-col {
+        padding: 24px;
+      }
+
+      .modal-title {
+        font-size: 24px;
+      }
+
+      /* Mobile contact cards stack */
+      .contact-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .contact-card {
+        height: 120px;
+      }
+
+      .contact-icon {
+        width: 28px;
+        height: 28px;
+      }
+
+      .contact-label {
+        font-size: 12px;
+      }
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo-container">
+        <div class="logo">Vivek Chawda</div>
+        <div class="logo-subtitle">User Experience Designer</div>
+      </div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <button class="cta-btn" id="downloadCvBtn">Download CV</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="page">
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <div class="hero-badge">
+        Available for new opportunities
+      </div>
+      <h1 class="hero-title">Designing inclusive, research-driven experiences for global audiences</h1>
+      <p class="hero-subtitle">
+        16 years of experience across healthcare, fintech, environmental analytics, and enterprise SaaS — bridging strategy, research, and design execution with teams worldwide.
+      </p>
+      <div class="hero-pills">
+        <div class="pill">Design Leadership</div>
+        <div class="pill">Design Systems</div>
+        <div class="pill">Complex Workflows</div>
+        <div class="pill">Enterprise SaaS</div>
+        <div class="pill">User Research</div>
+        <div class="pill">Accessibility</div>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="section" id="work">
+      <div class="section-header">
+        <h2 class="section-title">Selected Work</h2>
+        <p class="section-description">
+          These are just a few select projects that I can show publicly. Get in touch with me to discuss other designs for different domains and platforms.
+        </p>
+      </div>
+
+      <div class="work-grid">
+        <!-- Ecolab -->
+        <article class="work-card" 
+          data-project-title="Ecolab – Environmental Monitoring Suite"
+          data-project-subtitle="Designing a cross-platform SaaS suite for global environmental monitoring."
+          data-project-description="Led UX for a cross-platform suite combining satellite imagery, drone data, and on-ground sensors to help global industrial clients monitor emissions and compliance."
+          data-project-highlights='["Co-created a design system used by 7 products.","Reduced design duplication and improved release consistency across teams.","Validated complex environmental metrics with domain experts through iterative prototypes."]'
+          data-meta='["7 Products","Design System","Satellite & IoT","DesignOps"]'
+          data-image="images/work-ecolab-screen.png"
+          data-link="https://www.ecolab.com/offerings/water-quality-powered-by-ecolab3d"
+        >
+          <div class="work-image">
+            <img src="images/work-ecolab-screen.png" alt="Ecolab Environmental Monitoring Suite" />
+          </div>
+          <div class="work-content">
+            <div class="work-number">01</div>
+            <div class="work-tagline">Ecolab · Environmental SaaS</div>
+            <h3 class="work-title">Environmental Monitoring Suite</h3>
+            <p class="work-description">
+              Led UX for a cross-platform suite combining satellite imagery, drone data, and on-ground sensors to help global industrial clients monitor emissions and compliance.
+            </p>
+            <div class="work-meta">
+              <span>Design System</span>
+              <span>7 Products</span>
+              <span>IoT + Satellite</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Kayrros -->
+        <article class="work-card"
+          data-project-title="Kayrros – Satellite Imaging Platform"
+          data-project-subtitle="Turning complex satellite data into actionable climate intelligence."
+          data-project-description="Designed a configurable analytics environment for climate scientists and analysts, while keeping executive-level reporting simple and trustworthy for non-experts."
+          data-project-highlights='["Balanced expert and executive needs with a dual interface strategy.","Simplified complex geospatial overlays for faster interpretation.","Aligned product, science, and engineering teams around shared UX patterns."]'
+          data-meta='["Satellite Data","Energy & Finance","Dual Interfaces","Analytics"]'
+          data-image="images/work-kayrros-screen.png"
+          data-link="https://www.kayrros.com/taking-climate-action-now-how-satellite-data-can-help/"
+        >
+          <div class="work-image">
+            <img src="images/work-kayrros-screen.png" alt="Kayrros Climate Intelligence Platform" />
+          </div>
+          <div class="work-content">
+            <div class="work-number">02</div>
+            <div class="work-tagline">Kayrros · Climate Intelligence</div>
+            <h3 class="work-title">Climate Intelligence Platform</h3>
+            <p class="work-description">
+              Designed a dual solution for climate scientists and executives, enabling energy partners to track emissions at scale using satellite data.
+            </p>
+            <div class="work-meta">
+              <span>Analytics</span>
+              <span>Geospatial UX</span>
+              <span>B2B SaaS</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- McKinsey -->
+        <article class="work-card"
+          data-project-title="McKinsey – MAARS Mobile Commerce"
+          data-project-subtitle="Building trust and security into rural digital payments."
+          data-project-description="Worked with a cross-functional team to design flows for onboarding, authentication, and payments that respected users' mental models and device constraints."
+          data-project-highlights='["Accounted for low connectivity and shared-device usage patterns.","Used iconography, voice, and simple language to support low-literacy users.","Supported a pilot that scaled to 10,000+ farmers."]'
+          data-meta='["Secure Payments","10,000+ Farmers","Low-Literacy UX","Mobile"]'
+          data-image="images/work-maars-screen.png"
+          data-link="https://itcportal.com/itc-businesses/agri-business/itc-maars.html"
+        >
+          <div class="work-image">
+            <img src="images/work-maars-screen.png" alt="McKinsey MAARS Mobile Commerce" />
+          </div>
+          <div class="work-content">
+            <div class="work-number">03</div>
+            <div class="work-tagline">McKinsey & Company</div>
+            <h3 class="work-title">MAARS Mobile Commerce</h3>
+            <p class="work-description">
+              Helped design a secure mobile platform for 10,000+ smallholder farmers to transact safely using low-end Android devices.
+            </p>
+            <div class="work-meta">
+              <span>Fintech</span>
+              <span>10K+ Users</span>
+              <span>Field Research</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Healthcare (GE/Philips) -->
+        <article class="work-card"
+          data-project-title="Healthcare – Imaging & TeleICU"
+          data-project-subtitle="Supporting radiologists and clinicians in high-stakes environments."
+          data-project-description="Worked with clinical teams to refine reporting flows, visual prioritization, and multi-screen layouts while ensuring consistency across legacy and new products."
+          data-project-highlights='["Designed for both dark and light reading environments.","Negotiated design decisions within regulatory and legacy constraints.","Helped reduce post-launch issues through high-fidelity interaction prototypes."]'
+          data-meta='["Radiology","TeleICU","High-Acuity Care","Complex Workflows"]'
+          data-image="images/work-healthcare-screen.png"
+          data-link="https://www.philips.co.in/healthcare/product/HC728143/incisive-ct-ct-scanner"
+        >
+          <div class="work-image">
+            <img src="images/work-healthcare-screen.png" alt="Healthcare Imaging & TeleICU" />
+          </div>
+          <div class="work-content">
+            <div class="work-number">04</div>
+            <div class="work-tagline">Philips · GE Healthcare</div>
+            <h3 class="work-title">Medical Imaging & Critical Care</h3>
+            <p class="work-description">
+              Designed service dashboards, imaging workflows, and TeleICU tools for high-pressure clinical environments with FDA regulatory constraints.
+            </p>
+            <div class="work-meta">
+              <span>Healthcare</span>
+              <span>FDA-Regulated</span>
+              <span>TeleICU</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Philips RADAR - WITH CASE STUDY BADGE -->
+        <article class="work-card"
+          data-project-title="Philips – Maintenance Dashboard"
+          data-project-subtitle="Radiology SaaS Dashboard"
+          data-project-description="Designed service dashboard for Remote Analysis and Diagnosis tool for service technicians and engineers helping them find and resolve issues with radiology systems installed globally."
+          data-project-highlights='["Built comprehensive monitoring system for 1600+ radiology devices worldwide.","Designed multi-level filtering and prioritization for critical alert management.","Created data-dense dashboard balancing overview statistics with actionable detail views."]'
+          data-meta='["Healthcare","SaaS","Dashboard"]'
+          data-image="images/work-radar-screen.jpg"
+          data-link="cs/RADAR.html"
+          data-has-case-study="true"
+        >
+          <!-- CASE STUDY BADGE -->
+          <div class="case-study-badge">Case Study</div>
+          
+          <div class="work-image">
+            <img src="images/work-radar-screen.jpg" alt="Philips RADAR Maintenance Dashboard" />
+          </div>
+          <div class="work-content">
+            <div class="work-number">05</div>
+            <div class="work-tagline">Philips · Healthcare SaaS</div>
+            <h3 class="work-title">Maintenance Dashboard</h3>
+            <p class="work-description">
+              Designed service dashboard for Remote Analysis and Diagnosis tool for service technicians and engineers helping them find and resolve issues with radiology systems installed globally.
+            </p>
+            <div class="work-meta">
+              <span>Healthcare</span>
+              <span>SaaS</span>
+              <span>Dashboard</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dubai Expo -->
+        <article class="work-card"
+          data-project-title="Siemens – Dubai Expo Control Dashboard"
+          data-project-subtitle="Tablet-based control system for World Expo 2020."
+          data-project-description="Dubai Expo 2020 required a unified tablet-based dashboard to control critical exposition parameters including climate, lighting, and irrigation systems. I led the design pitch that secured this landmark project for Siemens—the largest contract won by Siemens Design at the time."
+          data-project-highlights='["Created the winning pitch presentation and UX strategy.","Designed unified control interface for climate, lighting, and irrigation.","Delivered largest contract secured by Siemens Design division to date."]'
+          data-meta='["Dashboard","Tablet","Global Collaboration"]'
+          data-image="images/work-dubai-screen.png"
+          data-link="https://xcelerator.siemens.com/global/en/industries/urban-communities/expo-2020-dubai/press/images-infographics.html"
+        >
+          <div class="work-image">
+            <img src="images/work-dubai-screen.png" alt="Dubai Expo Control Dashboard" />
+          </div>
+          <div class="work-content">
+            <div class="work-number">06</div>
+            <div class="work-tagline">Siemens · Dubai Expo 2020</div>
+            <h3 class="work-title">Dubai Expo Control Dashboard</h3>
+            <p class="work-description">
+              Led the design pitch that secured Siemens' largest contract—a unified tablet dashboard controlling climate, lighting, and irrigation systems for World Expo 2020.
+            </p>
+            <div class="work-meta">
+              <span>Dashboard</span>
+              <span>Tablet</span>
+              <span>Global Collaboration</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Work Note - NEW -->
+      <div class="work-note">
+        <div class="work-note-icon">⏳</div>
+        <p class="work-note-text">
+          <strong>More projects and detailed case studies are on the way.</strong> I'm currently working with previous clients and companies to obtain clearance for additional work samples. Check back soon for updates!
+        </p>
+      </div>
+
+    </section>
+
+    <!-- Experience Timeline -->
+    <section class="section" id="experience">
+      <div class="section-header">
+        <h2 class="section-title">Experience Timeline</h2>
+        <p class="section-description">Design leadership and hands-on product delivery across industries.</p>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Item 1 -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">Nov 2024 - May 2025</div>
+            <div class="timeline-role">Design Manager</div>
+            <div class="timeline-company">Ecolab</div>
+            <p class="timeline-description">
+              Leading a global team of 7 designers across 4 product verticals. Scaled design system company-wide, improving consistency by 20% and reducing design redundancy.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">Aug 2023 - Nov 2024</div>
+            <div class="timeline-role">Experience Design Consultant</div>
+            <div class="timeline-company">Independent Designer</div>
+            <p class="timeline-description">
+              Conducted design reviews and designed user flows, wireframes, and prototypes for healthcare, insurance, and consumer tech clients.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">Feb 2022 - Aug 2023</div>
+            <div class="timeline-role">Associate Design Director</div>
+            <div class="timeline-company">McKinsey & Company</div>
+            <p class="timeline-description">
+              Designed secure mobile commerce platform for agricultural transactions (MAARS) serving 10,000+ farmers. Part of UX global Design for Good team.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">Nov 2020 - Jan 2022</div>
+            <div class="timeline-role">Principal UX Designer</div>
+            <div class="timeline-company">Kayrros</div>
+            <p class="timeline-description">
+              Designed environmental monitoring suite using satellite and drone data. Built cross-platform Design System for 7 products.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">Jul 2018 - Nov 2020</div>
+            <div class="timeline-role">Senior UX Designer – Technical Expert</div>
+            <div class="timeline-company">Siemens Technology India</div>
+            <p class="timeline-description">
+              Won Dubai Expo 2020 Control Center contract by designing secure multi-platform monitoring system. SPOC for Siemens Energy digital products.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">Jan 2015 - Apr 2018</div>
+            <div class="timeline-role">Senior Interaction Designer</div>
+            <div class="timeline-company">Philips Design</div>
+            <p class="timeline-description">
+              Led service dashboard design for monitoring global medical equipment. Improved Image Guided Therapy tools in collaboration with engineering teams.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="timeline-item">
+          <div class="timeline-card">
+            <div class="timeline-date">2009 - 2014</div>
+            <div class="timeline-role">Earlier Roles</div>
+            <div class="timeline-company">GE Healthcare, Jaguar Land Rover, Tata Elxsi, K3/TAT</div>
+            <p class="timeline-description">
+              Designed tools for High Acuity areas and TeleICU system. In-car HMI for concept vehicles. Thesis project on gestural interaction concepts for Motorola.
+            </p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-description">
+          Happy to discuss product strategy, design systems, or specific UX challenges in healthcare, fintech, and complex SaaS platforms.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Email -->
+        <div class="contact-card">
+          <div class="contact-icon-label">
+            <div class="contact-icon">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="7" width="26" height="18" rx="2" />
+                <path d="M3 10 L16 18 L29 10" />
+              </svg>
+            </div>
+            <div class="contact-label">Email</div>
+          </div>
+          <div class="contact-details">
+            <a href="mailto:vivchawda@gmail.com" class="contact-link">vivchawda@gmail.com</a>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="contact-card">
+          <div class="contact-icon-label">
+            <div class="contact-icon">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <rect x="9" y="4" width="14" height="24" rx="2" />
+                <line x1="12" y1="7" x2="20" y2="7" />
+                <circle cx="16" cy="24" r="1" fill="#c084fc" />
+              </svg>
+            </div>
+            <div class="contact-label">Phone</div>
+          </div>
+          <div class="contact-details">
+            <a href="tel:+919663781502" class="contact-link">+91 96637 81502</a>
+          </div>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="contact-card">
+          <div class="contact-icon-label">
+            <div class="contact-icon">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="5" width="22" height="22" rx="2" />
+                <line x1="11" y1="14" x2="11" y2="22" />
+                <circle cx="11" cy="10" r="1.5" fill="#c084fc" />
+                <path d="M16 14 C16 14, 16 12, 19 12 C22 12, 22 14, 22 16 L22 22" />
+                <line x1="16" y1="17" x2="16" y2="22" />
+              </svg>
+            </div>
+            <div class="contact-label">LinkedIn</div>
+          </div>
+          <div class="contact-details">
+            <a href="https://linkedin.com/in/vivekchawda/" class="contact-link" target="_blank" rel="noopener">linkedin.com/in/vivekchawda/</a>
+          </div>
+        </div>
+
+        <!-- GitHub -->
+        <div class="contact-card">
+          <div class="contact-icon-label">
+            <div class="contact-icon">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="10" />
+                <path d="M16 8 C12 8, 9 11, 9 14 C9 16, 10 18, 12 19 L12 22 C12 23, 13 24, 14 24 L18 24 C19 24, 20 23, 20 22 L20 19 C22 18, 23 16, 23 14 C23 11, 20 8, 16 8" />
+              </svg>
+            </div>
+            <div class="contact-label">GitHub</div>
+          </div>
+          <div class="contact-details">
+            <a href="https://github.com/vivchawda" class="contact-link" target="_blank" rel="noopener">github.com/vivchawda</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Work Modal -->
+  <div class="modal-backdrop" id="workModalBackdrop">
+    <div class="modal">
+      <button class="modal-close" id="workModalClose">×</button>
+      <div class="modal-inner">
+        <div class="modal-image-col" id="modalImageCol">
+          <div class="modal-image-wrapper">
+            <a href="#" class="modal-image-link" id="modalImageLink">
+              <img src="" alt="Project screenshot" class="modal-image" id="modalImage" />
+            </a>
+          </div>
+          <a href="#" class="case-study-btn" id="caseStudyBtn">View case study</a>
+        </div>
+        <div class="modal-content-col">
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <p class="modal-subtitle" id="modalSubtitle"></p>
+          <div class="modal-meta" id="modalMeta"></div>
+          <p class="modal-description" id="modalDescription"></p>
+          <div class="modal-highlights" id="modalHighlights"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CV Modal -->
+  <div class="modal-backdrop" id="cvModalBackdrop">
+    <div class="modal cv-modal">
+      <button class="modal-close" id="cvModalClose">×</button>
+      <h2 class="modal-title">Download My CV</h2>
+      <div class="cv-options">
+        <a href="cv/Vivek-Chawda-CV.pdf" download class="cv-option">PDF Version</a>
+        <a href="cv/Vivek-Chawda-CV-ATS.docx" download class="cv-option">ATS-Optimized DOCX</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Work Modal
+    const workModalBackdrop = document.getElementById('workModalBackdrop');
+    const workModalClose = document.getElementById('workModalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalHighlights = document.getElementById('modalHighlights');
+    const modalImage = document.getElementById('modalImage');
+    const modalImageLink = document.getElementById('modalImageLink');
+    const caseStudyBtn = document.getElementById('caseStudyBtn');
+
+    document.querySelectorAll('.work-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.getAttribute('data-project-title');
+        const subtitle = card.getAttribute('data-project-subtitle');
+        const description = card.getAttribute('data-project-description');
+        const metaRaw = card.getAttribute('data-meta');
+        const highlightsRaw = card.getAttribute('data-project-highlights');
+        const imageSrc = card.getAttribute('data-image') || 'images/work-default-screen.png';
+        const link = card.getAttribute('data-link');
+        const hasCaseStudy = card.getAttribute('data-has-case-study') === 'true';
+
+        modalTitle.textContent = title;
+        modalSubtitle.textContent = subtitle;
+        modalDescription.textContent = description;
+        modalImage.src = imageSrc;
+        modalImage.alt = title;
+        
+        // Handle case study button vs external link
+        if (hasCaseStudy) {
+          // RADAR modal: show case study button, hide arrow
+          modalImageLink.classList.add('no-arrow');
+          modalImageLink.style.cursor = 'default';
+          modalImageLink.onclick = (e) => e.preventDefault();
+          caseStudyBtn.classList.add('visible');
+          caseStudyBtn.href = link;
+        } else {
+          // Other modals: show arrow, hide case study button, use JavaScript navigation
+          modalImageLink.classList.remove('no-arrow');
+          modalImageLink.style.cursor = 'pointer';
+          // Use JavaScript to open link in new tab
+          modalImageLink.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.open(link, '_blank', 'noopener,noreferrer');
+          };
+          caseStudyBtn.classList.remove('visible');
+        }
+
+        modalMeta.innerHTML = '';
+        try {
+          const metaItems = JSON.parse(metaRaw);
+          metaItems.forEach(m => {
+            const span = document.createElement('span');
+            span.textContent = m;
+            modalMeta.appendChild(span);
+          });
+        } catch (e) {}
+
+        modalHighlights.innerHTML = '';
+        try {
+          const highlights = JSON.parse(highlightsRaw);
+          if (highlights.length) {
+            const h4 = document.createElement('h4');
+            h4.textContent = 'What this work focused on';
+            modalHighlights.appendChild(h4);
+            const ul = document.createElement('ul');
+            highlights.forEach(h => {
+              const li = document.createElement('li');
+              li.textContent = h;
+              ul.appendChild(li);
+            });
+            modalHighlights.appendChild(ul);
+          }
+        } catch (e) {}
+
+        workModalBackdrop.classList.add('is-visible');
+      });
+    });
+
+    // RADAR button click handler
+    caseStudyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = caseStudyBtn.href;
+    });
+
+    workModalClose.addEventListener('click', () => {
+      workModalBackdrop.classList.remove('is-visible');
+    });
+
+    workModalBackdrop.addEventListener('click', (e) => {
+      if (e.target === workModalBackdrop) {
+        workModalBackdrop.classList.remove('is-visible');
+      }
+    });
+
+    // CV Modal
+    const cvModalBackdrop = document.getElementById('cvModalBackdrop');
+    const downloadCvBtn = document.getElementById('downloadCvBtn');
+    const cvModalClose = document.getElementById('cvModalClose');
+
+    downloadCvBtn.addEventListener('click', () => {
+      cvModalBackdrop.classList.add('is-visible');
+    });
+
+    cvModalClose.addEventListener('click', () => {
+      cvModalBackdrop.classList.remove('is-visible');
+    });
+
+    cvModalBackdrop.addEventListener('click', (e) => {
+      if (e.target === cvModalBackdrop) {
+        cvModalBackdrop.classList.remove('is-visible');
+      }
+    });
+
+    // ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        workModalBackdrop.classList.remove('is-visible');
+        cvModalBackdrop.classList.remove('is-visible');
+      }
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
