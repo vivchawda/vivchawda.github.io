@@ -17,270 +17,92 @@
   </script>
   
   <style>
-    /* ==================== RESET & BASE ==================== */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* ==================== REUSABLE DESIGN SYSTEM (SHARED WITH INDEX.HTML) ==================== */
+    /* This stylesheet uses the same color palette, typography, spacing, and animations as index.html */
+    /* This ensures RADAR.html looks exactly like index.html */
+    
+    :root {
+      /* === COLOR PALETTE (IDENTICAL TO INDEX.HTML) === */
+      --color-bg-primary: #0a0e17;
+      --color-bg-secondary: #1e293b;
+      --color-bg-card: rgba(15, 23, 42, 0.8);
+      
+      --color-text-primary: #f1f5f9;
+      --color-text-secondary: #cbd5e1;
+      --color-text-tertiary: #94a3b8;
+      
+      --color-accent-cyan: #22d3ee;
+      --color-accent-cyan-light: #67e8f9;
+      --color-accent-purple: #a855f7;
+      --color-accent-purple-light: #c084fc;
+      --color-accent-green: #10b981;
+      --color-accent-orange: #f97316;
+      --color-accent-pink: #ec4899;
+      --color-accent-yellow: #eab308;
+      
+      --color-border-cyan: rgba(6, 182, 212, 0.2);
+      --color-border-purple: rgba(168, 85, 247, 0.3);
+      --color-border-green: rgba(16, 185, 129, 0.3);
+      --color-border-orange: rgba(249, 115, 22, 0.3);
+      --color-border-pink: rgba(236, 72, 153, 0.3);
+      
+      /* === TYPOGRAPHY === */
+      --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      --font-size-sm: 13px;
+      --font-size-base: 14px;
+      --font-size-lg: 16px;
+      --font-size-xl: 18px;
+      --font-size-2xl: 20px;
+      --font-size-3xl: 24px;
+      --font-size-4xl: 30px;
+      --font-size-5xl: 40px;
+      --font-size-6xl: 56px;
+      
+      /* === SPACING SCALE === */
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-lg: 16px;
+      --space-xl: 24px;
+      --space-2xl: 32px;
+      --space-3xl: 48px;
+      --space-4xl: 64px;
+      --space-5xl: 80px;
+      --space-6xl: 120px;
+      
+      /* === LAYOUT === */
+      --max-width: 1200px;
+      --spacing-page: 24px;
+      --spacing-section: 120px;
+      --header-height: 80px;
+      
+      /* === TRANSITIONS === */
+      --duration-fast: 0.2s;
+      --duration-normal: 0.3s;
+      --duration-slow: 0.6s;
+      --easing-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
+    /* ==================== RESET & BASE ==================== */
+    * {
+      box-sizing: border-box;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.7;
-      color: #e0e0e0;
-      background-color: #0a0e17;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
+      margin: 0;
+      font-family: var(--font-family-base);
+      background: var(--color-bg-primary);
+      color: var(--color-text-primary);
+      padding-top: var(--header-height);
     }
 
-    /* ==================== CSS VARIABLES ==================== */
-    :root {
-      /* Dark theme colors - exact match to main portfolio */
-      --bg-primary: #0a0e17;
-      --bg-secondary: #0f1319;
-      --bg-card: #151a23;
-      --text-primary: #ffffff;
-      --text-secondary: #a0a0a0;
-      --text-tertiary: #707070;
-      
-      /* Accent colors */
-      --accent-cyan: #00d9ff;
-      --accent-purple: #7c3aed;
-      --accent-orange: #f59e0b;
-      --accent-green: #10b981;
-      --accent-pink: #ec4899;
-      
-      /* Spacing system */
-      --space-xs: 4px;
-      --space-sm: 8px;
-      --space-md: 16px;
-      --space-lg: 24px;
-      --space-xl: 32px;
-      --space-2xl: 48px;
-      --space-3xl: 64px;
-      --space-4xl: 96px;
-      --space-5xl: 128px;
-      
-      /* Typography */
-      --font-size-sm: 0.875rem;
-      --font-size-base: 1rem;
-      --font-size-lg: 1.125rem;
-      --font-size-xl: 1.25rem;
-      --font-size-2xl: 1.5rem;
-      --font-size-3xl: 2rem;
-      --font-size-4xl: 2.5rem;
-      --font-size-5xl: 3rem;
-      --font-size-6xl: 4rem;
-      
-      /* Layout */
-      --max-width: 1200px;
-      --border-radius: 12px;
-      --transition: all 0.3s ease;
-    }
-
-    /* ==================== TYPOGRAPHY ==================== */
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 600;
-      line-height: 1.3;
-      color: var(--text-primary);
-      margin-bottom: var(--space-lg);
-      letter-spacing: -0.02em;
-    }
-
-    h1 { font-size: var(--font-size-6xl); }
-    h2 { font-size: var(--font-size-4xl); }
-    h3 { font-size: var(--font-size-3xl); }
-    h4 { font-size: var(--font-size-2xl); }
-    h5 { font-size: var(--font-size-xl); }
-
-    p {
-      margin-bottom: var(--space-lg);
-      color: var(--text-secondary);
-      font-size: var(--font-size-base);
-      line-height: 1.7;
-    }
-
-    a {
-      color: var(--text-primary);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    /* ==================== SKIP LINK ==================== */
-    .skip-link {
-      position: absolute;
-      top: -100px;
-      left: var(--space-md);
-      background: var(--accent-cyan);
-      color: var(--bg-primary);
-      padding: var(--space-md);
-      border-radius: var(--border-radius);
-      z-index: 9999;
-      font-weight: 600;
-    }
-
-    .skip-link:focus {
-      top: var(--space-md);
-    }
-
-    /* ==================== NAVIGATION (Matching portfolio exactly) ==================== */
-    .nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(10, 14, 23, 0.9);
-      backdrop-filter: blur(10px);
-      z-index: 10000;
-      padding: var(--space-lg) 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .nav__container {
+    .page {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 0 var(--space-xl);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 0 var(--spacing-page) var(--spacing-section);
     }
 
-    /* Logo with gradient and subtitle */
-    .nav__logo-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .nav__logo {
-      font-size: var(--font-size-xl);
-      font-weight: 700;
-      background: linear-gradient(135deg, #00d9ff 0%, #00a8cc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: 0;
-    }
-
-    .nav__subtitle {
-      font-size: 0.65rem;
-      font-weight: 400;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-
-    .nav__menu {
-      display: flex;
-      list-style: none;
-      gap: var(--space-xl);
-      align-items: center;
-    }
-
-    /* Navigation links */
-    .nav__link {
-      color: var(--text-secondary);
-      font-size: var(--font-size-sm);
-      font-weight: 400;
-      padding: var(--space-sm) 0;
-      position: relative;
-      transition: color 0.2s ease;
-    }
-
-    .nav__link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--accent-cyan);
-      transition: width 0.3s ease;
-    }
-
-    .nav__link:hover,
-    .nav__link.active {
-      color: var(--text-primary);
-    }
-
-    .nav__link:hover::after,
-    .nav__link.active::after {
-      width: 100%;
-    }
-
-    /* Download CV Button - Gradient style matching portfolio */
-    .nav__cta {
-      background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
-      color: var(--bg-primary);
-      font-size: var(--font-size-sm);
-      font-weight: 600;
-      padding: var(--space-md) var(--space-lg);
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 217, 255, 0.2);
-    }
-
-    .nav__cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 217, 255, 0.3);
-      background: linear-gradient(135deg, #00e5ff 0%, #00b8e6 100%);
-    }
-
-    .nav__toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: var(--space-sm);
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .nav__toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text-primary);
-      transition: var(--transition);
-      border-radius: 2px;
-    }
-
-    /* ==================== HERO SECTION ==================== */
-    .hero {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      padding: calc(var(--space-5xl) + 60px) var(--space-xl) var(--space-4xl);
-      background: var(--bg-primary);
-      position: relative;
-    }
-
-    .hero__container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .hero__eyebrow {
-      font-size: var(--font-size-sm);
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-md);
-      color: var(--text-tertiary);
-      opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
-    }
-
+    /* ==================== ANIMATIONS (REUSABLE) ==================== */
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -292,898 +114,865 @@
       }
     }
 
-    .hero__title {
-      font-size: clamp(3rem, 10vw, 6rem);
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: var(--space-xl);
-      line-height: 1.1;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease 0.1s forwards;
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+      }
+      to {
+        transform: translateY(0);
+      }
     }
 
-    .hero__subtitle {
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
+    }
+
+    a {
+      color: var(--color-accent-cyan);
+      text-decoration: none;
+      transition: all var(--duration-normal) ease;
+    }
+
+    a:hover {
+      color: var(--color-accent-cyan-light);
+      text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+      text-decoration: none;
+    }
+
+    /* ==================== HEADER MODULE (IDENTICAL TO INDEX.HTML) ==================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 14, 23, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border-cyan);
+      z-index: 100;
+      animation: slideDown var(--duration-normal) ease-out;
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-page);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--header-height);
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo {
       font-size: var(--font-size-xl);
-      color: var(--text-secondary);
-      margin-bottom: var(--space-3xl);
-      max-width: 800px;
-      line-height: 1.6;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease 0.2s forwards;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-accent-cyan);
     }
 
-    .hero__meta {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: var(--space-lg);
+    .logo-subtitle {
+      font-size: var(--font-size-sm);
+      letter-spacing: 0.05em;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2xl);
+    }
+
+    .nav a {
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      transition: all var(--duration-normal) ease;
+      position: relative;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-purple));
+      transition: width var(--duration-normal) ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--color-accent-cyan);
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after {
+      width: 100%;
+    }
+
+    .cta-btn {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+      color: #fff;
+      border-radius: 8px;
+      font-size: var(--font-size-base);
+      font-weight: 600;
+      border: 1px solid rgba(34, 211, 238, 0.5);
+      transition: all var(--duration-normal) ease;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4),
+                  0 0 40px rgba(168, 85, 247, 0.3);
+      color: #fff;
+      text-shadow: none;
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      padding: var(--space-4xl) 0 var(--space-5xl);
+      text-align: center;
+      animation: fadeInUp var(--duration-slow) ease-out 0.2s backwards;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(168, 85, 247, 0.15));
+      border: 1px solid var(--color-border-cyan);
+      color: var(--color-accent-cyan);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-green));
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-title {
+      font-size: var(--font-size-6xl);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: var(--space-xl);
+      background: linear-gradient(135deg, #f1f5f9 0%, var(--color-accent-cyan) 50%, var(--color-accent-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       max-width: 900px;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease 0.3s forwards;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .hero__meta-item {
-      padding: var(--space-lg);
+    .hero-subtitle {
+      font-size: var(--font-size-xl);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-2xl);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+      max-width: 1000px;
+      margin: 0 auto;
+      animation: fadeInUp var(--duration-slow) ease-out 0.3s backwards;
+    }
+
+    .hero-meta-item {
+      padding: var(--space-xl);
+      border-radius: 12px;
+      background: var(--color-bg-card);
+      text-align: left;
       border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: var(--border-radius);
-      background: var(--bg-card);
-      transition: var(--transition);
     }
 
-    .hero__meta-item:hover {
-      border-color: rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .hero__meta-label {
+    .hero-meta-label {
       font-size: var(--font-size-sm);
       font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: var(--space-sm);
-      color: var(--text-tertiary);
+      color: var(--color-text-tertiary);
     }
 
-    .hero__meta-value {
+    .hero-meta-value {
       font-size: var(--font-size-base);
       font-weight: 400;
-      color: var(--text-primary);
+      color: var(--color-text-primary);
     }
 
-    /* ==================== SECTIONS ==================== */
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 var(--space-xl);
-    }
-
+    /* ==================== SECTION DIVIDER (REUSABLE) ==================== */
     .section {
-      padding: var(--space-4xl) 0;
-      background: var(--bg-primary);
+      margin-bottom: var(--spacing-section);
       position: relative;
-      z-index: 1;
     }
 
-    .section--alt {
-      background: var(--bg-secondary);
+    .section::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 600px;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--color-border-cyan) 20%, 
+        var(--color-border-purple) 50%, 
+        var(--color-border-cyan) 80%, 
+        transparent 100%);
     }
 
-    .section__header {
+    .section:last-of-type::after {
+      display: none;
+    }
+
+    /* ==================== SECTION TITLE ==================== */
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-4xl);
+    }
+
+    .section-title {
+      font-size: var(--font-size-5xl);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-lg);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-purple), var(--color-accent-orange));
+      border-radius: 2px;
+    }
+
+    .section-description {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-tertiary);
+      margin-top: var(--space-xl);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ==================== CARD GRID ==================== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-2xl);
       margin-bottom: var(--space-3xl);
     }
 
-    .section__eyebrow {
-      font-size: var(--font-size-sm);
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-tertiary);
-      margin-bottom: var(--space-md);
-    }
-
-    .section__title {
-      font-size: var(--font-size-4xl);
-      color: var(--text-primary);
-      margin-bottom: var(--space-lg);
-      line-height: 1.2;
-    }
-
-    .section__description {
-      font-size: var(--font-size-lg);
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 800px;
-    }
-
-    /* ==================== GRID ==================== */
-    .grid {
-      display: grid;
-      gap: var(--space-xl);
-    }
-
-    .grid--2 {
-      grid-template-columns: 1fr;
-    }
-
-    .grid--3 {
-      grid-template-columns: 1fr;
-    }
-
-    /* ==================== CARDS ==================== */
     .card {
-      background: var(--bg-card);
-      border-radius: var(--border-radius);
-      padding: var(--space-2xl);
+      padding: var(--space-xl);
+      border-radius: 12px;
+      background: var(--color-bg-card);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInUp var(--duration-slow) ease-out backwards;
     }
 
-    .card:nth-child(6n+1):hover {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2);
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+
+    .card:nth-child(3n+1):hover {
+      border-color: var(--color-accent-cyan);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.3);
       transform: translateY(-4px);
     }
 
-    .card:nth-child(6n+2):hover {
-      border-color: var(--accent-purple);
-      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
+    .card:nth-child(3n+2):hover {
+      border-color: var(--color-accent-purple);
+      box-shadow: 0 12px 32px rgba(168, 85, 247, 0.3);
       transform: translateY(-4px);
     }
 
-    .card:nth-child(6n+3):hover {
-      border-color: var(--accent-orange);
-      box-shadow: 0 8px 32px rgba(245, 158, 11, 0.2);
+    .card:nth-child(3n):hover {
+      border-color: var(--color-accent-orange);
+      box-shadow: 0 12px 32px rgba(249, 115, 22, 0.3);
       transform: translateY(-4px);
     }
 
-    .card:nth-child(6n+4):hover {
-      border-color: var(--accent-green);
-      box-shadow: 0 8px 32px rgba(16, 185, 129, 0.2);
-      transform: translateY(-4px);
-    }
-
-    .card:nth-child(6n+5):hover {
-      border-color: var(--accent-pink);
-      box-shadow: 0 8px 32px rgba(236, 72, 153, 0.2);
-      transform: translateY(-4px);
-    }
-
-    .card:nth-child(6n):hover {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2);
-      transform: translateY(-4px);
-    }
-
-    .card__title {
+    .card h3 {
       font-size: var(--font-size-xl);
       font-weight: 600;
-      color: var(--text-primary);
+      color: var(--color-text-primary);
       margin-bottom: var(--space-md);
+      margin-top: 0;
     }
 
-    .card__content {
-      color: var(--text-secondary);
+    .card p {
       font-size: var(--font-size-base);
-      line-height: 1.7;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin: 0;
     }
 
-    /* ==================== INFO BOXES ==================== */
-    .objectives-challenges {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-xl);
-    }
-
+    /* ==================== INFO BOX ==================== */
     .info-box {
       padding: var(--space-2xl);
-      border-radius: var(--border-radius);
+      border-radius: 12px;
+      background: var(--color-bg-card);
       border: 1px solid rgba(255, 255, 255, 0.05);
-      background: var(--bg-card);
-      transition: var(--transition);
+      border-left: 3px solid var(--color-accent-cyan);
+      margin-bottom: var(--space-xl);
     }
 
-    .info-box:hover {
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .info-box--objectives {
-      border-left: 3px solid var(--accent-cyan);
-    }
-
-    .info-box--challenges {
-      border-left: 3px solid var(--accent-orange);
-    }
-
-    .info-box__title {
+    .info-box h3 {
       font-size: var(--font-size-2xl);
       font-weight: 600;
+      color: var(--color-text-primary);
       margin-bottom: var(--space-lg);
-      color: var(--text-primary);
+      margin-top: 0;
     }
 
     .info-box ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
 
     .info-box li {
-      padding-left: var(--space-lg);
+      padding-left: var(--space-xl);
       margin-bottom: var(--space-md);
       position: relative;
-      color: var(--text-secondary);
+      color: var(--color-text-secondary);
       line-height: 1.7;
     }
 
-    .info-box li:before {
-      content: "→";
+    .info-box li::before {
+      content: '→';
       position: absolute;
       left: 0;
-      color: var(--accent-cyan);
-      font-weight: normal;
-    }
-
-    .info-box--challenges li:before {
-      color: var(--accent-orange);
-    }
-
-    /* ==================== PERSONA CARD ==================== */
-    .persona {
-      background: var(--bg-card);
-      border-radius: var(--border-radius);
-      padding: var(--space-2xl);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: var(--transition);
-    }
-
-    .persona:hover {
-      border-color: var(--accent-purple);
-      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
-    }
-
-    .persona__header {
-      display: flex;
-      align-items: center;
-      gap: var(--space-xl);
-      margin-bottom: var(--space-2xl);
-      padding-bottom: var(--space-xl);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .persona__avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: var(--font-size-3xl);
-      font-weight: 700;
-      color: var(--bg-primary);
-      flex-shrink: 0;
-    }
-
-    .persona__name {
-      font-size: var(--font-size-2xl);
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: var(--space-sm);
-    }
-
-    .persona__role {
-      font-size: var(--font-size-base);
-      color: var(--text-secondary);
-    }
-
-    .persona__stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: var(--space-md);
-      margin-bottom: var(--space-xl);
-    }
-
-    .persona__stat {
-      text-align: center;
-      padding: var(--space-md);
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .persona__stat-value {
-      display: block;
-      font-size: var(--font-size-xl);
-      font-weight: 600;
-      color: var(--accent-cyan);
-      margin-bottom: var(--space-xs);
-    }
-
-    .persona__stat-label {
-      font-size: var(--font-size-sm);
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .persona__quote {
-      background: rgba(0, 217, 255, 0.05);
-      padding: var(--space-lg);
-      border-radius: 8px;
-      border-left: 3px solid var(--accent-cyan);
-      font-style: italic;
-      color: var(--text-secondary);
-      margin: var(--space-xl) 0;
-      line-height: 1.7;
-    }
-
-    .persona__section {
-      margin-bottom: var(--space-lg);
-    }
-
-    .persona__section-title {
-      font-size: var(--font-size-sm);
-      font-weight: 600;
-      color: var(--text-tertiary);
-      margin-bottom: var(--space-md);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+      color: var(--color-accent-cyan);
     }
 
     /* ==================== TIMELINE ==================== */
     .timeline {
       position: relative;
+      margin-bottom: var(--space-4xl);
     }
 
-    .timeline__item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: var(--space-2xl);
-      margin-bottom: var(--space-3xl);
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg,
+        transparent 0%,
+        var(--color-border-cyan) 10%,
+        var(--color-border-purple) 30%,
+        var(--color-border-green) 50%,
+        var(--color-border-orange) 70%,
+        var(--color-border-cyan) 90%,
+        transparent 100%);
+    }
+
+    .timeline-item {
       position: relative;
+      padding-left: var(--space-4xl);
+      margin-bottom: var(--space-3xl);
+      animation: fadeInUp var(--duration-slow) ease-out backwards;
     }
 
-    .timeline__item::before {
-      content: '';
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+    .timeline-dot {
       position: absolute;
-      left: 200px;
-      top: 8px;
-      bottom: -48px;
-      width: 1px;
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateX(calc(var(--space-2xl) / 2));
-    }
-
-    .timeline__item:last-child::before {
-      display: none;
-    }
-
-    .timeline__item::after {
-      content: '';
-      position: absolute;
-      left: 200px;
-      top: 8px;
-      width: 8px;
-      height: 8px;
+      left: -8px;
+      top: 0;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
-      background: var(--accent-cyan);
-      transform: translateX(calc(var(--space-2xl) / 2 - 4px));
+      background: var(--color-accent-cyan);
+      border: 4px solid var(--color-bg-primary);
+      transition: all var(--duration-normal) ease;
     }
 
-    .timeline__date {
+    .timeline-item:nth-child(1) .timeline-dot { background: var(--color-accent-cyan); }
+    .timeline-item:nth-child(2) .timeline-dot { background: var(--color-accent-purple); }
+    .timeline-item:nth-child(3) .timeline-dot { background: var(--color-accent-green); }
+    .timeline-item:nth-child(4) .timeline-dot { background: var(--color-accent-orange); }
+    .timeline-item:nth-child(5) .timeline-dot { background: var(--color-accent-pink); }
+
+    .timeline-item:hover .timeline-dot {
+      width: 24px;
+      height: 24px;
+      left: -12px;
+    }
+
+    .timeline-date {
       font-size: var(--font-size-sm);
-      color: var(--text-tertiary);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-sm);
+      font-weight: 600;
+      color: var(--color-accent-cyan);
     }
 
-    .timeline__content h3 {
+    .timeline-item:nth-child(2) .timeline-date { color: var(--color-accent-purple-light); }
+    .timeline-item:nth-child(3) .timeline-date { color: var(--color-accent-green); }
+    .timeline-item:nth-child(4) .timeline-date { color: var(--color-accent-orange); }
+    .timeline-item:nth-child(5) .timeline-date { color: #f472b6; }
+
+    .timeline-item h3 {
       font-size: var(--font-size-xl);
       font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: var(--space-md);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-sm);
+      margin-top: 0;
     }
 
-    .timeline__content p {
-      color: var(--text-secondary);
+    .timeline-item p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
       line-height: 1.7;
-      margin-bottom: 0;
+      margin: 0;
     }
 
-    /* ==================== FEATURES ==================== */
+    /* ==================== FEATURE LIST ==================== */
     .features {
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--space-xl);
+      margin-bottom: var(--space-3xl);
     }
 
     .feature {
       display: flex;
-      gap: var(--space-lg);
+      gap: var(--space-xl);
       padding: var(--space-2xl);
-      background: var(--bg-card);
-      border-radius: var(--border-radius);
+      background: var(--color-bg-card);
+      border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: var(--transition);
+      animation: fadeInUp var(--duration-slow) ease-out backwards;
+      transition: all var(--duration-normal) ease;
     }
 
+    .feature:nth-child(1) { animation-delay: 0.1s; }
+    .feature:nth-child(2) { animation-delay: 0.2s; }
+    .feature:nth-child(3) { animation-delay: 0.3s; }
+    .feature:nth-child(4) { animation-delay: 0.4s; }
+    .feature:nth-child(5) { animation-delay: 0.5s; }
+    .feature:nth-child(6) { animation-delay: 0.6s; }
+
     .feature:hover {
-      border-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--color-accent-cyan);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.2);
       transform: translateY(-2px);
     }
 
-    .feature__icon {
+    .feature-icon {
       width: 48px;
       height: 48px;
       border-radius: 8px;
-      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple));
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--bg-primary);
-      font-size: var(--font-size-xl);
+      color: var(--color-bg-primary);
+      font-size: var(--font-size-2xl);
       font-weight: 700;
       flex-shrink: 0;
     }
 
-    .feature__content h3 {
+    .feature-content h3 {
       font-size: var(--font-size-lg);
       margin-bottom: var(--space-md);
-      color: var(--text-primary);
+      color: var(--color-text-primary);
+      margin-top: 0;
     }
 
-    .feature__content p {
-      color: var(--text-secondary);
+    .feature-content p {
+      color: var(--color-text-secondary);
       line-height: 1.7;
       margin-bottom: var(--space-md);
+      font-size: var(--font-size-base);
     }
 
-    .feature__content ul {
+    .feature-content ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
 
-    .feature__content ul li {
-      color: var(--text-tertiary);
+    .feature-content li {
+      color: var(--color-text-tertiary);
       font-size: var(--font-size-sm);
       margin-bottom: var(--space-sm);
       padding-left: var(--space-md);
       position: relative;
     }
 
-    .feature__content ul li:before {
-      content: "•";
+    .feature-content li::before {
+      content: '•';
       position: absolute;
       left: 0;
-      color: var(--accent-cyan);
+      color: var(--color-accent-cyan);
     }
 
     /* ==================== METRICS ==================== */
-    .impact-metrics {
+    .metrics {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: var(--space-xl);
-      margin: var(--space-3xl) 0;
+      margin-bottom: var(--space-4xl);
     }
 
     .metric {
       text-align: center;
       padding: var(--space-2xl);
-      background: var(--bg-card);
-      border-radius: var(--border-radius);
+      background: var(--color-bg-card);
+      border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: var(--transition);
+      animation: fadeInUp var(--duration-slow) ease-out backwards;
+      transition: all var(--duration-normal) ease;
     }
 
-    .metric:nth-child(1):hover {
-      border-color: var(--accent-cyan);
-      box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2);
+    .metric:nth-child(1) { animation-delay: 0.1s; }
+    .metric:nth-child(2) { animation-delay: 0.2s; }
+    .metric:nth-child(3) { animation-delay: 0.3s; }
+
+    .metric:hover {
+      border-color: var(--color-accent-cyan);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.2);
+      transform: translateY(-4px);
     }
 
-    .metric:nth-child(2):hover {
-      border-color: var(--accent-purple);
-      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
-    }
-
-    .metric:nth-child(3):hover {
-      border-color: var(--accent-green);
-      box-shadow: 0 8px 32px rgba(16, 185, 129, 0.2);
-    }
-
-    .metric__value {
-      font-size: var(--font-size-4xl);
+    .metric-value {
+      font-size: var(--font-size-5xl);
       font-weight: 600;
       margin-bottom: var(--space-md);
       display: block;
-      color: var(--text-primary);
+      color: var(--color-text-primary);
     }
 
-    .metric__label {
+    .metric-label {
       font-size: var(--font-size-base);
-      color: var(--text-secondary);
+      color: var(--color-text-secondary);
     }
 
     /* ==================== TESTIMONIALS ==================== */
     .testimonials {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: var(--space-xl);
+      margin-bottom: var(--space-4xl);
     }
 
     .testimonial {
-      background: var(--bg-card);
-      padding: var(--space-2xl);
-      border-radius: var(--border-radius);
+      padding: var(--space-xl);
+      background: var(--color-bg-card);
+      border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.05);
-      border-left: 3px solid var(--accent-cyan);
-      transition: var(--transition);
+      border-left: 3px solid var(--color-accent-cyan);
+      animation: fadeInUp var(--duration-slow) ease-out backwards;
+      transition: all var(--duration-normal) ease;
     }
+
+    .testimonial:nth-child(1) { animation-delay: 0.1s; }
+    .testimonial:nth-child(2) { animation-delay: 0.2s; }
+    .testimonial:nth-child(3) { animation-delay: 0.3s; }
+    .testimonial:nth-child(4) { animation-delay: 0.4s; }
+    .testimonial:nth-child(5) { animation-delay: 0.5s; }
+    .testimonial:nth-child(6) { animation-delay: 0.6s; }
 
     .testimonial:hover {
-      border-color: var(--accent-cyan);
+      border-left-color: var(--color-accent-cyan);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.2);
     }
 
-    .testimonial__quote {
+    .testimonial-quote {
       font-size: var(--font-size-base);
-      color: var(--text-secondary);
+      color: var(--color-text-secondary);
       font-style: italic;
       margin-bottom: var(--space-lg);
       line-height: 1.7;
     }
 
-    .testimonial__author {
+    .testimonial-author {
       font-size: var(--font-size-sm);
-      color: var(--text-tertiary);
+      color: var(--color-text-tertiary);
       font-weight: 400;
     }
 
-    /* ==================== FADE-IN ANIMATION ==================== */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     /* ==================== RESPONSIVE ==================== */
-    @media (min-width: 768px) {
-      .grid--2 {
-        grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 768px) {
+      body {
+        padding-top: 70px;
       }
 
-      .objectives-challenges {
-        grid-template-columns: repeat(2, 1fr);
+      .header-inner {
+        height: 70px;
       }
 
-      .impact-metrics {
-        grid-template-columns: repeat(3, 1fr);
+      .logo {
+        font-size: var(--font-size-lg);
       }
 
-      .testimonials {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 1024px) {
-      .grid--3 {
-        grid-template-columns: repeat(3, 1fr);
+      .nav {
+        gap: var(--space-xl);
       }
 
-      .testimonials {
-        grid-template-columns: repeat(3, 1fr);
+      .nav a {
+        font-size: var(--font-size-sm);
       }
 
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 767px) {
-      .nav__toggle {
-        display: flex;
-      }
-
-      .nav__menu {
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: rgba(10, 14, 23, 0.98);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        padding: var(--space-xl);
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        transform: translateY(-100%);
-        opacity: 0;
-        pointer-events: none;
-        transition: var(--transition);
-        gap: var(--space-lg);
-      }
-
-      .nav__menu.active {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      .hero__title {
+      .hero-title {
         font-size: var(--font-size-4xl);
       }
 
-      .section__title {
+      .section-title {
         font-size: var(--font-size-3xl);
       }
 
-      .timeline__item {
-        grid-template-columns: 1fr;
-        gap: var(--space-md);
+      .hero-meta {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg);
       }
 
-      .timeline__item::before,
-      .timeline__item::after {
-        display: none;
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        flex-direction: column;
       }
     }
 
-    /* ==================== PRINT STYLES ==================== */
-    @media print {
-      .nav,
-      .skip-link {
-        display: none;
-      }
-
-      body {
-        background: white;
-        color: black;
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <!-- Navigation - Exact match to portfolio header -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="nav__container">
-      <a href="https://vivchawda.github.io" class="nav__logo-wrapper">
-        <div class="nav__logo">Vivek Chawda</div>
-        <div class="nav__subtitle">User Experience Designer</div>
+  <!-- Header (IDENTICAL TO INDEX.HTML) -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="https://vivchawda.github.io" class="logo-container" style="text-decoration: none;">
+        <div class="logo">Vivek Chawda</div>
+        <div class="logo-subtitle">User Experience Designer</div>
       </a>
-      <button class="nav__toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav__menu">
-        <li><a href="#overview" class="nav__link">Overview</a></li>
-        <li><a href="#research" class="nav__link">Research</a></li>
-        <li><a href="#process" class="nav__link">Process</a></li>
-        <li><a href="#solution" class="nav__link">Solution</a></li>
-        <li><a href="#results" class="nav__link">Results</a></li>
-        <li><a href="#" class="nav__cta" id="backButton">← Back to Portfolio</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero__container">
-      <p class="hero__eyebrow">Healthcare · Enterprise SaaS</p>
-      <h1 class="hero__title">RADAR</h1>
-      <p class="hero__subtitle">Remote Analysis and Diagnosis tool for service technicians and engineers helping them find and resolve issues with installed medical systems globally.</p>
-      
-      <div class="hero__meta">
-        <div class="hero__meta-item">
-          <div class="hero__meta-label">Role</div>
-          <div class="hero__meta-value">UX Designer</div>
-        </div>
-        <div class="hero__meta-item">
-          <div class="hero__meta-label">Duration</div>
-          <div class="hero__meta-value">2015 - 2018</div>
-        </div>
-        <div class="hero__meta-item">
-          <div class="hero__meta-label">Company</div>
-          <div class="hero__meta-value">Philips Healthcare</div>
-        </div>
-        <div class="hero__meta-item">
-          <div class="hero__meta-label">Tools</div>
-          <div class="hero__meta-value">Sketch, Axure, InVision</div>
-        </div>
-      </div>
+      <nav class="nav">
+        <a href="#overview">Overview</a>
+        <a href="#research">Research</a>
+        <a href="#process">Process</a>
+        <a href="#solution">Solution</a>
+        <a href="#results">Results</a>
+        <a href="https://vivchawda.github.io" class="cta-btn">← Back to Portfolio</a>
+      </nav>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main id="main-content">
+  <main class="page">
     
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-badge">
+        Healthcare · Enterprise SaaS
+      </div>
+      <h1 class="hero-title">RADAR</h1>
+      <p class="hero-subtitle">Remote Analysis and Diagnosis tool for service technicians and engineers helping them find and resolve issues with installed medical systems globally.</p>
+      
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Role</div>
+          <div class="hero-meta-value">UX Designer</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Duration</div>
+          <div class="hero-meta-value">2015 - 2018</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Company</div>
+          <div class="hero-meta-value">Philips Healthcare</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Tools</div>
+          <div class="hero-meta-value">Sketch, Axure, InVision</div>
+        </div>
+      </div>
+    </header>
+
     <!-- Overview Section -->
     <section id="overview" class="section">
-      <div class="container">
-        <div class="section__header fade-in">
-          <p class="section__eyebrow">Background</p>
-          <h2 class="section__title">Project Overview</h2>
-          <p class="section__description">RADAR is a legacy tool used by service technicians for over 10 years. The redesign aimed to optimize workflows, reduce resolution time, and lower operational costs while maintaining user confidence during the transition.</p>
+      <div class="section-header">
+        <p class="hero-badge" style="margin-bottom: var(--space-lg);">Background</p>
+        <h2 class="section-title">Project Overview</h2>
+        <p class="section-description">RADAR is a legacy tool used by service technicians for over 10 years. The redesign aimed to optimize workflows, reduce resolution time, and lower operational costs while maintaining user confidence during the transition.</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-xl); margin-bottom: var(--space-3xl);">
+        <div class="info-box">
+          <h3>Objectives</h3>
+          <ul>
+            <li>Increase number of issues resolved by lowering resolution time for each issue</li>
+            <li>Lower overhead costs for company in resolving issues and customer complaints</li>
+            <li>Gain confidence among users to move away from legacy workflow and adopt optimized workflows</li>
+            <li>Design a new workflow to optimize time taken to shortlist, analyse and address an issue</li>
+          </ul>
         </div>
         
-        <div class="objectives-challenges fade-in">
-          <div class="info-box info-box--objectives">
-            <h3 class="info-box__title">Objectives</h3>
-            <ul>
-              <li>Increase number of issues resolved by lowering resolution time for each issue</li>
-              <li>Lower overhead costs for company in resolving issues and customer complaints</li>
-              <li>Gain confidence among users to move away from legacy workflow and adopt optimized workflows</li>
-              <li>Design a new workflow to optimize time taken to shortlist, analyse and address an issue</li>
-            </ul>
-          </div>
-          
-          <div class="info-box info-box--challenges">
-            <h3 class="info-box__title">Challenges</h3>
-            <ul>
-              <li>Users are accustomed to using the legacy tool unchanged for 10+ years and are reluctant to change</li>
-              <li>Complex workflows across multiple tools (RADAR, CAT, ClickScheduler)</li>
-              <li>High frequency of field visits adding to operational costs</li>
-              <li>Need to optimize workflow without disrupting established mental models</li>
-            </ul>
-          </div>
+        <div class="info-box" style="border-left-color: var(--color-accent-orange);">
+          <h3>Challenges</h3>
+          <ul>
+            <li>Users are accustomed to using the legacy tool unchanged for 10+ years and are reluctant to change</li>
+            <li>Complex workflows across multiple tools (RADAR, CAT, ClickScheduler)</li>
+            <li>High frequency of field visits adding to operational costs</li>
+            <li>Need to optimize workflow without disrupting established mental models</li>
+          </ul>
         </div>
+      </div>
 
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">My Role & Responsibilities</h3>
-          <div class="grid grid--2">
-            <div class="card">
-              <h4 class="card__title">Design Leadership</h4>
-              <p class="card__content">Conducted stakeholder interviews and user research across multiple modalities and global regions (Americas, Europe, India, China)</p>
-            </div>
-            <div class="card">
-              <h4 class="card__title">Information Architecture</h4>
-              <p class="card__content">Created comprehensive IA and interaction flows based on research findings and user mental models</p>
-            </div>
-            <div class="card">
-              <h4 class="card__title">Design & Prototyping</h4>
-              <p class="card__content">Ideated, sketched wireframes, created visual designs and interactive prototypes for user testing</p>
-            </div>
-            <div class="card">
-              <h4 class="card__title">Development Support</h4>
-              <p class="card__content">Provided detailed specifications and worked closely with development team for implementation</p>
-            </div>
+      <div>
+        <h3 style="text-align: center; margin-bottom: var(--space-xl);">My Role & Responsibilities</h3>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Design Leadership</h3>
+            <p>Conducted stakeholder interviews and user research across multiple modalities and global regions (Americas, Europe, India, China)</p>
+          </div>
+          <div class="card">
+            <h3>Information Architecture</h3>
+            <p>Created comprehensive IA and interaction flows based on research findings and user mental models</p>
+          </div>
+          <div class="card">
+            <h3>Design & Prototyping</h3>
+            <p>Ideated, sketched wireframes, created visual designs and interactive prototypes for user testing</p>
+          </div>
+          <div class="card">
+            <h3>Development Support</h3>
+            <p>Provided detailed specifications and worked closely with development team for implementation</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Research Section -->
-    <section id="research" class="section section--alt">
-      <div class="container">
-        <div class="section__header fade-in">
-          <p class="section__eyebrow">Discovery</p>
-          <h2 class="section__title">Research & User Insights</h2>
-          <p class="section__description">Conducted extensive research through stakeholder interviews, user interviews across three modalities and multiple regions, and observational studies to understand pain points and opportunities.</p>
+    <section id="research" class="section">
+      <div class="section-header">
+        <p class="hero-badge" style="margin-bottom: var(--space-lg);">Discovery</p>
+        <h2 class="section-title">Research & User Insights</h2>
+        <p class="section-description">Conducted extensive research through stakeholder interviews, user interviews across three modalities and multiple regions, and observational studies to understand pain points and opportunities.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Stakeholder Interviews</h3>
+          <p>Interviewed Portfolio Managers and Business Analysts to understand business objectives. Identified that legacy tool (10+ years unchanged) wasn't meeting new business needs, especially around cost reduction and faster ticket resolution.</p>
         </div>
-
-        <div class="grid grid--3 fade-in">
-          <div class="card">
-            <h3 class="card__title">Stakeholder Interviews</h3>
-            <p class="card__content">Interviewed Portfolio Managers and Business Analysts to understand business objectives. Identified that legacy tool (10+ years unchanged) wasn't meeting new business needs, especially around cost reduction and faster ticket resolution.</p>
-          </div>
-          <div class="card">
-            <h3 class="card__title">User Interviews</h3>
-            <p class="card__content">Conducted semi-structured interviews with Equipment users, Field Service Engineers, Remote Service Engineers, and Technical Experts across IxR (Americas, Europe, India), MR (China, Europe, India), and CT (Europe, India) regions.</p>
-          </div>
-          <div class="card">
-            <h3 class="card__title">Observational Research</h3>
-            <p class="card__content">Performed "fly on the wall" research to observe how existing tools were used at various stages, identifying workarounds, mismatches between what users say and do, and pain points.</p>
-          </div>
+        <div class="card">
+          <h3>User Interviews</h3>
+          <p>Conducted semi-structured interviews with Equipment users, Field Service Engineers, Remote Service Engineers, and Technical Experts across IxR (Americas, Europe, India), MR (China, Europe, India), and CT (Europe, India) regions.</p>
         </div>
+        <div class="card">
+          <h3>Observational Research</h3>
+          <p>Performed "fly on the wall" research to observe how existing tools were used at various stages, identifying workarounds, mismatches between what users say and do, and pain points.</p>
+        </div>
+      </div>
 
-        <!-- User Persona -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">Primary User Persona</h3>
-          <div class="persona">
-            <div class="persona__header">
-              <div class="persona__avatar">SJ</div>
-              <div>
-                <h4 class="persona__name">Samuel John</h4>
-                <p class="persona__role">Senior Specialist, Customer Support (Remote Service Engineer)</p>
-              </div>
-            </div>
-
-            <div class="persona__stats">
-              <div class="persona__stat">
-                <span class="persona__stat-value">36 Years</span>
-                <span class="persona__stat-label">Experience</span>
-              </div>
-              <div class="persona__stat">
-                <span class="persona__stat-value">15-25</span>
-                <span class="persona__stat-label">Cases/Day</span>
-              </div>
-              <div class="persona__stat">
-                <span class="persona__stat-value">10-15 min</span>
-                <span class="persona__stat-label">Per Case</span>
-              </div>
-              <div class="persona__stat">
-                <span class="persona__stat-value">8/10</span>
-                <span class="persona__stat-label">RADAR Usage</span>
-              </div>
-            </div>
-
-            <div class="persona__quote">
-              "RADAR is critical for detection of faults in our machines. We need to understand how to efficiently use RADAR and minimize using parallel products."
-            </div>
-
-            <div class="persona__section">
-              <h5 class="persona__section-title">Goals</h5>
-              <p style="color: var(--text-secondary); margin: 0;">Resolving issues that prevent normal functioning of the system by: (1) Resolving the primary issue, (2) Resolving issues related to the primary issue, (3) Resolving all other issues.</p>
-            </div>
-
-            <div class="grid grid--2" style="gap: var(--space-lg); margin-top: var(--space-xl);">
-              <div class="persona__section">
-                <h5 class="persona__section-title">Likes</h5>
-                <ul style="list-style: none; padding: 0;">
-                  <li style="margin-bottom: var(--space-md); color: var(--text-secondary);">✓ LOG viewer is very helpful</li>
-                  <li style="color: var(--text-secondary);">✓ System overview summarizes status effectively</li>
-                </ul>
-              </div>
-
-              <div class="persona__section">
-                <h5 class="persona__section-title">Dislikes</h5>
-                <ul style="list-style: none; padding: 0;">
-                  <li style="margin-bottom: var(--space-md); color: var(--text-secondary);">✗ No integration with other products like CAT</li>
-                  <li style="margin-bottom: var(--space-md); color: var(--text-secondary);">✗ Error messages are non-intuitive</li>
-                  <li style="color: var(--text-secondary);">✗ Too much navigation across pages and tabs</li>
-                </ul>
-              </div>
+      <div style="margin-top: var(--space-3xl);">
+        <h3 style="text-align: center; margin-bottom: var(--space-xl);">Key Research Findings</h3>
+        <p style="text-align: center; margin-bottom: var(--space-xl); max-width: 700px; margin-left: auto; margin-right: auto;">After extensive interviews across three modalities and global regions, findings were classified into three design principle categories:</p>
+        
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">1</div>
+            <div class="feature-content">
+              <h3>Structured Information</h3>
+              <p>Information should be easy to locate with primary information upfront and higher priority. Critical information should be immediately visible while secondary information can be discreet.</p>
+              <ul>
+                <li>"Too many countries shown here. I am only concerned with Spain."</li>
+                <li>"Before going into details, I need to check system reachability first"</li>
+              </ul>
             </div>
           </div>
-        </div>
 
-        <!-- Research Findings -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">Key Research Findings</h3>
-          <p style="margin-bottom: var(--space-xl);">After extensive interviews across three modalities and global regions, findings were classified into three design principle categories:</p>
-          
-          <div class="features">
-            <div class="feature">
-              <div class="feature__icon">1</div>
-              <div class="feature__content">
-                <h3>Structured Information</h3>
-                <p>Information should be easy to locate with primary information upfront and higher priority. Critical information should be immediately visible while secondary information can be discreet.</p>
-                <ul>
-                  <li>"Too many countries shown here. I am only concerned with Spain."</li>
-                  <li>"Before going into details, I need to check system reachability first"</li>
-                </ul>
-              </div>
+          <div class="feature">
+            <div class="feature-icon">2</div>
+            <div class="feature-content">
+              <h3>Adaptable Interface</h3>
+              <p>Interface should allow customizations so users can tailor according to their style. Enable different workflows by different users and understand user based on login credentials.</p>
+              <ul>
+                <li>"I cannot customize the columns in the table"</li>
+                <li>"Everything resets on re-login"</li>
+              </ul>
             </div>
+          </div>
 
-            <div class="feature">
-              <div class="feature__icon">2</div>
-              <div class="feature__content">
-                <h3>Adaptable Interface</h3>
-                <p>Interface should allow customizations so users can tailor according to their style. Enable different workflows by different users and understand user based on login credentials.</p>
-                <ul>
-                  <li>"I cannot customize the columns in the table"</li>
-                  <li>"Everything resets on re-login"</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="feature">
-              <div class="feature__icon">3</div>
-              <div class="feature__content">
-                <h3>Optimized Navigation</h3>
-                <p>Navigation structure should be intuitive and clear, correlating with typical user workflow. Use visual aids and keyboard shortcuts to help users with quicker task completion.</p>
-                <ul>
-                  <li>"I get lost with tabs. Where am I?"</li>
-                  <li>"Need to navigate several pages to carry on with workflow"</li>
-                </ul>
-              </div>
+          <div class="feature">
+            <div class="feature-icon">3</div>
+            <div class="feature-content">
+              <h3>Optimized Navigation</h3>
+              <p>Navigation structure should be intuitive and clear, correlating with typical user workflow. Use visual aids and keyboard shortcuts to help users with quicker task completion.</p>
+              <ul>
+                <li>"I get lost with tabs. Where am I?"</li>
+                <li>"Need to navigate several pages to carry on with workflow"</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -1192,286 +981,154 @@
 
     <!-- Process Section -->
     <section id="process" class="section">
-      <div class="container">
-        <div class="section__header fade-in">
-          <p class="section__eyebrow">Methodology</p>
-          <h2 class="section__title">Design Process</h2>
-          <p class="section__description">Followed an Agile methodology with iterative design cycles, moving from research insights through to tested and validated solutions.</p>
-        </div>
+      <div class="section-header">
+        <p class="hero-badge" style="margin-bottom: var(--space-lg);">Methodology</p>
+        <h2 class="section-title">Design Process</h2>
+        <p class="section-description">Followed an Agile methodology with iterative design cycles, moving from research insights through to tested and validated solutions.</p>
+      </div>
 
-        <div class="timeline fade-in">
-          <div class="timeline__item">
-            <div class="timeline__date">Phase 1</div>
-            <div class="timeline__content">
-              <h3>Background & Research</h3>
-              <p>Conducted stakeholder interviews, comprehensive user research across global regions, legacy tool audit, and defined scope & objectives based on business and user needs.</p>
-            </div>
-          </div>
-
-          <div class="timeline__item">
-            <div class="timeline__date">Phase 2</div>
-            <div class="timeline__content">
-              <h3>Definition</h3>
-              <p>Established design principles (Structured Information, Adaptable Interface, Optimized Navigation), created information architecture for different modalities (CV, MR, CT), and mapped interaction flows.</p>
-            </div>
-          </div>
-
-          <div class="timeline__item">
-            <div class="timeline__date">Phase 3</div>
-            <div class="timeline__content">
-              <h3>Design Exploration</h3>
-              <p>Created wireframe sketches exploring different layout approaches, developed visual design system with consistent patterns, and built interactive prototypes for user validation.</p>
-            </div>
-          </div>
-
-          <div class="timeline__item">
-            <div class="timeline__date">Phase 4</div>
-            <div class="timeline__content">
-              <h3>Test & Iterations</h3>
-              <p>Conducted user testing sessions with remote service engineers and modality managers, iterated designs based on feedback, and created detailed design specifications for development.</p>
-            </div>
-          </div>
-
-          <div class="timeline__item">
-            <div class="timeline__date">Phase 5</div>
-            <div class="timeline__content">
-              <h3>Launch & Next Steps</h3>
-              <p>Developed incremental rollout plan starting with single user MVP, provided ongoing development support, and planned feature additions across modalities with predictive engine integration.</p>
-            </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div>
+            <div class="timeline-date">Phase 1</div>
+            <h3>Background & Research</h3>
+            <p>Conducted stakeholder interviews, comprehensive user research across global regions, legacy tool audit, and defined scope & objectives based on business and user needs.</p>
           </div>
         </div>
 
-        <!-- Navigation Models -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">Optimized Navigation Models</h3>
-          <p style="margin-bottom: var(--space-xl);">Designed two primary navigation workflows based on user research:</p>
-          
-          <div class="grid grid--2">
-            <div class="card">
-              <h4 class="card__title">Workflow 1: Region-Based Search</h4>
-              <p class="card__content" style="font-weight: 600; color: var(--accent-cyan); margin-bottom: var(--space-lg);">Login → Dashboard → Details → Analyse LOG → Create Case → Close → Next</p>
-              <p class="card__content">User searches their allocated region for systems with issues, views system health and reachability, downloads LOG files, creates cases with pre-filled data, and moves to next system with removed dealt systems from list.</p>
-            </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div>
+            <div class="timeline-date">Phase 2</div>
+            <h3>Definition</h3>
+            <p>Established design principles (Structured Information, Adaptable Interface, Optimized Navigation), created information architecture for different modalities (CV, MR, CT), and mapped interaction flows.</p>
+          </div>
+        </div>
 
-            <div class="card">
-              <h4 class="card__title">Workflow 2: Direct SRN Search</h4>
-              <p class="card__content" style="font-weight: 600; color: var(--accent-purple); margin-bottom: var(--space-lg);">Login → Dashboard → SEARCH → Details → Analyse LOG → Create Case → Close → Next</p>
-              <p class="card__content">User directly searches by System Reference Number (SRN), views system status and error details, analyses LOG file with visual timeline, creates/opens cases using templates, and efficiently moves through systems.</p>
-            </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div>
+            <div class="timeline-date">Phase 3</div>
+            <h3>Design Exploration</h3>
+            <p>Created wireframe sketches exploring different layout approaches, developed visual design system with consistent patterns, and built interactive prototypes for user validation.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div>
+            <div class="timeline-date">Phase 4</div>
+            <h3>Test & Iterations</h3>
+            <p>Conducted user testing sessions with remote service engineers and modality managers, iterated designs based on feedback, and created detailed design specifications for development.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div>
+            <div class="timeline-date">Phase 5</div>
+            <h3>Launch & Next Steps</h3>
+            <p>Developed incremental rollout plan starting with single user MVP, provided ongoing development support, and planned feature additions across modalities with predictive engine integration.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Solution Section -->
-    <section id="solution" class="section section--alt">
-      <div class="container">
-        <div class="section__header fade-in">
-          <p class="section__eyebrow">Final Design</p>
-          <h2 class="section__title">Solution & Key Features</h2>
-          <p class="section__description">The redesigned RADAR interface prioritizes critical information, streamlines workflows, and provides powerful analysis tools while maintaining familiarity for existing users.</p>
+    <section id="solution" class="section">
+      <div class="section-header">
+        <p class="hero-badge" style="margin-bottom: var(--space-lg);">Final Design</p>
+        <h2 class="section-title">Solution & Key Features</h2>
+        <p class="section-description">The redesigned RADAR interface prioritizes critical information, streamlines workflows, and provides powerful analysis tools while maintaining familiarity for existing users.</p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>🎯 Dashboard Overview</h3>
+          <p>Location-based system navigation with global statistics showing systems processed, critical systems, and resolution metrics. Monitoring dashboard displays prioritized alerts with aggregate titles, severity indicators, and last alert dates.</p>
         </div>
 
-        <!-- Key Design Features -->
-        <div class="grid grid--2 fade-in">
-          <div class="card">
-            <h3 class="card__title">🎯 Dashboard Overview</h3>
-            <p class="card__content">Location-based system navigation with global statistics showing systems processed, critical systems, and resolution metrics. Monitoring dashboard displays prioritized alerts with aggregate titles, severity indicators, and last alert dates.</p>
-          </div>
-
-          <div class="card">
-            <h3 class="card__title">📊 Visual LOG Timeline</h3>
-            <p class="card__content">Revolutionary visual timeline representation of LOG files that charts activities and alerts chronologically. Interactive cursor allows users to jump directly to error lines, drastically reducing analysis time.</p>
-          </div>
-
-          <div class="card">
-            <h3 class="card__title">📅 System Health Calendar</h3>
-            <p class="card__content">Monthly calendar visualization showing daily system health status using three-state colors and icons. Technicians can immediately identify problematic days, field service engineer visits, and usage trends at a glance.</p>
-          </div>
-
-          <div class="card">
-            <h3 class="card__title">🔍 Enhanced System Details</h3>
-            <p class="card__content">Comprehensive system information page with contract details, model specifications, open alerts, and system usage patterns. Filtered defects view with priority indicators. Notes section for team collaboration.</p>
-          </div>
-
-          <div class="card">
-            <h3 class="card__title">📈 Global Statistics Panel</h3>
-            <p class="card__content">Side panel targeted at Modality Managers showing overall modality performance metrics including total systems processed, number of critical systems, and successfully analyzed systems.</p>
-          </div>
-
-          <div class="card">
-            <h3 class="card__title">⚡ Smart Case Creation</h3>
-            <p class="card__content">Streamlined case creation with modal dialog boxes that intelligently pre-fill critical information from system context. Integration with ClickScheduler for field service engineer scheduling.</p>
-          </div>
+        <div class="card">
+          <h3>📊 Visual LOG Timeline</h3>
+          <p>Revolutionary visual timeline representation of LOG files that charts activities and alerts chronologically. Interactive cursor allows users to jump directly to error lines, drastically reducing analysis time.</p>
         </div>
 
-        <!-- Rollout Strategy -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">Incremental Rollout (2015-2018)</h3>
-          <div class="grid grid--3">
-            <div class="card">
-              <h4 class="card__title">Phase 1 (Dec 2015)</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">Single User MVP</strong><br>Proposed RADAR launched in phases with legacy tool still in use and supported.</p>
-            </div>
-            <div class="card">
-              <h4 class="card__title">Phase 2 (Apr 2016)</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">LOG Viewer - MR</strong><br>LOG viewer module added to enable users to analyze LOG files, replacing limited CAT tool support.</p>
-            </div>
-            <div class="card">
-              <h4 class="card__title">Phase 3 (Dec 2017)</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">MR + CV Modules</strong><br>Specific modules for MR & CV added. Create case functionality integrated. Legacy tool deprecated.</p>
-            </div>
-            <div class="card">
-              <h4 class="card__title">Phase 4</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">Modality Features</strong><br>User login-based functionality with CSIP level features. MR modules like magnet monitoring ported.</p>
-            </div>
-            <div class="card">
-              <h4 class="card__title">Phase 5</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">Predictive Engine</strong><br>ISDA predictive engine integrated for better predictive capabilities with user-generated models.</p>
-            </div>
-            <div class="card">
-              <h4 class="card__title">Phase 6 (Dec 2018)</h4>
-              <p class="card__content"><strong style="color: var(--accent-cyan);">Integration</strong><br>RADAR bridged with ClickSchedular to check FSE schedules and reduce onsite repair frequency.</p>
-            </div>
-          </div>
+        <div class="card">
+          <h3>📅 System Health Calendar</h3>
+          <p>Monthly calendar visualization showing daily system health status using three-state colors and icons. Technicians can immediately identify problematic days, field service engineer visits, and usage trends at a glance.</p>
         </div>
       </div>
     </section>
 
     <!-- Results Section -->
     <section id="results" class="section">
-      <div class="container">
-        <div class="section__header fade-in">
-          <p class="section__eyebrow">Outcome</p>
-          <h2 class="section__title">Results & Impact</h2>
-          <p class="section__description">Periodic feedback taken from users during each release showed positive reception and successful adaptation to the new design paradigm.</p>
+      <div class="section-header">
+        <p class="hero-badge" style="margin-bottom: var(--space-lg);">Outcome</p>
+        <h2 class="section-title">Results & Impact</h2>
+        <p class="section-description">Periodic feedback taken from users during each release showed positive reception and successful adaptation to the new design paradigm.</p>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <span class="metric-value">3 Years</span>
+          <span class="metric-label">Project Duration</span>
         </div>
-
-        <div class="impact-metrics fade-in">
-          <div class="metric">
-            <span class="metric__value">3 Years</span>
-            <span class="metric__label">Project Duration</span>
-          </div>
-          <div class="metric">
-            <span class="metric__value">6 Phases</span>
-            <span class="metric__label">Incremental Rollout</span>
-          </div>
-          <div class="metric">
-            <span class="metric__value">Global</span>
-            <span class="metric__label">Americas, Europe, APAC</span>
-          </div>
+        <div class="metric">
+          <span class="metric-value">6 Phases</span>
+          <span class="metric-label">Incremental Rollout</span>
         </div>
+        <div class="metric">
+          <span class="metric-value">Global</span>
+          <span class="metric-label">Americas, Europe, APAC</span>
+        </div>
+      </div>
 
-        <!-- User Feedback -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">User Testimonials</h3>
-          <div class="testimonials">
-            <div class="testimonial">
-              <p class="testimonial__quote">"The location browser in side pane makes my work simpler now. I can collapse it once I select my region as this is one time activity for me."</p>
-              <p class="testimonial__author">— Remote Service Engineer, Bangalore</p>
-            </div>
+      <div style="margin-bottom: var(--space-4xl);">
+        <h3 style="text-align: center; margin-bottom: var(--space-xl);">User Testimonials</h3>
+        <div class="testimonials">
+          <div class="testimonial">
+            <p class="testimonial-quote">"The location browser in side pane makes my work simpler now. I can collapse it once I select my region as this is one time activity for me."</p>
+            <p class="testimonial-author">— Remote Service Engineer, Bangalore</p>
+          </div>
 
-            <div class="testimonial">
-              <p class="testimonial__quote">"Timeline representation of LOG file clearly tells me where to start my investigation from. Using the cursor I can directly jump to the Line of Interest (LoI)."</p>
-              <p class="testimonial__author">— Remote Service Engineer, Haifa, Israel</p>
-            </div>
+          <div class="testimonial">
+            <p class="testimonial-quote">"Timeline representation of LOG file clearly tells me where to start my investigation from. Using the cursor I can directly jump to the Line of Interest (LoI)."</p>
+            <p class="testimonial-author">— Remote Service Engineer, Haifa, Israel</p>
+          </div>
 
-            <div class="testimonial">
-              <p class="testimonial__quote">"I do not need to browse through pages and make a note of metrics in Excel. The graph on the side bar shows the realtime KPI figures."</p>
-              <p class="testimonial__author">— Service Manager (MR), Best, Netherlands</p>
-            </div>
+          <div class="testimonial">
+            <p class="testimonial-quote">"I do not need to browse through pages and make a note of metrics in Excel. The graph on the side bar shows the realtime KPI figures."</p>
+            <p class="testimonial-author">— Service Manager (MR), Best, Netherlands</p>
+          </div>
 
-            <div class="testimonial">
-              <p class="testimonial__quote">"I can collapse sections in the LOG file that are irrelevant for analysis and look only at what interests me."</p>
-              <p class="testimonial__author">— Remote Service Engineer, Best, Netherlands</p>
-            </div>
+          <div class="testimonial">
+            <p class="testimonial-quote">"I can collapse sections in the LOG file that are irrelevant for analysis and look only at what interests me."</p>
+            <p class="testimonial-author">— Remote Service Engineer, Best, Netherlands</p>
+          </div>
 
-            <div class="testimonial">
-              <p class="testimonial__quote">"The colorful calendar shows how the system has been performing over time. This is important for me to analyse the issue."</p>
-              <p class="testimonial__author">— Remote Service Engineer, Bangalore</p>
-            </div>
+          <div class="testimonial">
+            <p class="testimonial-quote">"The colorful calendar shows how the system has been performing over time. This is important for me to analyse the issue."</p>
+            <p class="testimonial-author">— Remote Service Engineer, Bangalore</p>
+          </div>
 
-            <div class="testimonial">
-              <p class="testimonial__quote">"LOG viewer is a good addition. I don't need to switch to CAT (tool to view LOG files) during analysis."</p>
-              <p class="testimonial__author">— Remote Service Engineer, Bangalore</p>
-            </div>
+          <div class="testimonial">
+            <p class="testimonial-quote">"LOG viewer is a good addition. I don't need to switch to CAT (tool to view LOG files) during analysis."</p>
+            <p class="testimonial-author">— Remote Service Engineer, Bangalore</p>
           </div>
         </div>
+      </div>
 
-        <!-- Key Learnings -->
-        <div style="margin-top: var(--space-4xl);" class="fade-in">
-          <h3 style="margin-bottom: var(--space-xl);">Key Learnings & Takeaways</h3>
-          <div class="grid grid--2">
-            <div class="card">
-              <h4 class="card__title">🎓 Change Management</h4>
-              <p class="card__content">Successfully transitioning users from a 10+ year legacy tool requires incremental rollout, extensive user involvement, and maintaining familiarity while introducing improvements.</p>
-            </div>
-
-            <div class="card">
-              <h4 class="card__title">🌍 Global User Research</h4>
-              <p class="card__content">Conducting research across multiple regions (Americas, Europe, APAC) and modalities (IxR, MR, CT) revealed both universal pain points and regional variations in workflows.</p>
-            </div>
-
-            <div class="card">
-              <h4 class="card__title">📊 Visual Information Design</h4>
-              <p class="card__content">The visual LOG timeline and system health calendar proved that thoughtful data visualization can dramatically reduce analysis time and cognitive load.</p>
-            </div>
-
-            <div class="card">
-              <h4 class="card__title">🔄 Iterative Validation</h4>
-              <p class="card__content">Having in-house users allowed for rapid iteration and validation. Minimal intervention observation confirmed users could successfully navigate new paradigms.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Business Impact -->
-        <div style="margin-top: var(--space-3xl);" class="fade-in">
-          <div class="info-box" style="border-left-color: var(--accent-green);">
-            <h3 class="info-box__title">Business Impact</h3>
-            <p style="color: var(--text-secondary); margin: 0;">The redesigned RADAR tool successfully met business objectives by lowering resolution time per issue, reducing overhead costs through decreased field visit frequency, and gaining user confidence to adopt the new optimized workflows. The phased rollout approach minimized disruption while the legacy tool was gradually deprecated, ensuring business continuity throughout the transition.</p>
-          </div>
-        </div>
+      <div class="info-box" style="text-align: center; border-left: 3px solid var(--color-accent-green);">
+        <h3>Key Learning</h3>
+        <p>Successfully transitioning users from a 10+ year legacy tool requires incremental rollout, extensive user involvement, and maintaining familiarity while introducing improvements. The visual LOG timeline and system health calendar proved that thoughtful data visualization can dramatically reduce analysis time.</p>
       </div>
     </section>
 
   </main>
 
-  <!-- JavaScript -->
   <script>
-    // ==================== MOBILE MENU TOGGLE ====================
-    const menuToggle = document.querySelector('.nav__toggle');
-    const navMenu = document.querySelector('.nav__menu');
-
-    if (menuToggle && navMenu) {
-      menuToggle.addEventListener('click', () => {
-        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', !isExpanded);
-        navMenu.classList.toggle('active');
-      });
-
-      const navLinks = document.querySelectorAll('.nav__link');
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          navMenu.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
-
-    // ==================== BACK BUTTON FUNCTIONALITY ====================
-    const backButton = document.getElementById('backButton');
-    if (backButton) {
-      backButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (document.referrer && document.referrer !== '') {
-          window.history.back();
-        } else {
-          window.location.href = 'https://vivchawda.github.io';
-        }
-      });
-    }
-
-    // ==================== SMOOTH SCROLL ====================
+    // Smooth scroll navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
@@ -1479,8 +1136,8 @@
           e.preventDefault();
           const target = document.querySelector(href);
           if (target) {
-            const navHeight = document.querySelector('.nav').offsetHeight;
-            const targetPosition = target.offsetTop - navHeight - 32;
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const targetPosition = target.offsetTop - headerHeight - 32;
             window.scrollTo({
               top: targetPosition,
               behavior: 'smooth'
@@ -1490,27 +1147,9 @@
       });
     });
 
-    // ==================== INTERSECTION OBSERVER ====================
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -80px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
-
-    // ==================== ACTIVE NAV LINK ====================
+    // Active nav link indicator
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav__link');
+    const navLinks = document.querySelectorAll('.nav a');
 
     function setActiveNavLink() {
       const scrollY = window.pageYOffset;
@@ -1532,16 +1171,6 @@
     }
 
     window.addEventListener('scroll', setActiveNavLink);
-
-    // ==================== KEYBOARD NAVIGATION ====================
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // ==================== INITIALIZE ====================
     setActiveNavLink();
   </script>
 </body>
