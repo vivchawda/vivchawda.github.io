@@ -1,1060 +1,1379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HSBC Wealth Management Redesign - Viv Chawda</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #DB0011;
-            --dark-bg: #1a1a1a;
-            --light-bg: #ffffff;
-            --text-primary: #2c2c2c;
-            --text-secondary: #666666;
-            --accent-teal: #00A9CE;
-            --accent-coral: #FF6B6B;
-            --border-color: #e5e5e5;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--light-bg);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #DB0011 0%, #8B0008 100%);
-            color: white;
-            padding: 120px 20px 80px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 40px;
-            opacity: 0.95;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.5;
-        }
-
-        .project-meta {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-
-        .meta-item {
-            text-align: left;
-        }
-
-        .meta-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .meta-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 80px 20px;
-        }
-
-        .section-light {
-            background: var(--light-bg);
-        }
-
-        .section-dark {
-            background: #f8f9fa;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: var(--text-primary);
-            font-weight: 700;
-        }
-
-        h3 {
-            font-size: 1.8rem;
-            margin-top: 50px;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        h4 {
-            font-size: 1.3rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        /* Problem Statement Box */
-        .problem-box {
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
-            border-left: 5px solid var(--primary-color);
-            padding: 40px;
-            margin: 40px 0;
-            border-radius: 8px;
-        }
-
-        .problem-box h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border-top: 4px solid var(--primary-color);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        /* Two Column Layout */
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            margin: 50px 0;
-        }
-
-        /* List Styles */
-        ul {
-            margin: 20px 0;
-            padding-left: 20px;
-        }
-
-        li {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-            padding-left: 10px;
-        }
-
-        li strong {
-            color: var(--text-primary);
-        }
-
-        /* Insight Cards */
-        .insight-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .insight-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .insight-card:hover {
-            border-color: var(--primary-color);
-            box-shadow: 0 8px 30px rgba(219, 0, 17, 0.12);
-            transform: translateY(-5px);
-        }
-
-        .insight-card h4 {
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .insight-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        /* Design Principles */
-        .principles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .principle-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 35px;
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-        }
-
-        .principle-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .principle-card h4 {
-            margin-top: 0;
-            color: var(--text-primary);
-        }
-
-        /* Process Timeline */
-        .process-timeline {
-            position: relative;
-            padding: 40px 0;
-            margin: 50px 0;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .timeline-marker {
-            flex-shrink: 0;
-            width: 60px;
-            height: 60px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(219, 0, 17, 0.3);
-        }
-
-        .timeline-content {
-            flex: 1;
-            padding-top: 10px;
-        }
-
-        .timeline-content h3 {
-            margin-top: 0;
-        }
-
-        /* Callout Box */
-        .callout {
-            background: linear-gradient(135deg, #e8f4f8 0%, #d1e9f0 100%);
-            border-left: 5px solid var(--accent-teal);
-            padding: 30px;
-            margin: 40px 0;
-            border-radius: 8px;
-        }
-
-        .callout-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #00758f;
-            margin-bottom: 15px;
-        }
-
-        /* Image Placeholder */
-        .image-placeholder {
-            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
-            border-radius: 12px;
-            padding: 80px 40px;
-            text-align: center;
-            margin: 40px 0;
-            border: 2px dashed #cccccc;
-        }
-
-        .image-placeholder-text {
-            font-size: 1.2rem;
-            color: #999999;
-            font-style: italic;
-        }
-
-        /* Key Decisions */
-        .decisions-list {
-            background: white;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            margin: 40px 0;
-        }
-
-        .decision-item {
-            padding: 25px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .decision-item:last-child {
-            border-bottom: none;
-        }
-
-        .decision-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-
-        /* Next Steps Section */
-        .next-steps {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
-            color: white;
-            padding: 80px 20px;
-        }
-
-        .next-steps h2 {
-            color: white;
-        }
-
-        .next-steps p,
-        .next-steps li {
-            color: rgba(255,255,255,0.85);
-        }
-
-        .improvement-category {
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
-            border-radius: 12px;
-            margin: 30px 0;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .improvement-category h4 {
-            color: white;
-            margin-top: 0;
-        }
-
-        /* Footer */
-        .case-study-footer {
-            background: var(--dark-bg);
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .case-study-footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .project-meta {
-                gap: 30px;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            h3 {
-                font-size: 1.5rem;
-            }
-
-            .two-column {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .timeline-item {
-                gap: 20px;
-            }
-
-            .timeline-marker {
-                width: 50px;
-                height: 50px;
-            }
-
-            section {
-                padding: 50px 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>HSBC Wealth Management Case Study · Vivek Chawda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-main: #05060a;
+      --bg-elevated: #0b0c12;
+      --bg-elevated-soft: #10111a;
+      --bg-tile-1: linear-gradient(135deg, #ff4b5c, #ff9068);
+      --bg-tile-2: linear-gradient(135deg, #2af598, #009efd);
+      --bg-tile-3: linear-gradient(135deg, #f6d365, #fda085);
+      --bg-tile-4: linear-gradient(135deg, #a18cd1, #fbc2eb);
+      --accent-red: #db0011;
+      --accent-teal: #00e0ff;
+      --accent-green: #2af598;
+      --accent-coral: #ff6b6b;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --text-main: #f5f5f7;
+      --text-soft: #b3b5c6;
+      --text-dim: #777a8f;
+      --tile-radius: 18px;
+      --transition-fast: 180ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      background: radial-gradient(circle at top, #151628 0, #05060a 55%, #020308 100%);
+      color: var(--text-main);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout helpers */
+    .page-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shell {
+      width: min(1120px, 100% - 3rem);
+      margin: 0 auto;
+    }
+
+    section {
+      padding-block: 4.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      letter-spacing: 0.01em;
+    }
+
+    h2.section-title {
+      font-size: clamp(2rem, 2.4vw, 2.4rem);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-teal);
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      font-size: 0.98rem;
+      color: var(--text-soft);
+      max-width: 72ch;
+    }
+
+    ul {
+      margin-top: 0.75rem;
+      padding-left: 1.1rem;
+    }
+
+    li {
+      font-size: 0.96rem;
+      color: var(--text-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    /* Header (aligned with index) */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: radial-gradient(circle at top left, rgba(219, 0, 17, 0.3), transparent 55%)
+        rgba(5, 6, 10, 0.88);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 0.9rem;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .brand-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #ffffff, #ff4b5c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #05060a;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.24),
+        0 10px 30px rgba(0, 0, 0, 0.65);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.08rem;
+    }
+
+    .brand-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .brand-tag {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      position: relative;
+      padding-block: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.3rem;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #ff4b5c, #ff9068);
+      border-radius: 99px;
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-pill {
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: radial-gradient(circle at top left, rgba(0, 224, 255, 0.18), transparent 60%);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-main);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding-block: 4.5rem 3.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0, rgba(219, 0, 17, 0.35), transparent 55%),
+        radial-gradient(circle at 90% 0, rgba(0, 224, 255, 0.24), transparent 55%);
+      opacity: 0.95;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
+      gap: 2.75rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 3.4vw, 3.2rem);
+      line-height: 1.05;
+      font-weight: 650;
+      max-width: 22ch;
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, #ffffff, #ffd1d8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: rgba(240, 240, 248, 0.9);
+      max-width: 45ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1.2rem;
+    }
+
+    .meta-chip {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      font-size: 0.8rem;
+    }
+
+    .meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-dim);
+      font-size: 0.7rem;
+    }
+
+    .meta-value {
+      color: var(--text-main);
+      font-weight: 500;
+      font-size: 0.86rem;
+    }
+
+    .hero-highlight-grid {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .hero-pill {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      backdrop-filter: blur(16px);
+      background: radial-gradient(circle at top left, rgba(0, 224, 255, 0.16), transparent 60%);
+    }
+
+    .hero-pill span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent-green);
+    }
+
+    .hero-tile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 0.6rem;
+    }
+
+    .hero-tile {
+      border-radius: var(--tile-radius);
+      padding: 1rem 1.1rem;
+      min-height: 120px;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+      transform-origin: center;
+      transition: transform 220ms ease, box-shadow 220ms ease, translate 220ms ease;
+    }
+
+    .hero-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.22), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-tile:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.65);
+    }
+
+    .hero-tile-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(5, 6, 10, 0.7);
+      opacity: 0.9;
+    }
+
+    .hero-tile-value {
+      margin-top: 0.3rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #05060a;
+      max-width: 19ch;
+    }
+
+    .hero-tile-meta {
+      margin-top: 0.45rem;
+      font-size: 0.8rem;
+      color: rgba(5, 6, 10, 0.85);
+      opacity: 0.9;
+    }
+
+    /* Overview section */
+    .problem-card {
+      margin-top: 2rem;
+      border-radius: var(--tile-radius);
+      padding: 1.5rem 1.6rem;
+      background: radial-gradient(circle at top left, rgba(219, 0, 17, 0.22), transparent 65%)
+        rgba(7, 8, 14, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .problem-card h3 {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #ffb3bf;
+      margin-bottom: 0.8rem;
+    }
+
+    .problem-card ul li {
+      color: var(--text-soft);
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stat-chip {
+      border-radius: var(--tile-radius);
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 70%)
+        rgba(7, 8, 14, 0.95);
+      padding: 1.1rem 1.1rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .stat-chip-number {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .stat-chip-label {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      margin-top: 0.3rem;
+    }
+
+    /* User segments */
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.75rem;
+    }
+
+    .tile-card {
+      border-radius: var(--tile-radius);
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.09), transparent 70%)
+        rgba(10, 11, 18, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 1.3rem 1.4rem 1.3rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .tile-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(0, 224, 255, 0.16), transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .tile-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+      border-color: rgba(0, 224, 255, 0.45);
+    }
+
+    .tile-heading {
+      font-size: 0.95rem;
+      font-weight: 550;
+      margin-bottom: 0.4rem;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.22rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(0, 224, 255, 0.1);
+      border: 1px solid rgba(0, 224, 255, 0.4);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-teal);
+      margin-bottom: 0.6rem;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent-teal);
+    }
+
+    .context-tiles {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+    .context-chip {
+      border-radius: 14px;
+      padding: 0.85rem 0.9rem;
+      font-size: 0.86rem;
+      color: var(--text-soft);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 60%)
+        rgba(7, 8, 14, 0.96);
+    }
+
+    /* Participant Composition Graph */
+    .graph-wrap {
+      margin-top: 1.7rem;
+      border-radius: var(--tile-radius);
+      background: radial-gradient(circle at top left, rgba(0, 224, 255, 0.14), transparent 65%)
+        rgba(8, 9, 15, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.4rem 1.5rem 1.3rem;
+    }
+
+    .graph-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .graph-title {
+      font-size: 0.94rem;
+      font-weight: 550;
+    }
+
+    .graph-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      color: var(--text-soft);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+    }
+
+    .graph-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .graph-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .graph-col-label {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 120px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 70%)
+        rgba(6, 7, 12, 1);
+      padding: 3px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .bar-fill {
+      width: 100%;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #00e0ff, #003c9e);
+      box-shadow: 0 0 0 1px rgba(0, 224, 255, 0.5), 0 10px 22px rgba(0, 0, 0, 0.6);
+      transition: height 280ms ease-out;
+    }
+
+    .bar-fill.confidence {
+      background: linear-gradient(180deg, #f6d365, #fda085);
+    }
+
+    .bar-fill.experience {
+      background: linear-gradient(180deg, #a18cd1, #fbc2eb);
+    }
+
+    .bar-fill.content {
+      background: linear-gradient(180deg, #2af598, #009efd);
+    }
+
+    .bar-label {
+      margin-top: 0.2rem;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    /* Research insights / cards */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.4rem;
+    }
+
+    .insight-card {
+      border-radius: var(--tile-radius);
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 60%)
+        rgba(10, 11, 18, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.1rem 1.2rem 1.1rem;
+      position: relative;
+      overflow: hidden;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .insight-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-teal);
+      margin-bottom: 0.4rem;
+    }
+
+    .insight-title {
+      font-size: 0.96rem;
+      font-weight: 550;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+
+    .insight-meta {
+      margin-top: 0.3rem;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+
+    /* Decisions list */
+    .decision-block {
+      margin-top: 1.3rem;
+      border-radius: var(--tile-radius);
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 60%)
+        rgba(6, 7, 12, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 1.15rem 1.3rem 1.25rem;
+    }
+
+    .decision-title {
+      font-size: 0.96rem;
+      font-weight: 560;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Next steps section - darker tiles, lighter text */
+    .next-steps {
+      background: radial-gradient(circle at top, #151628 0, #05060a 55%, #020308 100%);
+    }
+
+    .next-grid {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .next-card {
+      border-radius: var(--tile-radius);
+      padding: 1.3rem 1.3rem 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: radial-gradient(circle at top left, rgba(0, 224, 255, 0.22), transparent 65%)
+        rgba(6, 7, 13, 0.96);
+      color: #f7f7fb;
+    }
+
+    .next-card h4 {
+      font-size: 0.96rem;
+      margin-bottom: 0.4rem;
+      color: #ffffff;
+    }
+
+    .next-card ul li {
+      color: #d5d7f2;
+      font-size: 0.88rem;
+    }
+
+    .target-callout {
+      margin-top: 2.1rem;
+      border-radius: var(--tile-radius);
+      padding: 1.3rem 1.4rem;
+      border: 1px solid rgba(0, 224, 255, 0.4);
+      background: radial-gradient(circle at top left, rgba(0, 224, 255, 0.2), transparent 60%)
+        rgba(5, 7, 15, 0.98);
+    }
+
+    .target-callout h4 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-teal);
+      margin-bottom: 0.5rem;
+    }
+
+    .target-callout ul li {
+      color: #e7e8ff;
+      font-size: 0.9rem;
+    }
+
+    /* Learnings cards */
+    .learnings-grid {
+      margin-top: 1.6rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .learning-card {
+      border-radius: var(--tile-radius);
+      padding: 1.1rem 1.1rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 60%)
+        rgba(7, 8, 14, 0.98);
+    }
+
+    .learning-card h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .learning-card p {
+      font-size: 0.86rem;
+    }
+
+    /* Footer (aligned with main site) */
+    .site-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-block: 2.6rem 2.2rem;
+      margin-top: auto;
+      background: radial-gradient(circle at top, rgba(219, 0, 17, 0.24), transparent 60%)
+        rgba(5, 6, 10, 1);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      text-align: left;
+    }
+
+    .footer-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-dim);
+    }
+
+    .footer-links a:hover {
+      color: var(--text-main);
+    }
+
+    .footer-bottom-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Animations: fade/slide in on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 360ms ease-out, transform 360ms ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 960px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .context-tiles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .graph-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .next-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .learnings-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .site-header-inner {
+        padding-block: 0.7rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-block: 3.3rem 3rem;
+      }
+
+      section {
+        padding-block: 3.3rem;
+      }
+
+      .hero-meta-grid,
+      .stats-row,
+      .context-tiles,
+      .graph-grid,
+      .grid-3,
+      .next-grid,
+      .learnings-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .footer-bottom-row {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Hero Section -->
+  <div class="page-wrap">
+    <!-- Header -->
+    <header class="site-header">
+      <div class="shell site-header-inner">
+        <a href="index.html" class="brand-lockup">
+          <div class="brand-avatar">VC</div>
+          <div class="brand-text">
+            <span class="brand-name">Vivek Chawda</span>
+            <span class="brand-tag">User Experience Designer</span>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html#about">About</a>
+          <a href="index.html#work">Work</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="assets/Vivek-Chawda-CV.pdf" class="nav-pill">Download CV</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
     <section class="hero">
-        <div class="container">
-            <h1>HSBC Wealth Management</h1>
-            <p class="hero-subtitle">Redesigning mobile investment experience to bridge the gap between financial literacy and product adoption for retail investors</p>
+      <div class="shell hero-inner">
+        <div class="hero-left reveal">
+          <div class="hero-kicker">Case study · Mobile wealth management</div>
+          <h1 class="hero-title">
+            <span>HSBC Insights &amp; Dashboard redesign</span>
+          </h1>
+          <p class="hero-subtitle">
+            Redesigning HSBC’s mobile wealth journey to bridge the gap between financial literacy and
+            product adoption by pairing a guided <strong>Insights &amp; Knowledge Center</strong> with a
+            decision-focused <strong>Customer Dashboard</strong>.
+          </p>
 
-            <div class="project-meta">
-                <div class="meta-item">
-                    <div class="meta-label">Role</div>
-                    <div class="meta-value">Lead Product Designer</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-label">Platform</div>
-                    <div class="meta-value">iOS & Android</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-label">Timeline</div>
-                    <div class="meta-value">12 weeks</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-label">Team</div>
-                    <div class="meta-value">2 Designers, 3 Engineers, 1 PM</div>
-                </div>
+          <div class="hero-meta-grid">
+            <div class="meta-chip">
+              <span class="meta-label">Role</span>
+              <span class="meta-value">Lead Product Designer</span>
             </div>
+            <div class="meta-chip">
+              <span class="meta-label">Timeline</span>
+              <span class="meta-value">12 weeks</span>
+            </div>
+            <div class="meta-chip">
+              <span class="meta-label">Platform</span>
+              <span class="meta-value">iOS &amp; Android</span>
+            </div>
+            <div class="meta-chip">
+              <span class="meta-label">Focus</span>
+              <span class="meta-value">Research · IA · UI</span>
+            </div>
+          </div>
         </div>
+
+        <div class="hero-right">
+          <div class="hero-highlight-grid reveal">
+            <div class="hero-pill">
+              <span class="dot"></span>
+              Live prototype validated with 20 investors
+            </div>
+
+            <div class="hero-tile-grid">
+              <div class="hero-tile" style="background: var(--bg-tile-1);">
+                <div class="hero-tile-label">Insights &amp; Knowledge</div>
+                <div class="hero-tile-value">From generic feeds to portfolio-aware learning.</div>
+                <div class="hero-tile-meta">Articles · News · Video · Play &amp; Learn</div>
+              </div>
+              <div class="hero-tile" style="background: var(--bg-tile-2);">
+                <div class="hero-tile-label">Customer dashboard</div>
+                <div class="hero-tile-value">From static reports to next-best actions.</div>
+                <div class="hero-tile-meta">Net worth · Goals · Fitness · Payments</div>
+              </div>
+              <div class="hero-tile" style="background: var(--bg-tile-3);">
+                <div class="hero-tile-label">Research</div>
+                <div class="hero-tile-value">20 moderated sessions, 5 dashboards, 2 flows.</div>
+                <div class="hero-tile-meta">Usability + mental models</div>
+              </div>
+              <div class="hero-tile" style="background: var(--bg-tile-4);">
+                <div class="hero-tile-label">Outcome</div>
+                <div class="hero-tile-value">Clearer entry points &amp; higher content trust.</div>
+                <div class="hero-tile-meta">Beginner &amp; advanced investors</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Project Overview -->
-    <section class="section-light">
-        <div class="container">
-            <h2>Project Overview</h2>
-            <p>This case study covers the redesign of a mobile wealth-management experience for HSBC, focusing on two core areas: an <strong>Insights & Knowledge Center</strong> that educates retail investors through curated content, and a <strong>Customer Dashboard</strong> that provides a holistic view of financial health with actionable next steps.</p>
+    <!-- Project overview -->
+    <section>
+      <div class="shell reveal">
+        <div class="section-kicker">Overview</div>
+        <h2 class="section-title">Project overview</h2>
+        <p>
+          This case study covers the redesign of a mobile wealth-management experience for HSBC,
+          focusing on an <strong>Insights &amp; Knowledge Center</strong> that educates retail investors
+          and a <strong>Customer Dashboard</strong> that turns numbers into clear next steps.
+        </p>
+        <p style="margin-top:0.8rem;">
+          The goal was to move away from static content and dense dashboards toward a guided, personalized
+          experience that supports both novice and experienced investors without eroding trust.
+        </p>
 
-            <p>The goal was to transform static educational content and dense dashboards into a guided, personalized experience that drives financial literacy and product adoption while remaining accessible for both novice and experienced investors.</p>
-
-            <div class="problem-box">
-                <h3>The Challenge</h3>
-                <p>Retail investors in India increasingly manage their finances through mobile apps, yet current solutions fall short:</p>
-                <ul>
-                    <li><strong>Siloed learning:</strong> Educational content is disconnected from transactional flows, making it hard to act on insights</li>
-                    <li><strong>Number overload:</strong> Dashboards present data without clear guidance on what to do next</li>
-                    <li><strong>Trust erosion:</strong> Gamified features often feel promotional rather than genuinely educational</li>
-                </ul>
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">20</div>
-                    <div class="stat-label">Participants in moderated usability sessions</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">70%</div>
-                    <div class="stat-label">Users cross-check investment decisions on external platforms</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">2-5min</div>
-                    <div class="stat-label">Average micro-session duration during commutes</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">65%</div>
-                    <div class="stat-label">Users missed beginner-friendly content labels in initial tests</div>
-                </div>
-            </div>
+        <div class="problem-card">
+          <h3>The challenge</h3>
+          <p>
+            Retail investors increasingly manage their finances through mobile apps, yet three issues kept
+            surfacing across competitor reviews and stakeholder interviews:
+          </p>
+          <ul>
+            <li><strong>Siloed learning</strong> between educational content and real investment flows.</li>
+            <li><strong>Number overload</strong> on dashboards with no obvious “what should I do now?”.</li>
+            <li><strong>Gamification distrust</strong> when features felt promotional instead of educational.</li>
+          </ul>
         </div>
+
+        <div class="stats-row">
+          <div class="stat-chip">
+            <div class="stat-chip-number">20</div>
+            <div class="stat-chip-label">Participants in 1:1 moderated usability sessions</div>
+          </div>
+          <div class="stat-chip">
+            <div class="stat-chip-number">70%</div>
+            <div class="stat-chip-label">Cross-check decisions on YouTube, apps, &amp; friends before investing</div>
+          </div>
+          <div class="stat-chip">
+            <div class="stat-chip-number">2–5</div>
+            <div class="stat-chip-label">Minutes per micro-session during commutes or breaks</div>
+          </div>
+          <div class="stat-chip">
+            <div class="stat-chip-number">65%</div>
+            <div class="stat-chip-label">Missed “Beginner” labels on content cards in first tests</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Users & Context -->
-    <section class="section-dark">
-        <div class="container">
-            <h2>Understanding Our Users</h2>
-            <p>Early stakeholder interviews and financial literacy research revealed two primary user segments with distinct needs and behaviors:</p>
+    <!-- Users & contexts -->
+    <section>
+      <div class="shell reveal">
+        <div class="section-kicker">Users</div>
+        <h2 class="section-title">Who we designed for</h2>
+        <p>
+          Research and existing financial literacy studies surfaced two primary user groups that framed
+          both content and dashboard decisions.
+        </p>
 
-            <div class="two-column">
-                <div class="insight-card">
-                    <h4><span class="insight-icon">1</span>Emerging Investors</h4>
-                    <p><strong>Profile:</strong> Salaried professionals, 25–35 years old</p>
-                    <p><strong>Behaviors:</strong></p>
-                    <ul>
-                        <li>Starting SIPs and retirement planning</li>
-                        <li>Heavy mobile usage during commutes</li>
-                        <li>Low financial jargon tolerance</li>
-                        <li>Seek simple, actionable guidance</li>
-                    </ul>
-                </div>
-
-                <div class="insight-card">
-                    <h4><span class="insight-icon">2</span>Engaged Portfolio Builders</h4>
-                    <p><strong>Profile:</strong> Professionals, 30–45 years old</p>
-                    <p><strong>Behaviors:</strong></p>
-                    <ul>
-                        <li>Already hold mutual funds and equities</li>
-                        <li>Seek deeper insights and tax optimization</li>
-                        <li>Quick portfolio health checks after news</li>
-                        <li>Occasional deep-dive planning sessions</li>
-                    </ul>
-                </div>
+        <div class="two-col">
+          <div class="tile-card">
+            <div class="pill-badge">
+              <span class="pill-dot"></span>
+              Segment 01
             </div>
-
-            <h3>Key Usage Contexts</h3>
-            <div class="insight-cards">
-                <div class="insight-card">
-                    <h4>🚇 Micro-sessions</h4>
-                    <p>2–5 minute interactions during commutes or breaks, requiring scannable content and quick actions</p>
-                </div>
-                <div class="insight-card">
-                    <h4>📊 Quick health checks</h4>
-                    <p>Rapid portfolio reviews triggered by market movements or news notifications</p>
-                </div>
-                <div class="insight-card">
-                    <h4>🎯 Deep-dive planning</h4>
-                    <p>Occasional extended sessions for major investment decisions or goal planning</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research Process -->
-    <section class="section-light">
-        <div class="container">
-            <h2>Research & Discovery</h2>
-            <p>I conducted moderated 1:1 usability sessions with 20 participants, combining task-based testing with mental model exploration. The research focused on comprehension, navigation, trust, and relevance of insights and dashboard widgets.</p>
-
-            <h3>Research Objectives</h3>
+            <div class="tile-heading">Emerging investors</div>
+            <p><strong>Profile:</strong> Salaried professionals, 25–35, starting SIPs and retirement planning.</p>
             <ul>
-                <li>Understand how users discover and evaluate educational content in financial apps</li>
-                <li>Test navigation and filtering mechanisms across different content types</li>
-                <li>Assess trust signals and perception of promotional vs. educational content</li>
-                <li>Validate dashboard information hierarchy and actionability</li>
+              <li>Heavy mobile usage and short, interruption-prone sessions.</li>
+              <li>Low tolerance for jargon; high need for hand-holding.</li>
+              <li>Prefer quick summaries and “start here” paths.</li>
+            </ul>
+          </div>
+
+          <div class="tile-card">
+            <div class="pill-badge">
+              <span class="pill-dot"></span>
+              Segment 02
+            </div>
+            <div class="tile-heading">Engaged portfolio builders</div>
+            <p><strong>Profile:</strong> 30–45, already holding mutual funds or equities.</p>
+            <ul>
+              <li>Use the app for quick portfolio checks after market moves.</li>
+              <li>Seek deeper insights, tax optimization, and new opportunities.</li>
+              <li>Expect advanced content without losing clarity.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="context-tiles">
+          <div class="context-chip">2–5 minute micro-sessions during commutes or in-between meetings.</div>
+          <div class="context-chip">“Is everything okay?” portfolio checks after market or news events.</div>
+          <div class="context-chip">Occasional deep-dive sessions for major goals like home or education.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research & participant composition -->
+    <section>
+      <div class="shell reveal">
+        <div class="section-kicker">Research</div>
+        <h2 class="section-title">Research & participant composition</h2>
+        <p>
+          A mixed-method study combined a pre-session survey with 1:1 task-based usability sessions
+          to understand how people read, trust, and act on financial content and dashboards.
+        </p>
+
+        <div class="graph-wrap">
+          <div class="graph-header">
+            <div>
+              <div class="graph-title">Participant composition (n = 20)</div>
+              <p style="margin-top:0.15rem;font-size:0.82rem;">
+                Simulated distribution across confidence, experience, and content preferences.
+              </p>
+            </div>
+            <div class="graph-legend">
+              <div class="legend-item">
+                <span class="legend-swatch" style="background: linear-gradient(180deg,#00e0ff,#003c9e);"></span>
+                App usage &amp; device
+              </div>
+              <div class="legend-item">
+                <span class="legend-swatch" style="background: linear-gradient(180deg,#f6d365,#fda085);"></span>
+                Confidence &amp; experience
+              </div>
+              <div class="legend-item">
+                <span class="legend-swatch" style="background: linear-gradient(180deg,#2af598,#009efd);"></span>
+                Content preference
+              </div>
+            </div>
+          </div>
+
+          <div class="graph-grid">
+            <div class="graph-col">
+              <div class="graph-col-label">App usage</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="height:78%;"></div>
+              </div>
+              <div class="bar-label">Daily / 2–4× week mix</div>
+            </div>
+            <div class="graph-col">
+              <div class="graph-col-label">Confidence</div>
+              <div class="bar-track">
+                <div class="bar-fill confidence" style="height:68%;"></div>
+              </div>
+              <div class="bar-label">Mostly level 3–4 self-rated</div>
+            </div>
+            <div class="graph-col">
+              <div class="graph-col-label">Experience</div>
+              <div class="bar-track">
+                <div class="bar-fill experience" style="height:62%;"></div>
+              </div>
+              <div class="bar-label">Beginner &amp; intermediate heavy</div>
+            </div>
+            <div class="graph-col">
+              <div class="graph-col-label">Content type</div>
+              <div class="bar-track">
+                <div class="bar-fill content" style="height:70%;"></div>
+              </div>
+              <div class="bar-label">Videos &amp; articles dominate</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="insight-card">
+            <div class="insight-label">Insight 01</div>
+            <div class="insight-title">Beginner labels were invisible</div>
+            <p>
+              13 of 20 participants used the first “Skill up” card but 7 completely missed the small
+              “Beginner” label until asked. Tiny, low-contrast meta-tags failed in real micro-sessions.
+            </p>
+            <p class="insight-meta">→ Led to explicit “Start here” sections &amp; prominent level badges.</p>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-label">Insight 02</div>
+            <div class="insight-title">Users wanted portfolio-linked insights</div>
+            <p>
+              15 participants asked for news and tips directly connected to their holdings instead of
+              generic market headlines. “Because you invest in equity funds…” resonated strongly.
+            </p>
+            <p class="insight-meta">→ Informed the personalized “For you” stream and dashboard tiles.</p>
+          </div>
+
+          <div class="insight-card">
+            <div class="insight-label">Insight 03</div>
+            <div class="insight-title">Gamification looked like advertising</div>
+            <p>
+              8 participants scrolled past “Play &amp; Learn” assuming it was a promo. Others worried about
+              whether real money was at risk, eroding trust before any interaction.
+            </p>
+            <p class="insight-meta">→ Drove clearer framing: “Practice with virtual money, no impact on portfolio.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Information architecture (text only, grey boxes removed) -->
+    <section>
+      <div class="shell reveal">
+        <div class="section-kicker">Structure</div>
+        <h2 class="section-title">Information architecture & flows</h2>
+        <p>
+          The IA intentionally connects education and action: insights are always one or two taps away
+          from products, and vice versa.
+        </p>
+
+        <h3 style="margin-top:1.6rem;font-size:1.05rem;">Insights &amp; Knowledge Center</h3>
+        <div class="two-col">
+          <div>
+            <p><strong>Entry points</strong> from global navigation and contextual links:</p>
+            <ul>
+              <li>“Insights &amp; Knowledge” in the main nav.</li>
+              <li>“Learn more about ETFs” from relevant dashboard tiles.</li>
+              <li>Notifications like “Market update for your mutual funds”.</li>
             </ul>
 
-            <div class="callout">
-                <div class="callout-title">Participant Composition</div>
-                <p><strong>Investment confidence:</strong> 15% low confidence, 45% medium, 30% high, 10% very high</p>
-                <p><strong>Experience levels:</strong> 30% beginners (0–1 year), 40% intermediate (1–3 years), 20% advanced (3–7 years), 10% very advanced (7+ years)</p>
-                <p><strong>Content preference:</strong> 40% prefer videos, 35% prefer articles, 15% news summaries, 10% advisor calls</p>
-            </div>
-
-            <h3>Key Research Findings</h3>
-
-            <div class="insight-cards">
-                <div class="insight-card">
-                    <h4><span class="insight-icon">📚</span>Content Discovery Issues</h4>
-                    <p><strong>Finding:</strong> 65% of participants missed beginner-friendly labels at the bottom of content cards until prompted</p>
-                    <p><strong>Quote:</strong> "I'm not sure if this is too advanced for me or not"</p>
-                    <p><strong>Impact:</strong> Users avoided content that was actually appropriate for their level</p>
-                </div>
-
-                <div class="insight-card">
-                    <h4><span class="insight-icon">🎯</span>Personalization Expectations</h4>
-                    <p><strong>Finding:</strong> 75% wanted insights linked to their portfolio, not generic market news</p>
-                    <p><strong>Quote:</strong> "Show me news related to my investments, not general headlines"</p>
-                    <p><strong>Impact:</strong> Generic content felt irrelevant and reduced engagement</p>
-                </div>
-
-                <div class="insight-card">
-                    <h4><span class="insight-icon">🎮</span>Gamification Skepticism</h4>
-                    <p><strong>Finding:</strong> 40% perceived "Play & Learn" as advertising and ignored it</p>
-                    <p><strong>Quote:</strong> "What exactly can I win? Is this using real money?"</p>
-                    <p><strong>Impact:</strong> Unclear value proposition led to mistrust</p>
-                </div>
-
-                <div class="insight-card">
-                    <h4><span class="insight-icon">⏱️</span>Time-Sensitive Needs</h4>
-                    <p><strong>Finding:</strong> 70% wanted outcome-focused summaries they could scan in under 30 seconds</p>
-                    <p><strong>Quote:</strong> "Give me the takeaway first, then I'll decide to read more"</p>
-                    <p><strong>Impact:</strong> Long-form content without summaries was skipped</p>
-                </div>
-
-                <div class="insight-card">
-                    <h4><span class="insight-icon">🔍</span>Trust Signals Matter</h4>
-                    <p><strong>Finding:</strong> 60% looked for SEBI disclaimers, advisor credentials, and content sources</p>
-                    <p><strong>Quote:</strong> "Anything labeled 'MUST TRY' feels like a sales push"</p>
-                    <p><strong>Impact:</strong> Aggressive promotion language undermined trust</p>
-                </div>
-
-                <div class="insight-card">
-                    <h4><span class="insight-icon">📱</span>Action Confusion</h4>
-                    <p><strong>Finding:</strong> 70% struggled to differentiate informational content from actionable products</p>
-                    <p><strong>Quote:</strong> "Is this teaching me or trying to sell me something?"</p>
-                    <p><strong>Impact:</strong> Users hesitated to engage with product recommendations</p>
-                </div>
-            </div>
-
-            <h3>Dashboard-Specific Findings</h3>
-
-            <div class="decisions-list">
-                <div class="decision-item">
-                    <div class="decision-title">Financial Overview Clarity</div>
-                    <p>85% could quickly read net worth in the updated white version, feeling it was "cleaner" and "less intimidating" than the dark original. However, 25% felt it looked like "a marketing web page, not my personal finance."</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">Next Action Discovery</div>
-                    <p>70% successfully used "Check your financial health score" as their next step, but 30% were unsure whether to scroll or tap a specific card for guidance.</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">Advisor Access Hidden</div>
-                    <p>Only 45% noticed the "Advisor connect" floating button, with 55% thinking it was a dismissible notification rather than a persistent support entry point.</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">Payment Shortcuts Buried</div>
-                    <p>While all participants understood the "Easy payments" row, 40% wished it appeared higher on the screen, closer to frequent tasks.</p>
-                </div>
-            </div>
+            <p style="margin-top:0.9rem;"><strong>Primary tabs:</strong></p>
+            <ul>
+              <li>Articles, News, Videos, and a personalized Insights stream.</li>
+              <li>Cross-level filters for Beginner / Intermediate / Advanced.</li>
+            </ul>
+          </div>
+          <div>
+            <p><strong>Secondary features</strong> keep users engaged without feeling sold to:</p>
+            <ul>
+              <li>“Play &amp; Learn” virtual portfolio game as a safe practice space.</li>
+              <li>“Today’s Expert Speak” spotlight for high-signal video advice.</li>
+              <li>Saved/bookmarked items across all media types.</li>
+            </ul>
+            <p style="margin-top:0.9rem;"><strong>Core flows:</strong></p>
+            <ul>
+              <li>Browse → Filter by media/level → Read → Save/Share → Back to hub.</li>
+              <li>Dashboard notification → Deep-linked article → Contextual CTA (e.g., “Review SIPs”).</li>
+            </ul>
+          </div>
         </div>
+
+        <h3 style="margin-top:2rem;font-size:1.05rem;">Customer dashboard</h3>
+        <div class="decision-block">
+          <div class="decision-title">From static summary to a decision surface</div>
+          <p>
+            The dashboard is structured as: hero overview (net worth, allocation, trend), goal-centric
+            “Explore promises”, financial fitness, curated insights, products, and services like advisor
+            connect and payments.
+          </p>
+          <p style="margin-top:0.6rem;">
+            Each key metric intentionally links to one or two recommended actions—improve score, rebalance,
+            protect risk—so users never hit a dead end of just “numbers”.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <!-- Design Principles -->
-    <section class="section-dark">
-        <div class="container">
-            <h2>Design Principles</h2>
-            <p>Research insights translated into five core UX principles that guided all design decisions:</p>
-
-            <div class="principles-grid">
-                <div class="principle-card">
-                    <div class="principle-number">1</div>
-                    <h4>Make expertise levels explicit</h4>
-                    <p>Clearly segment content into "Start here" vs "Go deeper" with prominent, high-contrast labels that users can scan immediately.</p>
-                </div>
-
-                <div class="principle-card">
-                    <div class="principle-number">2</div>
-                    <h4>Surface outcome-oriented summaries</h4>
-                    <p>Lead with "What does this mean for me?" and "What should I do?" rather than presenting plain news or data.</p>
-                </div>
-
-                <div class="principle-card">
-                    <div class="principle-number">3</div>
-                    <h4>Frame games as learning tools</h4>
-                    <p>Position gamification with clear learning promises and risk-free framing to build trust, not skepticism.</p>
-                </div>
-
-                <div class="principle-card">
-                    <div class="principle-number">4</div>
-                    <h4>Dashboard as decision surface</h4>
-                    <p>Every key metric should connect to 1–2 recommended actions (improve score, rebalance, protect risk).</p>
-                </div>
-
-                <div class="principle-card">
-                    <div class="principle-number">5</div>
-                    <h4>Respect cognitive load</h4>
-                    <p>Financial data is inherently complex; visual hierarchy, whitespace, and progressive disclosure are critical.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Information Architecture -->
-    <section class="section-light">
-        <div class="container">
-            <h2>Information Architecture</h2>
-            <p>I restructured the app's content organization to create clear pathways between learning and action, ensuring users could seamlessly move from education to investment decisions.</p>
-
-            <h3>Insights & Knowledge Center</h3>
-            <div class="two-column">
-                <div>
-                    <h4>Structure</h4>
-                    <ul>
-                        <li><strong>Entry points:</strong> Global navigation and contextual links from dashboard</li>
-                        <li><strong>Primary tabs:</strong> Articles, News, Videos, Personalized Insights</li>
-                        <li><strong>Features:</strong> Play & Learn game, Today's Expert Speak, Saved items</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Key Flows</h4>
-                    <ul>
-                        <li>Browse → Filter by type/level → Open content → Save/Share</li>
-                        <li>Dashboard notification → Deep link to relevant article → Contextual CTA</li>
-                        <li>Goal selection → Recommended learning content → Product exploration</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="image-placeholder">
-                <p class="image-placeholder-text">[ Insights & Knowledge Center - Information Architecture Diagram ]</p>
-            </div>
-
-            <h3>Customer Dashboard</h3>
-            <div class="decisions-list">
-                <div class="decision-item">
-                    <div class="decision-title">Hero: Financial Overview</div>
-                    <p>Net worth, invested amount, gain/loss trends, and high-level asset allocation presented with clear visual hierarchy and color-coded indicators.</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">Explore Promises: Goal-Based Entry</div>
-                    <p>Life goals (Home, Retirement, Travel, Education) as mental model anchors instead of abstract product categories.</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">Financial Fitness</div>
-                    <p>Credit score, health score assessment, and improvement recommendations positioned as low-commitment engagement hooks.</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">Curated Insights</div>
-                    <p>Scannable content cards connecting education to dashboard context ("Latest news on your mutual funds").</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">Products & Services</div>
-                    <p>Investment products, advisor access, and payment shortcuts organized by frequency of use.</p>
-                </div>
-            </div>
-
-            <div class="image-placeholder">
-                <p class="image-placeholder-text">[ Customer Dashboard - Information Architecture Diagram ]</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Design Process -->
-    <section class="section-dark">
-        <div class="container">
-            <h2>Design Process</h2>
-            <p>I followed an iterative design approach, moving from rough concepts through mid-fidelity validation to polished high-fidelity screens.</p>
-
-            <div class="process-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker">1</div>
-                    <div class="timeline-content">
-                        <h3>Early Exploration: Hand-Drawn Wireframes</h3>
-                        <p>I started with rapid hand-drawn sketches to explore different layout approaches without investing in pixel-perfect details. These sketches focused on:</p>
-                        <ul>
-                            <li>Content card hierarchy and spacing</li>
-                            <li>Tab navigation patterns for media types</li>
-                            <li>Dashboard module arrangement and priority</li>
-                            <li>Entry points for educational content from transactional areas</li>
-                        </ul>
-                        <div class="image-placeholder">
-                            <p class="image-placeholder-text">[ Hand-Drawn Wireframes: Insights Home, Dashboard Variants ]</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">2</div>
-                    <div class="timeline-content">
-                        <h3>Structure & IA: Blocky Wireframes</h3>
-                        <p>I translated sketches into clean, grey-box wireframes to validate structure with stakeholders and engineering. This phase established:</p>
-                        <ul>
-                            <li>8px grid system and consistent spacing</li>
-                            <li>Content card component anatomy (image, title, metadata, CTA)</li>
-                            <li>Dashboard section breaks and scroll depth</li>
-                            <li>Responsive behavior for key components</li>
-                        </ul>
-                        <div class="image-placeholder">
-                            <p class="image-placeholder-text">[ Mid-Fidelity Wireframes: Component Structure, Grid System ]</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker">3</div>
-                    <div class="timeline-content">
-                        <h3>High-Fidelity Design: Visual Language</h3>
-                        <p>With structure validated, I applied HSBC's brand language while introducing modern patterns for wealth management:</p>
-
-                        <h4>Color System</h4>
-                        <ul>
-                            <li><strong>Primary:</strong> HSBC red (#DB0011) for brand continuity and key CTAs</li>
-                            <li><strong>Surfaces:</strong> Deep charcoal gradients for premium dark mode; off-white for accessibility in light mode</li>
-                            <li><strong>Semantic colors:</strong> Green for gains/positive trends, red for losses/alerts, teal/coral for secondary actions</li>
-                            <li><strong>Neutrals:</strong> Carefully calibrated greys for cards, dividers, and depth layering</li>
-                        </ul>
-
-                        <h4>Typography</h4>
-                        <ul>
-                            <li>Geometric sans-serif with tight but readable leading</li>
-                            <li>Clear hierarchy: H1 for greetings and net worth, H2 for sections, H3 for card titles</li>
-                            <li>Small meta text for duration and skill level tags with increased contrast</li>
-                        </ul>
-
-                        <h4>Components</h4>
-                        <ul>
-                            <li><strong>Content cards:</strong> Rounded corners, soft shadows, hover states via elevation</li>
-                            <li><strong>Dashboard hero:</strong> Gradient backgrounds with circular allocation visualizations</li>
-                            <li><strong>Goal chips:</strong> Scrollable icon-based shortcuts with single-tap access</li>
-                            <li><strong>Video tiles:</strong> 16:9 thumbnails with play overlays and duration labels</li>
-                        </ul>
-
-                        <div class="image-placeholder">
-                            <p class="image-placeholder-text">[ High-Fidelity Screens: Insights Home, Dashboard Light/Dark Modes ]</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Design Decisions -->
-    <section class="section-light">
-        <div class="container">
-            <h2>Key Design Decisions</h2>
-            <p>Several design decisions directly addressed research findings and balanced user needs with business objectives:</p>
-
-            <div class="decisions-list">
-                <div class="decision-item">
-                    <div class="decision-title">1. Narrative Home Hero Instead of Pure Numbers</div>
-                    <p><strong>Problem:</strong> Users found dense financial data intimidating and struggled to understand "am I doing well?"</p>
-                    <p><strong>Solution:</strong> Introduced contextual greetings ("Good morning, Astha!"), trend arrows with color-coded rings, and simplified percentage indicators to make the overview more human and scannable.</p>
-                    <p><strong>Impact:</strong> 90% of users in follow-up testing could assess their financial health in under 10 seconds.</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">2. Goal-Centric "Explore Promises"</div>
-                    <p><strong>Problem:</strong> Users thought in terms of life goals ("saving for a house") rather than product types ("mutual funds").</p>
-                    <p><strong>Solution:</strong> Grouped products under aspirational goals (Home, Retirement, Travel, Education) with icon-based visual language and storytelling copy.</p>
-                    <p><strong>Impact:</strong> Reduced cognitive load and created emotional connection to financial planning.</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">3. Inline Financial Fitness Nudges</div>
-                    <p><strong>Problem:</strong> Users avoided complex financial assessments, viewing them as time-consuming obligations.</p>
-                    <p><strong>Solution:</strong> Positioned credit score and health assessment as lightweight, scannable cards early in dashboard scroll with clear benefit statements ("Unlock better credit card offers").</p>
-                    <p><strong>Impact:</strong> Reframed assessments as opportunities rather than homework.</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">4. Curated Insights Carousel</div>
-                    <p><strong>Problem:</strong> Educational content felt disconnected from personal finances.</p>
-                    <p><strong>Solution:</strong> Created contextual content cards on the dashboard ("7 facts about EV bikes" after viewing auto loan products) with horizontal scrolling for easy browsing.</p>
-                    <p><strong>Impact:</strong> Bridged the gap between learning and action with minimal friction.</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">5. Persistent But Unobtrusive Advisor Access</div>
-                    <p><strong>Problem:</strong> Users missed advisor access or thought it was a dismissible notification.</p>
-                    <p><strong>Solution:</strong> Redesigned as a clearly labeled floating chip ("Advisor connect") that remains visible during scroll but doesn't block core tasks.</p>
-                    <p><strong>Impact:</strong> Maintained high-touch support for users who need it without cluttering the experience.</p>
-                </div>
-
-                <div class="decision-item">
-                    <div class="decision-title">6. Explicit Content Skill Levels</div>
-                    <p><strong>Problem:</strong> 65% of users missed skill level labels, leading to avoidance of appropriate content.</p>
-                    <p><strong>Solution:</strong> Moved level badges (Beginner, Intermediate, Advanced) to the top of content cards with increased size, contrast, and icon support. Added "Start here" section for first-time investors.</p>
-                    <p><strong>Impact:</strong> Content discovery improved significantly, with users confidently selecting appropriate resources.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Addressing UX Risks -->
-    <section class="section-dark">
-        <div class="container">
-            <h2>Addressing UX Risks</h2>
-            <p>Throughout the design process, I identified potential risks and built in mitigation strategies:</p>
-
-            <div class="insight-cards">
-                <div class="insight-card">
-                    <h4>⚠️ Risk: Sales Push Perception</h4>
-                    <p><strong>Challenge:</strong> Users perceive prominent product recommendations as advertising</p>
-                    <p><strong>Mitigation:</strong> Added transparency labels ("Educational game – uses virtual money only"), toned down urgency language ("MUST TRY" → "Recommended for you"), and included clear benefit statements with risk disclosures</p>
-                </div>
-
-                <div class="insight-card">
-                    <h4>⚠️ Risk: Overwhelming First-Time Users</h4>
-                    <p><strong>Challenge:</strong> Dense dashboards can intimidate beginners</p>
-                    <p><strong>Mitigation:</strong> Introduced optional onboarding tour highlighting 3–4 essential areas, progressive disclosure with "See more" expanders, and contextual tooltips for advanced features</p>
-                </div>
-
-                <div class="insight-card">
-                    <h4>⚠️ Risk: Content Silos</h4>
-                    <p><strong>Challenge:</strong> Educational content remains disconnected from transactional flows</p>
-                    <p><strong>Mitigation:</strong> Added "Related insights" under product cards, context-aware deep links from dashboard to hub, and "Learn more about this" buttons on complex products</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Visual Design Showcase -->
-    <section class="section-light">
-        <div class="container">
-            <h2>Final Experience</h2>
-            <p>The final designs balance educational content, financial oversight, and product discovery in a cohesive mobile experience.</p>
-
-            <h3>Insights & Knowledge Center</h3>
-            <div class="image-placeholder">
-                <p class="image-placeholder-text">[ Final Screen: Insights Home with Article/News/Video Tabs ]</p>
-            </div>
-            <p>The Insights hub features clear media-type tabs, scannable content cards with prominent skill-level badges, and strategic placement of the "Play & Learn" gamification module with transparent learning benefits.</p>
-
-            <div class="image-placeholder">
-                <p class="image-placeholder-text">[ Final Screen: News Tab View with Content Cards ]</p>
-            </div>
-            <p>News content is presented in a vertical feed with large thumbnails, clear headlines, and contextual tags. "Today's Expert Speak" video module is highlighted for timely, authoritative insights.</p>
-
-            <h3>Customer Dashboard</h3>
-            <div class="image-placeholder">
-                <p class="image-placeholder-text">[ Final Screen: Dashboard (Dark Mode) ]</p>
-            </div>
-            <p>The dark dashboard variant emphasizes the premium nature of wealth management with a gradient hero, circular asset allocation visualization, and clearly segmented sections for goals, fitness, insights, and products.</p>
-
-            <div class="image-placeholder">
-                <p class="image-placeholder-text">[ Final Screen: Dashboard (Light Mode) ]</p>
-            </div>
-            <p>The light mode variant increases accessibility and reduces visual intensity while maintaining clear hierarchy and actionable elements. Both modes support user preference for reading comfort.</p>
-
-            <h3>Profile & Progress</h3>
-            <div class="image-placeholder">
-                <p class="image-placeholder-text">[ Final Screen: Profile Completion & Progress ]</p>
-            </div>
-            <p>Profile completion is gamified with clear progress indicators and checklist-style tasks, encouraging users to unlock personalized recommendations and product eligibility.</p>
-        </div>
-    </section>
-
-    <!-- What I Would Do Next -->
+    <!-- What I would do next -->
     <section class="next-steps">
-        <div class="container">
-            <h2>What I Would Do Next</h2>
-            <p>If the project continued, I would focus on three key areas to further improve engagement, personalization, and conversion:</p>
+      <div class="shell reveal">
+        <div class="section-kicker">Next</div>
+        <h2 class="section-title">What I would do next</h2>
+        <p>
+          With more time and access to production data, the next phase would focus on sharpening
+          personalization, simplifying high-frequency tasks, and closing the loop between learning and
+          investing.
+        </p>
 
-            <div class="improvement-category">
-                <h4>A. Enhanced Insights & Knowledge Center</h4>
-                <ul>
-                    <li><strong>Stronger segmentation:</strong> Add a "Start here" strip with 3–5 beginner tiles ("Investing basics", "Mutual funds 101", "Tax-saving strategies") for first-time users</li>
-                    <li><strong>"For you" personalization:</strong> Create a dedicated tab prioritizing insights linked to user holdings and risk profile with contextual tags like "Because you invest in equity funds…"</li>
-                    <li><strong>Advanced filtering:</strong> Allow users to filter by skill level (Beginner / Intermediate / Advanced) across all media types simultaneously</li>
-                    <li><strong>Gamification transparency:</strong> Reframe "Play & Learn" as "Practice investing with virtual money" with a micro-panel explaining rules and learning objectives</li>
-                    <li><strong>Progression tracking:</strong> Add badges and levels tied to actual learning outcomes ("Completed Basics of Equity", "Tax Planning Master")</li>
-                </ul>
-            </div>
+        <div class="next-grid">
+          <div class="next-card">
+            <h4>A. Strengthen the Insights hub</h4>
+            <ul>
+              <li>Add a “Start here” strip with 3–5 tiles like “Investing basics” and “Mutual funds 101”.</li>
+              <li>Introduce a “For you” tab biased to the user’s holdings and risk profile.</li>
+              <li>Expose level filters (Beginner / Intermediate / Advanced) across all media types.</li>
+              <li>Clarify “Play &amp; Learn” as “Practice investing with virtual money, no real risk”.</li>
+              <li>Track learning progress with badges tied to real concepts, not vanity points.</li>
+            </ul>
+          </div>
 
-            <div class="improvement-category">
-                <h4>B. Smarter Customer Dashboard</h4>
-                <ul>
-                    <li><strong>Personalized "What matters now":</strong> Show 3 context-aware chips immediately below hero ("3 SIPs due this week", "Credit score changed +20", "Rebalance recommended in equity funds")</li>
-                    <li><strong>Flexible dashboard structure:</strong> Let users collapse sections they care less about and persist these preferences; consider sticky sub-navigation for Overview, Goals, Insights, Products, Payments</li>
-                    <li><strong>Clearer advisor access:</strong> Replace floating bubble with a labeled bottom sheet entry ("Talk to an advisor") opening structured options: schedule call, chat, FAQs</li>
-                    <li><strong>Payment shortcuts elevation:</strong> Move "Easy payments" closer to top or provide quick toggle between "Investments" and "Payments" views since many sessions start transactional</li>
-                    <li><strong>Comprehensive empty states:</strong> Design explicit states for no investments, pending KYC, or very low balances with guided checklists ("3 steps to get started")</li>
-                </ul>
-            </div>
+          <div class="next-card">
+            <h4>B. Evolve the dashboard</h4>
+            <ul>
+              <li>Add a “What matters now” row showing SIPs due, credit score deltas, or rebalance nudges.</li>
+              <li>Group content into sticky sub-nav sections: Overview, Goals, Insights, Products, Payments.</li>
+              <li>Let users collapse sections and persist those preferences across sessions.</li>
+              <li>Elevate “Easy payments” or offer a quick “Investments / Payments” toggle for frequent tasks.</li>
+              <li>Design explicit empty states for no investments, pending KYC, or very low balances.</li>
+            </ul>
+          </div>
 
-            <div class="improvement-category">
-                <h4>C. Measurement & Iteration</h4>
-                <ul>
-                    <li><strong>Content engagement metrics:</strong> Track completion rates, time spent, and save/share actions by skill level and content type</li>
-                    <li><strong>Conversion tracking:</strong> Measure how many users move from educational content to product exploration and actual transactions</li>
-                    <li><strong>A/B testing:</strong> Test variations of CTA language, content card layouts, and dashboard module ordering to optimize for both learning and conversion</li>
-                    <li><strong>Qualitative follow-ups:</strong> Conduct quarterly diary studies to understand how investment confidence evolves with app usage</li>
-                </ul>
-            </div>
-
-            <div class="callout">
-                <div class="callout-title">Target Outcomes</div>
-                <p>With these improvements, I would aim for:</p>
-                <ul>
-                    <li><strong>20% increase</strong> in content engagement (time spent in Insights hub)</li>
-                    <li><strong>5% lift</strong> in product cross-sell from dashboard recommendations</li>
-                    <li><strong>30% improvement</strong> in first-time investor confidence scores</li>
-                    <li><strong>15% reduction</strong> in advisor dependency for basic investment decisions</li>
-                </ul>
-            </div>
+          <div class="next-card">
+            <h4>C. Measure & iterate pragmatically</h4>
+            <ul>
+              <li>Track content completion rates, time-on-insights, and save/share behavior by level.</li>
+              <li>Instrument flows from content to product exploration and new investments.</li>
+              <li>Run A/B tests on CTA copy, card layouts, and dashboard ordering to tune for clarity.</li>
+              <li>Use quarterly diary studies to understand how perceived confidence shifts over time.</li>
+            </ul>
+          </div>
         </div>
+
+        <div class="target-callout">
+          <h4>Target outcomes</h4>
+          <ul>
+            <li>Increase content engagement in the Insights hub by ~20%.</li>
+            <li>Improve cross-sell from dashboard recommendations by ~5%.</li>
+            <li>Boost self-reported investment confidence for first-time investors by ~30%.</li>
+            <li>Reduce dependency on advisor calls for basic decisions by ~15%.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Key Learnings -->
-    <section class="section-light">
-        <div class="container">
-            <h2>Key Learnings</h2>
-            <p>This project reinforced several critical principles for designing financial products:</p>
+    <!-- Key learnings -->
+    <section>
+      <div class="shell reveal">
+        <div class="section-kicker">Reflection</div>
+        <h2 class="section-title">Key learnings</h2>
+        <p>
+          This project reinforced core principles that carry across complex, high-stakes domains like
+          healthcare and fintech.
+        </p>
 
-            <div class="principles-grid">
-                <div class="principle-card">
-                    <div class="principle-number">1</div>
-                    <h4>Trust is the foundation</h4>
-                    <p>In financial products, even subtle promotional language can erode trust. Transparency, clear sourcing, and regulatory compliance should be visible, not buried.</p>
-                </div>
-
-                <div class="principle-card">
-                    <div class="principle-number">2</div>
-                    <h4>Education must be contextual</h4>
-                    <p>Users don't visit separate "learning centers"—they learn in the moment of need. Deep links between dashboards and content are essential.</p>
-                </div>
-
-                <div class="principle-card">
-                    <div class="principle-number">3</div>
-                    <h4>Progressive disclosure manages complexity</h4>
-                    <p>Financial data is inherently complex. Starting simple and revealing depth on demand prevents overwhelming users while serving power users.</p>
-                </div>
-
-                <div class="principle-card">
-                    <div class="principle-number">4</div>
-                    <h4>Mental models over product taxonomy</h4>
-                    <p>Users think in goals ("buy a house") not products ("mutual funds"). Organizing around aspirations creates emotional connection and clarity.</p>
-                </div>
-            </div>
+        <div class="learnings-grid">
+          <div class="learning-card">
+            <h4>Trust is the primary UI</h4>
+            <p>
+              Even subtle sales language or ambiguous rewards can erode trust. Clear sourcing, disclaimers,
+              and intent labelling must be first-class design elements.
+            </p>
+          </div>
+          <div class="learning-card">
+            <h4>Education works best in context</h4>
+            <p>
+              Users rarely visit standalone “learning centers”. Embedding guidance at the exact moment of
+              decision drives far better uptake.
+            </p>
+          </div>
+          <div class="learning-card">
+            <h4>Progressive disclosure beats “all at once”</h4>
+            <p>
+              Financial data is heavy by default. Starting simple and revealing depth on demand lowers
+              anxiety without blocking expert users.
+            </p>
+          </div>
+          <div class="learning-card">
+            <h4>Design for goals, not products</h4>
+            <p>
+              Organizing around life goals (home, retirement, education) aligns with how people think,
+              making complex product choices feel more human and relatable.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="case-study-footer">
-        <div class="container">
-            <p>© 2025 Viv Chawda. Designed with care.</p>
-            <p><a href="index.html">← Back to Portfolio</a></p>
+    <!-- Footer (consistent with main site tone) -->
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <div class="footer-top-row">
+          <span class="footer-name">Vivek Chawda · Experience Designer</span>
+          <div class="footer-links">
+            <a href="mailto:vivchawda@gmail.com">Email</a>
+            <a href="https://linkedin.com/in/vivekchawda/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="https://github.com/vivchawda" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
         </div>
+        <div class="footer-bottom-row">
+          <span>Designing inclusive, research-driven experiences for complex products.</span>
+          <span>© <span id="year-span">2025</span> · Built with care in India.</span>
+        </div>
+      </div>
     </footer>
+  </div>
+
+  <script>
+    // Scroll reveal animations
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    revealEls.forEach(el => observer.observe(el));
+
+    // Subtle bar animation on load
+    window.addEventListener("load", () => {
+      const bars = document.querySelectorAll(".bar-fill");
+      bars.forEach(bar => {
+        const targetHeight = bar.style.height || "70%";
+        bar.style.height = "5%";
+        setTimeout(() => {
+          bar.style.height = targetHeight;
+        }, 120);
+      });
+
+      const yearSpan = document.getElementById("year-span");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    });
+  </script>
 </body>
 </html>
