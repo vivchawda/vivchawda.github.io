@@ -16,7 +16,7 @@
   </script>
   
   <style>
-    /* ==================== DESIGN TOKENS (MATCH INDEX) ==================== */
+    /* ==================== DESIGN SYSTEM (SHARED) ==================== */
     :root {
       --color-bg-primary: #0a0e17;
       --color-bg-secondary: #1e293b;
@@ -40,7 +40,6 @@
       --color-border-green: rgba(16, 185, 129, 0.3);
       --color-border-orange: rgba(249, 115, 22, 0.3);
       --color-border-pink: rgba(236, 72, 153, 0.3);
-      --color-border-yellow: rgba(234, 179, 8, 0.3);
       
       --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
       --font-size-sm: 13px;
@@ -72,9 +71,9 @@
       --duration-fast: 0.2s;
       --duration-normal: 0.3s;
       --duration-slow: 0.6s;
+      --easing-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* ==================== RESET & BASE ==================== */
     * {
       box-sizing: border-box;
     }
@@ -82,7 +81,7 @@
     body {
       margin: 0;
       font-family: var(--font-family-base);
-      background: radial-gradient(circle at top, #020617 0, #020617 55%);
+      background: var(--color-bg-primary);
       color: var(--color-text-primary);
       padding-top: var(--header-height);
     }
@@ -93,22 +92,15 @@
       padding: 0 var(--spacing-page) var(--spacing-section);
     }
 
-    a {
-      color: var(--color-accent-cyan);
-      text-decoration: none;
-      transition: all var(--duration-normal) ease;
-    }
-
-    a:hover {
-      color: var(--color-accent-cyan-light);
-      text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
-      text-decoration: none;
-    }
-
-    /* ==================== ANIMATIONS ==================== */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes slideDown {
@@ -121,7 +113,18 @@
       50% { opacity: 0.5; transform: scale(0.8); }
     }
 
-    /* ==================== HEADER (LOCAL NAV) ==================== */
+    a {
+      color: var(--color-accent-cyan);
+      text-decoration: none;
+      transition: all var(--duration-normal) ease;
+    }
+
+    a:hover {
+      color: var(--color-accent-cyan-light);
+      text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+    }
+
+    /* HEADER */
     .header {
       position: fixed;
       top: 0;
@@ -179,7 +182,7 @@
     }
 
     .nav a::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -4px;
       left: 0;
@@ -189,15 +192,15 @@
       transition: width var(--duration-normal) ease;
     }
 
-    .nav a:hover {
+    .nav a:hover, .nav a.active {
       color: var(--color-accent-cyan);
     }
 
-    .nav a:hover::after {
+    .nav a:hover::after, .nav a.active::after {
       width: 100%;
     }
 
-    .cta-btn {
+    .back-btn {
       padding: 10px 20px;
       background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
       color: #fff;
@@ -207,16 +210,17 @@
       border: 1px solid rgba(34, 211, 238, 0.5);
       transition: all var(--duration-normal) ease;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    .cta-btn:hover {
+    .back-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4),
-                  0 0 40px rgba(168, 85, 247, 0.3);
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4);
       color: #fff;
     }
 
-    /* ==================== HERO ==================== */
+    /* HERO */
     .hero {
       padding: var(--space-4xl) 0 var(--space-5xl);
       text-align: center;
@@ -238,7 +242,7 @@
     }
 
     .hero-badge::before {
-      content: "";
+      content: '';
       width: 8px;
       height: 8px;
       background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-green));
@@ -272,58 +276,44 @@
 
     .hero-meta {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: var(--space-lg);
-      max-width: 900px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-xl);
+      max-width: 1000px;
       margin: 0 auto;
+      animation: fadeInUp var(--duration-slow) ease-out 0.3s backwards;
     }
 
     .hero-meta-item {
-      padding: var(--space-lg);
+      padding: var(--space-xl);
       border-radius: 12px;
       background: var(--color-bg-card);
-      border: 1px solid var(--color-border-cyan);
       text-align: left;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-meta-item::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.2), transparent 60%);
-      opacity: 0;
-      transition: opacity var(--duration-normal) ease;
-      pointer-events: none;
-    }
-
-    .hero-meta-item:hover::before {
-      opacity: 1;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .hero-meta-label {
       font-size: var(--font-size-sm);
+      font-weight: 400;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-sm);
       color: var(--color-text-tertiary);
-      margin-bottom: var(--space-xs);
     }
 
     .hero-meta-value {
       font-size: var(--font-size-base);
+      font-weight: 400;
       color: var(--color-text-primary);
-      font-weight: 500;
     }
 
-    /* ==================== SECTION WRAPPER ==================== */
+    /* SECTION DIVIDER */
     .section {
       margin-bottom: var(--spacing-section);
       position: relative;
     }
 
     .section::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -60px;
       left: 50%;
@@ -331,12 +321,7 @@
       width: 80%;
       max-width: 600px;
       height: 1px;
-      background: linear-gradient(90deg,
-        transparent 0%,
-        var(--color-border-cyan) 20%,
-        var(--color-border-purple) 50%,
-        var(--color-border-cyan) 80%,
-        transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, var(--color-border-cyan) 20%, var(--color-border-purple) 50%, var(--color-border-cyan) 80%, transparent 100%);
     }
 
     .section:last-of-type::after {
@@ -361,7 +346,7 @@
     }
 
     .section-title::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -12px;
       left: 50%;
@@ -381,55 +366,77 @@
       margin-right: auto;
     }
 
-    /* ==================== CARD GRID (CHALLENGE & LEARNINGS) ==================== */
+    /* CARD GRID */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: var(--space-2xl);
+      margin-bottom: var(--space-3xl);
     }
 
     .card {
-      background: var(--color-bg-card);
-      border-radius: 16px;
       padding: var(--space-xl);
-      border: 1px solid var(--color-border-purple);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
-      transition: all var(--duration-normal) ease;
+      border-radius: 12px;
+      background: var(--color-bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       animation: fadeInUp var(--duration-slow) ease-out backwards;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(168, 85, 247, 0.6);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
-                  0 0 40px rgba(168, 85, 247, 0.3);
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+
+    .card:nth-child(3n+1):hover {
+      border-color: var(--color-accent-cyan);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .card:nth-child(3n+2):hover {
+      border-color: var(--color-accent-purple);
+      box-shadow: 0 12px 32px rgba(168, 85, 247, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .card:nth-child(3n):hover {
+      border-color: var(--color-accent-orange);
+      box-shadow: 0 12px 32px rgba(249, 115, 22, 0.3);
+      transform: translateY(-4px);
     }
 
     .card h3 {
       font-size: var(--font-size-xl);
-      margin-bottom: var(--space-sm);
+      font-weight: 600;
       color: var(--color-text-primary);
+      margin-bottom: var(--space-md);
+      margin-top: 0;
     }
 
     .card p {
       font-size: var(--font-size-base);
       color: var(--color-text-secondary);
       line-height: 1.6;
+      margin: 0;
     }
 
-    /* ==================== INFO BOX ==================== */
+    /* INFO BOX */
     .info-box {
-      margin-top: var(--space-3xl);
-      padding: var(--space-xl) var(--space-2xl);
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(168, 85, 247, 0.08));
-      border: 1px solid var(--color-border-cyan);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+      padding: var(--space-2xl);
+      border-radius: 12px;
+      background: var(--color-bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-left: 3px solid var(--color-accent-cyan);
+      margin-bottom: var(--space-xl);
     }
 
     .info-box h3 {
       font-size: var(--font-size-2xl);
-      margin-bottom: var(--space-md);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-lg);
+      margin-top: 0;
     }
 
     .info-box ul {
@@ -439,74 +446,160 @@
     }
 
     .info-box li {
+      padding-left: var(--space-xl);
+      margin-bottom: var(--space-md);
       position: relative;
-      padding-left: 20px;
-      margin-bottom: var(--space-sm);
-      font-size: var(--font-size-base);
       color: var(--color-text-secondary);
+      line-height: 1.7;
     }
 
     .info-box li::before {
-      content: "•";
+      content: '→';
       position: absolute;
-      left: 4px;
-      top: 0;
+      left: 0;
       color: var(--color-accent-cyan);
     }
 
-    .info-box strong {
-      color: var(--color-text-primary);
-      font-weight: 600;
+    /* TIMELINE */
+    .timeline {
+      position: relative;
+      margin-bottom: var(--space-4xl);
     }
 
-    /* ==================== FEATURES (SOLUTION) ==================== */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, transparent 0%, var(--color-border-cyan) 10%, var(--color-border-purple) 30%, var(--color-border-green) 50%, var(--color-border-orange) 70%, var(--color-border-cyan) 90%, transparent 100%);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: var(--space-4xl);
+      margin-bottom: var(--space-3xl);
+      animation: fadeInUp var(--duration-slow) ease-out backwards;
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -8px;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--color-accent-cyan);
+      border: 4px solid var(--color-bg-primary);
+      transition: all var(--duration-normal) ease;
+    }
+
+    .timeline-item:nth-child(1) .timeline-dot { background: var(--color-accent-cyan); }
+    .timeline-item:nth-child(2) .timeline-dot { background: var(--color-accent-purple); }
+    .timeline-item:nth-child(3) .timeline-dot { background: var(--color-accent-green); }
+    .timeline-item:nth-child(4) .timeline-dot { background: var(--color-accent-orange); }
+    .timeline-item:nth-child(5) .timeline-dot { background: var(--color-accent-pink); }
+
+    .timeline-item:hover .timeline-dot {
+      width: 24px;
+      height: 24px;
+      left: -12px;
+    }
+
+    .timeline-date {
+      font-size: var(--font-size-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-sm);
+      font-weight: 600;
+      color: var(--color-accent-cyan);
+    }
+
+    .timeline-item:nth-child(2) .timeline-date { color: var(--color-accent-purple-light); }
+    .timeline-item:nth-child(3) .timeline-date { color: var(--color-accent-green); }
+    .timeline-item:nth-child(4) .timeline-date { color: var(--color-accent-orange); }
+    .timeline-item:nth-child(5) .timeline-date { color: #f472b6; }
+
+    .timeline-item h3 {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-sm);
+      margin-top: 0;
+    }
+
+    .timeline-item p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* FEATURES */
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: var(--space-2xl);
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-3xl);
     }
 
     .feature {
       display: flex;
-      gap: var(--space-lg);
+      gap: var(--space-xl);
+      padding: var(--space-2xl);
       background: var(--color-bg-card);
-      border-radius: 16px;
-      padding: var(--space-xl);
-      border: 1px solid var(--color-border-cyan);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      animation: fadeInUp var(--duration-slow) ease-out backwards;
       transition: all var(--duration-normal) ease;
     }
 
+    .feature:nth-child(1) { animation-delay: 0.1s; }
+    .feature:nth-child(2) { animation-delay: 0.2s; }
+    .feature:nth-child(3) { animation-delay: 0.3s; }
+    .feature:nth-child(4) { animation-delay: 0.4s; }
+    .feature:nth-child(5) { animation-delay: 0.5s; }
+    .feature:nth-child(6) { animation-delay: 0.6s; }
+
     .feature:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45),
-                  0 0 36px rgba(6, 182, 212, 0.25);
-      border-color: rgba(34, 211, 238, 0.6);
+      border-color: var(--color-accent-cyan);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.2);
+      transform: translateY(-2px);
     }
 
     .feature-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple));
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at 0 0, rgba(34, 211, 238, 0.4), transparent 60%);
-      border: 1px solid var(--color-border-cyan);
-      color: var(--color-accent-cyan-light);
-      font-weight: 600;
+      color: var(--color-bg-primary);
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
       flex-shrink: 0;
     }
 
     .feature-content h3 {
-      font-size: var(--font-size-xl);
-      margin-bottom: var(--space-xs);
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--space-md);
+      color: var(--color-text-primary);
+      margin-top: 0;
     }
 
     .feature-content p {
-      font-size: var(--font-size-base);
       color: var(--color-text-secondary);
-      margin-bottom: var(--space-sm);
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+      font-size: var(--font-size-base);
     }
 
     .feature-content ul {
@@ -516,142 +609,120 @@
     }
 
     .feature-content li {
+      color: var(--color-text-tertiary);
+      font-size: var(--font-size-sm);
+      margin-bottom: var(--space-sm);
+      padding-left: var(--space-md);
       position: relative;
-      padding-left: 18px;
-      margin-bottom: var(--space-xs);
-      font-size: var(--font-size-base);
-      color: var(--color-text-secondary);
     }
 
     .feature-content li::before {
-      content: "→";
+      content: '•';
       position: absolute;
       left: 0;
-      top: 0;
       color: var(--color-accent-cyan);
-      font-size: 12px;
     }
 
-    /* ==================== TIMELINE (PROCESS) ==================== */
-    .timeline {
-      border-radius: 16px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--color-border-purple);
-      padding: var(--space-2xl);
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 24px;
-      margin-bottom: var(--space-2xl);
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: 0;
-      top: 6px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--color-accent-purple);
-      box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.3);
-    }
-
-    .timeline-date {
-      font-size: var(--font-size-sm);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-accent-purple-light);
-      margin-bottom: var(--space-xs);
-    }
-
-    .timeline-item h3 {
-      font-size: var(--font-size-xl);
-      margin-bottom: var(--space-xs);
-      color: var(--color-text-primary);
-    }
-
-    .timeline-item p {
-      font-size: var(--font-size-base);
-      color: var(--color-text-secondary);
-      line-height: 1.6;
-    }
-
-    /* ==================== METRICS (RESULTS) ==================== */
+    /* METRICS */
     .metrics {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: var(--space-2xl);
-      margin-bottom: var(--space-3xl);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-xl);
+      margin-bottom: var(--space-4xl);
     }
 
     .metric {
-      border-radius: 16px;
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border-green);
-      padding: var(--space-xl);
       text-align: center;
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+      padding: var(--space-2xl);
+      background: var(--color-bg-card);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      animation: fadeInUp var(--duration-slow) ease-out backwards;
       transition: all var(--duration-normal) ease;
     }
 
+    .metric:nth-child(1) { animation-delay: 0.1s; }
+    .metric:nth-child(2) { animation-delay: 0.2s; }
+    .metric:nth-child(3) { animation-delay: 0.3s; }
+    .metric:nth-child(4) { animation-delay: 0.4s; }
+
     .metric:hover {
-      transform: translateY(-6px);
-      border-color: rgba(16, 185, 129, 0.6);
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45),
-                  0 0 36px rgba(16, 185, 129, 0.25);
+      border-color: var(--color-accent-cyan);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.3);
+      transform: translateY(-4px);
     }
 
     .metric-number {
-      font-size: var(--font-size-4xl);
+      font-size: var(--font-size-5xl);
       font-weight: 700;
-      color: var(--color-accent-green);
-      margin-bottom: var(--space-xs);
+      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-sm);
     }
 
     .metric-label {
       font-size: var(--font-size-base);
       color: var(--color-text-secondary);
+      font-weight: 500;
     }
 
-    /* ==================== BACK TO PORTFOLIO BUTTON ==================== */
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 24px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
-      color: #fff;
-      font-size: var(--font-size-base);
-      font-weight: 600;
-      border: 1px solid rgba(34, 211, 238, 0.5);
-      box-shadow: 0 12px 28px rgba(6, 182, 212, 0.35),
-                  0 0 32px rgba(168, 85, 247, 0.35);
-      cursor: pointer;
+    /* IMAGE GALLERY */
+    .image-gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+      margin-bottom: var(--space-4xl);
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--color-bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      animation: fadeInUp var(--duration-slow) ease-out backwards;
       transition: all var(--duration-normal) ease;
     }
 
-    .back-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 16px 40px rgba(6, 182, 212, 0.45),
-                  0 0 40px rgba(168, 85, 247, 0.45);
-      color: #fff;
-      text-shadow: none;
+    .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+    .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+    .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+
+    .gallery-item:hover {
+      border-color: var(--color-accent-cyan);
+      box-shadow: 0 12px 32px rgba(6, 182, 212, 0.3);
     }
 
-    /* ==================== RESPONSIVE ==================== */
-    @media (max-width: 900px) {
-      .hero-meta {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .gallery-img {
+      width: 100%;
+      height: auto;
+      background: #1e293b;
+      display: block;
     }
 
+    .gallery-caption {
+      padding: var(--space-xl);
+      background: var(--color-bg-card);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .gallery-caption h3 {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-top: 0;
+      margin-bottom: var(--space-sm);
+    }
+
+    .gallery-caption p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       body {
         padding-top: 70px;
@@ -682,14 +753,40 @@
       }
 
       .hero-meta {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card-grid {
         grid-template-columns: 1fr;
+      }
+
+      .timeline::before {
+        left: 0;
+      }
+
+      .timeline-item {
+        padding-left: var(--space-3xl);
+      }
+
+      .timeline-dot {
+        left: -8px;
+      }
+
+      .feature {
+        flex-direction: column;
+      }
+
+      .feature-icon {
+        margin-bottom: var(--space-md);
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -698,7 +795,7 @@
   </style>
 </head>
 <body>
-  <!-- Header with local nav -->
+  <!-- Header -->
   <header class="header">
     <div class="header-inner">
       <div class="logo-container">
@@ -706,24 +803,21 @@
         <div class="logo-subtitle">User Experience Designer</div>
       </div>
       <nav class="nav">
-        <a href="#challenge">About</a>
-        <a href="#solution">Work</a>
-        <a href="#process">Experience</a>
-        <a href="#cta">Contact</a>
-        <button class="cta-btn" id="downloadCvBtn">Download CV</button>
+        <a href="../index.html">Back to Portfolio</a>
       </nav>
     </div>
   </header>
 
+  <!-- Main Content -->
   <main class="page">
-    <!-- HERO -->
+    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-badge">Case Study: RADAR Dashboard</div>
-      <h1 class="hero-title">Remote Analysis &amp; Diagnosis Dashboard for Global Teams</h1>
+      <h1 class="hero-title">Remote Analysis & Diagnosis Dashboard for Global Teams</h1>
       <p class="hero-subtitle">
-        How I built a comprehensive monitoring and alert management system for 1,600+ medical devices installed worldwide,
-        enabling service technicians to respond faster to critical failures.
+        How I built a comprehensive monitoring and alert management system for 1,600+ medical devices installed worldwide, enabling service technicians to respond faster to critical failures.
       </p>
+      
       <div class="hero-meta">
         <div class="hero-meta-item">
           <div class="hero-meta-label">Devices Monitored</div>
@@ -744,8 +838,8 @@
       </div>
     </section>
 
-    <!-- CHALLENGE -->
-    <section class="section" id="challenge">
+    <!-- Challenge Section -->
+    <section class="section">
       <div class="section-header">
         <h2 class="section-title">The Challenge</h2>
       </div>
@@ -780,13 +874,11 @@
       </div>
     </section>
 
-    <!-- SOLUTION -->
-    <section class="section" id="solution">
+    <!-- Solution Section -->
+    <section class="section">
       <div class="section-header">
         <h2 class="section-title">The Solution</h2>
-        <p class="section-description">
-          A tiered information architecture that balances overview visibility with deep diagnostic tools.
-        </p>
+        <p class="section-description">A tiered information architecture that balances overview visibility with deep diagnostic tools.</p>
       </div>
 
       <div class="features">
@@ -832,7 +924,7 @@
         <div class="feature">
           <div class="feature-icon">4</div>
           <div class="feature-content">
-            <h3>Localized &amp; Accessible</h3>
+            <h3>Localized & Accessible</h3>
             <p>Built multi-language support and ensured the dashboard worked on low-bandwidth connections common in remote service locations.</p>
             <ul>
               <li>Automatic language detection based on user profile</li>
@@ -861,7 +953,7 @@
             <h3>Proactive Notifications</h3>
             <p>Moved from reactive dashboard checking to proactive multi-channel alerts via email, SMS, and in-app notifications.</p>
             <ul>
-              <li>Customizable notification rules based on device type &amp; severity</li>
+              <li>Customizable notification rules based on device type & severity</li>
               <li>On-call scheduling integration for automatic escalation</li>
               <li>Alert fatigue reduction through intelligent grouping</li>
             </ul>
@@ -870,8 +962,8 @@
       </div>
     </section>
 
-    <!-- DESIGN PROCESS -->
-    <section class="section" id="process">
+    <!-- Design Process -->
+    <section class="section">
       <div class="section-header">
         <h2 class="section-title">Design Process</h2>
       </div>
@@ -880,44 +972,44 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Phase 1: Discovery (Month 1-3)</div>
-          <h3>Research &amp; Validation</h3>
+          <h3>Research & Validation</h3>
           <p>Conducted 15+ interviews with service technicians, engineers, and service managers across 5 countries. Analyzed 6 months of support tickets to understand real pain points. Built personas based on user archetypes and behaviors.</p>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Phase 2: Exploration (Month 4-6)</div>
-          <h3>Wireframing &amp; Prototyping</h3>
+          <h3>Wireframing & Prototyping</h3>
           <p>Created 5 different dashboard layouts exploring different information hierarchies. Tested prototypes with power users in low-fidelity and interactive formats. Validated alert prioritization logic with machine learning team.</p>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Phase 3: Iteration (Month 7-12)</div>
-          <h3>High-Fidelity Design &amp; Testing</h3>
+          <h3>High-Fidelity Design & Testing</h3>
           <p>Built comprehensive design system for dashboard components. Conducted 3 rounds of usability testing with real users. Refined visual hierarchy, color coding, and interaction patterns based on feedback.</p>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Phase 4: Implementation (Month 13-18)</div>
-          <h3>Handoff &amp; Validation</h3>
+          <h3>Handoff & Validation</h3>
           <p>Worked with engineering team to implement design specs. Conducted QA testing across browsers and devices. Gathered feedback during soft launch and iterated before full rollout.</p>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">Ongoing: Monitoring &amp; Optimization</div>
+          <div class="timeline-date">Ongoing: Monitoring & Optimization</div>
           <h3>Post-Launch Learning</h3>
           <p>Tracked adoption metrics and user behavior. Conducted follow-up interviews to understand real-world impact. Implemented refinements based on actual usage patterns.</p>
         </div>
       </div>
     </section>
 
-    <!-- RESULTS & IMPACT -->
+    <!-- Key Metrics -->
     <section class="section">
       <div class="section-header">
-        <h2 class="section-title">Results &amp; Impact</h2>
+        <h2 class="section-title">Results & Impact</h2>
       </div>
 
       <div class="metrics">
@@ -952,7 +1044,7 @@
       </div>
     </section>
 
-    <!-- KEY LEARNINGS -->
+    <!-- Key Learnings -->
     <section class="section">
       <div class="section-header">
         <h2 class="section-title">Key Learnings</h2>
@@ -978,42 +1070,35 @@
       </div>
     </section>
 
-    <!-- CTA / BACK TO PORTFOLIO -->
-    <section class="section" id="cta">
+    <!-- CTA Section -->
+    <section class="section">
       <div class="section-header">
         <h2 class="section-title">Let's Work Together</h2>
         <p class="section-description">
           If you're building complex tools for demanding users, or need help with design strategy, I'd love to discuss your challenges.
         </p>
       </div>
+      
       <div style="text-align: center;">
-        <a href="../index.html#work" class="back-btn">Back to Portfolio</a>
+        <a href="../index.html#contact" class="back-btn">Back to Portfolio</a>
       </div>
     </section>
   </main>
 
   <script>
-    // Smooth scroll for local anchors
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (!href || href === "#") return;
-        const target = document.querySelector(href);
-        if (target) {
+        if (href !== '#') {
           e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
       });
     });
-
-    // Download CV -> go back to home CV section
-    const downloadBtn = document.getElementById('downloadCvBtn');
-    if (downloadBtn) {
-      downloadBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.location.href = '../index.html#download';
-      });
-    }
   </script>
 </body>
 </html>
