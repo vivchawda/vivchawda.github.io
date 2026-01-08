@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RADAR Case Study - Remote Analysis and Diagnosis tool redesign for medical system service technicians. A UX design project by Vivek Chawda.">
+  <title>RADAR Case Study - Remote Analysis & Diagnosis Tool | Vivek Chawda</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C04MG51NWX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C04MG51NWX');
+  </script>
+
+  <style>
+    /* ==================== DESIGN TOKENS (MATCH INDEX) ==================== */
+    :root {
+      --color-bg-primary: #0a0e17;
+      --color-bg-secondary: #1e293b;
+      --color-bg-card: rgba(15, 23, 42, 0.8);
+
+      --color-text-primary: #f1f5f9;
+      --color-text-secondary: #cbd5e1;
+      --color-text-tertiary: #94a3b8;
+
+      --color-accent-cyan: #22d3ee;
+      --color-accent-cyan-light: #67e8f9;
+      --color-accent-purple: #a855f7;
+      --color-accent-purple-light: #c084fc;
+      --color-accent-green: #10b981;
+      --color-accent-orange: #f97316;
+      --color-accent-pink: #ec4899;
+      --color-accent-yellow: #eab308;
+
+      --color-border-cyan: rgba(6, 182, 212, 0.2);
+      --color-border-purple: rgba(168, 85, 247, 0.3);
+      --color-border-green: rgba(16, 185, 129, 0.3);
+      --color-border-orange: rgba(249, 115, 22, 0.3);
+      --color-border-pink: rgba(236, 72, 153, 0.3);
+      --color-border-yellow: rgba(234, 179, 8, 0.3);
+
+      --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      --font-size-sm: 13px;
+      --font-size-base: 14px;
+      --font-size-lg: 16px;
+      --font-size-xl: 18px;
+      --font-size-2xl: 20px;
+      --font-size-3xl: 24px;
+      --font-size-4xl: 30px;
+      --font-size-5xl: 40px;
+      --font-size-6xl: 56px;
+
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-lg: 16px;
+      --space-xl: 24px;
+      --space-2xl: 32px;
+      --space-3xl: 48px;
+      --space-4xl: 64px;
+      --space-5xl: 80px;
+      --space-6xl: 120px;
+
+      --max-width: 1200px;
+      --spacing-page: 24px;
+      --spacing-section: 120px;
+      --header-height: 80px;
+
+      --duration-fast: 0.2s;
+      --duration-normal: 0.3s;
+      --duration-slow: 0.6s;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-family-base);
+      background: radial-gradient(circle at top, #020617 0, #020617 55%);
+      color: var(--color-text-primary);
+      padding-top: var(--header-height);
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-page) var(--spacing-section);
+    }
+
+    a {
+      color: var(--color-accent-cyan);
+      text-decoration: none;
+      transition: all var(--duration-normal) ease;
+    }
+
+    a:hover {
+      color: var(--color-accent-cyan-light);
+      text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
+      text-decoration: none;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    /* HEADER */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 14, 23, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border-cyan);
+      z-index: 100;
+      animation: slideDown var(--duration-normal) ease-out;
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-page);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--header-height);
+      gap: var(--space-xl);
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      white-space: nowrap;
+    }
+
+    .logo {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--color-accent-cyan);
+      line-height: 1.1;
+    }
+
+    .logo-subtitle {
+      font-size: var(--font-size-sm);
+      letter-spacing: 0.05em;
+      color: #64748b;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2xl);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      position: relative;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-purple));
+      transition: width var(--duration-normal) ease;
+    }
+
+    .nav a:hover { color: var(--color-accent-cyan); }
+    .nav a:hover::after { width: 100%; }
+
+    .cta-btn {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+      color: #fff;
+      border-radius: 8px;
+      font-size: var(--font-size-base);
+      font-weight: 600;
+      border: 1px solid rgba(34, 211, 238, 0.5);
+      transition: all var(--duration-normal) ease;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4),
+                  0 0 40px rgba(168, 85, 247, 0.3);
+      color: #fff;
+    }
+
+    /* HERO */
+    .hero {
+      padding: var(--space-4xl) 0 var(--space-5xl);
+      text-align: center;
+      animation: fadeInUp var(--duration-slow) ease-out 0.2s backwards;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(168, 85, 247, 0.15));
+      border: 1px solid var(--color-border-cyan);
+      color: var(--color-accent-cyan);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .hero-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-green));
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-title {
+      font-size: var(--font-size-6xl);
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 auto var(--space-xl);
+      background: linear-gradient(135deg, #f1f5f9 0%, var(--color-accent-cyan) 50%, var(--color-accent-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      max-width: 900px;
+    }
+
+    .hero-subtitle {
+      font-size: var(--font-size-xl);
+      color: var(--color-text-secondary);
+      margin: 0 auto var(--space-2xl);
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-lg);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-meta-item {
+      padding: var(--space-lg);
+      border-radius: 12px;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-cyan);
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-meta-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.2), transparent 60%);
+      opacity: 0;
+      transition: opacity var(--duration-normal) ease;
+      pointer-events: none;
+    }
+
+    .hero-meta-item:hover::before { opacity: 1; }
+
+    .hero-meta-label {
+      font-size: var(--font-size-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-xs);
+    }
+
+    .hero-meta-value {
+      font-size: var(--font-size-base);
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: var(--spacing-section);
+      position: relative;
+    }
+
+    .section::after {
+      content: "";
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 600px;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--color-border-cyan) 20%,
+        var(--color-border-purple) 50%,
+        var(--color-border-cyan) 80%,
+        transparent 100%);
+    }
+
+    .section:last-of-type::after { display: none; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-4xl);
+    }
+
+    .section-title {
+      font-size: var(--font-size-5xl);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-lg);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-purple), var(--color-accent-orange));
+      border-radius: 2px;
+    }
+
+    .section-description {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-tertiary);
+      margin-top: var(--space-xl);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* CARDS */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-2xl);
+    }
+
+    .card {
+      background: var(--color-bg-card);
+      border-radius: 16px;
+      padding: var(--space-xl);
+      border: 1px solid var(--color-border-purple);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+      transition: all var(--duration-normal) ease;
+      animation: fadeInUp var(--duration-slow) ease-out backwards;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(168, 85, 247, 0.6);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
+                  0 0 40px rgba(168, 85, 247, 0.3);
+    }
+
+    .card h3 {
+      font-size: var(--font-size-xl);
+      margin: 0 0 var(--space-sm);
+      color: var(--color-text-primary);
+    }
+
+    .card p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* INFO BOX */
+    .info-box {
+      margin-top: var(--space-3xl);
+      padding: var(--space-xl) var(--space-2xl);
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(168, 85, 247, 0.08));
+      border: 1px solid var(--color-border-cyan);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+    }
+
+    .info-box h3 {
+      font-size: var(--font-size-2xl);
+      margin: 0 0 var(--space-md);
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .info-box li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: var(--space-sm);
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+    }
+
+    .info-box li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      top: 0;
+      color: var(--color-accent-cyan);
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-2xl);
+    }
+
+    .feature {
+      display: flex;
+      gap: var(--space-lg);
+      background: var(--color-bg-card);
+      border-radius: 16px;
+      padding: var(--space-xl);
+      border: 1px solid var(--color-border-cyan);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+      transition: all var(--duration-normal) ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45),
+                  0 0 36px rgba(6, 182, 212, 0.25);
+      border-color: rgba(34, 211, 238, 0.6);
+    }
+
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 0 0, rgba(34, 211, 238, 0.4), transparent 60%);
+      border: 1px solid var(--color-border-cyan);
+      color: var(--color-accent-cyan-light);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .feature-content h3 {
+      font-size: var(--font-size-xl);
+      margin: 0 0 var(--space-xs);
+    }
+
+    .feature-content p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+      margin: 0 0 var(--space-sm);
+    }
+
+    .feature-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .feature-content li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: var(--space-xs);
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+    }
+
+    .feature-content li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--color-accent-cyan);
+      font-size: 12px;
+    }
+
+    /* TIMELINE (as on your live page) */
+    .timeline {
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--color-border-purple);
+      padding: var(--space-2xl);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--color-accent-purple);
+      box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.3);
+    }
+
+    .timeline-date {
+      font-size: var(--font-size-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent-purple-light);
+      margin-bottom: var(--space-xs);
+    }
+
+    .timeline-item h3 {
+      font-size: var(--font-size-xl);
+      margin: 0 0 var(--space-xs);
+      color: var(--color-text-primary);
+    }
+
+    .timeline-item p {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* METRICS */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-2xl);
+      margin-bottom: var(--space-3xl);
+    }
+
+    .metric {
+      border-radius: 16px;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-green);
+      padding: var(--space-xl);
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+      transition: all var(--duration-normal) ease;
+    }
+
+    .metric:hover {
+      transform: translateY(-6px);
+      border-color: rgba(16, 185, 129, 0.6);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45),
+                  0 0 36px rgba(16, 185, 129, 0.25);
+    }
+
+    .metric-number {
+      font-size: var(--font-size-4xl);
+      font-weight: 700;
+      color: var(--color-accent-green);
+      margin-bottom: var(--space-xs);
+    }
+
+    .metric-label {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
+      color: #fff;
+      font-size: var(--font-size-base);
+      font-weight: 600;
+      border: 1px solid rgba(34, 211, 238, 0.5);
+      box-shadow: 0 12px 28px rgba(6, 182, 212, 0.35),
+                  0 0 32px rgba(168, 85, 247, 0.35);
+      cursor: pointer;
+      transition: all var(--duration-normal) ease;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(6, 182, 212, 0.45),
+                  0 0 40px rgba(168, 85, 247, 0.45);
+      color: #fff;
+      text-shadow: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 768px) {
+      body { padding-top: 70px; }
+      .header-inner { height: 70px; }
+      .logo { font-size: var(--font-size-lg); }
+      .nav { gap: var(--space-xl); }
+      .nav a { font-size: var(--font-size-sm); }
+      .hero-title { font-size: var(--font-size-4xl); }
+      .section-title { font-size: var(--font-size-3xl); }
+      .hero-meta { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo-container">
+        <div class="logo">Vivek Chawda</div>
+        <div class="logo-subtitle">User Experience Designer</div>
+      </div>
+      <nav class="nav">
+        <a href="#challenge">About</a>
+        <a href="#solution">Work</a>
+        <a href="#process">Experience</a>
+        <a href="#cta">Contact</a>
+        <button class="cta-btn" onclick="window.history.back()">Back</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-badge">Case Study: RADAR Dashboard</div>
+      <h1 class="hero-title">Remote Analysis &amp; Diagnosis Dashboard for Global Teams</h1>
+      <p class="hero-subtitle">
+        How I built a comprehensive monitoring and alert management system for 1,600+ medical devices installed worldwide,
+        enabling service technicians to respond faster to critical failures.
+      </p>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Devices Monitored</div>
+          <div class="hero-meta-value">1,600+ Radiology Systems</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Response Time</div>
+          <div class="hero-meta-value">30% Faster Diagnosis</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Role</div>
+          <div class="hero-meta-value">Lead UX Designer</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Timeline</div>
+          <div class="hero-meta-value">18 Months</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="challenge">
+      <div class="section-header">
+        <h2 class="section-title">The Challenge</h2>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Fragmented Visibility</h3>
+          <p>Service engineers had to log into multiple disconnected systems to understand the health of installed systems. Critical alerts were buried among non-urgent notifications.</p>
+        </div>
+        <div class="card">
+          <h3>Slow Diagnostics</h3>
+          <p>Without real-time data from devices, technicians had to make phone calls or wait for manual reports. This delayed problem identification and increased downtime.</p>
+        </div>
+        <div class="card">
+          <h3>Limited Actionability</h3>
+          <p>The dashboard showed problems but didn't guide engineers toward solutions. Developers expected deep technical logs; service leads wanted high-level status summaries.</p>
+        </div>
+        <div class="card">
+          <h3>Global Scale Issues</h3>
+          <p>Systems deployed across multiple regions had different time zones, languages, and connectivity constraints. One-size-fits-all design wouldn't work.</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3>Research Insights</h3>
+        <ul>
+          <li>Service technicians spent 40% of their time searching for relevant device data across systems</li>
+          <li>Critical failures took 90 minutes average to diagnose (goal: 30 minutes)</li>
+          <li>Field engineers relied on phone support for interpretation, creating bottlenecks</li>
+          <li>Engineers needed both high-level overview AND deep technical detail without clutter</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="solution">
+      <div class="section-header">
+        <h2 class="section-title">The Solution</h2>
+        <p class="section-description">
+          A tiered information architecture that balances overview visibility with deep diagnostic tools.
+        </p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">1</div>
+          <div class="feature-content">
+            <h3>Smart Alert Prioritization</h3>
+            <p>Implemented machine-learning driven alert categorization that automatically separates critical failures from routine maintenance alerts.</p>
+            <ul>
+              <li>Critical alerts highlighted with context-specific actions</li>
+              <li>Grouped related alerts to reduce alert fatigue</li>
+              <li>Predictive alerts flagged issues before they escalated</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">2</div>
+          <div class="feature-content">
+            <h3>Multi-Level Information Design</h3>
+            <p>Created a progressive disclosure system that showed summary data by default but allowed engineers to drill into technical logs with one click.</p>
+            <ul>
+              <li>Service lead dashboard: High-level device status + team workload</li>
+              <li>Technician dashboard: Prioritized alerts + quick actions</li>
+              <li>Debug mode: Full technical logs + system telemetry for developers</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">3</div>
+          <div class="feature-content">
+            <h3>Contextual Device Timeline</h3>
+            <p>Designed an interactive timeline showing device event history, helping engineers understand problem patterns and root causes.</p>
+            <ul>
+              <li>Visual event log with severity indicators</li>
+              <li>Ability to correlate events across device components</li>
+              <li>Export timeline data for forensic analysis</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">4</div>
+          <div class="feature-content">
+            <h3>Localized &amp; Accessible</h3>
+            <p>Built multi-language support and ensured the dashboard worked on low-bandwidth connections common in remote service locations.</p>
+            <ul>
+              <li>Automatic language detection based on user profile</li>
+              <li>Progressive data loading for slow networks</li>
+              <li>Dark/light mode + high contrast accessibility options</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">5</div>
+          <div class="feature-content">
+            <h3>Collaborative Workflows</h3>
+            <p>Enabled teams to collaborate on complex diagnostics by sharing alerts, annotations, and recommended actions with colleagues.</p>
+            <ul>
+              <li>Inline comments on alerts with @ mentions</li>
+              <li>Knowledge base integration for documented troubleshooting steps</li>
+              <li>Escalation workflows for cases requiring management approval</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">6</div>
+          <div class="feature-content">
+            <h3>Proactive Notifications</h3>
+            <p>Moved from reactive dashboard checking to proactive multi-channel alerts via email, SMS, and in-app notifications.</p>
+            <ul>
+              <li>Customizable notification rules based on device type &amp; severity</li>
+              <li>On-call scheduling integration for automatic escalation</li>
+              <li>Alert fatigue reduction through intelligent grouping</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="section-header">
+        <h2 class="section-title">Design Process</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Phase 1: Discovery (Month 1-3)</div>
+          <h3>Research &amp; Validation</h3>
+          <p>Conducted 15+ interviews with service technicians, engineers, and service managers across 5 countries. Analyzed 6 months of support tickets to understand real pain points. Built personas based on user archetypes and behaviors.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Phase 2: Exploration (Month 4-6)</div>
+          <h3>Wireframing &amp; Prototyping</h3>
+          <p>Created 5 different dashboard layouts exploring different information hierarchies. Tested prototypes with power users in low-fidelity and interactive formats. Validated alert prioritization logic with machine learning team.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Phase 3: Iteration (Month 7-12)</div>
+          <h3>High-Fidelity Design &amp; Testing</h3>
+          <p>Built comprehensive design system for dashboard components. Conducted 3 rounds of usability testing with real users. Refined visual hierarchy, color coding, and interaction patterns based on feedback.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Phase 4: Implementation (Month 13-18)</div>
+          <h3>Handoff &amp; Validation</h3>
+          <p>Worked with engineering team to implement design specs. Conducted QA testing across browsers and devices. Gathered feedback during soft launch and iterated before full rollout.</p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Ongoing: Monitoring &amp; Optimization</div>
+          <h3>Post-Launch Learning</h3>
+          <p>Tracked adoption metrics and user behavior. Conducted follow-up interviews to understand real-world impact. Implemented refinements based on actual usage patterns.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Results &amp; Impact</h2>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-number">30%</div>
+          <div class="metric-label">Faster Problem Diagnosis</div>
+        </div>
+        <div class="metric">
+          <div class="metric-number">45%</div>
+          <div class="metric-label">Reduction in Support Tickets</div>
+        </div>
+        <div class="metric">
+          <div class="metric-number">89%</div>
+          <div class="metric-label">User Adoption Rate</div>
+        </div>
+        <div class="metric">
+          <div class="metric-number">92%</div>
+          <div class="metric-label">User Satisfaction Score</div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3>Measurable Outcomes</h3>
+        <ul>
+          <li><strong>Response Time:</strong> Reduced average diagnosis time from 90 to 65 minutes</li>
+          <li><strong>Alert Accuracy:</strong> 95% of critical alerts now correctly prioritized (vs. 60% before)</li>
+          <li><strong>User Adoption:</strong> 89% of target users actively using the system within 6 months</li>
+          <li><strong>Satisfaction:</strong> Net Promoter Score improved from 32 to 72</li>
+          <li><strong>Efficiency:</strong> Support team capacity increased by 25% without additional hiring</li>
+          <li><strong>Regional Impact:</strong> All 1,600+ deployed systems integrated with zero critical issues</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 class="section-title">Key Learnings</h2>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Listen to Power Users</h3>
+          <p>Service technicians had deep domain knowledge. Their feedback on alert classification and prioritization logic was invaluable and led to the ML partnership.</p>
+        </div>
+        <div class="card">
+          <h3>Progressive Disclosure Scales</h3>
+          <p>Showing the right data at the right time meant everyone—from service leads to developers—could use the same platform effectively.</p>
+        </div>
+        <div class="card">
+          <h3>Global Scale Changes Everything</h3>
+          <p>Time zones, languages, and connectivity constraints were not afterthoughts. They shaped every design decision from the start.</p>
+        </div>
+        <div class="card">
+          <h3>Measure What Matters</h3>
+          <p>Adoption rates and satisfaction scores were important, but reducing diagnosis time by 30% was the metric that actually proved business value.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cta">
+      <div class="section-header">
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-description">
+          If you're building complex tools for demanding users, or need help with design strategy, I'd love to discuss your challenges.
+        </p>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="../index.html#work" class="back-btn">Back to Portfolio</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === "#") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    const downloadBtn = document.getElementById('downloadCvBtn');
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = '../index.html#download';
+      });
+    }
+  </script>
+</body>
+</html>
