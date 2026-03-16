@@ -1625,6 +1625,7 @@
             </div>
         </section>
     </div>
+<<<<<<< HEAD
     
     <script>
         // Intersection Observer for fade-in effect on scroll
@@ -1633,6 +1634,51 @@
             rootMargin: '0px',
             threshold: 0.15
         };
+=======
+  </div>
+
+  <!-- CV Modal -->
+  <div class="modal-backdrop" id="cvModalBackdrop">
+    <div class="modal cv-modal">
+      <button class="modal-close" id="cvModalClose">×</button>
+      <h2 class="modal-title">Download my CV</h2>
+      <div class="cv-options">
+        <a href="cv/Vivek-Chawda-CV.pdf" download class="cv-option">PDF Version</a>
+        <a href="cv/Vivek-Chawda-CV-ATS.docx" download class="cv-option">ATS-Optimized DOCX</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Work Modal
+    const workModalBackdrop = document.getElementById('workModalBackdrop');
+    const workModalClose = document.getElementById('workModalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalHighlights = document.getElementById('modalHighlights');
+    const modalImage = document.getElementById('modalImage');
+    const modalImageLink = document.getElementById('modalImageLink');
+    const caseStudyBtn = document.getElementById('caseStudyBtn');
+
+    document.querySelectorAll('.work-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.getAttribute('data-project-title');
+        const subtitle = card.getAttribute('data-project-subtitle');
+        const description = card.getAttribute('data-project-description');
+        const metaRaw = card.getAttribute('data-meta');
+        const highlightsRaw = card.getAttribute('data-project-highlights');
+        const imageSrc = card.getAttribute('data-image') || 'images/work-default-screen.png';
+        const link = card.getAttribute('data-link');
+        const hasCaseStudy = card.getAttribute('data-has-case-study') === 'true';
+
+        modalTitle.textContent = title;
+        modalSubtitle.textContent = subtitle;
+        modalDescription.textContent = description;
+        modalImage.src = imageSrc;
+        modalImage.alt = title;
+>>>>>>> parent of 9d72385 (updated index)
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
