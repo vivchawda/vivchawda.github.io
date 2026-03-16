@@ -1,2100 +1,1665 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Vivek Chawda - Experience Designer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
-  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C04MG51NWX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-C04MG51NWX');
-  </script>
-
-  <style>
-    /* ==================== REUSABLE DESIGN SYSTEM ==================== */
-    /* This section contains all the foundational design tokens and variables */
-    /* that are shared across all portfolio pages (index.html, RADAR.html, etc.) */
-    
-    :root {
-      /* === COLOR PALETTE === */
-      /* Primary background colors */
-      --color-bg-primary: #0a0e17;
-      --color-bg-secondary: #1e293b;
-      --color-bg-card: rgba(15, 23, 42, 0.8);
-      
-      /* Text colors */
-      --color-text-primary: #f1f5f9;
-      --color-text-secondary: #cbd5e1;
-      --color-text-tertiary: #94a3b8;
-      
-      /* Accent colors - main gradient palette */
-      --color-accent-cyan: #22d3ee;
-      --color-accent-cyan-light: #67e8f9;
-      --color-accent-purple: #a855f7;
-      --color-accent-purple-light: #c084fc;
-      --color-accent-green: #10b981;
-      --color-accent-orange: #f97316;
-      --color-accent-pink: #ec4899;
-      --color-accent-yellow: #eab308;
-      
-      /* Transparent variants for borders & overlays */
-      --color-border-cyan: rgba(6, 182, 212, 0.2);
-      --color-border-purple: rgba(168, 85, 247, 0.3);
-      --color-border-green: rgba(16, 185, 129, 0.3);
-      --color-border-orange: rgba(249, 115, 22, 0.3);
-      --color-border-pink: rgba(236, 72, 153, 0.3);
-      --color-border-yellow: rgba(234, 179, 8, 0.3);
-      
-      /* === TYPOGRAPHY === */
-      --font-family-base: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-      --font-size-sm: 13px;
-      --font-size-base: 14px;
-      --font-size-lg: 16px;
-      --font-size-xl: 18px;
-      --font-size-2xl: 20px;
-      --font-size-3xl: 24px;
-      --font-size-4xl: 30px;
-      --font-size-5xl: 40px;
-      --font-size-6xl: 56px;
-      
-      /* === SPACING SCALE === */
-      --space-xs: 4px;
-      --space-sm: 8px;
-      --space-md: 12px;
-      --space-lg: 16px;
-      --space-xl: 24px;
-      --space-2xl: 32px;
-      --space-3xl: 48px;
-      --space-4xl: 64px;
-      --space-5xl: 80px;
-      --space-6xl: 120px;
-      
-      /* === LAYOUT === */
-      --max-width: 1200px;
-      --spacing-page: 24px;
-      --spacing-section: 120px;
-      --header-height: 80px;
-      
-      /* === TRANSITIONS & ANIMATIONS === */
-      --duration-fast: 0.2s;
-      --duration-normal: 0.3s;
-      --duration-slow: 0.6s;
-      --easing-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* ==================== RESET & BASE STYLES ==================== */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-family-base);
-      background: var(--color-bg-primary);
-      color: var(--color-text-primary);
-      padding-top: var(--header-height);
-    }
-
-    .page {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 var(--spacing-page) var(--spacing-section);
-    }
-
-    /* ==================== ANIMATIONS (REUSABLE MODULE) ==================== */
-    /* These animations are used throughout the portfolio */
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideDown {
-      from {
-        transform: translateY(-100%);
-      }
-      to {
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.5;
-        transform: scale(0.8);
-      }
-    }
-
-    @keyframes pulseGlowPurple {
-      0%, 100% {
-        box-shadow: 0 0 15px rgba(168, 85, 247, 0.3),
-                    0 0 30px rgba(147, 51, 234, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(168, 85, 247, 0.5),
-                    0 0 50px rgba(147, 51, 234, 0.3);
-      }
-    }
-
-    @keyframes pulseGlowGreen {
-      0%, 100% {
-        box-shadow: 0 0 15px rgba(16, 185, 129, 0.3),
-                    0 0 30px rgba(5, 150, 105, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(16, 185, 129, 0.5),
-                    0 0 50px rgba(5, 150, 105, 0.3);
-      }
-    }
-
-    @keyframes pulseGlowOrange {
-      0%, 100% {
-        box-shadow: 0 0 15px rgba(249, 115, 22, 0.3),
-                    0 0 30px rgba(234, 88, 12, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(249, 115, 22, 0.5),
-                    0 0 50px rgba(234, 88, 12, 0.3);
-      }
-    }
-
-    @keyframes pulseGlowPink {
-      0%, 100% {
-        box-shadow: 0 0 15px rgba(236, 72, 153, 0.3),
-                    0 0 30px rgba(219, 39, 119, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(236, 72, 153, 0.5),
-                    0 0 50px rgba(219, 39, 119, 0.3);
-      }
-    }
-
-    @keyframes pulseGlowYellow {
-      0%, 100% {
-        box-shadow: 0 0 15px rgba(234, 179, 8, 0.3),
-                    0 0 30px rgba(202, 138, 4, 0.2);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(234, 179, 8, 0.5),
-                    0 0 50px rgba(202, 138, 4, 0.3);
-      }
-    }
-
-    a {
-      color: var(--color-accent-cyan);
-      text-decoration: none;
-      transition: all var(--duration-normal) ease;
-    }
-
-    a:hover {
-      color: var(--color-accent-cyan-light);
-      text-shadow: 0 0 8px rgba(34, 211, 238, 0.6);
-      text-decoration: none;
-    }
-
-    /* ==================== HEADER MODULE (REUSABLE) ==================== */
-    /* Copy this entire .header section to other pages for consistency */
-    
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(10, 14, 23, 0.95);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--color-border-cyan);
-      z-index: 100;
-      animation: slideDown var(--duration-normal) ease-out;
-    }
-
-    .header-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 var(--spacing-page);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: var(--header-height);
-    }
-
-    .logo-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .logo {
-      font-size: var(--font-size-xl);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--color-accent-cyan);
-    }
-
-    .logo-subtitle {
-      font-size: var(--font-size-sm);
-      letter-spacing: 0.05em;
-      color: #64748b;
-      text-transform: uppercase;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2xl);
-    }
-
-    .nav a {
-      font-size: var(--font-size-base);
-      font-weight: 500;
-      color: var(--color-text-secondary);
-      transition: all var(--duration-normal) ease;
-      position: relative;
-    }
-
-    .nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-purple));
-      transition: width var(--duration-normal) ease;
-    }
-
-    .nav a:hover {
-      color: var(--color-accent-cyan);
-    }
-
-    .nav a:hover::after {
-      width: 100%;
-    }
-
-    .cta-btn {
-      padding: 10px 20px;
-      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
-      color: #fff;
-      border-radius: 8px;
-      font-size: var(--font-size-base);
-      font-weight: 600;
-      border: 1px solid rgba(34, 211, 238, 0.5);
-      transition: all var(--duration-normal) ease;
-      cursor: pointer;
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4),
-                  0 0 40px rgba(168, 85, 247, 0.3);
-      color: #fff;
-      text-shadow: none;
-    }
-
-    /* ==================== HERO SECTION MODULE ==================== */
-    .hero {
-      padding: var(--space-4xl) 0 var(--space-5xl);
-      text-align: center;
-      animation: fadeInUp var(--duration-slow) ease-out 0.2s backwards;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-sm);
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(168, 85, 247, 0.15));
-      border: 1px solid var(--color-border-cyan);
-      color: var(--color-accent-cyan);
-      font-size: var(--font-size-sm);
-      font-weight: 500;
-      margin-bottom: var(--space-2xl);
-    }
-
-    .hero-badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-green));
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    .hero-title {
-      font-size: var(--font-size-6xl);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: var(--space-xl);
-      background: linear-gradient(135deg, #f1f5f9 0%, var(--color-accent-cyan) 50%, var(--color-accent-purple) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-subtitle {
-      font-size: var(--font-size-xl);
-      color: var(--color-text-secondary);
-      margin-bottom: var(--space-2xl);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
-
-    .hero-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-      justify-content: center;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .pill {
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: var(--font-size-sm);
-      transition: all var(--duration-normal) ease;
-      background: rgba(168, 85, 247, 0.1);
-      border: 1px solid rgba(168, 85, 247, 0.3);
-      color: var(--color-accent-purple-light);
-    }
-
-    .pill:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
-      background: rgba(168, 85, 247, 0.15);
-      border-color: rgba(168, 85, 247, 0.5);
-    }
-
-    /* ==================== SECTION DIVIDER MODULE (REUSABLE) ==================== */
-    /* This creates the beautiful fading gradient line between sections */
-    
-    .section {
-      margin-bottom: var(--spacing-section);
-      position: relative;
-    }
-
-    .section::after {
-      content: '';
-      position: absolute;
-      bottom: -60px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      max-width: 600px;
-      height: 1px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--color-border-cyan) 20%, 
-        var(--color-border-purple) 50%, 
-        var(--color-border-cyan) 80%, 
-        transparent 100%);
-    }
-
-    .section:last-of-type::after {
-      display: none;
-    }
-
-    /* ==================== SECTION TITLE MODULE ==================== */
-    .section-header {
-      text-align: center;
-      margin-bottom: var(--space-4xl);
-    }
-
-    .section-title {
-      font-size: var(--font-size-5xl);
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: var(--space-lg);
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-accent-cyan), var(--color-accent-purple), var(--color-accent-orange));
-      border-radius: 2px;
-    }
-
-    .section-description {
-      font-size: var(--font-size-lg);
-      color: var(--color-text-tertiary);
-      margin-top: var(--space-xl);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ==================== WORK GRID MODULE ==================== */
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: var(--space-2xl);
-    }
-
-    .work-card {
-      position: relative;
-      border-radius: 16px;
-      background: var(--color-bg-card);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      overflow: hidden;
-      animation: fadeInUp var(--duration-slow) ease-out backwards;
-    }
-
-    .work-card:nth-child(1) { 
-      animation-delay: 0.1s;
-      border: 1px solid var(--color-border-cyan);
-    }
-    .work-card:nth-child(2) { 
-      animation-delay: 0.2s;
-      border: 1px solid var(--color-border-purple);
-    }
-    .work-card:nth-child(3) { 
-      animation-delay: 0.3s;
-      border: 1px solid var(--color-border-green);
-    }
-    .work-card:nth-child(4) { 
-      animation-delay: 0.4s;
-      border: 1px solid var(--color-border-orange);
-    }
-    .work-card:nth-child(5) { 
-      animation-delay: 0.5s;
-      border: 1px solid var(--color-border-pink);
-    }
-    .work-card:nth-child(6) { 
-      animation-delay: 0.6s;
-      border: 1px solid var(--color-border-yellow);
-    }
-
-    .work-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 1;
-    }
-
-    .work-card:nth-child(1)::before {
-      background: radial-gradient(circle at top right, rgba(6, 182, 212, 0.15), transparent 60%);
-    }
-    .work-card:nth-child(2)::before {
-      background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.15), transparent 60%);
-    }
-    .work-card:nth-child(3)::before {
-      background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.15), transparent 60%);
-    }
-    .work-card:nth-child(4)::before {
-      background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.15), transparent 60%);
-    }
-    .work-card:nth-child(5)::before {
-      background: radial-gradient(circle at top right, rgba(236, 72, 153, 0.15), transparent 60%);
-    }
-    .work-card:nth-child(6)::before {
-      background: radial-gradient(circle at top right, rgba(234, 179, 8, 0.15), transparent 60%);
-    }
-
-    .work-card:nth-child(1):hover {
-      transform: translateY(-8px);
-      border-color: rgba(34, 211, 238, 0.6);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
-                  0 0 40px rgba(6, 182, 212, 0.3);
-    }
-
-    .work-card:nth-child(2):hover {
-      transform: translateY(-8px);
-      border-color: rgba(168, 85, 247, 0.6);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
-                  0 0 40px rgba(168, 85, 247, 0.3);
-    }
-
-    .work-card:nth-child(3):hover {
-      transform: translateY(-8px);
-      border-color: rgba(16, 185, 129, 0.6);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
-                  0 0 40px rgba(16, 185, 129, 0.3);
-    }
-
-    .work-card:nth-child(4):hover {
-      transform: translateY(-8px);
-      border-color: rgba(249, 115, 22, 0.6);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
-                  0 0 40px rgba(249, 115, 22, 0.3);
-    }
-
-    .work-card:nth-child(5):hover {
-      transform: translateY(-8px);
-      border-color: rgba(236, 72, 153, 0.6);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
-                  0 0 40px rgba(236, 72, 153, 0.3);
-    }
-
-    .work-card:nth-child(6):hover {
-      transform: translateY(-8px);
-      border-color: rgba(234, 179, 8, 0.6);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4),
-                  0 0 40px rgba(234, 179, 8, 0.3);
-    }
-
-    .work-card:hover::before {
-      opacity: 1;
-    }
-
-    .case-study-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.9), rgba(219, 39, 119, 0.9));
-      border: 1px solid rgba(236, 72, 153, 0.5);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      z-index: 10;
-      transition: all var(--duration-normal) ease;
-      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
-    }
-
-    .work-card:hover .case-study-badge {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
-    }
-
-    .work-image {
-      width: 100%;
-      height: 220px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .work-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      background: #1e293b;
-      transition: transform var(--duration-normal) ease;
-    }
-
-    .work-card:hover .work-image img {
-      transform: scale(1.05);
-    }
-
-    .work-content {
-      padding: var(--space-xl);
-      position: relative;
-      z-index: 2;
-    }
-
-    .work-number {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1;
-      z-index: 3;
-      opacity: 0.1;
-    }
-
-    .work-card:nth-child(1) .work-number { color: var(--color-accent-cyan); }
-    .work-card:nth-child(2) .work-number { color: var(--color-accent-purple); }
-    .work-card:nth-child(3) .work-number { color: var(--color-accent-green); }
-    .work-card:nth-child(4) .work-number { color: var(--color-accent-orange); }
-    .work-card:nth-child(5) .work-number { color: var(--color-accent-pink); }
-    .work-card:nth-child(6) .work-number { color: var(--color-accent-yellow); }
-
-    .work-tagline {
-      font-size: var(--font-size-sm);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-      margin-bottom: var(--space-md);
-    }
-
-    .work-card:nth-child(1) .work-tagline { color: var(--color-accent-cyan); }
-    .work-card:nth-child(2) .work-tagline { color: var(--color-accent-purple-light); }
-    .work-card:nth-child(3) .work-tagline { color: var(--color-accent-green); }
-    .work-card:nth-child(4) .work-tagline { color: var(--color-accent-orange); }
-    .work-card:nth-child(5) .work-tagline { color: #f472b6; }
-    .work-card:nth-child(6) .work-tagline { color: #fbbf24; }
-
-    .work-title {
-      font-size: var(--font-size-2xl);
-      font-weight: 600;
-      color: var(--color-text-primary);
-      margin-bottom: var(--space-md);
-      line-height: 1.3;
-    }
-
-    .work-description {
-      font-size: var(--font-size-base);
-      color: var(--color-text-secondary);
-      line-height: 1.6;
-      margin-bottom: var(--space-xl);
-    }
-
-    .work-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-    }
-
-    .work-meta span {
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: var(--font-size-sm);
-      transition: all var(--duration-fast) ease;
-    }
-
-    .work-card:nth-child(1) .work-meta span {
-      background: rgba(6, 182, 212, 0.1);
-      border: 1px solid rgba(6, 182, 212, 0.2);
-      color: var(--color-accent-cyan-light);
-    }
-
-    .work-card:nth-child(2) .work-meta span {
-      background: rgba(168, 85, 247, 0.1);
-      border: 1px solid rgba(168, 85, 247, 0.2);
-      color: var(--color-accent-purple-light);
-    }
-
-    .work-card:nth-child(3) .work-meta span {
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.2);
-      color: var(--color-accent-green);
-    }
-
-    .work-card:nth-child(4) .work-meta span {
-      background: rgba(249, 115, 22, 0.1);
-      border: 1px solid rgba(249, 115, 22, 0.2);
-      color: var(--color-accent-orange);
-    }
-
-    .work-card:nth-child(5) .work-meta span {
-      background: rgba(236, 72, 153, 0.1);
-      border: 1px solid rgba(236, 72, 153, 0.2);
-      color: #f472b6;
-    }
-
-    .work-card:nth-child(6) .work-meta span {
-      background: rgba(234, 179, 8, 0.1);
-      border: 1px solid rgba(234, 179, 8, 0.2);
-      color: #fbbf24;
-    }
-
-    .work-card:hover .work-meta span {
-      transform: translateY(-2px);
-    }
-
-    .work-note {
-      margin-top: var(--space-4xl);
-      text-align: center;
-      padding: var(--space-xl) var(--space-2xl);
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(168, 85, 247, 0.05));
-      border: 1px solid rgba(6, 182, 212, 0.15);
-      animation: fadeInUp var(--duration-slow) ease-out 0.7s backwards;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .work-note::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(6, 182, 212, 0.5) 30%, 
-        rgba(168, 85, 247, 0.5) 70%, 
-        transparent 100%);
-    }
-
-    .work-note-icon {
-      display: inline-block;
-      font-size: 20px;
-      margin-bottom: var(--space-sm);
-      animation: pulse 3s ease-in-out infinite;
-    }
-
-    .work-note-text {
-      font-size: var(--font-size-base);
-      color: var(--color-text-tertiary);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .work-note-text strong {
-      color: var(--color-text-secondary);
-      font-weight: 600;
-    }
-
-    /* ==================== TIMELINE MODULE ==================== */
-    .timeline-container {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .timeline-container::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, 
-        transparent 0%,
-        var(--color-border-cyan) 10%, 
-        var(--color-border-purple) 30%, 
-        var(--color-border-green) 50%, 
-        var(--color-border-orange) 70%, 
-        var(--color-border-cyan) 90%,
-        transparent 100%);
-      transform: translateX(-50%);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 60px;
-      display: flex;
-      align-items: center;
-      animation: fadeInUp var(--duration-slow) ease-out backwards;
-    }
-
-    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
-    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
-    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
-    .timeline-item:nth-child(4) { animation-delay: 0.4s; }
-    .timeline-item:nth-child(5) { animation-delay: 0.5s; }
-    .timeline-item:nth-child(6) { animation-delay: 0.6s; }
-    .timeline-item:nth-child(7) { animation-delay: 0.7s; }
-
-    .timeline-item:nth-child(odd) {
-      justify-content: flex-start;
-    }
-
-    .timeline-item:nth-child(even) {
-      justify-content: flex-end;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 16px;
-      height: 16px;
-      border: 4px solid var(--color-bg-primary);
-      border-radius: 50%;
-      z-index: 2;
-      transition: all var(--duration-normal) ease;
-    }
-
-    .timeline-item:nth-child(1) .timeline-dot {
-      background: var(--color-accent-cyan);
-      box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.3);
-    }
-    .timeline-item:nth-child(2) .timeline-dot {
-      background: var(--color-accent-purple);
-      box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.3);
-    }
-    .timeline-item:nth-child(3) .timeline-dot {
-      background: var(--color-accent-green);
-      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
-    }
-    .timeline-item:nth-child(4) .timeline-dot {
-      background: var(--color-accent-orange);
-      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.3);
-    }
-    .timeline-item:nth-child(5) .timeline-dot {
-      background: var(--color-accent-pink);
-      box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.3);
-    }
-    .timeline-item:nth-child(6) .timeline-dot {
-      background: var(--color-accent-yellow);
-      box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.3);
-    }
-    .timeline-item:nth-child(7) .timeline-dot {
-      background: var(--color-accent-cyan);
-      box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.3);
-    }
-
-    .timeline-item:hover .timeline-dot {
-      width: 20px;
-      height: 20px;
-    }
-
-    .timeline-item:nth-child(2):hover .timeline-dot {
-      animation: pulseGlowPurple 2s ease-in-out infinite;
-    }
-    .timeline-item:nth-child(3):hover .timeline-dot {
-      animation: pulseGlowGreen 2s ease-in-out infinite;
-    }
-    .timeline-item:nth-child(4):hover .timeline-dot {
-      animation: pulseGlowOrange 2s ease-in-out infinite;
-    }
-    .timeline-item:nth-child(5):hover .timeline-dot {
-      animation: pulseGlowPink 2s ease-in-out infinite;
-    }
-    .timeline-item:nth-child(6):hover .timeline-dot {
-      animation: pulseGlowYellow 2s ease-in-out infinite;
-    }
-
-    .timeline-card {
-      width: 45%;
-      padding: var(--space-xl);
-      border-radius: 12px;
-      background: var(--color-bg-card);
-      position: relative;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .timeline-item:nth-child(1) .timeline-card {
-      border: 1px solid var(--color-border-cyan);
-    }
-    .timeline-item:nth-child(2) .timeline-card {
-      border: 1px solid var(--color-border-purple);
-    }
-    .timeline-item:nth-child(3) .timeline-card {
-      border: 1px solid var(--color-border-green);
-    }
-    .timeline-item:nth-child(4) .timeline-card {
-      border: 1px solid var(--color-border-orange);
-    }
-    .timeline-item:nth-child(5) .timeline-card {
-      border: 1px solid var(--color-border-pink);
-    }
-    .timeline-item:nth-child(6) .timeline-card {
-      border: 1px solid var(--color-border-yellow);
-    }
-    .timeline-item:nth-child(7) .timeline-card {
-      border: 1px solid var(--color-border-cyan);
-    }
-
-    .timeline-card::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 3px;
-      border-radius: 12px 0 0 12px;
-      opacity: 0;
-      transition: opacity var(--duration-normal) ease;
-    }
-
-    .timeline-item:nth-child(1) .timeline-card::before {
-      background: linear-gradient(180deg, var(--color-accent-cyan), #06b6d4);
-    }
-    .timeline-item:nth-child(2) .timeline-card::before {
-      background: linear-gradient(180deg, var(--color-accent-purple), #7c3aed);
-    }
-    .timeline-item:nth-child(3) .timeline-card::before {
-      background: linear-gradient(180deg, var(--color-accent-green), #059669);
-    }
-    .timeline-item:nth-child(4) .timeline-card::before {
-      background: linear-gradient(180deg, var(--color-accent-orange), #ea580c);
-    }
-    .timeline-item:nth-child(5) .timeline-card::before {
-      background: linear-gradient(180deg, var(--color-accent-pink), #db2777);
-    }
-    .timeline-item:nth-child(6) .timeline-card::before {
-      background: linear-gradient(180deg, var(--color-accent-yellow), #ca8a04);
-    }
-    .timeline-item:nth-child(7) .timeline-card::before {
-      background: linear-gradient(180deg, var(--color-accent-cyan), #06b6d4);
-    }
-
-    .timeline-item:hover .timeline-card {
-      background: rgba(15, 23, 42, 0.9);
-      transform: translateX(12px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-    }
-
-    .timeline-item:nth-child(1):hover .timeline-card {
-      border-color: rgba(34, 211, 238, 0.5);
-    }
-    .timeline-item:nth-child(2):hover .timeline-card {
-      border-color: rgba(168, 85, 247, 0.5);
-    }
-    .timeline-item:nth-child(3):hover .timeline-card {
-      border-color: rgba(16, 185, 129, 0.5);
-    }
-    .timeline-item:nth-child(4):hover .timeline-card {
-      border-color: rgba(249, 115, 22, 0.5);
-    }
-    .timeline-item:nth-child(5):hover .timeline-card {
-      border-color: rgba(236, 72, 153, 0.5);
-    }
-    .timeline-item:nth-child(6):hover .timeline-card {
-      border-color: rgba(234, 179, 8, 0.5);
-    }
-    .timeline-item:nth-child(7):hover .timeline-card {
-      border-color: rgba(34, 211, 238, 0.5);
-    }
-
-    .timeline-item:nth-child(even):hover .timeline-card {
-      transform: translateX(-12px);
-    }
-
-    .timeline-item:hover .timeline-card::before {
-      opacity: 1;
-    }
-
-    .timeline-date {
-      font-size: var(--font-size-sm);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: var(--space-md);
-      font-weight: 600;
-    }
-
-    .timeline-item:nth-child(1) .timeline-date { color: var(--color-accent-cyan); }
-    .timeline-item:nth-child(2) .timeline-date { color: var(--color-accent-purple-light); }
-    .timeline-item:nth-child(3) .timeline-date { color: var(--color-accent-green); }
-    .timeline-item:nth-child(4) .timeline-date { color: var(--color-accent-orange); }
-    .timeline-item:nth-child(5) .timeline-date { color: #f472b6; }
-    .timeline-item:nth-child(6) .timeline-date { color: #fbbf24; }
-    .timeline-item:nth-child(7) .timeline-date { color: var(--color-accent-cyan); }
-
-    .timeline-role {
-      font-size: var(--font-size-xl);
-      font-weight: 600;
-      color: var(--color-text-primary);
-      margin-bottom: var(--space-sm);
-      line-height: 1.3;
-    }
-
-    .timeline-company {
-      font-size: var(--font-size-lg);
-      color: var(--color-text-tertiary);
-      margin-bottom: var(--space-md);
-    }
-
-    .timeline-description {
-      font-size: var(--font-size-base);
-      color: var(--color-text-secondary);
-      line-height: 1.6;
-    }
-
-    /* ==================== CONTACT MODULE ==================== */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-xl);
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .contact-card {
-      padding: var(--space-2xl) var(--space-xl);
-      border-radius: 12px;
-      background: var(--color-bg-card);
-      text-align: center;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      animation: fadeInUp var(--duration-slow) ease-out backwards;
-      border: 1px solid rgba(168, 85, 247, 0.2);
-      position: relative;
-      overflow: hidden;
-      height: 140px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .contact-card:nth-child(1) { animation-delay: 0.1s; }
-    .contact-card:nth-child(2) { animation-delay: 0.2s; }
-    .contact-card:nth-child(3) { animation-delay: 0.3s; }
-    .contact-card:nth-child(4) { animation-delay: 0.4s; }
-
-    .contact-card:hover {
-      border-color: rgba(168, 85, 247, 0.5);
-      box-shadow: 0 12px 32px rgba(168, 85, 247, 0.3);
-      transform: translateY(-8px);
-    }
-
-    .contact-icon-label {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--space-md);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      opacity: 1;
-    }
-
-    .contact-card:hover .contact-icon-label {
-      opacity: 0;
-      transform: translateY(-10px);
-      pointer-events: none;
-    }
-
-    .contact-icon {
-      width: 32px;
-      height: 32px;
-    }
-
-    .contact-icon svg {
-      width: 100%;
-      height: 100%;
-      stroke: var(--color-accent-purple-light);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .contact-label {
-      font-size: var(--font-size-sm);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-accent-purple-light);
-      font-weight: 600;
-    }
-
-    .contact-details {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -40%);
-      opacity: 0;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      width: 90%;
-      text-align: center;
-    }
-
-    .contact-card:hover .contact-details {
-      opacity: 1;
-      transform: translate(-50%, -50%);
-    }
-
-    .contact-link {
-      font-size: var(--font-size-base);
-      word-break: break-word;
-      color: #e9d5ff;
-      line-height: 1.5;
-      display: block;
-    }
-
-    .contact-link:hover {
-      color: #fff;
-      text-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
-    }
-
-    /* ==================== MODAL MODULE ==================== */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 14, 23, 0.92);
-      backdrop-filter: blur(16px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      padding: var(--space-xl);
-    }
-
-    .modal-backdrop.is-visible {
-      display: flex;
-      animation: fadeIn 0.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .modal {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      border: 1px solid var(--color-border-cyan);
-      border-radius: 20px;
-      width: 100%;
-      max-width: 1000px;
-      max-height: 90vh;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8),
-                  0 0 60px rgba(6, 182, 212, 0.2);
-      animation: slideUp 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(6, 182, 212, 0.1);
-      border: 1px solid var(--color-border-cyan);
-      color: var(--color-accent-cyan);
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all var(--duration-normal) ease;
-      z-index: 2;
-    }
-
-    .modal-close:hover {
-      background: rgba(6, 182, 212, 0.2);
-      transform: rotate(90deg);
-      box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
-    }
-
-    .modal-inner {
-      display: flex;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    .modal-image-col {
-      flex: 0 0 45%;
-      background: #1e293b;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .modal-image-wrapper {
-      flex: 1;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-image-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .modal-image-link::after {
-      content: '↗';
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #06b6d4, var(--color-accent-purple));
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      opacity: 0;
-      transition: all var(--duration-normal) ease;
-      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.5);
-      pointer-events: none;
-    }
-
-    .modal-image-link:hover::after {
-      opacity: 1;
-      transform: translate(2px, -2px);
-    }
-
-    .modal-image-link.no-arrow::after {
-      display: none;
-    }
-
-    .modal-image {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      object-position: center;
-      transition: transform var(--duration-normal) ease;
-      display: block;
-    }
-
-    .modal-image-link:hover .modal-image {
-      transform: scale(1.05);
-    }
-
-    .case-study-btn {
-      padding: 16px 24px;
-      margin: 0 20px 20px;
-      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
-      color: #fff !important;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 600;
-      border: 1px solid rgba(34, 211, 238, 0.5);
-      transition: all var(--duration-normal) ease;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      display: none;
-    }
-
-    .case-study-btn.visible {
-      display: block;
-    }
-
-    .case-study-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4),
-                  0 0 40px rgba(168, 85, 247, 0.3);
-      color: #fff !important;
-      text-shadow: none;
-    }
-
-    .modal-content-col {
-      flex: 1;
-      padding: 40px;
-      overflow-y: auto;
-    }
-
-    .modal-title {
-      font-size: var(--font-size-5xl);
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--color-accent-cyan) 0%, var(--color-accent-purple) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: var(--space-md);
-      line-height: 1.2;
-    }
-
-    .modal-subtitle {
-      font-size: var(--font-size-lg);
-      color: var(--color-text-tertiary);
-      margin-bottom: var(--space-xl);
-    }
-
-    .modal-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-xl);
-    }
-
-    .modal-meta span {
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(6, 182, 212, 0.1);
-      border: 1px solid rgba(6, 182, 212, 0.2);
-      font-size: var(--font-size-sm);
-      color: var(--color-accent-cyan-light);
-    }
-
-    .modal-description {
-      font-size: var(--font-size-lg);
-      color: var(--color-text-secondary);
-      line-height: 1.7;
-      margin-bottom: var(--space-xl);
-    }
-
-    .modal-highlights {
-      font-size: var(--font-size-base);
-      color: var(--color-text-secondary);
-      line-height: 1.7;
-    }
-
-    .modal-highlights h4 {
-      font-size: var(--font-size-xl);
-      color: var(--color-accent-cyan);
-      margin-bottom: var(--space-md);
-    }
-
-    .modal-highlights ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .modal-highlights li {
-      padding-left: 24px;
-      margin-bottom: var(--space-md);
-      position: relative;
-    }
-
-    .modal-highlights li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--color-accent-cyan);
-    }
-
-    .cv-modal {
-      max-width: 500px;
-      padding: 40px;
-    }
-
-    .cv-options {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-lg);
-      margin-top: var(--space-xl);
-    }
-
-    .cv-option {
-      padding: var(--space-xl) var(--space-xl);
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(168, 85, 247, 0.1));
-      border: 1px solid var(--color-border-cyan);
-      border-radius: 12px;
-      color: var(--color-accent-cyan);
-      font-weight: 600;
-      font-size: var(--font-size-base);
-      text-align: center;
-      transition: all var(--duration-normal) ease;
-      display: block;
-    }
-
-    .cv-option:hover {
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(168, 85, 247, 0.2));
-      border-color: rgba(34, 211, 238, 0.5);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.3);
-      color: var(--color-accent-cyan-light);
-    }
-
-    /* ==================== RESPONSIVE DESIGN ==================== */
-    @media (max-width: 768px) {
-      body {
-        padding-top: 70px;
-      }
-
-      .header-inner {
-        height: 70px;
-      }
-
-      .logo {
-        font-size: var(--font-size-lg);
-      }
-
-      .nav {
-        gap: var(--space-xl);
-      }
-
-      .nav a {
-        font-size: var(--font-size-sm);
-      }
-
-      .hero-title {
-        font-size: var(--font-size-4xl);
-      }
-
-      .section-title {
-        font-size: var(--font-size-3xl);
-      }
-
-      .work-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .work-note {
-        padding: var(--space-lg) var(--space-xl);
-        margin-top: var(--space-2xl);
-      }
-
-      .work-note-text {
-        font-size: var(--font-size-sm);
-      }
-
-      .timeline-container::before {
-        left: 20px;
-      }
-
-      .timeline-item {
-        justify-content: flex-end !important;
-        padding-left: 50px;
-      }
-
-      .timeline-dot {
-        left: 20px;
-      }
-
-      .timeline-card {
-        width: 100%;
-      }
-
-      .modal-inner {
-        flex-direction: column;
-      }
-
-      .modal-image-col {
-        flex: 0 0 auto;
-        height: auto;
-      }
-
-      .modal-content-col {
-        padding: var(--space-xl);
-      }
-
-      .modal-title {
-        font-size: var(--font-size-3xl);
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-lg);
-      }
-
-      .contact-card {
-        height: 120px;
-      }
-
-      .contact-icon {
-        width: 28px;
-        height: 28px;
-      }
-
-      .contact-label {
-        font-size: var(--font-size-sm);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RADAR Case Study - Remote Analysis & Diagnosis Tool | Vivek Chawda</title>
+    <style>
+        /* Design System Variables */
+        :root {
+            --color-primary: #20808D;
+            --color-primary-dark: #1A6B77;
+            --color-primary-light: #32A0B2;
+            --color-accent: #FF6B35;
+            --color-accent-light: #FF8A5C;
+            --color-bg: #FAFAFA;
+            --color-surface: #FFFFFF;
+            --color-text: #1F2937;
+            --color-text-secondary: #6B7280;
+            --color-text-tertiary: #9CA3AF;
+            --color-border: #E5E7EB;
+            --color-border-light: #F3F4F6;
+            --color-success: #10B981;
+            --color-warning: #F59E0B;
+            --color-error: #EF4444;
+            
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-display: 'Manrope', var(--font-primary);
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            
+            --gradient-primary: linear-gradient(135deg, #20808D 0%, #1A6B77 100%);
+            --gradient-accent: linear-gradient(135deg, #FF6B35 0%, #FF8A5C 100%);
+            --gradient-surface: linear-gradient(180deg, #FFFFFF 0%, #F9FAFB 100%);
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 6rem;
+            
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text);
+        }
+        
+        h1 { font-size: 3.5rem; letter-spacing: -0.02em; }
+        h2 { font-size: 2.5rem; letter-spacing: -0.01em; }
+        h3 { font-size: 1.875rem; }
+        h4 { font-size: 1.5rem; }
+        h5 { font-size: 1.25rem; }
+        
+        p {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-secondary);
+            font-size: 1.0625rem;
+            line-height: 1.75;
+        }
+        
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+        
+        /* Layout Components */
+        .hero {
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--spacing-3xl) var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-label {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-xl);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 4rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.5;
+            max-width: 800px;
+        }
+        
+        .hero-meta {
+            display: flex;
+            gap: var(--spacing-xl);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-xl);
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xs);
+        }
+        
+        .meta-label {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+        
+        .meta-value {
+            font-size: 1.125rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .impact-banner {
+            background: var(--gradient-accent);
+            color: white;
+            padding: var(--spacing-xl) var(--spacing-md);
+            margin: var(--spacing-2xl) 0;
+        }
+        
+        .impact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+        }
+        
+        .impact-metric {
+            text-align: center;
+        }
+        
+        .impact-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: var(--spacing-sm);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .impact-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-2xl) var(--spacing-md);
+        }
+        
+        .section {
+            margin-bottom: var(--spacing-3xl);
+        }
+        
+        .section-header {
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .section-label {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .section-intro {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        
+        /* Cards & Content Blocks */
+        .card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+            font-size: 1.75rem;
+        }
+        
+        .card-title {
+            font-size: 1.375rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
+        
+        .card-description {
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Process Steps */
+        .process-timeline {
+            position: relative;
+            padding-left: var(--spacing-xl);
+        }
+        
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-sm);
+        }
+        
+        .process-step {
+            position: relative;
+            margin-bottom: var(--spacing-2xl);
+            padding-left: var(--spacing-xl);
+        }
+        
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--color-primary);
+            border: 4px solid var(--color-bg);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--color-primary-light);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .step-description {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .step-details {
+            background: var(--color-surface);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        .step-details ul {
+            list-style: none;
+            margin: var(--spacing-md) 0;
+        }
+        
+        .step-details li {
+            position: relative;
+            padding-left: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+        
+        .step-details li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+        
+        /* Quote & Callout */
+        .quote-block {
+            background: var(--gradient-surface);
+            border-left: 6px solid var(--color-accent);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .quote-text {
+            font-size: 1.375rem;
+            font-style: italic;
+            color: var(--color-text);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .quote-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+        }
+        
+        .quote-author-name {
+            font-weight: 600;
+            color: var(--color-text);
+        }
+        
+        .callout {
+            background: linear-gradient(135deg, rgba(32, 128, 141, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+            border: 2px solid var(--color-border);
+        }
+        
+        .callout-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text);
+        }
+        
+        .callout-icon {
+            font-size: 1.5rem;
+        }
+        
+        /* Image Placeholder */
+        .image-placeholder {
+            background: linear-gradient(135deg, #E5E7EB 0%, #F3F4F6 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-3xl) var(--spacing-xl);
+            text-align: center;
+            margin: var(--spacing-xl) 0;
+            border: 2px dashed var(--color-border);
+            color: var(--color-text-tertiary);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+        
+        .image-placeholder::before {
+            content: '🖼️';
+            display: block;
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .stat-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            text-align: center;
+            border: 1px solid var(--color-border);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            line-height: 1;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .stat-label {
+            color: var(--color-text-secondary);
+            font-size: 0.9375rem;
+        }
+        
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        /* Tag List */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin: var(--spacing-md) 0;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: rgba(32, 128, 141, 0.1);
+            color: var(--color-primary);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-xl);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: 1px solid rgba(32, 128, 141, 0.2);
+        }
+        
+        /* Leadership Section Special Styling */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .leadership-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            border: 2px solid var(--color-border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .leadership-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .leadership-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+            font-size: 1.5rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-meta {
+                gap: var(--spacing-md);
+            }
+            
+            .impact-number {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Smooth Scroll Padding */
+        section {
+            scroll-margin-top: 2rem;
+        }
+        
+        /* Fullpage Scroll Snap Effect */
+        .scroll-section {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .scroll-section.fade-out {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        
+        /* Ensure hero and impact banner have proper snap behavior */
+        .hero {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .impact-banner {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="header-inner">
-      <div class="logo-container">
-        <div class="logo">Vivek Chawda</div>
-        <div class="logo-subtitle">User Experience Designer</div>
-      </div>
-      <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-        <button class="cta-btn" id="downloadCvBtn">Download CV</button>
-      </nav>
+    <!-- Hero Section -->
+    <section class="hero scroll-section">
+        <div class="hero-content">
+            <div class="hero-label">Enterprise UX Case Study</div>
+            <h1>RADAR: Remote Analysis &<br>Diagnosis Tool Redesign</h1>
+            <p class="hero-subtitle">Transforming a legacy enterprise diagnostic platform to reduce issue resolution time by 47% and save 1,200+ engineering hours monthly across global healthcare operations</p>
+            
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <span class="meta-label">My Role</span>
+                    <span class="meta-value">Lead UX Designer & Team Manager</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Company</span>
+                    <span class="meta-value">Philips Healthcare</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Domain</span>
+                    <span class="meta-value">Enterprise Healthcare IT</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Timeline</span>
+                    <span class="meta-value">18 months (2015-2016)</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Team Size</span>
+                    <span class="meta-value">1 PM, 4 Designers, 8 Engineers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Banner -->
+    <div class="impact-banner scroll-section">
+        <div class="impact-content">
+            <div class="impact-metric">
+                <div class="impact-number">47%</div>
+                <div class="impact-label">Reduction in issue<br>resolution time</div>
+            </div>
+            <div class="impact-metric">
+                <div class="impact-number">1,200+</div>
+                <div class="impact-label">Engineering hours<br>saved monthly</div>
+            </div>
+            <div class="impact-metric">
+                <div class="impact-number">15K+</div>
+                <div class="impact-label">Global users across<br>3 continents</div>
+            </div>
+            <div class="impact-metric">
+                <div class="impact-number">92%</div>
+                <div class="impact-label">User satisfaction<br>post-launch</div>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <!-- Main Content -->
-  <main class="page">
-    <!-- Hero -->
-    <section class="hero" id="about">
-      <div class="hero-badge">
-        Available for new opportunities
-      </div>
-      <h1 class="hero-title">Designing inclusive, research-driven experiences for global audiences</h1>
-      <p class="hero-subtitle">
-        16 years of experience across healthcare, fintech, environmental analytics, and enterprise SaaS — bridging strategy, research, and design execution with teams worldwide.
-      </p>
-      <div class="hero-pills">
-        <div class="pill">Design Leadership</div>
-        <div class="pill">Design Systems</div>
-        <div class="pill">Complex Workflows</div>
-        <div class="pill">Enterprise SaaS</div>
-        <div class="pill">User Research</div>
-        <div class="pill">Accessibility</div>
-      </div>
-    </section>
-
-    <!-- Work -->
-    <section class="section" id="work">
-      <div class="section-header">
-        <h2 class="section-title">Selected Work</h2>
-        <p class="section-description">
-          These are just a few select projects that I can show publicly. Get in touch with me to discuss other designs for different domains and platforms.
-        </p>
-      </div>
-
-      <div class="work-grid">
-        <!-- Ecolab -->
-        <article class="work-card" 
-          data-project-title="Ecolab – Environmental Monitoring Suite"
-          data-project-subtitle="Designing a cross-platform SaaS suite for global environmental monitoring."
-          data-project-description="Led UX for a cross-platform suite combining satellite imagery, drone data, and on-ground sensors to help global industrial clients monitor emissions and compliance."
-          data-project-highlights='["Co-created a design system used by 7 products.","Reduced design duplication and improved release consistency across teams.","Validated complex environmental metrics with domain experts through iterative prototypes."]'
-          data-meta='["7 Products","Design System","Satellite & IoT","DesignOps"]'
-          data-image="images/work-ecolab-screen.png"
-          data-link="https://www.ecolab.com/offerings/water-quality-powered-by-ecolab3d"
-        >
-          <div class="work-image">
-            <img src="images/work-ecolab-screen.png" alt="Ecolab Environmental Monitoring Suite" />
-          </div>
-          <div class="work-content">
-            <div class="work-number">01</div>
-            <div class="work-tagline">Ecolab · Environmental SaaS</div>
-            <h3 class="work-title">Environmental Monitoring Suite</h3>
-            <p class="work-description">
-              Led UX for a cross-platform suite combining satellite imagery, drone data, and on-ground sensors to help global industrial clients monitor emissions and compliance.
-            </p>
-            <div class="work-meta">
-              <span>Design System</span>
-              <span>7 Products</span>
-              <span>IoT + Satellite</span>
+    <!-- Executive Summary -->
+    <div class="container scroll-section">
+        <section class="section">
+            <div class="section-header">
+                <span class="section-label">Executive Summary</span>
+                <h2 class="section-title">The Challenge: Breaking Through Legacy Tool Resistance</h2>
             </div>
-          </div>
-        </article>
+            
+            <p style="font-size: 1.125rem; line-height: 1.8;">RADAR was a critical remote diagnostics platform used by 15,000+ service engineers and technical experts globally to troubleshoot medical imaging systems (MRI, CT, X-Ray). The tool had remained unchanged for 10 years, resulting in <strong>inefficient workflows, high operational costs, and significant engineer frustration</strong>.</p>
+            
+            <p style="font-size: 1.125rem; line-height: 1.8;">As <strong>Lead UX Designer managing a team of 4 designers</strong>, I led the complete redesign from research through implementation. The challenge wasn't just improving the interface—it was fundamentally rethinking how engineers diagnosed complex medical equipment failures while overcoming deep-rooted resistance to change from users who had spent a decade with the legacy system.</p>
 
-        <!-- Kayrros -->
-        <article class="work-card"
-          data-project-title="Kayrros – Satellite Imaging Platform"
-          data-project-subtitle="Turning complex satellite data into actionable climate intelligence."
-          data-project-description="Designed a configurable analytics environment for climate scientists and analysts, while keeping executive-level reporting simple and trustworthy for non-experts."
-          data-project-highlights='["Balanced expert and executive needs with a dual interface strategy.","Simplified complex geospatial overlays for faster interpretation.","Aligned product, science, and engineering teams around shared UX patterns."]'
-          data-meta='["Satellite Data","Energy & Finance","Dual Interfaces","Analytics"]'
-          data-image="images/work-kayrros-screen.png"
-          data-link="https://www.kayrros.com/taking-climate-action-now-how-satellite-data-can-help/"
-        >
-          <div class="work-image">
-            <img src="images/work-kayrros-screen.png" alt="Kayrros Climate Intelligence Platform" />
-          </div>
-          <div class="work-content">
-            <div class="work-number">02</div>
-            <div class="work-tagline">Kayrros · Climate Intelligence</div>
-            <h3 class="work-title">Climate Intelligence Platform</h3>
-            <p class="work-description">
-              Designed a dual solution for climate scientists and executives, enabling energy partners to track emissions at scale using satellite data.
-            </p>
-            <div class="work-meta">
-              <span>Analytics</span>
-              <span>Geospatial UX</span>
-              <span>B2B SaaS</span>
+            <div class="callout">
+                <div class="callout-title">
+                    <span class="callout-icon">🎯</span>
+                    Business Context: Why This Mattered
+                </div>
+                <p style="margin-bottom: 0;">Philips Healthcare faced mounting operational costs from field service visits—each averaging $800-1,500 per trip. With thousands of medical systems worldwide requiring support, even small improvements in remote diagnosis efficiency translated to millions in savings. Additionally, customers demanded faster issue resolution to minimize system downtime in critical healthcare environments.</p>
             </div>
-          </div>
-        </article>
+        </section>
 
-        <!-- McKinsey -->
-        <article class="work-card"
-          data-project-title="McKinsey – MAARS Mobile Commerce"
-          data-project-subtitle="Building trust and security into rural digital payments."
-          data-project-description="Worked with a cross-functional team to design flows for onboarding, authentication, and payments that respected users' mental models and device constraints."
-          data-project-highlights='["Accounted for low connectivity and shared-device usage patterns.","Used iconography, voice, and simple language to support low-literacy users.","Supported a pilot that scaled to 10,000+ farmers."]'
-          data-meta='["Secure Payments","10,000+ Farmers","Low-Literacy UX","Mobile"]'
-          data-image="images/work-maars-screen.png"
-          data-link="https://itcportal.com/itc-businesses/agri-business/itc-maars.html"
-        >
-          <div class="work-image">
-            <img src="images/work-maars-screen.png" alt="McKinsey MAARS Mobile Commerce" />
-          </div>
-          <div class="work-content">
-            <div class="work-number">03</div>
-            <div class="work-tagline">McKinsey & Company</div>
-            <h3 class="work-title">MAARS Mobile Commerce</h3>
-            <p class="work-description">
-              Helped design a secure mobile platform for 10,000+ smallholder farmers to transact safely using low-end Android devices.
-            </p>
-            <div class="work-meta">
-              <span>Fintech</span>
-              <span>10K+ Users</span>
-              <span>Field Research</span>
+        <!-- Problem & Context -->
+        <section class="section scroll-section">
+            <div class="section-header">
+                <span class="section-label">Problem Definition</span>
+                <h2 class="section-title">Understanding the Multi-Layered Problem</h2>
+                <p class="section-intro">The surface problem was "slow issue resolution," but research revealed a complex ecosystem of technical, organizational, and behavioral challenges.</p>
             </div>
-          </div>
-        </article>
 
-        <!-- Healthcare (GE/Philips) -->
-        <article class="work-card"
-          data-project-title="Healthcare – Imaging & TeleICU"
-          data-project-subtitle="Supporting radiologists and clinicians in high-stakes environments."
-          data-project-description="Worked with clinical teams to refine reporting flows, visual prioritization, and multi-screen layouts while ensuring consistency across legacy and new products."
-          data-project-highlights='["Designed for both dark and light reading environments.","Negotiated design decisions within regulatory and legacy constraints.","Helped reduce post-launch issues through high-fidelity interaction prototypes."]'
-          data-meta='["Radiology","TeleICU","High-Acuity Care","Complex Workflows"]'
-          data-image="images/work-healthcare-screen.png"
-          data-link="https://www.philips.co.in/healthcare/product/HC728143/incisive-ct-ct-scanner"
-        >
-          <div class="work-image">
-            <img src="images/work-healthcare-screen.png" alt="Healthcare Imaging & TeleICU" />
-          </div>
-          <div class="work-content">
-            <div class="work-number">04</div>
-            <div class="work-tagline">Philips · GE Healthcare</div>
-            <h3 class="work-title">Medical Imaging & Critical Care</h3>
-            <p class="work-description">
-              Designed service dashboards, imaging workflows, and TeleICU tools for high-pressure clinical environments with FDA regulatory constraints.
-            </p>
-            <div class="work-meta">
-              <span>Healthcare</span>
-              <span>FDA-Regulated</span>
-              <span>TeleICU</span>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🏥</div>
+                    <h4 class="card-title">Business Pain Points</h4>
+                    <p class="card-description">High operational costs from excessive field visits. Average resolution time of 45-60 minutes per case was 40% above target. Customers dissatisfied with slow turnaround impacting patient care.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">👨‍💻</div>
+                    <h4 class="card-title">User Frustrations</h4>
+                    <p class="card-description">Engineers forced to navigate 8-12 screens per diagnostic workflow. Critical information buried behind multiple tabs. No integration with complementary analysis tools (CAT, ClickScheduler) forcing constant context switching.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🔧</div>
+                    <h4 class="card-title">Technical Constraints</h4>
+                    <p class="card-description">10-year-old legacy codebase with limited documentation. Data scattered across 3 different modality-specific systems (MR, CV, CT). Backend limitations prevented real-time data sync.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🧠</div>
+                    <h4 class="card-title">Behavioral Barriers</h4>
+                    <p class="card-description">Deeply entrenched mental models from decade of legacy tool use. Senior engineers (45+ age group) resistant to interface changes. Fear of productivity loss during transition period.</p>
+                </div>
             </div>
-          </div>
-        </article>
 
-        <!-- Philips RADAR - WITH CASE STUDY BADGE -->
-        <article class="work-card"
-          data-project-title="Philips – Maintenance Dashboard"
-          data-project-subtitle="Radiology SaaS Dashboard"
-          data-project-description="Designed service dashboard for Remote Analysis and Diagnosis tool for service technicians and engineers in helping them find and resolve issues with radiology systems installed globally."
-          data-project-highlights='["Built comprehensive monitoring system for 1600+ radiology devices worldwide.","Designed multi-level filtering and prioritization for critical alert management.","Created data-dense dashboard balancing overview statistics with actionable detail views."]'
-          data-meta='["Healthcare","SaaS","Dashboard"]'
-          data-image="images/work-radar-screen.jpg"
-          data-link="cs/Philips/RADAR/RADAR.html"
-          data-has-case-study="true"
-        >
-          <!-- CASE STUDY BADGE -->
-          <div class="case-study-badge">Case Study</div>
-          
-          <div class="work-image">
-            <img src="images/work-radar-screen.jpg" alt="Philips RADAR Maintenance Dashboard" />
-          </div>
-          <div class="work-content">
-            <div class="work-number">05</div>
-            <div class="work-tagline">Philips · Healthcare SaaS</div>
-            <h3 class="work-title">Maintenance Dashboard</h3>
-            <p class="work-description">
-              Designed service dashboard for Remote Analysis and Diagnosis tool for service technicians and engineers in helping them find and resolve issues with radiology systems installed globally.
-            </p>
-            <div class="work-meta">
-              <span>Healthcare</span>
-              <span>SaaS</span>
-              <span>Dashboard</span>
+            <div class="quote-block">
+                <p class="quote-text">"I've been using RADAR for 8 years. I know exactly where everything is. Every time they 'improve' something, it just slows me down for weeks."</p>
+                <div class="quote-author">
+                    <div>
+                        <div class="quote-author-name">Samuel (Senior Remote Service Engineer, 12 years experience)</div>
+                        <div>Stakeholder Interview — Amsterdam, Europe</div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </article>
 
-        <!-- Dubai Expo -->
-        <article class="work-card"
-          data-project-title="Siemens – Dubai Expo Control Dashboard"
-          data-project-subtitle="Tablet-based control system for World Expo 2020."
-          data-project-description="Dubai Expo 2020 required a unified tablet-based dashboard to control critical exposition parameters including climate, lighting, and irrigation systems. I led the design pitch that secured this landmark project for Siemens—the largest contract won by Siemens Design at the time."
-          data-project-highlights='["Created the winning pitch presentation and UX strategy.","Designed unified control interface for climate, lighting, and irrigation.","Delivered largest contract secured by Siemens Design division to date."]'
-          data-meta='["Dashboard","Tablet","Global Collaboration"]'
-          data-image="images/work-dubai-screen.png"
-          data-link="https://xcelerator.siemens.com/global/en/industries/urban-communities/expo-2020-dubai/press/images-infographics.html"
-        >
-          <div class="work-image">
-            <img src="images/work-dubai-screen.png" alt="Dubai Expo Control Dashboard" />
-          </div>
-          <div class="work-content">
-            <div class="work-number">06</div>
-            <div class="work-tagline">Siemens · Dubai Expo 2020</div>
-            <h3 class="work-title">Dubai Expo Control Dashboard</h3>
-            <p class="work-description">
-              Led the design pitch that secured Siemens' largest contract—a unified tablet dashboard controlling climate, lighting, and irrigation systems for World Expo 2020.
-            </p>
-            <div class="work-meta">
-              <span>Dashboard</span>
-              <span>Tablet</span>
-              <span>Global Collaboration</span>
+            <h3 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Success Metrics Defined Upfront</h3>
+            <p>Working with Product Management and Business Analysts, we established clear KPIs before any design work began:</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">-35%</div>
+                    <div class="stat-label">Time per case<br>(Target: 45min → 29min)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">-25%</div>
+                    <div class="stat-label">Field visit frequency<br>(Cost reduction)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">&gt;80%</div>
+                    <div class="stat-label">User adoption rate<br>within 6 months</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">&gt;70</div>
+                    <div class="stat-label">Net Promoter Score<br>(vs. legacy baseline: 32)</div>
+                </div>
             </div>
-          </div>
-        </article>
-      </div>
 
-      <!-- Work Note - NEW -->
-      <div class="work-note">
-        <div class="work-note-icon">⏳</div>
-        <p class="work-note-text">
-          <strong>More projects and detailed case studies are on the way.</strong> I'm currently working with previous clients and companies to obtain clearance for additional work samples. Check back soon for updates!
-        </p>
-      </div>
-
-    </section>
-
-    <!-- Experience Timeline -->
-    <section class="section" id="experience">
-      <div class="section-header">
-        <h2 class="section-title">Experience Timeline</h2>
-        <p class="section-description">Design leadership and hands-on product delivery across industries.</p>
-      </div>
-
-      <div class="timeline-container">
-        <!-- Item 1 -->
-        <div class="timeline-item">
-          <div class="timeline-card">
-            <div class="timeline-date">Nov 2024 - May 2025</div>
-            <div class="timeline-role">Design Manager</div>
-            <div class="timeline-company">Ecolab</div>
-            <p class="timeline-description">
-              Leading a global team of 7 designers across 4 product verticals. Scaled design system company-wide, improving consistency by 20% and reducing design redundancy.
-            </p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <!-- Item 2 -->
-        <div class="timeline-item">
-          <div class="timeline-card">
-            <div class="timeline-date">Aug 2023 - Nov 2024</div>
-            <div class="timeline-role">Experience Design Consultant</div>
-            <div class="timeline-company">Independent Designer</div>
-            <p class="timeline-description">
-              Conducted design reviews and designed user flows, wireframes, and prototypes for healthcare, insurance, and consumer tech clients.
-            </p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="timeline-item">
-          <div class="timeline-card">
-            <div class="timeline-date">Feb 2022 - Aug 2023</div>
-            <div class="timeline-role">Associate Design Director</div>
-            <div class="timeline-company">McKinsey & Company</div>
-            <p class="timeline-description">
-              Designed secure mobile commerce platform for agricultural transactions (MAARS) serving 10,000+ farmers. Part of UX global Design for Good team.
-            </p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="timeline-item">
-          <div class="timeline-card">
-            <div class="timeline-date">Nov 2020 - Jan 2022</div>
-            <div class="timeline-role">Principal UX Designer</div>
-            <div class="timeline-company">Kayrros</div>
-            <p class="timeline-description">
-              Designed environmental monitoring suite using satellite and drone data. Built cross-platform Design System for 7 products.
-            </p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="timeline-item">
-          <div class="timeline-card">
-            <div class="timeline-date">Jul 2018 - Nov 2020</div>
-            <div class="timeline-role">Senior UX Designer – Technical Expert</div>
-            <div class="timeline-company">Siemens Technology India</div>
-            <p class="timeline-description">
-              Won Dubai Expo 2020 Control Center contract by designing secure multi-platform monitoring system. SPOC for Siemens Energy digital products.
-            </p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <!-- Item 6 -->
-        <div class="timeline-item">
-          <div class="timeline-card">
-            <div class="timeline-date">Jan 2015 - Apr 2018</div>
-            <div class="timeline-role">Senior Interaction Designer</div>
-            <div class="timeline-company">Philips Design</div>
-            <p class="timeline-description">
-              Led service dashboard design for monitoring global medical equipment. Improved Image Guided Therapy tools in collaboration with engineering teams.
-            </p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <!-- Item 7 -->
-        <div class="timeline-item">
-          <div class="timeline-card">
-            <div class="timeline-date">2009 - 2014</div>
-            <div class="timeline-role">Earlier Roles</div>
-            <div class="timeline-company">GE Healthcare, Jaguar Land Rover, Tata Elxsi, K3/TAT</div>
-            <p class="timeline-description">
-              Designed tools for High Acuity areas and TeleICU system. In-car HMI for concept vehicles. Thesis project on gestural interaction concepts for Motorola.
-            </p>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section" id="contact">
-      <div class="section-header">
-        <h2 class="section-title">Get in Touch</h2>
-        <p class="section-description">
-          Happy to discuss product strategy, design systems, or specific UX challenges in healthcare, fintech, and complex SaaS platforms.
-        </p>
-      </div>
-
-      <div class="contact-grid">
-        <!-- Email -->
-        <div class="contact-card">
-          <div class="contact-icon-label">
-            <div class="contact-icon">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="7" width="26" height="18" rx="2" />
-                <path d="M3 10 L16 18 L29 10" />
-              </svg>
+            <div class="image-placeholder">
+                [IMAGE: Stakeholder Map showing PM, Portfolio Managers, Remote Engineers, Field Engineers, Technical Experts, Business Analysts, and their relationships/touchpoints with RADAR]
             </div>
-            <div class="contact-label">Email</div>
-          </div>
-          <div class="contact-details">
-            <a href="mailto:vivchawda@gmail.com" class="contact-link">vivchawda@gmail.com</a>
-          </div>
-        </div>
+        </section>
 
-        <!-- Phone -->
-        <div class="contact-card">
-          <div class="contact-icon-label">
-            <div class="contact-icon">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <rect x="9" y="4" width="14" height="24" rx="2" />
-                <line x1="12" y1="7" x2="20" y2="7" />
-                <circle cx="16" cy="24" r="1" fill="#c084fc" />
-              </svg>
+        <!-- Research & Discovery -->
+        <section class="section scroll-section">
+            <div class="section-header">
+                <span class="section-label">Discovery Phase</span>
+                <h2 class="section-title">Research Methodology: Deep User Immersion</h2>
+                <p class="section-intro">I led a comprehensive 8-week research initiative spanning 3 continents, combining qualitative interviews, contextual inquiry, and quantitative analytics to build a complete picture of the diagnostic workflow.</p>
             </div>
-            <div class="contact-label">Phone</div>
-          </div>
-          <div class="contact-details">
-            <a href="tel:+919663781502" class="contact-link">+91 96637 81502</a>
-          </div>
-        </div>
 
-        <!-- LinkedIn -->
-        <div class="contact-card">
-          <div class="contact-icon-label">
-            <div class="contact-icon">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <rect x="5" y="5" width="22" height="22" rx="2" />
-                <line x1="11" y1="14" x2="11" y2="22" />
-                <circle cx="11" cy="10" r="1.5" fill="#c084fc" />
-                <path d="M16 14 C16 14, 16 12, 19 12 C22 12, 22 14, 22 16 L22 22" />
-                <line x1="16" y1="17" x2="16" y2="22" />
-              </svg>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">Stakeholder Interviews (2 weeks)</h4>
+                    <p class="step-description">Conducted 12 structured interviews with Portfolio Managers and Business Analysts to understand strategic objectives, cost drivers, and organizational constraints.</p>
+                    
+                    <div class="step-details">
+                        <strong>Method:</strong> Semi-structured interviews (45-60 min each)
+                        <ul>
+                            <li>Portfolio Managers (n=5) across MR, CT, and Cardiovascular modalities</li>
+                            <li>Business Analysts (n=4) with cost/efficiency data access</li>
+                            <li>Engineering Leads (n=3) understanding technical limitations</li>
+                        </ul>
+                        
+                        <strong style="display: block; margin-top: var(--spacing-md);">Key Questions Asked:</strong>
+                        <ul>
+                            <li>What are the current cost drivers in remote support operations?</li>
+                            <li>Why has RADAR remained unchanged for 10 years?</li>
+                            <li>What would "success" look like for this redesign from a business perspective?</li>
+                            <li>Are we improving existing workflows or building new capabilities?</li>
+                        </ul>
+                        
+                        <strong style="display: block; margin-top: var(--spacing-md);">Critical Insights:</strong>
+                        <ul>
+                            <li>Frequent field visits ($800-1,500 each) were primary cost concern</li>
+                            <li>Business wanted platform upgrade alongside workflow optimization</li>
+                            <li>Appetite existed for predictive analytics integration (ISDA tool)</li>
+                            <li>Phased rollout essential to minimize disruption risk</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">User Interviews & Contextual Inquiry (4 weeks)</h4>
+                    <p class="step-description">Conducted 32 in-depth interviews and shadowing sessions with end users across their natural work environments in 3 regions: Americas, Europe, and Asia Pacific.</p>
+                    
+                    <div class="step-details">
+                        <strong>Participants by Role:</strong>
+                        <ul>
+                            <li><strong>Remote Service Engineers (n=18)</strong> — Primary RADAR users, 10-25 cases/day</li>
+                            <li><strong>Field Service Engineers (n=7)</strong> — On-site technicians coordinating with remote teams</li>
+                            <li><strong>Technical Experts (n=4)</strong> — Escalation specialists for complex issues</li>
+                            <li><strong>Modality Managers (n=3)</strong> — Team leads monitoring regional performance</li>
+                        </ul>
+                        
+                        <strong style="display: block; margin-top: var(--spacing-md);">Research Approach:</strong>
+                        <ul>
+                            <li><strong>Semi-structured interviews:</strong> Encouraged open conversation while covering key topics</li>
+                            <li><strong>Fly-on-the-wall observation:</strong> 2-4 hour shadowing sessions watching engineers diagnose real issues</li>
+                            <li><strong>Think-aloud protocol:</strong> Asked engineers to verbalize their thought process during diagnosis</li>
+                            <li><strong>Diary studies:</strong> 5 engineers logged workflow pain points for 2 weeks</li>
+                        </ul>
+                        
+                        <strong style="display: block; margin-top: var(--spacing-md);">Interview Tone & Philosophy:</strong>
+                        <p style="margin-top: var(--spacing-sm);">Maintained an attitude of inquiry, treating users as experts in their work. Created psychological safety by acknowledging the legacy tool's longevity ("there must be things it does well—tell me about those"). Looked for non-verbal cues: sighs, eye rolls, workarounds, confessions.</p>
+                        
+                        <div class="image-placeholder">
+                            [IMAGE: Photos from contextual inquiry sessions — engineer workstations, sticky notes from interviews, shadowing documentation]
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">Legacy System Audit (1 week)</h4>
+                    <p class="step-description">Systematic evaluation of existing RADAR across all 3 modality-specific versions to document current features, information architecture, and interaction patterns.</p>
+                    
+                    <div class="step-details">
+                        <strong>Audit Activities:</strong>
+                        <ul>
+                            <li>Screen-by-screen documentation of MR, CV, and CT RADAR variants</li>
+                            <li>Task flow mapping for 5 core diagnostic scenarios</li>
+                            <li>Heuristic evaluation using Nielsen's 10 usability principles</li>
+                            <li>Cognitive walkthrough for new user onboarding experience</li>
+                        </ul>
+                        
+                        <strong style="display: block; margin-top: var(--spacing-md);">What We Preserved:</strong>
+                        <ul>
+                            <li>"System Overview" status page highly valued by all users</li>
+                            <li>LOG viewer functionality (though implementation needed overhaul)</li>
+                            <li>Historical data access for trend analysis</li>
+                            <li>Search-by-SRN (Serial Number) feature</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4 class="step-title">Data Analytics Review (1 week)</h4>
+                    <p class="step-description">Analyzed 6 months of system logs and support ticket data to quantify usage patterns and identify pain points invisible to users.</p>
+                    
+                    <div class="step-details">
+                        <strong>Data Sources:</strong>
+                        <ul>
+                            <li>RADAR usage logs (page views, time-on-task, navigation patterns)</li>
+                            <li>Support ticket database (common errors, escalation triggers)</li>
+                            <li>Field visit reports (reasons for on-site dispatch)</li>
+                            <li>Training documentation and help desk queries</li>
+                        </ul>
+                        
+                        <strong style="display: block; margin-top: var(--spacing-md);">Quantitative Findings:</strong>
+                        <ul>
+                            <li>Average 8.4 screen transitions per diagnostic workflow (benchmark: 3-4)</li>
+                            <li>47% of cases required parallel CAT tool usage for LOG analysis</li>
+                            <li>23% of field visits preventable with better remote diagnostic info</li>
+                            <li>Login/region selection consumed avg. 3.2 minutes per session</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="contact-label">LinkedIn</div>
-          </div>
-          <div class="contact-details">
-            <a href="https://linkedin.com/in/vivekchawda/" class="contact-link" target="_blank" rel="noopener">linkedin.com/in/vivekchawda/</a>
-          </div>
-        </div>
 
-        <!-- GitHub -->
-        <div class="contact-card">
-          <div class="contact-icon-label">
-            <div class="contact-icon">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="16" cy="16" r="10" />
-                <path d="M16 8 C12 8, 9 11, 9 14 C9 16, 10 18, 12 19 L12 22 C12 23, 13 24, 14 24 L18 24 C19 24, 20 23, 20 22 L20 19 C22 18, 23 16, 23 14 C23 11, 20 8, 16 8" />
-              </svg>
+            <h3 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-md);">Research Synthesis: Affinity Mapping</h3>
+            <p>I facilitated a 2-day synthesis workshop with the design team, Product Manager, and key stakeholders to cluster 240+ interview insights into actionable themes.</p>
+
+            <div class="image-placeholder">
+                [IMAGE: Affinity mapping workshop — physical wall with sticky notes clustered into 3 main categories, team collaborating]
             </div>
-            <div class="contact-label">GitHub</div>
-          </div>
-          <div class="contact-details">
-            <a href="https://github.com/vivchawda" class="contact-link" target="_blank" rel="noopener">github.com/vivchawda</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <!-- Work Modal -->
-  <div class="modal-backdrop" id="workModalBackdrop">
-    <div class="modal">
-      <button class="modal-close" id="workModalClose">×</button>
-      <div class="modal-inner">
-        <div class="modal-image-col" id="modalImageCol">
-          <div class="modal-image-wrapper">
-            <a href="#" class="modal-image-link" id="modalImageLink">
-              <img src="" alt="Project screenshot" class="modal-image" id="modalImage" />
-            </a>
-          </div>
-          <a href="#" class="case-study-btn" id="caseStudyBtn">View case study</a>
-        </div>
-        <div class="modal-content-col">
-          <h2 class="modal-title" id="modalTitle"></h2>
-          <p class="modal-subtitle" id="modalSubtitle"></p>
-          <div class="modal-meta" id="modalMeta"></div>
-          <p class="modal-description" id="modalDescription"></p>
-          <div class="modal-highlights" id="modalHighlights"></div>
-        </div>
-      </div>
+            <div class="two-column">
+                <div>
+                    <h4 style="color: var(--color-primary);">🏗️ Structured Information</h4>
+                    <ul style="list-style: none; padding: 0; margin-top: var(--spacing-md);">
+                        <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ Critical info hidden behind 4-5 clicks</li>
+                        <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ Information hierarchy mismatched with user priorities</li>
+                        <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ Irrelevant data shown upfront (all countries when user only needs Spain)</li>
+                        <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ No way to customize dashboard view</li>
+                        <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ Lost context when switching between tabs</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--color-primary);">🎨 Adaptable Interface</h4>
+                    <ul style="list-style: none; padding: 0; margin-top: var(--spacing-md);">
+                        <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ No personalization based on user role/region</li>
+                        <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ Cannot customize table columns or layout</li>
+                        <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ All settings reset on re-login</li>
+                        <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ Different engineers have different workflows, interface forces one path</li>
+                        <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ No "favorites" or recent systems quick access</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: var(--spacing-lg);">
+                <h4 style="color: var(--color-primary);">🧭 Optimized Navigation</h4>
+                <ul style="list-style: none; padding: 0; margin-top: var(--spacing-md);">
+                    <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ Navigation model doesn't match diagnostic workflow sequence</li>
+                    <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ Novice users get lost, expert users frustrated by lack of shortcuts</li>
+                    <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ Location tree navigation rarely used (everyone uses search)</li>
+                    <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ No visual breadcrumb: "Where am I? Which site is selected?"</li>
+                    <li style="margin-bottom: var(--spacing-sm); color: var(--color-text-secondary);">→ Keyboard shortcuts non-existent despite expert users wanting them</li>
+                </ul>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-md);">User Personas: Multi-Role Complexity</h3>
+            <p>Enterprise diagnostic workflows involve multiple user types with distinct needs. Rather than designing for an "average user," we created detailed personas representing each role's context, goals, and pain points.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4 style="color: var(--color-primary); margin-bottom: var(--spacing-sm);">Samuel John, 36</h4>
+                    <p><strong>Senior Remote Service Engineer</strong></p>
+                    <p style="margin-top: var(--spacing-md); font-size: 0.9375rem; line-height: 1.6;">Handles 15-25 cases/day, spending 10-15 min per case. Primary RADAR user. Expert with 10+ years experience.</p>
+                    <div style="margin-top: var(--spacing-md);">
+                        <p style="margin-bottom: var(--spacing-xs);"><strong>Goals:</strong></p>
+                        <ul style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li>Resolve primary issue + related issues efficiently</li>
+                            <li>Minimize time searching for information</li>
+                            <li>Avoid field visits when remote fix possible</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: var(--spacing-md);">
+                        <p style="margin-bottom: var(--spacing-xs);"><strong>Pain Points:</strong></p>
+                        <ul style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li>"Need to navigate several pages to complete workflow"</li>
+                            <li>"No integration with CAT for LOG analysis"</li>
+                            <li>"Error messages are non-intuitive"</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: var(--spacing-md);">
+                        <p style="margin-bottom: var(--spacing-xs);"><strong>Other Tools:</strong></p>
+                        <div class="tag-list">
+                            <span class="tag">CAT</span>
+                            <span class="tag">OneEMS</span>
+                            <span class="tag">ClickScheduler</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--color-primary); margin-bottom: var(--spacing-sm);">Jon Andrews, 46</h4>
+                    <p><strong>Modality Manager (MR/CV)</strong></p>
+                    <p style="margin-top: var(--spacing-md); font-size: 0.9375rem; line-height: 1.6;">Manages team of 3-4 service engineers. Spends 30-45 min/region analyzing performance. Needs oversight, not deep technical detail.</p>
+                    <div style="margin-top: var(--spacing-md);">
+                        <p style="margin-bottom: var(--spacing-xs);"><strong>Goals:</strong></p>
+                        <ul style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li>Monitor regional system health at-a-glance</li>
+                            <li>Generate periodic performance reports</li>
+                            <li>Track team activities and efficiency</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: var(--spacing-md);">
+                        <p style="margin-bottom: var(--spacing-xs);"><strong>Pain Points:</strong></p>
+                        <ul style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">
+                            <li>"Need weekly statistics for my area of interest"</li>
+                            <li>"Too much technical detail I don't need"</li>
+                            <li>"Can't easily see team performance trends"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                [IMAGE: Full persona cards with photos, demographics, expertise levels, day-in-the-life scenarios, emotional journey, quotes]
+            </div>
+        </section>
+
+        <!-- Strategy & Principles -->
+        <section class="section scroll-section">
+            <div class="section-header">
+                <span class="section-label">Strategic Design</span>
+                <h2 class="section-title">From Research to Design Principles</h2>
+                <p class="section-intro">Research insights translated into 3 core design principles that guided every subsequent decision, from information architecture to interaction patterns.</p>
+            </div>
+
+            <div class="callout">
+                <div class="callout-title">
+                    <span class="callout-icon">💡</span>
+                    How We Reframed the Problem
+                </div>
+                <p><strong>Initial assumption:</strong> "The interface is outdated and hard to use."</p>
+                <p><strong>After research:</strong> "Users have developed efficient workarounds for a rigid system that doesn't adapt to their role, region, or diagnostic workflow. The problem isn't just UI—it's inflexibility."</p>
+                <p style="margin-bottom: 0;"><strong>Strategic bet:</strong> Design an adaptive system with role-based defaults and user-level customization, prioritizing information hierarchy optimization over visual refresh.</p>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-lg);">Design Principles</h3>
+
+            <div class="leadership-grid">
+                <div class="leadership-card">
+                    <div class="leadership-icon">📊</div>
+                    <h4 style="margin-bottom: var(--spacing-sm);">Structured Information</h4>
+                    <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--spacing-md);">Critical information upfront with clear priority hierarchy. Users should never wonder "where do I find X?"</p>
+                    <strong style="display: block; margin-bottom: var(--spacing-xs);">Design Implications:</strong>
+                    <ul style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">
+                        <li>System health status visible on dashboard (no drilling required)</li>
+                        <li>Visual hierarchy: Errors → Warnings → Info</li>
+                        <li>Persistent context panel showing "where am I?"</li>
+                        <li>Progressive disclosure for secondary details</li>
+                    </ul>
+                </div>
+
+                <div class="leadership-card">
+                    <div class="leadership-icon">🎛️</div>
+                    <h4 style="margin-bottom: var(--spacing-sm);">Adaptable Interface</h4>
+                    <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--spacing-md);">Interface customizes to user role, region, and preferences. Support diverse workflows without forcing one path.</p>
+                    <strong style="display: block; margin-bottom: var(--spacing-xs);">Design Implications:</strong>
+                    <ul style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">
+                        <li>Role-based login: Engineers see case list, Managers see KPIs</li>
+                        <li>Collapsible/expandable sections user can configure</li>
+                        <li>Customizable table columns and dashboard widgets</li>
+                        <li>Saved preferences persist across sessions</li>
+                    </ul>
+                </div>
+
+                <div class="leadership-card">
+                    <div class="leadership-icon">🧭</div>
+                    <h4 style="margin-bottom: var(--spacing-sm);">Optimized Navigation</h4>
+                    <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--spacing-md);">Navigation matches natural diagnostic workflow sequence. Visual aids guide novices; shortcuts empower experts.</p>
+                    <strong style="display: block; margin-bottom: var(--spacing-xs);">Design Implications:</strong>
+                    <ul style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">
+                        <li>Wizard-like flow for common cases (Auto Mode)</li>
+                        <li>Flexible module-based navigation for experts (Manual Mode)</li>
+                        <li>Keyboard shortcuts for frequent actions</li>
+                        <li>Breadcrumb and system context always visible</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-md);">Strategic Tradeoffs: What We Consciously Chose</h3>
+            
+            <div class="two-column">
+                <div style="background: rgba(32, 128, 141, 0.05); border-left: 4px solid var(--color-primary); padding: var(--spacing-lg); border-radius: var(--radius-md);">
+                    <h4 style="color: var(--color-primary); margin-bottom: var(--spacing-md);">We Prioritized</h4>
+                    <ul style="color: var(--color-text-secondary); line-height: 1.8;">
+                        <li><strong>Workflow efficiency</strong> over visual novelty</li>
+                        <li><strong>Familiar patterns</strong> (where users happy) over unnecessary reinvention</li>
+                        <li><strong>Customizability</strong> over one-size-fits-all simplicity</li>
+                        <li><strong>Integration</strong> (LOG viewer) over forcing external tool dependence</li>
+                    </ul>
+                </div>
+                <div style="background: rgba(239, 68, 68, 0.05); border-left: 4px solid var(--color-error); padding: var(--spacing-lg); border-radius: var(--radius-md);">
+                    <h4 style="color: var(--color-error); margin-bottom: var(--spacing-md);">We Deprioritized</h4>
+                    <ul style="color: var(--color-text-secondary); line-height: 1.8;">
+                        <li>Radical visual redesign (change fatigue risk)</li>
+                        <li>Mobile responsiveness (desktop-only usage validated)</li>
+                        <li>Real-time collaboration (not in user workflows)</li>
+                        <li>Predictive mode (MVP scope, tech limitations)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                [IMAGE: Design principles poster/artifact created and shared with stakeholders, design brief slides used in alignment workshops]
+            </div>
+        </section>
+
+        <!-- Design Process -->
+        <section class="section scroll-section">
+            <div class="section-header">
+                <span class="section-label">Design Execution</span>
+                <h2 class="section-title">Information Architecture & Interaction Design</h2>
+                <p class="section-intro">Translating principles into structure: navigation models, task flows, and screen-level interaction patterns tested and refined through 4 major iterations.</p>
+            </div>
+
+            <h3>Phase 1: Information Architecture (3 weeks)</h3>
+            <p>Created modality-specific IA maps for MR, CV (Cardiovascular), and CT systems, identifying shared components and unique requirements.</p>
+
+            <div class="image-placeholder">
+                [IMAGE: Information architecture diagrams for MR and CV modalities showing HOME, SITE OVERVIEW, SYSTEM INFO, SEARCH, DOWNLOADS, etc. hierarchy]
+            </div>
+
+            <h4 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Key IA Decisions</h4>
+            <div class="card-grid">
+                <div class="card">
+                    <h5 style="color: var(--color-primary);">Unified Navigation Model</h5>
+                    <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary);">Consolidated 3 modality-specific navigation structures into single flexible framework. Modality-specific modules (e.g., "Magnet Monitoring" for MR) appear contextually.</p>
+                </div>
+                <div class="card">
+                    <h5 style="color: var(--color-primary);">Two-Level Hierarchy</h5>
+                    <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary);">Global navigation (Dashboard, Search, Notifications) + System-level tabs (Status, Performance, Config). Eliminated 3rd-level navigation that caused "lost in tabs" problem.</p>
+                </div>
+                <div class="card">
+                    <h5 style="color: var(--color-primary);">Persistent Context Panel</h5>
+                    <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary);">Left sidebar showing selected system details, health status, quick actions always visible regardless of which tab/page user is on.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl);">Phase 2: Task Flow & State-Transition Diagrams (2 weeks)</h3>
+            <p>Mapped 5 primary diagnostic workflows as detailed flowcharts showing decision points, system states, and alternative paths.</p>
+
+            <div class="image-placeholder">
+                [IMAGE: Task flow diagrams showing:
+                1. "Auto Mode" workflow: Login → Dashboard → System Selection → Details → Create Case → Close/Next
+                2. "Manual Mode" workflow: Login → Search by SRN → Extended Details → LOG Viewer → Create Case]
+            </div>
+
+            <div class="callout">
+                <div class="callout-title">
+                    <span class="callout-icon">🔄</span>
+                    Workflow Innovation: Three System Modes
+                </div>
+                <p>Research revealed engineers followed 2 distinct diagnostic patterns:</p>
+                <ul style="margin-top: var(--spacing-md); color: var(--color-text-secondary);">
+                    <li><strong>Reactive workflow:</strong> Browsing assigned region for systems with issues (Dashboard → Details)</li>
+                    <li><strong>Targeted workflow:</strong> Direct search by Serial Number for specific case (Search → Details)</li>
+                </ul>
+                <p style="margin-top: var(--spacing-md);">We proposed 3 modes (Auto/Manual/Predictive) to optimize each workflow. Due to technical timeline constraints, we delivered Auto + Manual in MVP, with Predictive deferred to Phase 2.</p>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl);">Phase 3: Wireframes & Design Iterations (6 weeks)</h3>
+            <p>Created low-fidelity wireframes for all core screens, tested with 8 representative users, and iterated based on feedback. Below are the key design pivots that shaped the final solution.</p>
+
+            <h4 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md); color: var(--color-primary);">Iteration 1 → 2: Dashboard Redesign</h4>
+            <div class="two-column">
+                <div>
+                    <strong style="display: block; margin-bottom: var(--spacing-sm);">❌ What Didn't Work (V1)</strong>
+                    <ul style="color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.7;">
+                        <li>Location tree in center of screen (users ignored it)</li>
+                        <li>Critical systems list below fold</li>
+                        <li>No at-a-glance KPI summary for managers</li>
+                        <li>Users tested said: "I still have to scroll to find what I need"</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong style="display: block; margin-bottom: var(--spacing-sm);">✅ V2 Changes Based on Testing</strong>
+                    <ul style="color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.7;">
+                        <li>Moved location tree to collapsible left sidebar</li>
+                        <li>Critical systems list prominent in main area</li>
+                        <li>Added KPI widgets (systems processed, critical count) for managers</li>
+                        <li>Priority-based alert sorting with visual color coding</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                [IMAGE: Before/After wireframes showing dashboard evolution from V1 to V2]
+            </div>
+
+            <h4 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-md); color: var(--color-primary);">Iteration 2 → 3: LOG Viewer Integration</h4>
+            <p>The most significant innovation: embedding LOG file analysis directly in RADAR, eliminating need to switch to external CAT tool.</p>
+
+            <div class="quote-block">
+                <p class="quote-text">"Wait, I can view and analyze the LOG file without leaving RADAR? This changes everything."</p>
+                <div class="quote-author">
+                    <div>
+                        <div class="quote-author-name">Remote Service Engineer (Usability Test Participant)</div>
+                        <div>Testing Session — Bangalore, India</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h5 style="color: var(--color-primary);">Design Challenge</h5>
+                    <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary);">LOG files contain 10,000-50,000 lines of system activity. Engineers manually scroll through text files looking for errors—extremely time-consuming.</p>
+                </div>
+                <div class="card">
+                    <h5 style="color: var(--color-primary);">Inspiration Source</h5>
+                    <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary);">Borrowed visual metaphor from debugging tools like OllyDBG that engineers already use: timeline visualization with interactive cursor and collapsible sections.</p>
+                </div>
+                <div class="card">
+                    <h5 style="color: var(--color-primary);">Solution Implemented</h5>
+                    <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary);">Visual timeline charting activities/errors, interactive cursor to jump to error line, collapsible "ties" grouping related activities (System Boot → Shutdown), search-in-LOG capability.</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                [IMAGE: LOG Viewer design showing:
+                1. Left: Timeline with visual markers for errors/activities
+                2. Right: LOG file text with line numbers, collapsible sections, highlighted errors
+                3. Interactive cursor syncing timeline position with LOG text position]
+            </div>
+
+            <h4 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-md); color: var(--color-primary);">Iteration 3 → 4: System Details Calendar View</h4>
+            <p>Created monthly health calendar showing system status per day, field engineer visits, and trend identification at-a-glance.</p>
+
+            <div class="image-placeholder">
+                [IMAGE: Calendar widget showing month view with color-coded days:
+                - Green: System healthy
+                - Yellow: Warnings detected
+                - Red: Errors/issues
+                - Icon overlay: Field engineer on-site
+                Users can click any day to see details for that date]
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl);">Phase 4: High-Fidelity Mockups & Prototyping (4 weeks)</h3>
+            <p>Translated validated wireframes into pixel-perfect mockups with visual design system applied. Built interactive prototype in Axure for final usability testing.</p>
+
+            <div class="image-placeholder">
+                [IMAGE: High-fidelity mockup of Dashboard showing:
+                - Top: Global stats (systems processed, critical systems count)
+                - Left sidebar: Location tree (collapsible)
+                - Main area: Critical systems list with priority sorting
+                - Right panel: Monitoring dashboard with alert timeline]
+            </div>
+
+            <div class="image-placeholder">
+                [IMAGE: High-fidelity mockup of System Details page showing:
+                - Left panel: System overview, health indicators
+                - Main area: Calendar view + detailed alert list
+                - Tabs: Overview, Performance, Configuration, LOG Viewer
+                - Quick actions: Create Case, Download LOG, View History]
+            </div>
+
+            <h4 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Design System Contribution</h4>
+            <p>Created comprehensive component library and interaction specifications reusable across all 3 modalities.</p>
+
+            <div class="tag-list">
+                <span class="tag">Alert Cards</span>
+                <span class="tag">System Status Indicators</span>
+                <span class="tag">Timeline Components</span>
+                <span class="tag">Data Tables</span>
+                <span class="tag">Filter Controls</span>
+                <span class="tag">Modal Dialogs</span>
+                <span class="tag">Navigation Patterns</span>
+                <span class="tag">Color Palette</span>
+            </div>
+
+            <div class="image-placeholder">
+                [IMAGE: Design system documentation showing typography, color palette, spacing guidelines, component specifications]
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl);">Usability Testing & Validation (3 weeks)</h3>
+            <p>Conducted 3 rounds of usability testing with 12 engineers across different experience levels and geographies.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Participants tested<br>(novice to expert)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Task scenarios<br>per session</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">94%</div>
+                    <div class="stat-label">Task completion rate<br>(target: &gt;85%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">8.2/10</div>
+                    <div class="stat-label">Perceived ease of use<br>(SUS equivalent)</div>
+                </div>
+            </div>
+
+            <h4 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Testing Method: Think-Aloud + Task Scenarios</h4>
+            <div class="step-details">
+                <strong>Sample Tasks Given to Participants:</strong>
+                <ul>
+                    <li><strong>Task 1:</strong> "You're responsible for Spain. Find all systems in Madrid with critical alerts."</li>
+                    <li><strong>Task 2:</strong> "System SRN-100200 reported an error. Diagnose the issue using the LOG file."</li>
+                    <li><strong>Task 3:</strong> "Create a case documenting your findings and mark it for field engineer follow-up."</li>
+                    <li><strong>Task 4:</strong> "Check how System SRN-68942 performed over the past month."</li>
+                    <li><strong>Task 5:</strong> "You've resolved the issue. Close the case and move to the next system in your worklist."</li>
+                </ul>
+                
+                <strong style="display: block; margin-top: var(--spacing-md);">Metrics Captured:</strong>
+                <ul>
+                    <li>Task completion rate (success vs. failure)</li>
+                    <li>Time on task (compared to legacy baseline)</li>
+                    <li>Navigation efficiency (clicks/screens to complete)</li>
+                    <li>Error rate (wrong actions, dead ends)</li>
+                    <li>Subjective satisfaction (post-task rating 1-10)</li>
+                </ul>
+            </div>
+
+            <h4 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Critical Refinements from Testing</h4>
+            <ul style="color: var(--color-text-secondary); line-height: 1.8;">
+                <li><strong>Added keyboard shortcuts:</strong> Users requested Ctrl+N for "next system," Ctrl+S for "create case"</li>
+                <li><strong>Improved error messages:</strong> Changed generic "Error loading data" to specific "Cannot reach System SRN-12345. Last ping: 2 hours ago. Retry?"</li>
+                <li><strong>Made sidebar collapsible:</strong> Expert users wanted more screen space for main content once region selected</li>
+                <li><strong>Added "Recent Systems":</strong> Users frequently returned to same 3-5 systems; added quick access list</li>
+            </ul>
+        </section>
+
+        <!-- Team Leadership -->
+        <section class="section scroll-section" style="background: linear-gradient(135deg, rgba(32, 128, 141, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%); padding: var(--spacing-2xl); border-radius: var(--radius-lg); margin-top: var(--spacing-3xl);">
+            <div class="section-header">
+                <span class="section-label">Leadership & Collaboration</span>
+                <h2 class="section-title">Managing the Design Team & Cross-Functional Partnerships</h2>
+                <p class="section-intro">As Lead Designer, I managed 4 designers across 3 time zones while collaborating daily with Product, Engineering, and Business stakeholders. This section demonstrates how I structured the team, facilitated collaboration, and evangelized design vision across the organization.</p>
+            </div>
+
+            <h3>Team Structure & Management Approach</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h4 class="card-title">Team Composition</h4>
+                    <ul style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.7;">
+                        <li><strong>Me (Lead UX Designer):</strong> Overall design direction, research, stakeholder management</li>
+                        <li><strong>2 Mid-level Designers:</strong> Wireframing, prototyping, usability testing</li>
+                        <li><strong>2 Junior Designers:</strong> Visual design, component library, specs</li>
+                        <li><strong>1 Portfolio Manager:</strong> Business liaison</li>
+                        <li><strong>1 Product Manager:</strong> Roadmap prioritization</li>
+                        <li><strong>8 Engineers:</strong> 4 frontend, 4 backend</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">📅</div>
+                    <h4 class="card-title">Design Team Rituals</h4>
+                    <ul style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.7;">
+                        <li><strong>Daily Standups (15 min):</strong> Blockers, progress, collaboration needs</li>
+                        <li><strong>Weekly Design Critiques (90 min):</strong> All designers present work-in-progress for feedback</li>
+                        <li><strong>Bi-weekly Design Reviews (60 min):</strong> Present designs to PM + Eng for technical feasibility check</li>
+                        <li><strong>Monthly Design Thinking Workshops:</strong> Skill-building (IA, accessibility, prototyping tools)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">How I Mentored Junior Designers</h4>
+            <div class="quote-block">
+                <p class="quote-text">"Vivek taught me that good design isn't about making things look pretty—it's about solving the right problem. He pushed me to always ask 'why' before jumping to 'how.'"</p>
+                <div class="quote-author">
+                    <div>
+                        <div class="quote-author-name">Junior Designer (Team Member)</div>
+                        <div>Post-Project Feedback</div>
+                    </div>
+                </div>
+            </div>
+
+            <ul style="color: var(--color-text-secondary); line-height: 1.8; margin-top: var(--spacing-md);">
+                <li><strong>Paired junior designers with research activities:</strong> They shadowed user interviews, helped synthesize findings, learned to connect insights to design decisions</li>
+                <li><strong>Assigned component ownership:</strong> Each junior owned 2-3 design system components end-to-end (specs, developer handoff, QA validation)</li>
+                <li><strong>Ran weekly 1-on-1s:</strong> Career development discussions, portfolio review, skill gap analysis</li>
+                <li><strong>Created design critique culture:</strong> Taught team to give actionable feedback using "I like, I wish, What if" framework</li>
+            </ul>
+
+            <h3 style="margin-top: var(--spacing-2xl);">Cross-Functional Collaboration</h3>
+            
+            <h4 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Working with Product Management</h4>
+            <p>PM and I co-owned the product roadmap. We ran bi-weekly roadmap sync meetings where I advocated for design-driven features based on research insights.</p>
+
+            <div class="callout">
+                <div class="callout-title">
+                    <span class="callout-icon">🤝</span>
+                    Example: Advocating for LOG Viewer Integration
+                </div>
+                <p><strong>Initial PM stance:</strong> "LOG viewer is nice-to-have. Users already have CAT tool. Let's focus on dashboard improvements."</p>
+                <p style="margin-top: var(--spacing-md);"><strong>My research-backed argument:</strong> "47% of users currently switch to CAT mid-workflow, adding 8-12 minutes per case. If we integrate LOG viewer, we eliminate that friction entirely. ROI calculation: 12 min × 15 cases/day × 15,000 engineers = 45,000 hours saved monthly."</p>
+                <p style="margin-top: var(--spacing-md); margin-bottom: 0;"><strong>Outcome:</strong> LOG viewer prioritized for MVP after presenting data visualization showing context-switching pain points.</p>
+            </div>
+
+            <h4 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Working with Engineering</h4>
+            <p>Embedded with engineering team during 6-month implementation phase. Attended sprint planning, provided design clarifications daily, and made pragmatic tradeoffs when technical constraints emerged.</p>
+
+            <div class="two-column">
+                <div>
+                    <strong style="display: block; margin-bottom: var(--spacing-sm); color: var(--color-primary);">Design Specs I Delivered</strong>
+                    <ul style="color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.7;">
+                        <li>Annotated mockups with interaction states</li>
+                        <li>Responsive breakpoint guidelines</li>
+                        <li>Typography and spacing specifications</li>
+                        <li>Component behavior documentation</li>
+                        <li>Accessibility requirements (WCAG 2.0 AA)</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong style="display: block; margin-bottom: var(--spacing-sm); color: var(--color-primary);">How I Supported Devs During Build</strong>
+                    <ul style="color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.7;">
+                        <li>Joined daily standups for design questions</li>
+                        <li>Created Sketch symbol library synced to codebase</li>
+                        <li>Ran QA reviews before each sprint demo</li>
+                        <li>Made real-time micro-decisions (spacing, colors)</li>
+                        <li>Documented design rationale in JIRA tickets</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">Example: Handling Design vs. Engineering Conflict</h4>
+            <div class="step-details" style="border-left-color: var(--color-accent);">
+                <p><strong>Conflict:</strong> Engineering team pushed back on collapsible sidebar feature, citing complexity and 2-week implementation time. They proposed fixed-width sidebar instead.</p>
+                <p style="margin-top: var(--spacing-md);"><strong>My approach:</strong></p>
+                <ul>
+                    <li>Acknowledged the technical challenge (built trust)</li>
+                    <li>Showed usability test video where expert users explicitly requested collapsible sidebar for more screen space</li>
+                    <li>Proposed compromise: Implement collapsible sidebar for MVP, defer "remember collapsed state across sessions" to Phase 2</li>
+                    <li>Offered to pair-program with frontend dev to solve CSS animation complexity</li>
+                </ul>
+                <p style="margin-top: var(--spacing-md);"><strong>Outcome:</strong> Feature shipped in MVP with 4-day implementation (faster than estimated), became one of most-praised improvements in user feedback.</p>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl);">Evangelizing Design Vision Across Organization</h3>
+            <p>Conducted 4 major presentations to different stakeholder groups to build buy-in and align on design strategy.</p>
+
+            <div class="leadership-grid">
+                <div class="leadership-card">
+                    <h5 style="color: var(--color-primary);">Executive Leadership (VP Level)</h5>
+                    <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary);">Presented business case: cost savings from reduced field visits, improved engineer productivity, customer satisfaction impact. Used data visualizations and ROI projections.</p>
+                </div>
+                <div class="leadership-card">
+                    <h5 style="color: var(--color-primary);">Engineering Leadership</h5>
+                    <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary);">Walked through technical architecture implications, discussed phased rollout approach, addressed concerns about legacy system deprecation timeline.</p>
+                </div>
+                <div class="leadership-card">
+                    <h5 style="color: var(--color-primary);">End User Community (Engineers)</h5>
+                    <p style="font-size: 0.9375rem; line-height: 1.6; color: var(--color-text-secondary);">Showed interactive prototype in regional all-hands meetings, collected live feedback, built excitement. Emphasized "designed WITH you, not FOR you."</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                [IMAGE: Photos from stakeholder presentations, team design critique sessions, whiteboard collaboration with engineering team]
+            </div>
+        </section>
+
+        <!-- Results & Impact -->
+        <section class="section scroll-section">
+            <div class="section-header">
+                <span class="section-label">Results & Impact</span>
+                <h2 class="section-title">Measurable Outcomes & Business Impact</h2>
+                <p class="section-intro">Post-launch metrics validated design decisions and demonstrated significant improvements across efficiency, satisfaction, and cost reduction KPIs.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">47%</div>
+                    <div class="stat-label">Reduction in average issue resolution time (45 min → 24 min)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1,200+</div>
+                    <div class="stat-label">Engineering hours saved monthly across global operations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">23%</div>
+                    <div class="stat-label">Decrease in field visit frequency (cost savings: $2.1M annually)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">92%</div>
+                    <div class="stat-label">User satisfaction score (NPS: 67 vs. legacy baseline: 32)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">88%</div>
+                    <div class="stat-label">Adoption rate within 6 months (exceeded 80% target)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">6.4</div>
+                    <div class="stat-label">Average screens per workflow (down from 12.8)</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl);">Qualitative User Feedback</h3>
+            <p>Collected feedback during incremental rollout phases via surveys, in-app feedback widget, and direct user interviews.</p>
+
+            <div class="card-grid">
+                <div class="quote-block" style="border-left-color: var(--color-success);">
+                    <p class="quote-text">"The location browser in side pane makes my work simpler now. I can collapse it once I select my region as this is one time activity for me."</p>
+                    <div class="quote-author">
+                        <div>
+                            <div class="quote-author-name">Remote Service Engineer</div>
+                            <div>Bangalore, India</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block" style="border-left-color: var(--color-success);">
+                    <p class="quote-text">"Timeline representation of LOG file clearly tells me where to start my investigation from. Using the cursor I can directly jump to the Line of Interest."</p>
+                    <div class="quote-author">
+                        <div>
+                            <div class="quote-author-name">Remote Service Engineer</div>
+                            <div>Haifa, Israel</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block" style="border-left-color: var(--color-success);">
+                    <p class="quote-text">"I do not need to browse through pages and make a note of metrics in Excel. The graph on the sidebar shows the real-time KPI figures."</p>
+                    <div class="quote-author">
+                        <div>
+                            <div class="quote-author-name">Service Manager, MR Modality</div>
+                            <div>Best, Netherlands</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-block" style="border-left-color: var(--color-success);">
+                    <p class="quote-text">"The colorful calendar shows how the system has been performing over time. This is important for me to analyse the issue and understand trends."</p>
+                    <div class="quote-author">
+                        <div>
+                            <div class="quote-author-name">Remote Service Engineer</div>
+                            <div>Bangalore, India</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl);">Incremental Rollout Strategy & Adoption</h3>
+            <p>To minimize disruption and gather continuous feedback, we rolled out RADAR 2.0 in 6 phases over 18 months while keeping legacy tool operational in parallel.</p>
+
+            <div class="image-placeholder">
+                [IMAGE: Timeline showing rollout phases:
+                Phase 1: Single user MVP (LOG viewer module for MR)
+                Phase 2: MR modality full feature set
+                Phase 3: CV modality addition
+                Phase 4: Create case functionality (MR + CV)
+                Phase 5: User login-based customization
+                Phase 6: Predictive engine integration, full legacy deprecation]
+            </div>
+
+            <div class="callout">
+                <div class="callout-title">
+                    <span class="callout-icon">📈</span>
+                    Why Phased Rollout Was Critical to Success
+                </div>
+                <p>Given user resistance to change, we couldn't force a "big bang" cutover. The phased approach allowed:</p>
+                <ul style="margin-top: var(--spacing-md); color: var(--color-text-secondary);">
+                    <li><strong>Continuous validation:</strong> Gather feedback after each release, iterate before next phase</li>
+                    <li><strong>Confidence building:</strong> Early adopters became champions who evangelized to skeptics</li>
+                    <li><strong>Risk mitigation:</strong> If major issues emerged, users could fall back to legacy tool</li>
+                    <li><strong>Training scalability:</strong> Onboard users in waves rather than 15,000 simultaneously</li>
+                </ul>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl);">Business Impact Summary</h3>
+            <div class="two-column">
+                <div style="background: var(--gradient-surface); border-radius: var(--radius-md); padding: var(--spacing-lg); border: 2px solid var(--color-border);">
+                    <h4 style="color: var(--color-primary); margin-bottom: var(--spacing-md);">💰 Financial Impact</h4>
+                    <ul style="color: var(--color-text-secondary); line-height: 1.8;">
+                        <li>$2.1M annual savings from reduced field visits</li>
+                        <li>1,200 engineering hours/month freed for proactive support</li>
+                        <li>Improved customer satisfaction → contract renewals</li>
+                    </ul>
+                </div>
+                <div style="background: var(--gradient-surface); border-radius: var(--radius-md); padding: var(--spacing-lg); border: 2px solid var(--color-border);">
+                    <h4 style="color: var(--color-primary); margin-bottom: var(--spacing-md);">🎯 Strategic Impact</h4>
+                    <ul style="color: var(--color-text-secondary); line-height: 1.8;">
+                        <li>Positioned Philips as innovation leader in remote diagnostics</li>
+                        <li>Platform now scalable for AI/ML predictive analytics</li>
+                        <li>Design system reused across 3 other healthcare tools</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="section scroll-section">
+            <div class="section-header">
+                <span class="section-label">Reflection</span>
+                <h2 class="section-title">What I Learned & What I'd Do Differently</h2>
+            </div>
+
+            <h3>Key Lessons</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4 style="color: var(--color-primary);">1. Change Management is Design</h4>
+                    <p style="color: var(--color-text-secondary); line-height: 1.6;">The biggest barrier wasn't technical—it was behavioral. Investing in user communication, phased rollout, and champion cultivation was as important as the UI itself.</p>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--color-primary);">2. Quantify Everything</h4>
+                    <p style="color: var(--color-text-secondary); line-height: 1.6;">Data-driven storytelling secured stakeholder buy-in. "Engineers are frustrated" ≠ persuasive. "47% of workflows require tool-switching, costing 8 min per case" = immediate action.</p>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--color-primary);">3. Embed with Engineering</h4>
+                    <p style="color: var(--color-text-secondary); line-height: 1.6;">Attending daily standups and pairing with developers accelerated implementation and built trust. Design-dev collaboration was key to maintaining quality during build.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-2xl);">What I'd Do Differently</h3>
+            <ul style="color: var(--color-text-secondary); line-height: 1.8; font-size: 1.0625rem;">
+                <li><strong>Earlier A/B testing:</strong> We tested final designs but could have run A/B tests on specific features (e.g., sidebar collapsed vs. expanded default) during beta to optimize further</li>
+                <li><strong>More aggressive predictive mode push:</strong> We deferred predictive analytics to Phase 2, but user feedback showed high demand. Should have advocated harder to include in MVP.</li>
+                <li><strong>Automated usability metrics:</strong> Wish we'd implemented instrumentation to track task completion time automatically rather than relying on manual observation</li>
+                <li><strong>Internationalization earlier:</strong> Didn't account for non-English regions until late. Should have designed with i18n from day 1.</li>
+            </ul>
+
+            <h3 style="margin-top: var(--spacing-2xl);">What Came Next</h3>
+            <p>RADAR 2.0's success led to broader platform initiatives:</p>
+            <ul style="color: var(--color-text-secondary); line-height: 1.8; font-size: 1.0625rem;">
+                <li><strong>Design system adoption:</strong> Component library and patterns reused across Philips' Customer Service Portal and OneEMS tools</li>
+                <li><strong>Predictive diagnostics:</strong> Phase 2 integrated ISDA machine learning engine, enabling proactive alerts before failures occur</li>
+                <li><strong>ClickScheduler integration:</strong> Bridged RADAR with field service scheduling tool, enabling one-click FSE dispatch</li>
+                <li><strong>My role evolution:</strong> Promoted to Senior UX Designer, leading design for 3 enterprise healthcare platforms</li>
+            </ul>
+
+            <div class="callout">
+                <div class="callout-title">
+                    <span class="callout-icon">🚀</span>
+                    Connection to ServiceNow Role
+                </div>
+                <p style="margin-bottom: 0;">This project demonstrates my ability to lead design teams, drive UX strategy for complex enterprise platforms, collaborate cross-functionally, and deliver measurable business outcomes—all core requirements for the ServiceNow Senior UX Design Manager role. The parallels are clear: RADAR (remote diagnostics) aligns with ServiceNow's IT Operations Management and Security Operations domains. My experience managing distributed teams, evangelizing design vision, and iterating based on user feedback directly translates to ServiceNow's collaborative, agile environment.</p>
+            </div>
+        </section>
+
+        <!-- Footer CTA -->
+        <section class="scroll-section" style="background: var(--gradient-primary); color: white; padding: var(--spacing-3xl) var(--spacing-md); text-align: center; margin-top: var(--spacing-3xl); min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+            <h2 style="color: white; margin-bottom: var(--spacing-md);">Let's Connect</h2>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.125rem; max-width: 600px; margin: 0 auto var(--spacing-xl);">I'd love to discuss how my experience designing enterprise diagnostic platforms translates to ServiceNow's workplace productivity and analytics solutions.</p>
+            <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:your.email@example.com" style="background: white; color: var(--color-primary); padding: var(--spacing-md) var(--spacing-xl); border-radius: var(--radius-md); font-weight: 600; text-decoration: none; display: inline-block;">Email Me</a>
+                <a href="https://linkedin.com/in/yourprofile" style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); color: white; padding: var(--spacing-md) var(--spacing-xl); border-radius: var(--radius-md); font-weight: 600; text-decoration: none; display: inline-block;">LinkedIn</a>
+                <a href="https://yourportfolio.com" style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); color: white; padding: var(--spacing-md) var(--spacing-xl); border-radius: var(--radius-md); font-weight: 600; text-decoration: none; display: inline-block;">Full Portfolio</a>
+            </div>
+        </section>
     </div>
-  </div>
-
-  <!-- CV Modal -->
-  <div class="modal-backdrop" id="cvModalBackdrop">
-    <div class="modal cv-modal">
-      <button class="modal-close" id="cvModalClose">×</button>
-      <h2 class="modal-title">Download CV</h2>
-      <div class="cv-options">
-        <a href="cv/Vivek-Chawda-CV.pdf" download class="cv-option">PDF Version</a>
-        <a href="cv/Vivek-Chawda-CV-ATS.docx" download class="cv-option">ATS-Optimized DOCX</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Work Modal
-    const workModalBackdrop = document.getElementById('workModalBackdrop');
-    const workModalClose = document.getElementById('workModalClose');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalSubtitle = document.getElementById('modalSubtitle');
-    const modalDescription = document.getElementById('modalDescription');
-    const modalMeta = document.getElementById('modalMeta');
-    const modalHighlights = document.getElementById('modalHighlights');
-    const modalImage = document.getElementById('modalImage');
-    const modalImageLink = document.getElementById('modalImageLink');
-    const caseStudyBtn = document.getElementById('caseStudyBtn');
-
-    document.querySelectorAll('.work-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const title = card.getAttribute('data-project-title');
-        const subtitle = card.getAttribute('data-project-subtitle');
-        const description = card.getAttribute('data-project-description');
-        const metaRaw = card.getAttribute('data-meta');
-        const highlightsRaw = card.getAttribute('data-project-highlights');
-        const imageSrc = card.getAttribute('data-image') || 'images/work-default-screen.png';
-        const link = card.getAttribute('data-link');
-        const hasCaseStudy = card.getAttribute('data-has-case-study') === 'true';
-
-        modalTitle.textContent = title;
-        modalSubtitle.textContent = subtitle;
-        modalDescription.textContent = description;
-        modalImage.src = imageSrc;
-        modalImage.alt = title;
+    
+    <script>
+        // Intersection Observer for fade-in effect on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
         
-        if (hasCaseStudy) {
-          modalImageLink.classList.add('no-arrow');
-          modalImageLink.style.cursor = 'default';
-          modalImageLink.onclick = (e) => e.preventDefault();
-          caseStudyBtn.classList.add('visible');
-          caseStudyBtn.href = link;
-        } else {
-          modalImageLink.classList.remove('no-arrow');
-          modalImageLink.style.cursor = 'pointer';
-          modalImageLink.onclick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            window.open(link, '_blank', 'noopener,noreferrer');
-          };
-          caseStudyBtn.classList.remove('visible');
-        }
-
-        modalMeta.innerHTML = '';
-        try {
-          const metaItems = JSON.parse(metaRaw);
-          metaItems.forEach(m => {
-            const span = document.createElement('span');
-            span.textContent = m;
-            modalMeta.appendChild(span);
-          });
-        } catch (e) {}
-
-        modalHighlights.innerHTML = '';
-        try {
-          const highlights = JSON.parse(highlightsRaw);
-          if (highlights.length) {
-            const h4 = document.createElement('h4');
-            h4.textContent = 'What this work focused on';
-            modalHighlights.appendChild(h4);
-            const ul = document.createElement('ul');
-            highlights.forEach(h => {
-              const li = document.createElement('li');
-              li.textContent = h;
-              ul.appendChild(li);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.remove('fade-out');
+                } else {
+                    // Optional: fade out when scrolling away
+                    if (entry.boundingClientRect.top < 0) {
+                        entry.target.classList.add('fade-out');
+                    }
+                }
             });
-            modalHighlights.appendChild(ul);
-          }
-        } catch (e) {}
-
-        workModalBackdrop.classList.add('is-visible');
-      });
-    });
-
-    caseStudyBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location.href = caseStudyBtn.href;
-    });
-
-    workModalClose.addEventListener('click', () => {
-      workModalBackdrop.classList.remove('is-visible');
-    });
-
-    workModalBackdrop.addEventListener('click', (e) => {
-      if (e.target === workModalBackdrop) {
-        workModalBackdrop.classList.remove('is-visible');
-      }
-    });
-
-    // CV Modal
-    const cvModalBackdrop = document.getElementById('cvModalBackdrop');
-    const downloadCvBtn = document.getElementById('downloadCvBtn');
-    const cvModalClose = document.getElementById('cvModalClose');
-
-    downloadCvBtn.addEventListener('click', () => {
-      cvModalBackdrop.classList.add('is-visible');
-    });
-
-    cvModalClose.addEventListener('click', () => {
-      cvModalBackdrop.classList.remove('is-visible');
-    });
-
-    cvModalBackdrop.addEventListener('click', (e) => {
-      if (e.target === cvModalBackdrop) {
-        cvModalBackdrop.classList.remove('is-visible');
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        workModalBackdrop.classList.remove('is-visible');
-        cvModalBackdrop.classList.remove('is-visible');
-      }
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }
-      });
-    });
-  </script>
+        }, observerOptions);
+        
+        // Observe all scroll sections
+        document.addEventListener('DOMContentLoaded', () => {
+            const scrollSections = document.querySelectorAll('.scroll-section');
+            scrollSections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Make first section visible immediately
+            if (scrollSections.length > 0) {
+                scrollSections[0].classList.add('visible');
+            }
+        });
+    </script>
 </body>
 </html>
