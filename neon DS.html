@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System UI Kit</title>
+    <!-- Importing your fonts to ensure Figma captures them correctly -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* === YOUR ORIGINAL VARIABLES === */
+        :root {
+            --bg: #0c0e14; --sf: #13151e; --sf2: #1a1d29; --sf3: #20232f;
+            --bd: #252836; --bd2: #2e3245;
+            --ac: #e8ff47; --a2: #47c8ff; --a3: #ff6b6b; --a4: #b47fff; --a5: #47ffb4;
+            --tx: #e8eaf0; --tm: #6b7280; --td: #3d4455; --hd: #0f1118;
+            --pw: 264px; --rh: 34px; --fs: 12px;
+            --fu: 'DM Mono', monospace;
+        }
+
+        body.light {
+            --bg: #f4f5f0; --sf: #fff; --sf2: #f0f1eb; --sf3: #e6e8e2;
+            --bd: #d5d8d0; --bd2: #c5c8c0;
+            --tx: #18182a; --tm: #52526a; --td: #a0a0b8; --hd: #fff;
+        }
+
+        /* Base Setup for UI Kit Viewer */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background: var(--bg); color: var(--tx); font-family: var(--fu); 
+            padding: 40px; display: flex; flex-direction: column; gap: 60px;
+            min-height: 100vh;
+        }
+
+        /* Presentational Classes for the UI Kit Layout */
+        .section-title {
+            font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800;
+            color: var(--ac); margin-bottom: 20px; border-bottom: 1px solid var(--bd); padding-bottom: 10px;
+        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .flex-row { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+        .flex-col { display: flex; flex-direction: column; gap: 15px; }
+
+        .swatch-card { background: var(--sf); border: 1px solid var(--bd); border-radius: 8px; overflow: hidden; }
+        .swatch-color { height: 80px; width: 100%; }
+        .swatch-info { padding: 12px; }
+        .swatch-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--tx); }
+        .swatch-hex { font-size: 11px; color: var(--tm); }
+
+        .typo-specimen { background: var(--sf2); padding: 20px; border: 1px solid var(--bd); border-radius: 8px; margin-bottom: 15px; }
+        .typo-label { font-size: 10px; color: var(--td); text-transform: uppercase; margin-bottom: 8px; }
+
+        /* === YOUR COMPONENT CSS === */
+        
+        /* Buttons */
+        .btn { background: var(--ac); color: #0c0e14; border: none; border-radius: 6px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; padding: 5px 12px; cursor: pointer; letter-spacing: .2px; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-g { background: transparent; border: 1px solid var(--bd); color: var(--tm); font-family: var(--fu); font-size: 11px; padding: 5px 10px; border-radius: 6px; }
+        .btn-d { background: var(--a3); color: #fff; border: none; border-radius: 6px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; padding: 5px 12px; }
+        .btn-sc { background: var(--a4); color: #fff; border: none; border-radius: 6px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px; padding: 5px 12px; }
+        .ib { width: 30px; height: 30px; background: var(--sf2); border: 1px solid var(--bd); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--tm); font-size: 14px; }
+        
+        /* Inputs */
+        .si { background: var(--sf2); border: 1px solid var(--bd); border-radius: 6px; color: var(--tx); font-family: var(--fu); font-size: 11px; padding: 5px 9px; width: 200px; outline: none; }
+        .ci2 { width: 100%; background: var(--sf3); border: 1px solid var(--bd2); border-radius: 6px; color: var(--tx); font-family: var(--fu); font-size: 12px; padding: 7px 10px; outline: none; }
+        .csv-ta { width: 100%; background: var(--sf3); border: 1px solid var(--bd); border-radius: 7px; color: var(--tx); font-family: var(--fu); font-size: 11px; padding: 9px; min-height: 80px; }
+        
+        /* Badges */
+        .stat { background: var(--sf2); border: 1px solid var(--bd); border-radius: 16px; font-size: 10px; color: var(--tm); padding: 3px 9px; display: inline-block;}
+        .bge { display: inline-flex; align-items: center; gap: 3px; border-radius: 4px; padding: 2px 7px; font-size: 10px; font-weight: 600; font-family: 'Syne', sans-serif; }
+        .bok { background: rgba(74, 222, 128, .11); color: #4ade80; border: 1px solid rgba(74, 222, 128, .22); }
+        .bwn { background: rgba(255, 180, 0, .09); color: #ffb400; border: 1px solid rgba(255, 180, 0, .22); }
+        .ber { background: rgba(255, 107, 107, .11); color: var(--a3); border: 1px solid rgba(255, 107, 107, .22); }
+        .pd-b { padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 600; font-family: 'Syne', sans-serif; display: inline-block;}
+        .pd-cat { background: rgba(71, 200, 255, .09); color: var(--a2); border: 1px solid rgba(71, 200, 255, .2); }
+        .pd-sub { background: rgba(180, 127, 255, .09); color: var(--a4); border: 1px solid rgba(180, 127, 255, .2); }
+
+        /* Panels & Cards */
+        .card { background: var(--sf3); border: 1px solid var(--bd2); border-radius: 9px; padding: 13px; }
+        .dev-panel-mock { background: #090a0f; border: 1px solid #2a2e3f; border-radius: 8px; padding: 15px; color: #a0aabf; font-family: 'DM Mono', monospace; }
+        .dev-title { color: #ff0055; font-weight: bold; letter-spacing: 1px; font-size: 11px; margin-bottom: 10px; }
+        .dev-btn { background: #1a1d29; border: 1px solid #3d4455; color: #a0aabf; font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 8px; border-radius: 3px; }
+
+        /* Theme Toggle Helper */
+        .theme-switcher { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+    </style>
+</head>
+<body>
+
+    <div class="theme-switcher">
+        <button class="btn" onclick="document.body.classList.toggle('light')">Toggle Light/Dark Theme</button>
+    </div>
+
+    <!-- 1. COLOR TOKENS -->
+    <section>
+        <h2 class="section-title">Color Palette (Dark / Light Contextual)</h2>
+        <div class="grid">
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--bg);"></div><div class="swatch-info"><div class="swatch-name">Background</div><div class="swatch-hex">--bg</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--hd);"></div><div class="swatch-info"><div class="swatch-name">Header</div><div class="swatch-hex">--hd</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--sf);"></div><div class="swatch-info"><div class="swatch-name">Surface 1</div><div class="swatch-hex">--sf</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--sf2);"></div><div class="swatch-info"><div class="swatch-name">Surface 2</div><div class="swatch-hex">--sf2</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--sf3);"></div><div class="swatch-info"><div class="swatch-name">Surface 3</div><div class="swatch-hex">--sf3</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--bd);"></div><div class="swatch-info"><div class="swatch-name">Border 1</div><div class="swatch-hex">--bd</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--bd2);"></div><div class="swatch-info"><div class="swatch-name">Border 2</div><div class="swatch-hex">--bd2</div></div></div>
+        </div>
+        <h3 style="margin: 20px 0 10px; font-family: 'Syne'; color: var(--ac);">Accents & Text</h3>
+        <div class="grid">
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--ac);"></div><div class="swatch-info"><div class="swatch-name" style="color: #000">Accent Primary</div><div class="swatch-hex">--ac</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--a2);"></div><div class="swatch-info"><div class="swatch-name">Accent Blue</div><div class="swatch-hex">--a2</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--a3);"></div><div class="swatch-info"><div class="swatch-name">Accent Red</div><div class="swatch-hex">--a3</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--a4);"></div><div class="swatch-info"><div class="swatch-name">Accent Purple</div><div class="swatch-hex">--a4</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--a5);"></div><div class="swatch-info"><div class="swatch-name" style="color: #000">Accent Green</div><div class="swatch-hex">--a5</div></div></div>
+            
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--tx);"></div><div class="swatch-info"><div class="swatch-name" style="color: #000">Text Primary</div><div class="swatch-hex">--tx</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--tm);"></div><div class="swatch-info"><div class="swatch-name">Text Medium</div><div class="swatch-hex">--tm</div></div></div>
+            <div class="swatch-card"><div class="swatch-color" style="background: var(--td);"></div><div class="swatch-info"><div class="swatch-name">Text Dark</div><div class="swatch-hex">--td</div></div></div>
+        </div>
+    </section>
+
+    <!-- 2. TYPOGRAPHY -->
+    <section>
+        <h2 class="section-title">Typography</h2>
+        
+        <div class="typo-specimen" style="font-family: 'Syne', sans-serif;">
+            <div class="typo-label">Syne (Headings & Buttons) - 800 Extra Bold</div>
+            <div style="font-size: 28px; font-weight: 800; color: var(--ac);">The quick brown fox jumps over the lazy dog</div>
+        </div>
+
+        <div class="typo-specimen" style="font-family: 'Syne', sans-serif;">
+            <div class="typo-label">Syne - 700 Bold</div>
+            <div style="font-size: 17px; font-weight: 700;">The quick brown fox jumps over the lazy dog</div>
+        </div>
+
+        <div class="typo-specimen" style="font-family: 'Syne', sans-serif;">
+            <div class="typo-label">Syne - 600 SemiBold</div>
+            <div style="font-size: 12px; font-weight: 600;">The quick brown fox jumps over the lazy dog</div>
+        </div>
+
+        <div class="typo-specimen" style="font-family: 'DM Mono', monospace;">
+            <div class="typo-label">DM Mono (Body & Data) - 400 Regular</div>
+            <div style="font-size: 12px;">The quick brown fox jumps over the lazy dog. 0123456789</div>
+        </div>
+    </section>
+
+    <!-- 3. COMPONENTS -->
+    <section>
+        <h2 class="section-title">UI Components</h2>
+        
+        <div class="flex-col" style="gap: 30px;">
+            <!-- Buttons -->
+            <div>
+                <div class="typo-label">Buttons</div>
+                <div class="flex-row">
+                    <button class="btn">Primary Button</button>
+                    <button class="btn-sc">Secondary Button</button>
+                    <button class="btn-d">Danger Button</button>
+                    <button class="btn-g">Ghost Button</button>
+                    <button class="ib">⌘</button>
+                </div>
+            </div>
+
+            <!-- Inputs -->
+            <div>
+                <div class="typo-label">Inputs & Forms</div>
+                <div class="flex-col" style="max-width: 400px;">
+                    <input type="text" class="si" placeholder="Search...">
+                    <input type="text" class="ci2" placeholder="Standard input field">
+                    <textarea class="csv-ta" placeholder="Textarea field..."></textarea>
+                </div>
+            </div>
+
+            <!-- Badges -->
+            <div>
+                <div class="typo-label">Badges & Tags</div>
+                <div class="flex-row">
+                    <div class="stat">Status: <em>Active</em></div>
+                    <div class="bge bok">Success</div>
+                    <div class="bge bwn">Warning</div>
+                    <div class="bge ber">Error</div>
+                    <div class="pd-b pd-cat">Category</div>
+                    <div class="pd-b pd-sub">Sub-tag</div>
+                </div>
+            </div>
+
+            <!-- Complex Components -->
+            <div>
+                <div class="typo-label">Panels & Dev Mode</div>
+                <div class="grid">
+                    <div class="card">
+                        <div style="font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 10px;">Card Title</div>
+                        <p style="font-size: 11px; color: var(--tm); line-height: 1.5;">This is a standard card component using surface 3 background and border 2.</p>
+                    </div>
+
+                    <div class="dev-panel-mock">
+                        <div class="dev-title">DEVELOPER CONSOLE</div>
+                        <p style="font-size: 10px; margin-bottom: 10px;">System operational. Debug mode active.</p>
+                        <button class="dev-btn">Execute command</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
